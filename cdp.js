@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-// SPDX-License-Identifier: GPL-3.0-or-later
-// Copyright (C) 2026 the OpenHome contributors
 // Talk to the launcher running on the TV over the Chrome DevTools Protocol.
 //
 // webOS leaves a debug port open on a developer-mode app (9998), which is how the page can be
@@ -12,16 +10,24 @@
 //   node cdp.js text                         every piece of visible text on screen
 //   node cdp.js shot out.png [width height]  a screenshot at devicePixelRatio 2
 
-const TV = process.env.TV;   // TV=<tv-ip> node ...
+const TV = process.env.TV || "192.168.1.239";
 const PORT = process.env.PORT || 9998;
 
-if (!TV) { console.error("Set TV to your set's address:  TV=192.168.1.50 node cdp.js text"); process.exit(2); }
+// webOS preloads other apps at boot - Netflix, YouTube and friends - and they are debuggable
+// too, so "the first page in the list" is whichever one happens to be first. Pick ours by name.
+const APP_ID = process.env.APP_ID || "io.github.devic021.openhome";
+function pickpage(list) {
+	const pages = list.filter((t) => t.type === "page" && t.webSocketDebuggerUrl);
+	const ours = pages.filter((t) => (t.url || "").indexOf(APP_ID) !== -1);
+	if (ours.length) return ours[0];
+	if (!pages.length) throw new Error("no debuggable page on the TV");
+	throw new Error("the launcher is not among the " + pages.length + " debuggable pages: " +
+		pages.map((t) => t.title || t.url).join(", "));
+}
 
 async function target() {
 	const list = await (await fetch(`http://${TV}:${PORT}/json/list`)).json();
-	const page = list.find((t) => t.type === "page" && t.webSocketDebuggerUrl);
-	if (!page) throw new Error("no debuggable page on the TV");
-	return page.webSocketDebuggerUrl;
+	return pickpage(list).webSocketDebuggerUrl;
 }
 
 function connect(url) {

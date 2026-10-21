@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-// SPDX-License-Identifier: GPL-3.0-or-later
-// Copyright (C) 2026 the OpenHome contributors
 // Photograph every screen of the launcher, straight off the TV.
 //
 // One DevTools connection drives the whole set: each screen is opened by calling the launcher's
@@ -17,7 +15,7 @@ const fs = require("fs");
 const path = require("path");
 const { execFileSync } = require("child_process");
 
-const TV = process.env.TV;   // TV=<tv-ip> node ...
+const TV = process.env.TV || "192.168.1.239";
 const PORT = process.env.PORT || 9998;
 const args = process.argv.slice(2);
 const OUT = path.join(__dirname, "repo-draft/docs/screenshots");
@@ -106,14 +104,23 @@ function connect(url) {
 	});
 }
 
-const wait = (ms) => new Promise((go) => setTimeout(go, ms));
+// webOS preloads other apps at boot - Netflix, YouTube and friends - and they are debuggable
+// too, so "the first page in the list" is whichever one happens to be first. Pick ours by name.
+const APP_ID = process.env.APP_ID || "io.github.devic021.openhome";
+function pickpage(list) {
+	const pages = list.filter((t) => t.type === "page" && t.webSocketDebuggerUrl);
+	const ours = pages.filter((t) => (t.url || "").indexOf(APP_ID) !== -1);
+	if (ours.length) return ours[0];
+	if (!pages.length) throw new Error("no debuggable page on the TV");
+	throw new Error("the launcher is not among the " + pages.length + " debuggable pages: " +
+		pages.map((t) => t.title || t.url).join(", "));
+}
 
-if (!TV) { console.error("Set TV to your set's address:  TV=192.168.1.50 node shots.js"); process.exit(2); }
+const wait = (ms) => new Promise((go) => setTimeout(go, ms));
 
 async function main() {
 	const list = await (await fetch(`http://${TV}:${PORT}/json/list`)).json();
-	const page = list.find((t) => t.type === "page" && t.webSocketDebuggerUrl);
-	if (!page) throw new Error("the launcher is not running on the TV");
+	const page = pickpage(list);
 	const cdp = await connect(page.webSocketDebuggerUrl);
 	fs.mkdirSync(OUT, { recursive: true });
 
