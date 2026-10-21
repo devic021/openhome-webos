@@ -1,0 +1,3394 @@
+[
+ {
+  "key": "ai_Picture",
+  "category": "?",
+  "nameEn": "AI Brightness Settings",
+  "nameSr": "Podešavanja AI osvetljenja",
+  "descriptionEn": "AI learned via LG Deep Learning technique enhances the image clarity and realistic resolution according to the viewing content.",
+  "descriptionSr": "AI naučen putem tehnike LG Deep Learning unapređuje jasnoću i realističnu rezoluciju slike u skladu sa sadržajem koji se gleda.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "ai_Brightness",
+  "category": "?",
+  "nameEn": "AI Brightness Settings",
+  "nameSr": "Podešavanja AI osvetljenja",
+  "descriptionEn": "AI adjusts the dark areas according to the brightness around your TV  and specific contents.",
+  "descriptionSr": "",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "ai_Genre",
+  "category": "?",
+  "nameEn": "AI Genre Selection",
+  "nameSr": "AI biranje žanra",
+  "descriptionEn": "The AI will find the most suitable picture quality according to the type of the video.",
+  "descriptionSr": "AI će pronaći najprikladniji kvalitet slike u skladu sa vrstom video-sadržaja.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "adaptivePowerDelivery",
+  "category": "?",
+  "nameEn": "Adaptive Power Delivery",
+  "nameSr": "Prilagodljiva isporuka energije",
+  "descriptionEn": "Adjust rear lighting, volume, and brightness to increase USB-C power delivery.",
+  "descriptionSr": "",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "arcPerApp",
+  "category": "?",
+  "nameEn": "Aspect Ratio",
+  "nameSr": "Odnos stranica slike",
+  "descriptionEn": "You can choose a suitable aspect ratio.",
+  "descriptionSr": "Možete da izaberete odgovarajući odnos stranica.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "arcMenuBySystem",
+  "category": "aspectRatio",
+  "nameEn": "Aspect Ratio",
+  "nameSr": "Odnos stranica slike",
+  "descriptionEn": "You can choose a suitable aspect ratio.",
+  "descriptionSr": "Možete da izaberete odgovarajući odnos stranica.",
+  "choices": [
+   "off",
+   "on"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "justScan",
+  "category": "?",
+  "nameEn": "Aspect Ratio",
+  "nameSr": "Odnos stranica slike",
+  "descriptionEn": "You can choose a suitable aspect ratio.",
+  "descriptionSr": "Možete da izaberete odgovarajući odnos stranica.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "autoInputSwitch",
+  "category": "?",
+  "nameEn": "Auto Input Switch",
+  "nameSr": "Automatska promena unosa",
+  "descriptionEn": "When Auto Input Switch is set to On, display will automatically switch to new inputwhen connected.",
+  "descriptionSr": "",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "autoscanChannelGroup",
+  "category": "channel",
+  "nameEn": "Channel Scrolling Options",
+  "nameSr": "Opcije listanja kanala",
+  "descriptionEn": "Choose to have all channels or just your primary ones when you change channels.",
+  "descriptionSr": "Izaberite da imate sve kanale ili samo primarne kada menjate kanale.",
+  "choices": [
+   "primary_channel",
+   "all_channel"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "displayType",
+  "category": "?",
+  "nameEn": "Display Type",
+  "nameSr": "",
+  "descriptionEn": "You can select the most suitable display type.",
+  "descriptionSr": "",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "dualMono",
+  "category": "channel",
+  "nameEn": "Dual Mono",
+  "nameSr": "Dvostruki mono",
+  "descriptionEn": "You can select left and right audio settings for broadcast signal.",
+  "descriptionSr": "Možete da izaberete podešavanja levog i desnog zvuka za emitovani signal.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "filmmakerAmbientLight",
+  "category": "?",
+  "nameEn": "FILMMAKER MODE Ambient Light",
+  "nameSr": "Ambijentalno svetlo u REŽIMU FILMMAKER",
+  "descriptionEn": "Provide optimized picture quality in FILMMAKER MODE according to the surrounding lighting conditions.",
+  "descriptionSr": "Obezbedite optimizovan kvalitet slike u REŽIMU FILMMAKER u skladu sa okolnim uslovima osvetljenja.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "inputCompatibilityMode",
+  "category": "?",
+  "nameEn": "Input Compatibility Mode",
+  "nameSr": "Režim kompatibilnosti ulaza",
+  "descriptionEn": "This feature is used to optimize the quality of video input through the External port. You can change settings from the current 'Input Compatibility Mode' Menu.",
+  "descriptionSr": "Ova funkcija se koristi da bi se optimizovao kvalitet video ulaza putem eksternog priključka. Možete promeniti podešavanja iz trenutnog menija 'Režim kompatibilnosti ulaza'.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "multiFeed",
+  "category": "channel",
+  "nameEn": "Multi Feed",
+  "nameSr": "Višestruki tok",
+  "descriptionEn": "Save/reset your CI password. Saving your password will let you skip the sign-in step in the future.",
+  "descriptionSr": "Sačuvaj/poništi CI lozinku. Čuvanje lozinke će omogućiti preskakanje koraka prijave u budućnosti.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "responseTime",
+  "category": "?",
+  "nameEn": "Response Time",
+  "nameSr": "Vreme odziva",
+  "descriptionEn": "Sets a response time for displayed pictures based on the screen speed.",
+  "descriptionSr": "Podešava vreme odziva za prikazane slike na osnovu brzine ekrana.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "supportOperatorProfile",
+  "category": "channel",
+  "nameEn": "Save CAM Operator's Profile",
+  "nameSr": "Sačuvaj profil rukovaoca CAM",
+  "descriptionEn": "You can turn on/off the feature of saving CAM operator's profile.",
+  "descriptionSr": "Možete da uključite/isključite funkciju čuvanja profila CAM operatora.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "enableSetIdMenu",
+  "category": "hotelMode",
+  "nameEn": "Set ID",
+  "nameSr": "Podesi ID",
+  "descriptionEn": "Set sensitivity of Motion Sensor on your TV.",
+  "descriptionSr": "Podesite osetljivost senzora pokreta na televizoru.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "signingAtsc30",
+  "category": "channel",
+  "nameEn": "Signal Signing",
+  "nameSr": "",
+  "descriptionEn": "Turn the Interactivity (DTVi) service on/off.",
+  "descriptionSr": "Uključite/isključite uslugu Interactivity (DTVi).",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "analogSystemColor",
+  "category": "channel",
+  "nameEn": "System Color",
+  "nameSr": "Sistemska boja",
+  "descriptionEn": "Set System Color mode for your current TV input.",
+  "descriptionSr": "Podesite režim sistemske boje za trenutni TV ulaz.",
+  "choices": [
+   "multi",
+   "pal-m",
+   "pal-n",
+   "ntsc"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "truMotionMode",
+  "category": "?",
+  "nameEn": "TruMotion",
+  "nameSr": "",
+  "descriptionEn": "Optimize image quality for fast-moving scenes.",
+  "descriptionSr": "Optimizujte kvalitet za brze scene.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "remoteSetting",
+  "category": "?",
+  "nameEn": "Use Provided Remote Only",
+  "nameSr": "Koristite samo priloženi daljinski upravljač",
+  "descriptionEn": "This feature is only controlled with the included remote.",
+  "descriptionSr": "Ova funkcija se kontroliše isključivo pomoću isporučenog daljinskog upravljača.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "aiCaptionEnable",
+  "category": "caption",
+  "nameEn": "AI Caption",
+  "nameSr": "AI titlovi",
+  "descriptionEn": "It recognizes the broadcast audio and displays subtitles in the settled language.",
+  "descriptionSr": "Prepoznaje zvuk koji se emituje i prikazuje titlove na željenom jeziku.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "captionAnalog",
+  "category": "caption",
+  "nameEn": "Analog Mode",
+  "nameSr": "Analogni režim",
+  "descriptionEn": "Select a caption type for analog broadcasts.",
+  "descriptionSr": "Izaberite vrstu skrivenih titlova za analogna emitovanja.",
+  "choices": [
+   "cc1",
+   "cc2",
+   "cc3",
+   "cc4",
+   "t1",
+   "t2",
+   "t3",
+   "t4",
+   "eng",
+   "kor"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "captionBgColor",
+  "category": "caption",
+  "nameEn": "BG Color",
+  "nameSr": "Boja POZ",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "white",
+   "black",
+   "red",
+   "green",
+   "blue",
+   "cyan",
+   "magenta",
+   "yellow"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "captionBgOpacity",
+  "category": "caption",
+  "nameEn": "BG Opacity",
+  "nameSr": "Providnost POZ",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "flash",
+   "translucent",
+   "transparent",
+   "solid"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "captionEnable",
+  "category": "caption",
+  "nameEn": "Closed Caption",
+  "nameSr": "Skriveni titlovi",
+  "descriptionEn": "Set a type and position of captions.",
+  "descriptionSr": "Podesite tip i poziciju skrivenih titlova.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "japanCaptionEnable",
+  "category": "caption",
+  "nameEn": "Closed Caption Settings",
+  "nameSr": "Podešavanja pomoćnih titlova",
+  "descriptionEn": "Set advanced captioning options.",
+  "descriptionSr": "Podesite napredne opcije skrivenih titlova.",
+  "choices": [
+   "off",
+   "jpn",
+   "eng"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "phlCaptionEnable",
+  "category": "caption",
+  "nameEn": "Closed Caption Settings",
+  "nameSr": "Podešavanja pomoćnih titlova",
+  "descriptionEn": "Set advanced captioning options.",
+  "descriptionSr": "Podesite napredne opcije skrivenih titlova.",
+  "choices": [
+   "off",
+   "eng",
+   "tgl"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "captionEdgeColor",
+  "category": "caption",
+  "nameEn": "Edge Color",
+  "nameSr": "Boja ivice",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "white",
+   "black",
+   "red",
+   "green",
+   "blue",
+   "cyan",
+   "magenta",
+   "yellow"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "captionEdgeType",
+  "category": "caption",
+  "nameEn": "Edge Type",
+  "nameSr": "Tip ivice",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "none",
+   "uniform",
+   "raised",
+   "depressed",
+   "left_drop_shadow",
+   "right_drop_shadow"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "captionFont",
+  "category": "caption",
+  "nameEn": "Font",
+  "nameSr": "",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "font0",
+   "font1",
+   "font2",
+   "font3",
+   "font4",
+   "font5",
+   "font6",
+   "font7"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "captionDigital",
+  "category": "caption",
+  "nameEn": "HD Mode",
+  "nameSr": "HD režim",
+  "descriptionEn": "Select a caption type for HD broadcasts.",
+  "descriptionSr": "Izaberite podešavanja za skrivene titlove za HD emitovanja.",
+  "choices": [
+   "off",
+   "svc1",
+   "svc2",
+   "svc3",
+   "svc4",
+   "svc5",
+   "svc6",
+   "Portuguese",
+   "Spanish",
+   "English"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "hardOfHearing",
+  "category": "caption",
+  "nameEn": "Hard of Hearing",
+  "nameSr": "Oštećeni sluh",
+  "descriptionEn": "Display the broadcast sound as captions.",
+  "descriptionSr": "Prikažite emitovani zvuk kao titlove.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "digitalPlusCaptionLanguage",
+  "category": "caption",
+  "nameEn": "NEXTGEN TV Mode",
+  "nameSr": "NEXTGEN TV režim",
+  "descriptionEn": "Select a caption type for NEXTGEN TV broadcasts.",
+  "descriptionSr": "Izaberite podešavanja za skrivene titlove za NEXTGEN TV emitovanja.",
+  "choices": [
+   "eng",
+   "spa",
+   "fre"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "captionSize",
+  "category": "caption",
+  "nameEn": "Size",
+  "nameSr": "Veličina",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "small",
+   "standard",
+   "large"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "captionStyle",
+  "category": "caption",
+  "nameEn": "Style",
+  "nameSr": "Stil",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "auto",
+   "manual"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "japanSuperImposeEnable",
+  "category": "caption",
+  "nameEn": "Super Impose",
+  "nameSr": "",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "off",
+   "jpn",
+   "eng"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "phlSuperImposeEnable",
+  "category": "caption",
+  "nameEn": "Super Impose",
+  "nameSr": "",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "off",
+   "eng",
+   "tgl"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "captionTextColor",
+  "category": "caption",
+  "nameEn": "Text Color",
+  "nameSr": "Boja teksta",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "white",
+   "black",
+   "red",
+   "green",
+   "blue",
+   "cyan",
+   "magenta",
+   "yellow"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "captionTextOpacity",
+  "category": "caption",
+  "nameEn": "Text Opacity",
+  "nameSr": "Providnost teksta",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "flash",
+   "translucent",
+   "transparent",
+   "solid"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "captionWindowColor",
+  "category": "caption",
+  "nameEn": "Window Color",
+  "nameSr": "Boja prozora",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "white",
+   "black",
+   "red",
+   "green",
+   "blue",
+   "cyan",
+   "magenta",
+   "yellow"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "captionWindowOpacity",
+  "category": "caption",
+  "nameEn": "Window Opacity",
+  "nameSr": "Prozirnost prozora",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "translucent",
+   "transparent",
+   "solid"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "adCookie",
+  "category": "general",
+  "nameEn": "Advertisement",
+  "nameSr": "Reklama",
+  "descriptionEn": "Check for Advertising settings and set it.",
+  "descriptionSr": "Proverite podešavanja reklama i podesite ih.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "lifeOnScreenMode",
+  "category": "general",
+  "nameEn": "Always Ready",
+  "nameSr": "Uvek spremno",
+  "descriptionEn": "When this device is turned off, it switches to Always Ready to provide optimized wallpaper, voice recognition and mobile device music playback.",
+  "descriptionSr": "Kada je ovaj uređaj isključen, prebacuje se na režim Uvek spremno (Always ready) i obezbeđuje optimizovanu pozadinu, prepoznavanje glasa i reprodukciju muzike preko mobilnog uređaja.",
+  "choices": [
+   "none",
+   "off",
+   "lifeOnScreen",
+   "alwaysReady",
+   "allEnabled"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "alwaysOnDisableStartHour",
+  "category": "general",
+  "nameEn": "Always-on Off Time",
+  "nameSr": "Vreme isključivanja funkcije Always-on",
+  "descriptionEn": "During the Always-on Off Time, part of features like voice recognition and etc are limited when the screen off.",
+  "descriptionSr": "Tokom vremena isključivanja funkcije Always-on deo funkcija kao što je prepoznavanje glasa ograničen je kada je ekran isključen.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "alwaysOnDisableStartMinute",
+  "category": "general",
+  "nameEn": "Always-on Off Time",
+  "nameSr": "Vreme isključivanja funkcije Always-on",
+  "descriptionEn": "During the Always-on Off Time, part of features like voice recognition and etc are limited when the screen off.",
+  "descriptionSr": "Tokom vremena isključivanja funkcije Always-on deo funkcija kao što je prepoznavanje glasa ograničen je kada je ekran isključen.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "alwaysOnDisableEndHour",
+  "category": "general",
+  "nameEn": "Always-on Off Time",
+  "nameSr": "Vreme isključivanja funkcije Always-on",
+  "descriptionEn": "During the Always-on Off Time, part of features like voice recognition and etc are limited when the screen off.",
+  "descriptionSr": "Tokom vremena isključivanja funkcije Always-on deo funkcija kao što je prepoznavanje glasa ograničen je kada je ekran isključen.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "alwaysOnDisableEndMinute",
+  "category": "general",
+  "nameEn": "Always-on Off Time",
+  "nameSr": "Vreme isključivanja funkcije Always-on",
+  "descriptionEn": "During the Always-on Off Time, part of features like voice recognition and etc are limited when the screen off.",
+  "descriptionSr": "Tokom vremena isključivanja funkcije Always-on deo funkcija kao što je prepoznavanje glasa ograničen je kada je ekran isključen.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "tnativeSound",
+  "category": "general",
+  "nameEn": "Auto Switch",
+  "nameSr": "Automatsko prebacivanje",
+  "descriptionEn": "Set to automatically switch between Transparent Mode and Black Mode when the device powers on or off.",
+  "descriptionSr": "Podesite da se automatski prebacuje između Transparentnog režima i Crnog režima kada se uređaj uključuje ili isključuje.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "tnativeShadescreen",
+  "category": "general",
+  "nameEn": "Auto Switch",
+  "nameSr": "Automatsko prebacivanje",
+  "descriptionEn": "Set to automatically switch between Transparent Mode and Black Mode when the device powers on or off.",
+  "descriptionSr": "Podesite da se automatski prebacuje između Transparentnog režima i Crnog režima kada se uređaj uključuje ili isključuje.",
+  "choices": [
+   "shadePoweroff",
+   "shadePoweroffon",
+   "shadeOff"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "blueToothSpeakerMode",
+  "category": "general",
+  "nameEn": "Bluetooth Speaker Mode",
+  "nameSr": "Režim Bluetooth zvučnika",
+  "descriptionEn": "Even when the TV is off, you can listen to music by connecting smartphone to the TV via Bluetooth.",
+  "descriptionSr": "Čak i kada je TV isključen, možete da slušate muziku tako što ćete povezati svoj pametni telefon sa TV-om putem Bluetooth-a.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "nativeConsentAd",
+  "category": "general",
+  "nameEn": "CMP Settings",
+  "nameSr": "CMP podešavanja",
+  "descriptionEn": "You can check and change the setting values for User Consent item.",
+  "descriptionSr": "Možete da pogledate i promenite podešene vrednosti za stavku Saglasnost korisnika.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "wavBoxPosition",
+  "category": "general",
+  "nameEn": "Connection Setting",
+  "nameSr": "Podešavanje veze",
+  "descriptionEn": "The stronger the connection between the Zero Connect Box and the TV screen, the clearer the images will be.",
+  "descriptionSr": "Što je jača veza između Zero Connect bežične kutije i TV ekrana, to će slika biti jasnija.",
+  "choices": [
+   "none",
+   "front",
+   "side",
+   "bottom"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "bendableSound",
+  "category": "general",
+  "nameEn": "Curvature Transition Sound",
+  "nameSr": "Zvuk promene zakrivljenosti",
+  "descriptionEn": "You can set the Curvature Transition Sound effect that can be played when the power is turned on or off.",
+  "descriptionSr": "Možete podesiti efekat zvuka promene zakrivljenosti koji se može reprodukovati kada je napajanje uključeno ili isključeno.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "lifeAlarm",
+  "category": "general",
+  "nameEn": "Daily Reminder Alert",
+  "nameSr": "Obaveštenje za dnevni podsetnik",
+  "descriptionEn": "Easily set and use needed alarms in your daily life.",
+  "descriptionSr": "Lako podesite i koristite potrebne alarme u svakodnevnom životu.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "doNotSellMyPersonalInformation",
+  "category": "general",
+  "nameEn": "Do Not Sell My Personal Information",
+  "nameSr": "Nemoj da prodaješ moje podatke o ličnosti",
+  "descriptionEn": "Activating this toggle will cause LGE to instruct its third party providers to cease commercializing your personal information.",
+  "descriptionSr": "Ako aktivirate ovaj prekidač, LGE će naložiti svojim pružaocima usluga trećih strana da prestanu sa komercijalizacijom vaših podataka o ličnosti.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "alwaysOn",
+  "category": "general",
+  "nameEn": "Enable the function",
+  "nameSr": "Omogući funkciju",
+  "descriptionEn": "Even when the TV is off and using the minimum power, you can listen to music by connecting the mobile device. A wealth of features can be used fast again when TV is turned on.",
+  "descriptionSr": "Čak i kada je televizor isključen i koristi minimalnu električnu energiju, možete da slušate muziku ako povežete mobilni uređaj. Brojne funkcije se mogu ponovo brzo koristiti kada se televizor uključi.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "homeEffect",
+  "category": "general",
+  "nameEn": "Home Animation",
+  "nameSr": "Kućna animacija",
+  "descriptionEn": "Turn on/off standby light.",
+  "descriptionSr": "Uključite/isključite svetlo tokom mirovanja.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "homePromotion",
+  "category": "general",
+  "nameEn": "Home Promotion",
+  "nameSr": "Kućna promocija",
+  "descriptionEn": "You can set to show or hide 'Sponsored' advertisements that appear in the home menu.",
+  "descriptionSr": "Možete da podesite da prikažete ili sakrijete „Sponzorisane” reklame koje se prikazuju u početnom meniju.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "lmt",
+  "category": "general",
+  "nameEn": "Limit AD Tracking",
+  "nameSr": "Ograniči AD traženje",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "homeAutoLaunch",
+  "category": "general",
+  "nameEn": "Power On Screen",
+  "nameSr": "Ekran pri uključivanju",
+  "descriptionEn": "Select the screen to display when the TV is turned on.",
+  "descriptionSr": "Izaberite ekran za prikaz kada se TV uključi.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "selectedInputApp",
+  "category": "general",
+  "nameEn": "Power On Screen",
+  "nameSr": "Ekran pri uključivanju",
+  "descriptionEn": "Select the screen to display when the TV is turned on.",
+  "descriptionSr": "Izaberite ekran za prikaz kada se TV uključi.",
+  "choices": [
+   "off",
+   "HDMI_1",
+   "HDMI_2",
+   "HDMI_3",
+   "HDMI_4"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "remotePointer",
+  "category": "general",
+  "nameEn": "Remote Pointer",
+  "nameSr": "Pokazivač daljinskog upravljača",
+  "descriptionEn": "The pointer in the remote control can be used like a computer mouse.",
+  "descriptionSr": "Pokazivač na daljinskom upravljaču može da se koristi kao računarski miš.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "tvOnScreen",
+  "category": "general",
+  "nameEn": "SIGNATURE Opening",
+  "nameSr": "SIGNATURE otvaranje",
+  "descriptionEn": "The visual effects is displayed on the screen when the TV is turned on and the screen moves.",
+  "descriptionSr": "Vizuelni efekti se prikazuju na ekranu kada se televizor uključi i kada se ekran pomera.",
+  "choices": [
+   "effect",
+   "liveTV"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "screenSaverAd",
+  "category": "general",
+  "nameEn": "Screen Saver Settings",
+  "nameSr": "Podešavanja čuvara ekrana",
+  "descriptionEn": "Check and adjust your Screen Saver-related settings.",
+  "descriptionSr": "Proverite i prilagodite podešavanja u vezi sa čuvarom ekrana.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "aiNudge",
+  "category": "general",
+  "nameEn": "Smart Tips",
+  "nameSr": "Pametni saveti",
+  "descriptionEn": "You\\u2019ll get recommendations for convenient features you can use while watching TV or using an app.",
+  "descriptionSr": "",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "aiSettingsNudge",
+  "category": "general",
+  "nameEn": "Smart Tips in Settings",
+  "nameSr": "Pametni saveti u podešavanjima",
+  "descriptionEn": "It recommends settings or features, such as settings you use the most or settings you use together.",
+  "descriptionSr": "Preporučuje podešavanja ili funkcije, kao što su podešavanja koja najčešće koristite ili podešavanja koja koristite zajedno.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "tvOnSound",
+  "category": "general",
+  "nameEn": "TV Power Sound Volume",
+  "nameSr": "Jačina zvuka prilikom uključivanja/isključivanja TV-a",
+  "descriptionEn": "You can adjust the sound effects when the TV is turned on or off and the screen moves.",
+  "descriptionSr": "Možete da podesite zvučne efekte kada se TV uključuje ili isključuje i prilikom pokreta ekrana.",
+  "choices": [
+   "off",
+   "veryLow",
+   "low",
+   "medium",
+   "high",
+   "veryHigh"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "touchLock",
+  "category": "general",
+  "nameEn": "Touch Lock",
+  "nameSr": "Zaključavanje kontrole dodirom",
+  "descriptionEn": "Set sensitivity of Motion Sensor on your TV.",
+  "descriptionSr": "Podesite osetljivost senzora pokreta na televizoru.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "welcomeFeature",
+  "category": "general",
+  "nameEn": "Welcome Feature",
+  "nameSr": "Funkcija dobrodošlice",
+  "descriptionEn": "The ambient lighting will be provided when motion is detected around the TV.",
+  "descriptionSr": "Ambijentalno osvetljenje će biti obezbeđeno kada se pokret detektuje oko televizora.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "wavUpperLedFlag",
+  "category": "general",
+  "nameEn": "Zero Connect Box Light",
+  "nameSr": "Svetlo na Zero Connect bežičnoj kutiji",
+  "descriptionEn": "You can turn the LED light on the Zero Connect Box on/off.",
+  "descriptionSr": "Možete da uključite/isključite LED svetlo na Zero Connect bežičnoj kutiji.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "tvRatingGeneralLanguage",
+  "category": "lock",
+  "nameEn": "Adult Language",
+  "nameSr": "Jezik za odrasle",
+  "descriptionEn": "Restrict watching based on programs containing adult language.",
+  "descriptionSr": "Ograničite gledanje na osnovu programa koji sadrži jezik za odrasle.",
+  "choices": [
+   "off",
+   "pg",
+   "14",
+   "ma"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "tvRatingChildrenAge",
+  "category": "lock",
+  "nameEn": "Children Age",
+  "nameSr": "Starost dece",
+  "descriptionEn": "Restrict watching based on age ratings for children programs.",
+  "descriptionSr": "Ograničite gledanje na osnovu ocena za starost za dečije programe.",
+  "choices": [
+   "off",
+   "y",
+   "y7"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "downloadableRrt",
+  "category": "lock",
+  "nameEn": "Downloadable Rating",
+  "nameSr": "Ocena za preuzimanje",
+  "descriptionEn": "Block content based on genre.",
+  "descriptionSr": "Blokirajte sadržaj na osnovu žanra.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "camPinCode",
+  "category": "lock",
+  "nameEn": "Enter CI Password",
+  "nameSr": "Unesite CI lozinku",
+  "descriptionEn": "Save/reset your CI password. Saving your password will let you skip the sign-in step in the future.",
+  "descriptionSr": "Sačuvaj/poništi CI lozinku. Čuvanje lozinke će omogućiti preskakanje koraka prijave u budućnosti.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "tvRatingChildrenFantasy",
+  "category": "lock",
+  "nameEn": "Fantasy Violence",
+  "nameSr": "Fantazija sa nasiljem",
+  "descriptionEn": "Restrict watching based on fantasy violence content ratings.",
+  "descriptionSr": "Ograničite gledanje na osnovu ocene sadržaja u pogledu fantazije sa nasiljem.",
+  "choices": [
+   "off",
+   "y7"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "tvRatingGeneralAge",
+  "category": "lock",
+  "nameEn": "General Age",
+  "nameSr": "Opšta starost",
+  "descriptionEn": "Restrict watching based on ages ratings.",
+  "descriptionSr": "Ograničite gledanje na osnovu ocene za starost.",
+  "choices": [
+   "off",
+   "g",
+   "pg",
+   "14",
+   "ma"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "movieRating",
+  "category": "lock",
+  "nameEn": "Movie Lock",
+  "nameSr": "Zaključavanje filma",
+  "descriptionEn": "Restrict watching movies based on rating.",
+  "descriptionSr": "Ograničite gledanje filmova na osnovu ocene.",
+  "choices": [
+   "off",
+   "g",
+   "pg",
+   "pg13",
+   "r",
+   "nc-17",
+   "x"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "tvRatingGeneralSex",
+  "category": "lock",
+  "nameEn": "Sexual Situations",
+  "nameSr": "Situacije koje uključuju seks",
+  "descriptionEn": "Restrict watching based on programs containing sexual scene.",
+  "descriptionSr": "Ograničite gledanje na osnovu programa koji sadrži scene seksa.",
+  "choices": [
+   "off",
+   "pg",
+   "14",
+   "ma"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "tvRatingGeneralDialog",
+  "category": "lock",
+  "nameEn": "Sexually Suggestive Dialogue",
+  "nameSr": "Dijalog koji asocira na seks",
+  "descriptionEn": "Restrict watching based on programs containing sexually suggestive dialogue.",
+  "descriptionSr": "Ograničite gledanje na osnovu programa koji sadrže dijalog koji asocira na seks.",
+  "choices": [
+   "off",
+   "pg",
+   "14"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "tvRatingEnglish",
+  "category": "lock",
+  "nameEn": "TV Rating English",
+  "nameSr": "TV ocena engleski",
+  "descriptionEn": "Block TV programs broadcast in English based on their content ratings.",
+  "descriptionSr": "Blokirajte TV programe koji se emituju na engleskom jeziku na osnovu preporuke za sadržaj.",
+  "choices": [
+   "off",
+   "e",
+   "c",
+   "c8+",
+   "g",
+   "pg",
+   "14+",
+   "18+"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "tvRatingFrench",
+  "category": "lock",
+  "nameEn": "TV Rating French",
+  "nameSr": "TV ocena francuski",
+  "descriptionEn": "Block TV programs broadcast in French based on their content ratings.",
+  "descriptionSr": "Blokirajte TV programe koji se emituju na francuskom jeziku na osnovu preporuke za sadržaj.",
+  "choices": [
+   "off",
+   "e",
+   "g",
+   "8+",
+   "13+",
+   "16+",
+   "18+"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "parentalControl",
+  "category": "lock",
+  "nameEn": "TV to USB",
+  "nameSr": "TV prema USB-u",
+  "descriptionEn": "Export your TV's channel list information to a connected USB device.",
+  "descriptionSr": "Izvezite informacije sa liste kanala vašeg TV-a na povezani USB uređaj.",
+  "choices": [
+   true,
+   false
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "tvRatingGeneralViolence",
+  "category": "lock",
+  "nameEn": "Violence",
+  "nameSr": "Nasilje",
+  "descriptionEn": "Restrict watching based on violence content ratings.",
+  "descriptionSr": "Ograničite gledanje na osnovu ocene sadržaja u pogledu nasilja.",
+  "choices": [
+   "off",
+   "pg",
+   "14",
+   "ma"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "deviceName",
+  "category": "network",
+  "nameEn": "Device Name",
+  "nameSr": "Naziv uređaja",
+  "descriptionEn": "Loading...",
+  "descriptionSr": "Učitavanje...",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "wolwowlOnOff",
+  "category": "network",
+  "nameEn": "OK",
+  "nameSr": "Ok",
+  "descriptionEn": "Turn on the TV using your mobile device via Wi-Fi.",
+  "descriptionSr": "Uključite TV putem Wi-Fi mreže pomoću mobilnog uređaja.",
+  "choices": [
+   "true",
+   "false"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "bleAdvertisingOnOff",
+  "category": "network",
+  "nameEn": "OK",
+  "nameSr": "Ok",
+  "descriptionEn": "Turn on the TV using mobile device via Bluetooth.",
+  "descriptionSr": "Uključite televizor korišćenjem mobilnog uređaja putem Bluetooth.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "longPressInterval",
+  "category": "option",
+  "nameEn": "Activate time for long press",
+  "nameSr": "Aktivirajte vreme za dug pritisak",
+  "descriptionEn": "When executing functions by holding down the remote control button for a long time, you can adjust the button press duration.",
+  "descriptionSr": "Kada izvršavate funkcije putem dugog držanja dugmeta na daljinskom upravljaču, možete da podesite trajanje pritiska dugmeta.",
+  "choices": [
+   "basic",
+   "1.5",
+   "2",
+   "2.5",
+   "3",
+   "3.5",
+   "4",
+   "4.5",
+   "5"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "additionalAudioSelection",
+  "category": "option",
+  "nameEn": "Additional Audio Selection",
+  "nameSr": "Izbor dodatnog zvuka",
+  "descriptionEn": "Set additional options for Video Description.",
+  "descriptionSr": "Podesite dodatne opcije za video opis.",
+  "choices": [
+   "none",
+   "audioDescription",
+   "cleanAudio",
+   "spokenSubtitles"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "audioGuidance",
+  "category": "option",
+  "nameEn": "Audio Guidance",
+  "nameSr": "Zvučne smernice",
+  "descriptionEn": "This feature describes menu names or device statuses via audio.",
+  "descriptionSr": "Ova funkcija opisuje nazive menija ili statuse uređaja putem zvuka.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "emergencyInformationLanguageAtsc30",
+  "category": "option",
+  "nameEn": "Audio Language",
+  "nameSr": "Jezik zvuka",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "eng",
+   "spa",
+   "fre"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "supplementaryAudio",
+  "category": "option",
+  "nameEn": "Audio Type",
+  "nameSr": "Vrsta zvuka",
+  "descriptionEn": "Describe the contents on the screen with voice for visually impaired viewers to use TV.",
+  "descriptionSr": "Glasovni opis sadržaja da bi gledaoci sa oštećenim vidom mogli da koriste televizor.",
+  "choices": [
+   "off",
+   "audioDescription",
+   "spokenSubtitles",
+   "allType"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "dataService",
+  "category": "option",
+  "nameEn": "Data Service",
+  "nameSr": "Usluga prenosa podataka",
+  "descriptionEn": "Turn your broadcast TV provider's teletext service on/off.",
+  "descriptionSr": "Uključite/isključite uslugu teleteksta vašeg emitera.",
+  "choices": [
+   "mheg",
+   "ttx"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "hbbTvDnt",
+  "category": "option",
+  "nameEn": "Do Not Track",
+  "nameSr": "Ne prati",
+  "descriptionEn": "The HbbTV application or service will disable its tracking of an individual user.",
+  "descriptionSr": "Aplikacija ili usluga HbbTV će onemogućiti praćenje pojedinačnog korisnika.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "emergencyInformationAtsc30",
+  "category": "option",
+  "nameEn": "Enable the function",
+  "nameSr": "Omogući funkciju",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "remoteSlowInput",
+  "category": "option",
+  "nameEn": "Extend Pressing Time on Remote",
+  "nameSr": "Produžite vreme pritiskanja na daljinskom",
+  "descriptionEn": "When it's difficult to operate by holding down the remote control button for an extended period, users can directly set the button input time to make it easier to use.",
+  "descriptionSr": "Ako im je teško da rukuju putem držanja dugmeta na daljinskom upravljaču duže vreme, korisnici mogu direktno da podese vreme unosa za dugme kako bi ga lakše koristili.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "signLanguageGuidanceAvatarType",
+  "category": "option",
+  "nameEn": "Female",
+  "nameSr": "Žensko",
+  "descriptionEn": "Select the type of sign language avatar.",
+  "descriptionSr": "Izaberite tip avatara za znakovni jezik.",
+  "choices": [
+   "female",
+   "male"
+  ],
+  "hasDimensions": false,
+  "confident": false
+ },
+ {
+  "key": "focusEmphasis",
+  "category": "option",
+  "nameEn": "Grayscale",
+  "nameSr": "Skala sive",
+  "descriptionEn": "All screens turn black and white.",
+  "descriptionSr": "Svi ekrani postaju crno-beli.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "screenMagnification",
+  "category": "option",
+  "nameEn": "Grayscale",
+  "nameSr": "Skala sive",
+  "descriptionEn": "All screens turn black and white.",
+  "descriptionSr": "Svi ekrani postaju crno-beli.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "hbbTV",
+  "category": "option",
+  "nameEn": "HbbTV",
+  "nameSr": "",
+  "descriptionEn": "The service provides additional information and relevant content on the programs being watched.",
+  "descriptionSr": "Usluga pruža dodatne informacije i odgovarajući sadržaj o programima koji se gledaju.",
+  "choices": [
+   "on",
+   "off",
+   "onByUser",
+   "offByUser"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "storeMode",
+  "category": "option",
+  "nameEn": "Home/Store Mode",
+  "nameSr": "Režim za kuću/radnju",
+  "descriptionEn": "Select the place where to use the TV.",
+  "descriptionSr": "Izaberite mesto gde želite da koristite televizor.",
+  "choices": [
+   "home",
+   "store"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "hybridCast",
+  "category": "option",
+  "nameEn": "Hybridcast",
+  "nameSr": "",
+  "descriptionEn": "Turn the Hybridcast service on/off.",
+  "descriptionSr": "Uključite/isključite uslugu Hybridcast.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "interactivity",
+  "category": "option",
+  "nameEn": "Interactivity(DTVi)",
+  "nameSr": "Interaktivnost(DTVi)",
+  "descriptionEn": "Turn the Interactivity (DTVi) service on/off.",
+  "descriptionSr": "Uključite/isključite uslugu Interactivity (DTVi).",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "repeatInterval",
+  "category": "option",
+  "nameEn": "Interval time for repeated actions",
+  "nameSr": "Vreme intervala za radnje koje se ponavljaju",
+  "descriptionEn": "You can adjust the repeated actions speed of buttons that perform continuous actions when held down, such as volume or channel buttons.",
+  "descriptionSr": "Možete da podesite brzinu radnji koje se ponavljaju za dugmiće koja obavljaju neprekidne radnje dok su pritisnuta, kao što su dugmad za jačinu zvuka ili kanale.",
+  "choices": [
+   "basic",
+   "0.5",
+   "1",
+   "1.5",
+   "2",
+   "2.5",
+   "3",
+   "3.5",
+   "4",
+   "4.5",
+   "5"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "livePlus",
+  "category": "option",
+  "nameEn": "Live Plus",
+  "nameSr": "",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "livePromotion",
+  "category": "option",
+  "nameEn": "Live Promotion",
+  "nameSr": "Promocija uživo",
+  "descriptionEn": "Turn custom ads and services on or off while watching content.",
+  "descriptionSr": "Uključite ili isključite prilagođene oglase i usluge dok gledate sadržaj.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "mhegGuide",
+  "category": "option",
+  "nameEn": "MHEG Guide",
+  "nameSr": "MHEG vodič",
+  "descriptionEn": "Turn your broadcast TV provider's TV Guide on/off.",
+  "descriptionSr": "Uključite/isključite TV vodič vašeg emitera.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "artisticDisplayTimer",
+  "category": "option",
+  "nameEn": "Mood Maker Start Time",
+  "nameSr": "Vreme pokretanja kreatora raspoloženja",
+  "descriptionEn": "DPM (Display Power Management) is a feature to reduce power consumption in your Monitor.",
+  "descriptionSr": "DPM (Display Power Management = upravljanje napajanjem ekrana) je funkcija za smanjenje potrošnje energije vašeg monitora.",
+  "choices": [
+   "off",
+   "10",
+   "30",
+   "60",
+   "120"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "motionSensorSensitivity",
+  "category": "option",
+  "nameEn": "Motion Sensor Sensitivity",
+  "nameSr": "Osetljivost senzora pokreta",
+  "descriptionEn": "Set sensitivity of Motion Sensor on your TV.",
+  "descriptionSr": "Podesite osetljivost senzora pokreta na televizoru.",
+  "choices": [
+   "low",
+   "medium",
+   "high"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "multiChannelAudio",
+  "category": "option",
+  "nameEn": "Multi Channel Audio",
+  "nameSr": "Višekanalni zvuk",
+  "descriptionEn": "Content will play with sound suitable for multi-channel listening if multi-channel audio is supported by the HbbTV service.",
+  "descriptionSr": "Sadržaj će se reprodukovati zvukom koji je podoban za višekanalni način slušanja ako HbbTV usluga podržava takav zvuk.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "pqPlus",
+  "category": "option",
+  "nameEn": "Picture Plus",
+  "nameSr": "Slika Plus",
+  "descriptionEn": "A more vivid screen is displayed, with richer colors, sharper resolution, and brighter images.",
+  "descriptionSr": "Prikazuje se živopisniji ekran sa bogatijim bojama, oštrijom rezolucijom i svetlijim slikama.",
+  "choices": [
+   true,
+   false
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "audioGuidancePitch",
+  "category": "option",
+  "nameEn": "Pitch",
+  "nameSr": "Visina tona",
+  "descriptionEn": "Adjust Audio Guidance pitch.",
+  "descriptionSr": "Podesite visinu tona audio smernica.",
+  "choices": [
+   "veryLow",
+   "low",
+   "medium",
+   "high",
+   "veryHigh"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "pointerSize",
+  "category": "option",
+  "nameEn": "Pointer Size",
+  "nameSr": "Veličina pokazivača",
+  "descriptionEn": "You can adjust the Magic Remote pointer size.",
+  "descriptionSr": "Možete da podesite veličinu pokazivača daljinskog upravljača Magic Remote.",
+  "choices": [
+   "small",
+   "medium",
+   "large"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "signLanguageGuidancePosition",
+  "category": "option",
+  "nameEn": "Position",
+  "nameSr": "Položaj",
+  "descriptionEn": "Select the position of the sign language guide screen.",
+  "descriptionSr": "Izaberite položaj ekrana sa vodičem za znakovni jezik.",
+  "choices": [
+   "rightTop",
+   "rightMiddle",
+   "rightBottom"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "hbbTvDeviceId",
+  "category": "option",
+  "nameEn": "Provide HbbTV Distinctive ID",
+  "nameSr": "Dostavi HbbTV jedinstveni ID",
+  "descriptionEn": "Provide HbbTV Distinctive ID to HbbTV service for broadcasts.",
+  "descriptionSr": "Dostavite HbbTV jedinstveni ID usluzi HbbTV za emitovanja.",
+  "choices": [
+   "on",
+   "off",
+   "onByUser",
+   "offByUser"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "quickStartMode",
+  "category": "option",
+  "nameEn": "Quick Start+",
+  "nameSr": "",
+  "descriptionEn": "Standby mode will remain active to shorten the wake up time and execution time of features such as apps and search.",
+  "descriptionSr": "Režim mirovanja će ostati aktivan da bi se skratilo vreme buđenja i vreme izvršavanja funkcija kao što su aplikacije i pretraga.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "restoreCurve",
+  "category": "option",
+  "nameEn": "Return to curvature",
+  "nameSr": "Povratak na zakrivljenost",
+  "descriptionEn": "Screen can be set to restore its curvature level to the previous status when the power is turned on.",
+  "descriptionSr": "Ekran se može podesiti da vrati nivo zakrivljenosti na prethodni status kada se uključi.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "screenOffTime",
+  "category": "option",
+  "nameEn": "Screen Off",
+  "nameSr": "Ekran isključen",
+  "descriptionEn": "Turn off the standby screen after the set time.",
+  "descriptionSr": "Isključite režim mirovanja nakon podešenog vremenskog perioda.",
+  "choices": [
+   "5",
+   "10",
+   "30",
+   "60",
+   "120"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "screenSaverTimer",
+  "category": "option",
+  "nameEn": "Screen Saver Standby Time",
+  "nameSr": "Vreme mirovanja čuvara ekrana",
+  "descriptionEn": "Set the time until the screen saver appears.",
+  "descriptionSr": "Podesite vreme dok se ne pojavi čuvar ekrana.",
+  "choices": [
+   "3",
+   "10",
+   "20",
+   "30"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "helpOnSettings",
+  "category": "option",
+  "nameEn": "Settings Help",
+  "nameSr": "Pomoć za podešavanja",
+  "descriptionEn": "Turn on/off description box in Settings.",
+  "descriptionSr": "Uključite/isključite polje sa opisom u Podešavanjima.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "signLanguageGuidance",
+  "category": "option",
+  "nameEn": "Sign Language Guide",
+  "nameSr": "Vodič za znakovni jezik",
+  "descriptionEn": "Some menu settings and Accessibility app options are displayed in sign language.",
+  "descriptionSr": "Neka podešavanja menija i opcije aplikacije za pristupačnost prikazuju se na znakovnom jeziku.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "signLanguageGuidanceSpeed",
+  "category": "option",
+  "nameEn": "Sign Language Guide",
+  "nameSr": "Vodič za znakovni jezik",
+  "descriptionEn": "Some menu settings and Accessibility app options are displayed in sign language.",
+  "descriptionSr": "Neka podešavanja menija i opcije aplikacije za pristupačnost prikazuju se na znakovnom jeziku.",
+  "choices": [
+   "fast",
+   "medium",
+   "slow"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "seniorMode",
+  "category": "option",
+  "nameEn": "Simple Mode",
+  "nameSr": "Jednostavni režim",
+  "descriptionEn": "The intuitive Home Menu screen and daily care functions ensure convenient use.",
+  "descriptionSr": "Intuitivni ekran početnog menija i funkcije za svakodnevnu brigu o sebi praktični su za korišćenje.",
+  "choices": [
+   "general",
+   "simple"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "signLanguageGuidanceSize",
+  "category": "option",
+  "nameEn": "Size",
+  "nameSr": "Veličina",
+  "descriptionEn": "Select the size of the sign language guide screen.",
+  "descriptionSr": "Izaberite veličinu ekrana sa vodičem za znakovni jezik.",
+  "choices": [
+   "large",
+   "medium",
+   "small"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "broadcastInfoNoti",
+  "category": "option",
+  "nameEn": "Smart Tips",
+  "nameSr": "Pametni saveti",
+  "descriptionEn": "Who.Where.What?",
+  "descriptionSr": "",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "soundPlus",
+  "category": "option",
+  "nameEn": "Sound Plus",
+  "nameSr": "Zvuk Plus",
+  "descriptionEn": "Frequencies commonly associated with hearing loss are amplified for greater speech clarity and balanced sound.",
+  "descriptionSr": "Frekvencije koje se obično povezuju sa gubitkom sluha su pojačane radi bolje jasnoće govora i uravnoteženog zvuka.",
+  "choices": [
+   true,
+   false
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "audioGuidanceSpeed",
+  "category": "option",
+  "nameEn": "Speed",
+  "nameSr": "Brzina",
+  "descriptionEn": "Adjust Audio Guidance speed.",
+  "descriptionSr": "Podesite brzinu audio smernica.",
+  "choices": [
+   "veryFast",
+   "fast",
+   "medium",
+   "slow",
+   "verySlow"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "standByLight",
+  "category": "option",
+  "nameEn": "Standby Light",
+  "nameSr": "Osvetljenje u režimu mirovanja",
+  "descriptionEn": "Turn on/off standby light.",
+  "descriptionSr": "Uključite/isključite svetlo tokom mirovanja.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "subtitleLanguageFirst",
+  "category": "option",
+  "nameEn": "Subtitle First Choice Language",
+  "nameSr": "Prvi izbor jezika za titlove",
+  "descriptionEn": "Set your first choice caption.",
+  "descriptionSr": "Podesite prvi izbor za skrivene titlove.",
+  "choices": [
+   "alb",
+   "bos",
+   "bul",
+   "scr",
+   "ces",
+   "dan",
+   "dut",
+   "eng",
+   "est",
+   "fin",
+   "fre",
+   "deu"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "subtitleLanguageSecond",
+  "category": "option",
+  "nameEn": "Subtitle Second Choice Language",
+  "nameSr": "Drugi izbor jezika za titlove",
+  "descriptionEn": "Set your second choice caption.",
+  "descriptionSr": "Podesite drugi izbor za skrivene titlove.",
+  "choices": [
+   "alb",
+   "bos",
+   "bul",
+   "scr",
+   "ces",
+   "dan",
+   "dut",
+   "eng",
+   "est",
+   "fin",
+   "fre",
+   "deu"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "highContrast",
+  "category": "option",
+  "nameEn": "Text with High Contrast",
+  "nameSr": "Tekst sa visokim kontrastom",
+  "descriptionEn": "You can see texts more clearly by adjusting the color of menus and texts.",
+  "descriptionSr": "Tekstove možete jasnije da vidite tako što ćete prilagoditi boju menija i tekstova.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "adjustments",
+  "category": "option",
+  "nameEn": "Text with High Contrast",
+  "nameSr": "Tekst sa visokim kontrastom",
+  "descriptionEn": "You can see texts more clearly by adjusting the color of menus and texts.",
+  "descriptionSr": "Tekstove možete jasnije da vidite tako što ćete prilagoditi boju menija i tekstova.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "thirdPartyCookie",
+  "category": "option",
+  "nameEn": "Third-Party Cookies",
+  "nameSr": "Kolačići treće strane",
+  "descriptionEn": "Sets whether to allow Third-party cookies on HbbTV.",
+  "descriptionSr": "Podešava da li će kolačići treće strane biti dozvoljeni na HbbTV-u.",
+  "choices": [
+   "on",
+   "off",
+   "onByUser",
+   "offByUser"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "pointerSpeed",
+  "category": "option",
+  "nameEn": "Tracking Speed",
+  "nameSr": "Brzina traženja",
+  "descriptionEn": "Adjust cursor speed.",
+  "descriptionSr": "Podesite brzinu kursora.",
+  "choices": [
+   "slow",
+   "normal",
+   "fast"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "usageCare",
+  "category": "option",
+  "nameEn": "Usage Care",
+  "nameSr": "Briga o upotrebi",
+  "descriptionEn": "Make your viewing habits safer and healthier.",
+  "descriptionSr": "Neka vaše navike gledanja budu bezbednije i zdravije.",
+  "choices": [
+   true,
+   false
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "faultLogUpload",
+  "category": "option",
+  "nameEn": "User Report",
+  "nameSr": "Izveštaj korisnika",
+  "descriptionEn": "Report will be sent automatically to solve problems that occurred while using LG TV.",
+  "descriptionSr": "Izveštaj se šalje automatski i otklanjaju se problemi koji su se javili tokom korišćenja LG TV-a.",
+  "choices": [
+   true,
+   false
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "vsn",
+  "category": "option",
+  "nameEn": "VSN",
+  "nameSr": "",
+  "descriptionEn": "Loading...",
+  "descriptionSr": "Učitavanje...",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "audioGuidanceVolume",
+  "category": "option",
+  "nameEn": "Volume",
+  "nameSr": "Jačina zvuka",
+  "descriptionEn": "Adjust Audio Guidance volume.",
+  "descriptionSr": "Podesite jačinu audio smernica.",
+  "choices": [
+   "veryLow",
+   "low",
+   "medium",
+   "high",
+   "veryHigh"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "homeWallPaper",
+  "category": "option",
+  "nameEn": "Wallpaper",
+  "nameSr": "Pozadina",
+  "descriptionEn": "Your selected Home wallpaper is displayed in Black Mode.",
+  "descriptionSr": "Vaša izabrana pozadina za početni ekran prikazuje se u Crnom režimu.",
+  "choices": [
+   "opt1",
+   "opt2",
+   "opt3"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "444BypassHDMI1",
+  "category": "other",
+  "nameEn": "4:4:4 Pass Through",
+  "nameSr": "4:4:4 Propuštanje",
+  "descriptionEn": "Picture quality processing such as 'Noise Reduction' and 'Trumotion' may not be applied when inputting HDMI PC signals.",
+  "descriptionSr": "Obrada kvaliteta slike, kao što je „Smanjenje šuma“ i „TruMotion“ možda neće biti primenjena prilikom ulaska signala HDMI PC.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "444BypassHDMI2",
+  "category": "other",
+  "nameEn": "4:4:4 Pass Through",
+  "nameSr": "4:4:4 Propuštanje",
+  "descriptionEn": "Picture quality processing such as 'Noise Reduction' and 'Trumotion' may not be applied when inputting HDMI PC signals.",
+  "descriptionSr": "Obrada kvaliteta slike, kao što je „Smanjenje šuma“ i „TruMotion“ možda neće biti primenjena prilikom ulaska signala HDMI PC.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "444BypassHDMI3",
+  "category": "other",
+  "nameEn": "4:4:4 Pass Through",
+  "nameSr": "4:4:4 Propuštanje",
+  "descriptionEn": "Picture quality processing such as 'Noise Reduction' and 'Trumotion' may not be applied when inputting HDMI PC signals.",
+  "descriptionSr": "Obrada kvaliteta slike, kao što je „Smanjenje šuma“ i „TruMotion“ možda neće biti primenjena prilikom ulaska signala HDMI PC.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "444BypassHDMI4",
+  "category": "other",
+  "nameEn": "4:4:4 Pass Through",
+  "nameSr": "4:4:4 Propuštanje",
+  "descriptionEn": "Picture quality processing such as 'Noise Reduction' and 'Trumotion' may not be applied when inputting HDMI PC signals.",
+  "descriptionSr": "Obrada kvaliteta slike, kao što je „Smanjenje šuma“ i „TruMotion“ možda neće biti primenjena prilikom ulaska signala HDMI PC.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "444BypassHDMINone",
+  "category": "other",
+  "nameEn": "4:4:4 Pass Through",
+  "nameSr": "4:4:4 Propuštanje",
+  "descriptionEn": "Picture quality processing such as 'Noise Reduction' and 'Trumotion' may not be applied when inputting HDMI PC signals.",
+  "descriptionSr": "Obrada kvaliteta slike, kao što je „Smanjenje šuma“ i „TruMotion“ možda neće biti primenjena prilikom ulaska signala HDMI PC.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "uhdDeepColor",
+  "category": "other",
+  "nameEn": "Auto",
+  "nameSr": "Automatski",
+  "descriptionEn": "Game Optimizer is turned off.",
+  "descriptionSr": "Optimizator za igre je isključen.",
+  "choices": [
+   "off",
+   "4k"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "lightingAutoBrightness",
+  "category": "other",
+  "nameEn": "Brightness",
+  "nameSr": "Osvetljenje",
+  "descriptionEn": "Manually adjust the brightness of the lighting.",
+  "descriptionSr": "Ručno prilagodite jačinu osvetljenja.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "oledCareMode",
+  "category": "other",
+  "nameEn": "Care Picture Settings",
+  "nameSr": "Održavanje i podešavanje slike",
+  "descriptionEn": "Set the Picture Mode that suits your viewing patterns.",
+  "descriptionSr": "Podesite Režim slike koji odgovara vašim obrascima gledanja.",
+  "choices": [
+   "off",
+   "comfortCare",
+   "cinemaCare",
+   "kidsCare"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "oledCareRecommendation",
+  "category": "other",
+  "nameEn": "Care Recommendations",
+  "nameSr": "Preporuke za održavanje",
+  "descriptionEn": "It recommends Picture Settings suitable for eye strain or viewing environment by analyzing viewing patterns.",
+  "descriptionSr": "Preporučuje podešavanja slike koja ne izazivaju zamor očiju i odgovaraju uslovima gledanja kroz analizu obrazaca gledanja.",
+  "choices": [
+   "off",
+   "on"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "contentRecommendation",
+  "category": "other",
+  "nameEn": "Content Recommendation",
+  "nameSr": "Preporuke za sadržaj",
+  "descriptionEn": "Display content recommendation categories in the Home menu.",
+  "descriptionSr": "Prikažite kategorije preporuka za sadržaj u meniju Početak.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "soundSyncModeDisplayMode",
+  "category": "other",
+  "nameEn": "Display Mode",
+  "nameSr": "Režim prikaza",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "bar",
+   "xbar"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "enableDolbyVisionPC",
+  "category": "other",
+  "nameEn": "Dolby Vision PC",
+  "nameSr": "",
+  "descriptionEn": "Go to display settings and turn HDR on to enjoy the Dolby Vision screen.",
+  "descriptionSr": "Idite na podešavanja ekrana i uključite HDR da biste uživali u Dolby Vision ekranu.",
+  "choices": [
+   "off",
+   "on"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "soundSyncModeFrequency",
+  "category": "other",
+  "nameEn": "Frequency",
+  "nameSr": "Frekvencija",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "low",
+   "mid",
+   "high"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "autoSLZoomWithObjectDetection",
+  "category": "other",
+  "nameEn": "Invert Colors",
+  "nameSr": "Invertuj boje",
+  "descriptionEn": "This feature inverts the color of your screen.",
+  "descriptionSr": "Ova funkcija invertuje boju ekrana.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "lightingEnable",
+  "category": "other",
+  "nameEn": "Lighting",
+  "nameSr": "Osvetljenje",
+  "descriptionEn": "You can either turn the rear light on or off.",
+  "descriptionSr": "Možete uključiti ili isključiti zadnje svetlo.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "lightingTnativeMode",
+  "category": "other",
+  "nameEn": "Lighting Color",
+  "nameSr": "Boja osvetljenja",
+  "descriptionEn": "Set the display color of the lighting.",
+  "descriptionSr": "Podesite boju prikaza osvetljenja.",
+  "choices": [
+   "off",
+   "glacierBlue",
+   "namibiaSunset",
+   "auroraGreen",
+   "tropicalLounge"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "lightingColorMode",
+  "category": "other",
+  "nameEn": "Lighting Color",
+  "nameSr": "Boja osvetljenja",
+  "descriptionEn": "Set the display color of the lighting.",
+  "descriptionSr": "Podesite boju prikaza osvetljenja.",
+  "choices": [
+   "whiteColorMode",
+   "othersColorMode"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "lightingMode",
+  "category": "other",
+  "nameEn": "Lighting Mode",
+  "nameSr": "Režim osvetljenja",
+  "descriptionEn": "Select either to get recommended lighting effect which related to what you are watching or to have light with a set color.",
+  "descriptionSr": "Izaberite ili da dobijete preporučeni efekat osvetljenja koji se odnosi na ono što gledate ili da imate svetlo sa podešenom bojom.",
+  "choices": [
+   "videoSyncMode",
+   "soundSyncMode",
+   "dynamic",
+   "peaceful",
+   "staticMode1",
+   "staticMode2",
+   "staticMode3",
+   "staticMode4"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "lowPowerMode",
+  "category": "other",
+  "nameEn": "Low Power Mode",
+  "nameSr": "Režim niske energije",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "qmsVrr",
+  "category": "other",
+  "nameEn": "Quick Media Switching",
+  "nameSr": "Brz prelazak sa jednog medijuma na drugi",
+  "descriptionEn": "This switches the screen softly without interruptions when other contents with different FPS (Frame Per Second) are played in external devices supporting QMS.",
+  "descriptionSr": "Ovim se lagano prebacuje ekran bez prekida kad se na eksternim uređajima koji podržavaju QMS reprodukuju drugi sadržaji sa drugačijim brojem kadrova u sekundi FPS (Frame Per Second).",
+  "choices": [
+   "off",
+   "on"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "simplinkEnable",
+  "category": "other",
+  "nameEn": "SIMPLINK (HDMI-CEC)",
+  "nameSr": "",
+  "descriptionEn": "SIMPLINK allows you to use the remote control to turn on/off and control SIMPLINK devices connected to the TV through HDMI.",
+  "descriptionSr": "SIMPLINK vam omogućava da koristite daljinsko upravljanje za uključivanje/isključivanje SIMPLINK uređaja povezanih sa TV-om i upravljanje njima putem HDMI ulaza.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "aodPictureSyncMode",
+  "category": "other",
+  "nameEn": "Sync to Always Ready Wallpaper",
+  "nameSr": "Sinhronizacija s pozadinom Uvek spremno",
+  "descriptionEn": "The lighting sync to Always Ready Wallpaper, creating an enhanced spatial experience.",
+  "descriptionSr": "Osvetljenje se sinhronizuje s pozadinom Uvek spremno, čime se stvara poboljšano prostorno iskustvo.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "logoLuminanceAdjust",
+  "category": "picture",
+  "nameEn": "Adjust Logo Brightness",
+  "nameSr": "Podesite osvetljenost logotipa",
+  "descriptionEn": "Adjust the brightness of static images such as logos and subtitles automatically.",
+  "descriptionSr": "Automatski podesite osvetljenost statičnih slika kao što su logotipi i titlovi.",
+  "choices": [
+   "off",
+   "light",
+   "strong"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "dynamicContrast",
+  "category": "picture",
+  "nameEn": "Auto Dynamic Contrast",
+  "nameSr": "Automatski dinamički kontrast",
+  "descriptionEn": "Optimize contrast settings based on image brightness.",
+  "descriptionSr": "Optimizujte podešavanja kontrasta na osnovu osvetljenja slike.",
+  "choices": [
+   "off",
+   "low",
+   "medium",
+   "high"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "dynamicColor",
+  "category": "picture",
+  "nameEn": "Color Adjustment",
+  "nameSr": "Podešavanje boja",
+  "descriptionEn": "Adjust color and saturation automatically to make the image brighter and more vivid.",
+  "descriptionSr": "Podesite boju i zasićenje automatski da bi slika bila svetlija i živopisnija.",
+  "choices": [
+   "off",
+   "low",
+   "medium",
+   "high",
+   "user"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "colorGamut",
+  "category": "picture",
+  "nameEn": "Color Gamut",
+  "nameSr": "Lestvica boja",
+  "descriptionEn": "Expand the range of colors that can be displayed.",
+  "descriptionSr": "Proširite opseg boja koji se može prikazati.",
+  "choices": [
+   "auto",
+   "native",
+   "wide",
+   "extended",
+   "dynamic"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "hdrDynamicToneMapping",
+  "category": "picture",
+  "nameEn": "Dynamic Tone Mapping",
+  "nameSr": "Dinamično mapiranje tonova",
+  "descriptionEn": "Adjust the contrast in real-time when watching HDR video.",
+  "descriptionSr": "Podesite kontrast u realnom vremenu kada gledate HDR video-sadržaj.",
+  "choices": [
+   "on",
+   "off",
+   "HGIG"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "DtmProfessional",
+  "category": "picture",
+  "nameEn": "Dynamic Tone Mapping",
+  "nameSr": "Dinamično mapiranje tonova",
+  "descriptionEn": "Adjust the contrast in real-time when watching HDR video.",
+  "descriptionSr": "Podesite kontrast u realnom vremenu kada gledate HDR video-sadržaj.",
+  "choices": [
+   true,
+   false
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "energySaving",
+  "category": "picture",
+  "nameEn": "Energy Saving Step",
+  "nameSr": "Korak uštede energije",
+  "descriptionEn": "The screen brightness will be controlled in accordance with the Energy Saving Step.",
+  "descriptionSr": "Osvetljenjem ekrana upravlja se u skladu sa Korakom uštede energije.",
+  "choices": [
+   "auto",
+   "off",
+   "min",
+   "med",
+   "max"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "expressionEnhancer",
+  "category": "picture",
+  "nameEn": "Expression Enhancer",
+  "nameSr": "Poboljšanje izraženosti",
+  "descriptionEn": "It is a technology to improve the contrast and expression of foreground, background and object by analyzing the information of the HDR image.",
+  "descriptionSr": "U pitanju je tehnologija koja poboljšava kontrast i izraženost prednjeg plana, zadnjeg plana i objekata putem analiziranja informacija HDR slike.",
+  "choices": [
+   "off",
+   "detail",
+   "highlight"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "peakBrightness",
+  "category": "picture",
+  "nameEn": "Gamma(Adjust Brightness)",
+  "nameSr": "Gama (podešavanje osvetljenja)",
+  "descriptionEn": "Adjust the maximum brightness to effectively show the brightest light on the screen.",
+  "descriptionSr": "Podesite maksimalnu osvetljenost za efektivan prikaz najblistavije svetlosti na ekranu.",
+  "choices": [
+   "off",
+   "low",
+   "medium",
+   "high"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "gamma",
+  "category": "picture",
+  "nameEn": "Gamma(Adjust Brightness)",
+  "nameSr": "Gama (podešavanje osvetljenja)",
+  "descriptionEn": "The lower the gamma value, the brighter the mid-tone, and the larger the gamma value, the darker it becomes.",
+  "descriptionSr": "Što je vrednost game niža, srednji tonovi su svetliji, a što je vrednost game viša, to su oni tamniji.",
+  "choices": [
+   "low",
+   "medium",
+   "high1",
+   "high2",
+   "mediumHavingLevel"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "hgig",
+  "category": "picture",
+  "nameEn": "HGiG",
+  "nameSr": "",
+  "descriptionEn": "Adjust the contrast in real-time when watching HDR video.",
+  "descriptionSr": "Podesite kontrast u realnom vremenu kada gledate HDR video-sadržaj.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "localDimming",
+  "category": "picture",
+  "nameEn": "LED Local Dimming",
+  "nameSr": "Lok. LED zatam.",
+  "descriptionEn": "Clear the dark image.",
+  "descriptionSr": "Uklonite crnu sliku.",
+  "choices": [
+   "off",
+   "low",
+   "medium",
+   "high"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "mpegNoiseReduction",
+  "category": "picture",
+  "nameEn": "MPEG Noise Reduction",
+  "nameSr": "MPEG smanjenje šuma",
+  "descriptionEn": "Remove irregular and erratic pixels for a clearer image when watching a video saved in MPEG format.",
+  "descriptionSr": "Uklonite nepravilne i neispravne piksele za jasniju sliku kada gledate video sačuvan u MPEG formatu.",
+  "choices": [
+   "off",
+   "low",
+   "medium",
+   "high",
+   "auto"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "whiteBalanceMethod",
+  "category": "picture",
+  "nameEn": "Method",
+  "nameSr": "Metod",
+  "descriptionEn": "Select method to adjust white balance.",
+  "descriptionSr": "Izaberite način za podešavanje balansa bele.",
+  "choices": [
+   "2",
+   "10",
+   "22",
+   "10code",
+   "22code"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "motionEyeCare",
+  "category": "picture",
+  "nameEn": "Motion Eye Care",
+  "nameSr": "Zaštita očiju od dinamične slike",
+  "descriptionEn": "The screen brightness is automatically adjusted according to the motions in the video.",
+  "descriptionSr": "Osvetljenje ekrana se automatski podešava u skladu sa kretanjem video zapisa.",
+  "choices": [
+   "off",
+   "on"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "noiseReduction",
+  "category": "picture",
+  "nameEn": "Noise Reduction",
+  "nameSr": "Smanjenje šuma",
+  "descriptionEn": "Remove irregular and erratic pixels for a clearer image.",
+  "descriptionSr": "Uklonite nepravilne i neispravne piksele za jasniju sliku.",
+  "choices": [
+   "off",
+   "low",
+   "medium",
+   "high",
+   "auto"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "pictureMode",
+  "category": "picture",
+  "nameEn": "Personalized Picture Wizard",
+  "nameSr": "Čarobnjak za personalizaciju slike",
+  "descriptionEn": "'Personalized Picture Wizard' can be set based on the your preference determined by an analysis of image quality attributes such as brightness, color and contrast using AI deep learning technology.",
+  "descriptionSr": "„Čarobnjak za personalizaciju slike“ može da se podesi na osnovu izbora određenih putem atributa analize kvaliteta slike kao što su svetlina, boja i kontrast pomoću tehnologije dubinskog učenja veštačke inteligencije.",
+  "choices": [
+   "personalized",
+   "hdrPersonalized",
+   "dolbyHdrPersonalized",
+   "vivid",
+   "hdrVivid",
+   "normal",
+   "eco",
+   "cinema",
+   "hdrStandard",
+   "hdrEco",
+   "hdrCinemaBright",
+   "hdrCinema"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "scheduledPixelCleaning",
+  "category": "picture",
+  "nameEn": "Pixel Cleaning",
+  "nameSr": "Čišćenje piksela",
+  "descriptionEn": "Pixel Cleaning allows your TV to provide the clearest picture possible.",
+  "descriptionSr": "Čišćenje piksela omogućava TV-u obezbeđivanje najčistije moguće slike.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "whiteBalancePoint",
+  "category": "picture",
+  "nameEn": "Point",
+  "nameSr": "Stavka",
+  "descriptionEn": "Select point to adjust luminance.",
+  "descriptionSr": "Izaberite tačku za podešavanje osvetljenosti.",
+  "choices": [
+   "low",
+   "high"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "dolbyPrecisionDetail",
+  "category": "picture",
+  "nameEn": "Precision Detail",
+  "nameSr": "Poboljšanje detalja",
+  "descriptionEn": "Dolby Vision technology, which analyzes content information to improve clarity and contrast, expresses natural landscapes such as clouds, rocks, sand, water, and snow in detail.",
+  "descriptionSr": "Tehnologija Dolby Vision, koja analizira informacije o sadržaju radi poboljšanja jasnoće i kontrasta, detaljno naglašava prirodne pejzaže kao što su oblaci, stene, pesak, voda i sneg.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "realCinema",
+  "category": "picture",
+  "nameEn": "Real Cinema",
+  "nameSr": "Ril Sinema",
+  "descriptionEn": "Adjust the frame ratio in the same way with the movie and it provides the feeling of the movie theater.",
+  "descriptionSr": "Podesite brzinu kadrova na isti način kao na filmu za bioskopski užitak.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "whiteBalanceIre",
+  "category": "picture",
+  "nameEn": "Red",
+  "nameSr": "Crveno",
+  "descriptionEn": "Adjust the red pixel percentage at the selected signal level(%) to correct color.",
+  "descriptionSr": "Podesite procenat crvenog piksela na izabranom nivou signala (%) da biste korigovali boju.",
+  "choices": [
+   "2.5",
+   "5",
+   "7.5",
+   "10",
+   "15",
+   "20",
+   "25",
+   "30",
+   "35",
+   "40",
+   "45",
+   "50"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "whiteBalanceIre10pt",
+  "category": "picture",
+  "nameEn": "Red",
+  "nameSr": "Crveno",
+  "descriptionEn": "Adjust the red pixel percentage at the selected signal level(%) to correct color.",
+  "descriptionSr": "Podesite procenat crvenog piksela na izabranom nivou signala (%) da biste korigovali boju.",
+  "choices": [
+   "10",
+   "20",
+   "30",
+   "40",
+   "50",
+   "60",
+   "70",
+   "80",
+   "90",
+   "100"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "demandResponse",
+  "category": "picture",
+  "nameEn": "Response Time",
+  "nameSr": "Vreme odziva",
+  "descriptionEn": "If you are registered for the DR(Demand Response) Service, activate DR to automatically adjust the screen brightness and reduce energy consumption.",
+  "descriptionSr": "Ako ste registrovani za uslugu DR (Zahtevaj odgovor), aktivirajte DR da biste automatski podešavali osvetljenje ekrana i smanjili potrošnju energije.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "screenShift",
+  "category": "picture",
+  "nameEn": "Screen Move",
+  "nameSr": "Pomeranje ekrana",
+  "descriptionEn": "The screen moves little by little at regular intervals.",
+  "descriptionSr": "Ekran se blago pomera u regularnim intervalima.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "colorManagementColorSystem",
+  "category": "picture",
+  "nameEn": "Select Color",
+  "nameSr": "Izaberite boju",
+  "descriptionEn": "Select the color you want to adjust.",
+  "descriptionSr": "Izaberite boju koju želite da podesite.",
+  "choices": [
+   "red",
+   "green",
+   "blue",
+   "cyan",
+   "magenta",
+   "yellow"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "smoothGradation",
+  "category": "picture",
+  "nameEn": "Smooth Gradation",
+  "nameSr": "Glatka gradacija",
+  "descriptionEn": "Creates smooth color gradients along the edges of the image.",
+  "descriptionSr": "Stvara ujednačene nijanse boje duž ivice slike.",
+  "choices": [
+   "off",
+   "low",
+   "medium",
+   "high"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "superResolution",
+  "category": "picture",
+  "nameEn": "Super Resolution",
+  "nameSr": "Super rezolucija",
+  "descriptionEn": "This feature is used to make the blurry and crushed parts of the image clear.",
+  "descriptionSr": "Ova funkcija se koristi za jasan prikaz zamućenih i loših delova slike.",
+  "choices": [
+   "off",
+   "low",
+   "medium",
+   "high"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "blackLevel",
+  "category": "picture",
+  "nameEn": "Video Range",
+  "nameSr": "Opseg video-signala",
+  "descriptionEn": "Adjust the video signal range according to the color range set in the external device.",
+  "descriptionSr": "Podesite opseg video-signala u skladu sa opsegom boja podešenim na eksternom uređaju.",
+  "choices": [
+   "auto",
+   "low",
+   "high"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "ac4DialogueEnhancer",
+  "category": "sound",
+  "nameEn": "AC-4 Dialogue Enhancer",
+  "nameSr": "AC-4 poboljšivač dijaloga",
+  "descriptionEn": "Makes dialogue clearer in the video with AC-4 audio.",
+  "descriptionSr": "Čini dijalog jasnijim u videu pomoću AC-4 zvuka.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "magicSpaceSound",
+  "category": "sound",
+  "nameEn": "AI Acoustic Tuning",
+  "nameSr": "AI podešavanje zvuka",
+  "descriptionEn": "The microphone on the Magic Remote collects the sound around the TV and analyzes the acoustics of surrounding and performs the optimal sound.",
+  "descriptionSr": "Mikrofon na daljinskom upravljaču Magic Remote sakuplja zvuk oko televizora i analizira akustiku okruženja i obezbeđuje optimalan zvuk.",
+  "choices": [
+   "off",
+   "standard",
+   "bass",
+   "treble"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "soundOutput",
+  "category": "sound",
+  "nameEn": "AI Acoustic Tuning",
+  "nameSr": "AI podešavanje zvuka",
+  "descriptionEn": "The microphone on the Magic Remote collects the sound around the TV and analyzes the acoustics of surrounding and performs the optimal sound.",
+  "descriptionSr": "Mikrofon na daljinskom upravljaču Magic Remote sakuplja zvuk oko televizora i analizira akustiku okruženja i obezbeđuje optimalan zvuk.",
+  "choices": [
+   "tv_speaker",
+   "tv_speakerbar",
+   "external_optical",
+   "external_arc",
+   "bt_soundbar",
+   "wisa_speaker",
+   "mobile_phone",
+   "lineout",
+   "builtin_soundbar",
+   "headphone",
+   "bt_audio",
+   "tv_external_speaker"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "soundMode",
+  "category": "sound",
+  "nameEn": "AI Sound",
+  "nameSr": "AI zvuk",
+  "descriptionEn": "AI learned via LG Deep Learning technique provides the optimal sound and Virtual multi-channel surround according to the genre of viewing content.",
+  "descriptionSr": "AI naučen putem tehnike LG dubinskog učenja obezbeđuje optimalan zvuk i virtuelni okružujući zvuk u skladu sa žanrom sadržaja koji se gleda.",
+  "choices": [
+   "aiSoundPlus",
+   "aiSound",
+   "aiSound_soundbar",
+   "standard",
+   "movie",
+   "news",
+   "sports",
+   "music",
+   "game",
+   "game_rts",
+   "game_fps",
+   "dtsVirtualX"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "dialogEnhancementAtsc30",
+  "category": "sound",
+  "nameEn": "Amplify Dialogue",
+  "nameSr": "Pojačaj dijalog",
+  "descriptionEn": "This feature reduces static and background noise and increases the volume of dialogue.",
+  "descriptionSr": "Ova funkcija smanjuje statičku i pozadinsku buku i povećava jačinu zvuka dijaloga.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "audioDescriptionAtsc30",
+  "category": "sound",
+  "nameEn": "Audio Description",
+  "nameSr": "Zvučni opis",
+  "descriptionEn": "This describes the content of broadcasting programs that support {name}.",
+  "descriptionSr": "Opisuje sadržaj programa za emitovanje koji podržavaju {name}.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "audioDescription",
+  "category": "sound",
+  "nameEn": "Audio Description",
+  "nameSr": "Zvučni opis",
+  "descriptionEn": "This describes the content of broadcasting programs that support {name}.",
+  "descriptionSr": "Opisuje sadržaj programa za emitovanje koji podržavaju {name}.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "autoVolume",
+  "category": "sound",
+  "nameEn": "Automatic Volume Adjustment",
+  "nameSr": "Automatsko podešavanje jačine zvuka",
+  "descriptionEn": "Adjust sound for each program automatically when switching content so that the volume is constant.",
+  "descriptionSr": "Podesite zvuk za svaki program automatski prilikom promene sadržaja tako da jačina zvuka bude konstantna.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "auracast",
+  "category": "sound",
+  "nameEn": "Broadcasting on Auracast",
+  "nameSr": "Emitovanje na Auracast™-u",
+  "descriptionEn": "You can listen to TV sound on any Bluetooth device that supports Auracast.",
+  "descriptionSr": "Možete da slušate zvuk TV-a na bilo kom Bluetooth uređaju koji podržava Auracast™.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "avSyncBypassInput",
+  "category": "sound",
+  "nameEn": "Bypass",
+  "nameSr": "",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "digitalAudioPriority",
+  "category": "sound",
+  "nameEn": "DTV Audio Setting",
+  "nameSr": "Podešavanje DTV zvuka",
+  "descriptionEn": "Select digital audio output format.",
+  "descriptionSr": "Izaberite format digitalnog izlaza zvuka.",
+  "choices": [
+   "mpeg",
+   "dolbyDigital",
+   "dobyDigitalPlus",
+   "heAaC",
+   "auto"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "wisaSpeakerChannelType",
+  "category": "sound",
+  "nameEn": "Device List",
+  "nameSr": "Lista uređaja",
+  "descriptionEn": "Connect WiSA speakers to the TV.",
+  "descriptionSr": "Povežite WiSA zvučnike sa televizorom.",
+  "choices": [
+   "2",
+   "2.1"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "tvPowerSound",
+  "category": "sound",
+  "nameEn": "Device Power Sound",
+  "nameSr": "Zvuk prilikom uključivanja/isključivanja uređaja",
+  "descriptionEn": "Alerts you by sound when the TV is turned on or off.",
+  "descriptionSr": "Upozorava vas zvukom kada se TV uključi ili isključi.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "soundOutputDigital",
+  "category": "sound",
+  "nameEn": "Digital Sound Output",
+  "nameSr": "Digitalni izlaz zvuka",
+  "descriptionEn": "Select the format to output the TV's digital sound to an external device.",
+  "descriptionSr": "Izaberite format za reprodukciju digitalnog zvuka televizora do eksternog uređaja.",
+  "choices": [
+   "pcm",
+   "auto",
+   "passThrough"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "supportATMOS",
+  "category": "sound",
+  "nameEn": "Dolby Atmos",
+  "nameSr": "",
+  "descriptionEn": "Enjoy Dolby Atmos content with vivid surround effect.",
+  "descriptionSr": "Uživajte u sadržaju Dolby Atmos sa živopisnim efektom okružujućeg zvuka.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "userEqualizer",
+  "category": "sound",
+  "nameEn": "Equalizer",
+  "nameSr": "Ekvalizator",
+  "descriptionEn": "Optimize sound by adjusting the TV speaker setting.",
+  "descriptionSr": "Optimizujte zvuk podešavanjem TV zvučnika.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "tvSetupConfiguration",
+  "category": "sound",
+  "nameEn": "Installation Type",
+  "nameSr": "Vrsta instalacije",
+  "descriptionEn": "Adjust the sound for a stand-type TV.",
+  "descriptionSr": "Podesite zvuk za tip televizora sa postoljem.",
+  "choices": [
+   "stand",
+   "wall_mount"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "lgSoundSync",
+  "category": "sound",
+  "nameEn": "LG Sound Sync",
+  "nameSr": "",
+  "descriptionEn": "Enjoy TV sound through audio devices connected to the OPTICAL DIGITAL AUDIO OUT.",
+  "descriptionSr": "Uživajte u televizijskom zvuku preko audio uređaja povezanih na izlaz OPTICAL DIGITAL AUDIO OUT.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "hearingAid",
+  "category": "sound",
+  "nameEn": "Listen simultaneously with a hearing aid",
+  "nameSr": "Slušajte istovremeno preko slušnog aparata",
+  "descriptionEn": "You can listen simultaneously with a hearing aid.",
+  "descriptionSr": "Možete da slušate istovremeno preko slušnog aparata.",
+  "choices": [
+   "off",
+   "bluetooth",
+   "auracast",
+   "external_arc"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "bluetoothMode",
+  "category": "sound",
+  "nameEn": "Playback Option",
+  "nameSr": "Opcija za reprodukciju",
+  "descriptionEn": "Select the playback option of the speakers connected to the TV.",
+  "descriptionSr": "Izaberite opciju za reprodukciju zvučnika povezanih sa televizorom.",
+  "choices": [
+   "surroundMode",
+   "speakerMode"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "avSync",
+  "category": "sound",
+  "nameEn": "Select HDMI Input Audio Format",
+  "nameSr": "Izaberi format HDMI ulaza za zvuk",
+  "descriptionEn": "Select the audio format according to the HDMI input method.",
+  "descriptionSr": "Izaberite format zvuka u skladu sa načinom HDMI ulaza.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": true,
+  "confident": true
+ },
+ {
+  "key": "inputAudioFormatHDMI1",
+  "category": "sound",
+  "nameEn": "Select HDMI Input Audio Format",
+  "nameSr": "Izaberi format HDMI ulaza za zvuk",
+  "descriptionEn": "Select the audio format according to the HDMI input method.",
+  "descriptionSr": "Izaberite format zvuka u skladu sa načinom HDMI ulaza.",
+  "choices": [
+   "bitstream",
+   "pcm"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "inputAudioFormatHDMI2",
+  "category": "sound",
+  "nameEn": "Select HDMI Input Audio Format",
+  "nameSr": "Izaberi format HDMI ulaza za zvuk",
+  "descriptionEn": "Select the audio format according to the HDMI input method.",
+  "descriptionSr": "Izaberite format zvuka u skladu sa načinom HDMI ulaza.",
+  "choices": [
+   "bitstream",
+   "pcm"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "inputAudioFormatHDMI3",
+  "category": "sound",
+  "nameEn": "Select HDMI Input Audio Format",
+  "nameSr": "Izaberi format HDMI ulaza za zvuk",
+  "descriptionEn": "Select the audio format according to the HDMI input method.",
+  "descriptionSr": "Izaberite format zvuka u skladu sa načinom HDMI ulaza.",
+  "choices": [
+   "bitstream",
+   "pcm"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "inputAudioFormatHDMI4",
+  "category": "sound",
+  "nameEn": "Select HDMI Input Audio Format",
+  "nameSr": "Izaberi format HDMI ulaza za zvuk",
+  "descriptionEn": "Select the audio format according to the HDMI input method.",
+  "descriptionSr": "Izaberite format zvuka u skladu sa načinom HDMI ulaza.",
+  "choices": [
+   "bitstream",
+   "pcm"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "inputAudioFormatDP1",
+  "category": "sound",
+  "nameEn": "Select HDMI Input Audio Format",
+  "nameSr": "Izaberi format HDMI ulaza za zvuk",
+  "descriptionEn": "Select the audio format according to the HDMI input method.",
+  "descriptionSr": "Izaberite format zvuka u skladu sa načinom HDMI ulaza.",
+  "choices": [
+   "bitstream",
+   "pcm"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "inputAudioFormatDP2",
+  "category": "sound",
+  "nameEn": "Select HDMI Input Audio Format",
+  "nameSr": "Izaberi format HDMI ulaza za zvuk",
+  "descriptionEn": "Select the audio format according to the HDMI input method.",
+  "descriptionSr": "Izaberite format zvuka u skladu sa načinom HDMI ulaza.",
+  "choices": [
+   "bitstream",
+   "pcm"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "inputAudioFormatUSBC1",
+  "category": "sound",
+  "nameEn": "Select HDMI Input Audio Format",
+  "nameSr": "Izaberi format HDMI ulaza za zvuk",
+  "descriptionEn": "Select the audio format according to the HDMI input method.",
+  "descriptionSr": "Izaberite format zvuka u skladu sa načinom HDMI ulaza.",
+  "choices": [
+   "bitstream",
+   "pcm"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "inputAudioFormatUSBC2",
+  "category": "sound",
+  "nameEn": "Select HDMI Input Audio Format",
+  "nameSr": "Izaberi format HDMI ulaza za zvuk",
+  "descriptionEn": "Select the audio format according to the HDMI input method.",
+  "descriptionSr": "Izaberite format zvuka u skladu sa načinom HDMI ulaza.",
+  "choices": [
+   "bitstream",
+   "pcm"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "blegattSoundbar",
+  "category": "sound",
+  "nameEn": "Soundbar App",
+  "nameSr": "Aplikacija Soundbar zvučnika",
+  "descriptionEn": "This is a dedicated app available for detailed Soundbar settings.",
+  "descriptionSr": "Ovo je namenska aplikacija dostupna za detaljna podešavanja Soundbar zvučnika.",
+  "choices": [],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "deviceCntOfBtGeneral",
+  "category": "sound",
+  "nameEn": "Speaker Connection Settings",
+  "nameSr": "Podešavanja povezivanja zvučnika",
+  "descriptionEn": "You can set up to connect 1 or 2 Bluetooth devices.",
+  "descriptionSr": "Možete da podesite do 1 ili 2 Bluetooth uređaja.",
+  "choices": [
+   "singleConnection",
+   "dualConnection"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "soundAlive",
+  "category": "sound",
+  "nameEn": "TV Sound Mode Share",
+  "nameSr": "Deljenje režima zvuka televizora",
+  "descriptionEn": "Apply the sound mode of the TV speaker to the wireless LG Sound Bar.",
+  "descriptionSr": "Primeni režim zvuka zvučnika TV-a na bežični LG Sound Bar.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "visualImpaired",
+  "category": "sound",
+  "nameEn": "Video Description",
+  "nameSr": "Opis videa",
+  "descriptionEn": "This describes the content of broadcasting programs that support {name}.",
+  "descriptionSr": "Opisuje sadržaj programa za emitovanje koji podržavaju {name}.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "eArcSupport",
+  "category": "sound",
+  "nameEn": "eARC Support",
+  "nameSr": "Podrška za eARC",
+  "descriptionEn": "Enhance the reception frequency when the HDMI(ARC) audio device supports eARC.",
+  "descriptionSr": "Unapredite frekvenciju prijema kada HDMI(ARC) audio uređaj podržava eARC.",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "automaticStandBy",
+  "category": "time",
+  "nameEn": "Auto Power Off",
+  "nameSr": "Automatsko isključivanje",
+  "descriptionEn": "The TV will be turned off automatically if the user does not operate the TV or remote control for a certain period of time.",
+  "descriptionSr": "Televizor se automatski isključuje ako korisnik ne koristi televizor ili daljinski upravljač određeno vreme.",
+  "choices": [
+   "0",
+   "2",
+   "4",
+   "6",
+   "8"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "noOperationAutoOff",
+  "category": "time",
+  "nameEn": "No Operation Auto Off",
+  "nameSr": "Automatsko isključivanje kad nema korišćenja",
+  "descriptionEn": "Set the time to turn off the TV automatically without user input.",
+  "descriptionSr": "Podesite vreme za automatsko isključivanje televizora bez unosa korisnika.",
+  "choices": [
+   "off",
+   "3",
+   "6",
+   "12",
+   "24"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "noSignalAutoOff",
+  "category": "time",
+  "nameEn": "No Signal Auto Off",
+  "nameSr": "Automatsko isključivanje kad nema signala",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ },
+ {
+  "key": "autoOff15Min",
+  "category": "time",
+  "nameEn": "No Signal Auto Off",
+  "nameSr": "Automatsko isključivanje kad nema signala",
+  "descriptionEn": "",
+  "descriptionSr": "",
+  "choices": [
+   "on",
+   "off"
+  ],
+  "hasDimensions": false,
+  "confident": true
+ }
+]

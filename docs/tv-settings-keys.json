@@ -1,0 +1,5413 @@
+{
+ "caption": {
+  "aiCaptionEnable": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "caption608PosOption": {
+   "choices": [
+    "auto",
+    "manual"
+   ],
+   "inLgMenu": false
+  },
+  "caption608PosX": {
+   "inLgMenu": false
+  },
+  "caption608PosY": {
+   "inLgMenu": false
+  },
+  "caption708PosOption": {
+   "choices": [
+    "auto",
+    "manual",
+    "autoAi"
+   ],
+   "inLgMenu": false
+  },
+  "caption708PosX": {
+   "inLgMenu": false
+  },
+  "caption708PosY": {
+   "inLgMenu": false
+  },
+  "captionAnalog": {
+   "choices": [
+    "cc1",
+    "cc2",
+    "cc3",
+    "cc4",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "eng",
+    "kor"
+   ],
+   "inLgMenu": false
+  },
+  "captionBgColor": {
+   "choices": [
+    "white",
+    "black",
+    "red",
+    "green",
+    "blue",
+    "cyan",
+    "magenta",
+    "yellow"
+   ],
+   "inLgMenu": false
+  },
+  "captionBgOpacity": {
+   "choices": [
+    "flash",
+    "translucent",
+    "transparent",
+    "solid"
+   ],
+   "inLgMenu": false
+  },
+  "captionDigital": {
+   "choices": [
+    "off",
+    "svc1",
+    "svc2",
+    "svc3",
+    "svc4",
+    "svc5",
+    "svc6",
+    "Portuguese",
+    "Spanish",
+    "English"
+   ],
+   "inLgMenu": false
+  },
+  "captionDigitalPosOption": {
+   "choices": [
+    "auto",
+    "manual",
+    "autoAi",
+    "splitDown16_9",
+    "splitUp16_9"
+   ],
+   "inLgMenu": false
+  },
+  "captionDigitalPosX": {
+   "inLgMenu": false
+  },
+  "captionDigitalPosY": {
+   "inLgMenu": false
+  },
+  "captionEdgeColor": {
+   "choices": [
+    "white",
+    "black",
+    "red",
+    "green",
+    "blue",
+    "cyan",
+    "magenta",
+    "yellow"
+   ],
+   "inLgMenu": false
+  },
+  "captionEdgeType": {
+   "choices": [
+    "none",
+    "uniform",
+    "raised",
+    "depressed",
+    "left_drop_shadow",
+    "right_drop_shadow"
+   ],
+   "inLgMenu": false
+  },
+  "captionEnable": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "captionFont": {
+   "choices": [
+    "font0",
+    "font1",
+    "font2",
+    "font3",
+    "font4",
+    "font5",
+    "font6",
+    "font7"
+   ],
+   "inLgMenu": false
+  },
+  "captionSize": {
+   "choices": [
+    "small",
+    "standard",
+    "large"
+   ],
+   "inLgMenu": false
+  },
+  "captionStyle": {
+   "choices": [
+    "auto",
+    "manual"
+   ],
+   "inLgMenu": false
+  },
+  "captionTextColor": {
+   "choices": [
+    "white",
+    "black",
+    "red",
+    "green",
+    "blue",
+    "cyan",
+    "magenta",
+    "yellow"
+   ],
+   "inLgMenu": false
+  },
+  "captionTextOpacity": {
+   "choices": [
+    "flash",
+    "translucent",
+    "transparent",
+    "solid"
+   ],
+   "inLgMenu": false
+  },
+  "captionWindowColor": {
+   "choices": [
+    "white",
+    "black",
+    "red",
+    "green",
+    "blue",
+    "cyan",
+    "magenta",
+    "yellow"
+   ],
+   "inLgMenu": false
+  },
+  "captionWindowOpacity": {
+   "choices": [
+    "translucent",
+    "transparent",
+    "solid"
+   ],
+   "inLgMenu": false
+  },
+  "digitalPlusCaptionLanguage": {
+   "choices": [
+    "eng",
+    "spa",
+    "fre"
+   ],
+   "inLgMenu": false
+  },
+  "hardOfHearing": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "japanCaptionEnable": {
+   "choices": [
+    "off",
+    "jpn",
+    "eng"
+   ],
+   "inLgMenu": false
+  },
+  "japanSuperImposeEnable": {
+   "choices": [
+    "off",
+    "jpn",
+    "eng"
+   ],
+   "inLgMenu": false
+  },
+  "naisDevicePaired": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "phlCaptionEnable": {
+   "choices": [
+    "off",
+    "eng",
+    "tgl"
+   ],
+   "inLgMenu": false
+  },
+  "phlSuperImposeEnable": {
+   "choices": [
+    "off",
+    "eng",
+    "tgl"
+   ],
+   "inLgMenu": false
+  }
+ },
+ "general": {
+  "SCA3SystemCountry": {
+   "choices": [
+    "BRB",
+    "BLZ",
+    "CRI",
+    "ECU",
+    "SLV",
+    "GTM",
+    "GUY",
+    "HTI",
+    "HND",
+    "JAM",
+    "NIC",
+    "TTO"
+   ],
+   "inLgMenu": false
+  },
+  "absenceRecognition": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "adCookie": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "aiChannel": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "aiNudge": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "aiSettingsNudge": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "alwaysOn": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "alwaysOnDisableEndHour": {
+   "inLgMenu": false
+  },
+  "alwaysOnDisableEndMinute": {
+   "inLgMenu": false
+  },
+  "alwaysOnDisableStartHour": {
+   "inLgMenu": false
+  },
+  "alwaysOnDisableStartMinute": {
+   "inLgMenu": false
+  },
+  "avmsd": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "bendableSound": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "blueToothSpeakerMode": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "checkForcedInputPowerOn": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "checkHomeAutoLaunchValue": {
+   "choices": [
+    "default",
+    "user"
+   ],
+   "inLgMenu": false
+  },
+  "customizedAd": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "defaultApps": {
+   "inLgMenu": false
+  },
+  "doNotSellMyPersonalInformation": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "gameAlarm": {
+   "inLgMenu": false
+  },
+  "globalConditions": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "homeAutoLaunch": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "homeEffect": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "homePromotion": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "lastAppHandlerPolicy": {
+   "choices": [
+    "idleApp",
+    "lastInputApp"
+   ],
+   "inLgMenu": false
+  },
+  "lastInputApp": {
+   "inLgMenu": false
+  },
+  "lastInputAppType": {
+   "inLgMenu": false
+  },
+  "launchEulaByHome": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "lifeAlarm": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "lifeOnScreenMode": {
+   "choices": [
+    "none",
+    "off",
+    "lifeOnScreen",
+    "alwaysReady",
+    "allEnabled"
+   ],
+   "inLgMenu": false
+  },
+  "lmt": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "mySportAppList": {
+   "inLgMenu": false
+  },
+  "mySportTeamList": {
+   "inLgMenu": false
+  },
+  "nativeConsentAd": {
+   "inLgMenu": false
+  },
+  "noSignalGuideArea": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "noSignalScreenSaver": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "opapp": {
+   "inLgMenu": false
+  },
+  "opappReplaceUI": {
+   "inLgMenu": false
+  },
+  "personalRecommend": {
+   "inLgMenu": false
+  },
+  "physicalLastInputApp": {
+   "inLgMenu": false
+  },
+  "physicalLastInputType": {
+   "inLgMenu": false
+  },
+  "powerOffBySCA3SystemChanged": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "powerOnScreen": {
+   "choices": [
+    "todays",
+    "liveTv"
+   ],
+   "inLgMenu": false
+  },
+  "remotePointer": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "remoteserverType": {
+   "choices": [
+    "prod",
+    "dev",
+    "dev2"
+   ],
+   "inLgMenu": false
+  },
+  "screenRemotePlacement": {
+   "choices": [
+    "left",
+    "right"
+   ],
+   "inLgMenu": false
+  },
+  "screenSaverAd": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "screenSaverEnabled": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "selectedInputApp": {
+   "choices": [
+    "off",
+    "HDMI_1",
+    "HDMI_2",
+    "HDMI_3",
+    "HDMI_4"
+   ],
+   "inLgMenu": false
+  },
+  "sportsAlarm": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "sportsPicker": {
+   "inLgMenu": false
+  },
+  "tnativeShadescreen": {
+   "choices": [
+    "shadePoweroff",
+    "shadePoweroffon",
+    "shadeOff"
+   ],
+   "inLgMenu": false
+  },
+  "tnativeSound": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "touchLock": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "tvInstallMethod": {
+   "choices": [
+    "tv",
+    "mobile"
+   ],
+   "inLgMenu": false
+  },
+  "tvOnScreen": {
+   "choices": [
+    "effect",
+    "liveTV"
+   ],
+   "inLgMenu": false
+  },
+  "tvOnSound": {
+   "choices": [
+    "off",
+    "veryLow",
+    "low",
+    "medium",
+    "high",
+    "veryHigh"
+   ],
+   "inLgMenu": false
+  },
+  "voiceLongDistance": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "wavBoxPosition": {
+   "choices": [
+    "none",
+    "front",
+    "side",
+    "bottom"
+   ],
+   "inLgMenu": false
+  },
+  "wavUpperLedFlag": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "welcomeFeature": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  }
+ },
+ "localeInfo": {},
+ "lock": {
+  "applockByAge": {
+   "choices": [
+    "4+",
+    "12+",
+    "16+",
+    "18+",
+    "generalAudience"
+   ],
+   "inLgMenu": false
+  },
+  "camPinCode": {
+   "inLgMenu": false
+  },
+  "dailyRepeatFlag": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "downloadableRrt": {
+   "inLgMenu": false
+  },
+  "initialPinCode": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "inputBlock": {
+   "inLgMenu": false
+  },
+  "installedApplockByAge": {
+   "choices": [
+    "4+",
+    "10+",
+    "12+",
+    "16+",
+    "18+",
+    "generalAudience"
+   ],
+   "inLgMenu": false
+  },
+  "lockByAge": {
+   "inLgMenu": false
+  },
+  "movieRating": {
+   "choices": [
+    "off",
+    "g",
+    "pg",
+    "pg13",
+    "r",
+    "nc-17",
+    "x"
+   ],
+   "inLgMenu": false
+  },
+  "offHearingProtectFlag": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "offHearingProtectMaxVolume": {
+   "inLgMenu": false
+  },
+  "offUsageTimeFlag": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "parentalControl": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "parentalGuidance": {
+   "choices": [
+    "off",
+    "4+",
+    "5+",
+    "6+",
+    "7+",
+    "8+",
+    "9+",
+    "10+",
+    "11+",
+    "12+",
+    "13+",
+    "14+"
+   ],
+   "inLgMenu": false
+  },
+  "parentalGuidanceAu": {
+   "choices": [
+    "off",
+    "all",
+    "g",
+    "pg",
+    "m",
+    "ma",
+    "av",
+    "r"
+   ],
+   "inLgMenu": false
+  },
+  "parentalGuidanceJp": {
+   "choices": [
+    "off",
+    "4+",
+    "5+",
+    "6+",
+    "7+",
+    "8+",
+    "9+",
+    "10+",
+    "11+",
+    "12+",
+    "13+",
+    "14+"
+   ],
+   "inLgMenu": false
+  },
+  "parentalGuidanceNz": {
+   "choices": [
+    "off",
+    "all",
+    "g",
+    "pg",
+    "m",
+    "16+",
+    "18+"
+   ],
+   "inLgMenu": false
+  },
+  "parentalGuidanceSg": {
+   "choices": [
+    "off",
+    "g",
+    "pg",
+    "pg13",
+    "nc16",
+    "m18",
+    "r21"
+   ],
+   "inLgMenu": false
+  },
+  "pineValueChangePCS": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "ratingBR": {
+   "choices": [
+    "off",
+    "10+",
+    "12+",
+    "14+",
+    "16+",
+    "18+"
+   ],
+   "inLgMenu": false
+  },
+  "ratingPH": {
+   "choices": [
+    "off",
+    "G",
+    "PG",
+    "SPG"
+   ],
+   "inLgMenu": false
+  },
+  "ratingSA": {
+   "choices": [
+    "off",
+    "pg10",
+    "10+",
+    "pg13",
+    "13+",
+    "16+",
+    "18+",
+    "r18"
+   ],
+   "inLgMenu": false
+  },
+  "secretMode": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "systemPin": {
+   "inLgMenu": false
+  },
+  "systemPinCode": {
+   "inLgMenu": false
+  },
+  "tvRatingChildrenAge": {
+   "choices": [
+    "off",
+    "y",
+    "y7"
+   ],
+   "inLgMenu": false
+  },
+  "tvRatingChildrenFantasy": {
+   "choices": [
+    "off",
+    "y7"
+   ],
+   "inLgMenu": false
+  },
+  "tvRatingEnglish": {
+   "choices": [
+    "off",
+    "e",
+    "c",
+    "c8+",
+    "g",
+    "pg",
+    "14+",
+    "18+"
+   ],
+   "inLgMenu": false
+  },
+  "tvRatingFrench": {
+   "choices": [
+    "off",
+    "e",
+    "g",
+    "8+",
+    "13+",
+    "16+",
+    "18+"
+   ],
+   "inLgMenu": false
+  },
+  "tvRatingGeneralAge": {
+   "choices": [
+    "off",
+    "g",
+    "pg",
+    "14",
+    "ma"
+   ],
+   "inLgMenu": false
+  },
+  "tvRatingGeneralDialog": {
+   "choices": [
+    "off",
+    "pg",
+    "14"
+   ],
+   "inLgMenu": false
+  },
+  "tvRatingGeneralLanguage": {
+   "choices": [
+    "off",
+    "pg",
+    "14",
+    "ma"
+   ],
+   "inLgMenu": false
+  },
+  "tvRatingGeneralSex": {
+   "choices": [
+    "off",
+    "pg",
+    "14",
+    "ma"
+   ],
+   "inLgMenu": false
+  },
+  "tvRatingGeneralViolence": {
+   "choices": [
+    "off",
+    "pg",
+    "14",
+    "ma"
+   ],
+   "inLgMenu": false
+  },
+  "unlockDate": {
+   "inLgMenu": false
+  },
+  "usageTimeEnd": {
+   "inLgMenu": false
+  },
+  "usageTimeStart": {
+   "inLgMenu": false
+  },
+  "vooRating": {
+   "choices": [
+    "off",
+    "10+",
+    "12+",
+    "16+",
+    "18+"
+   ],
+   "inLgMenu": false
+  },
+  "ziggoRaiting": {
+   "choices": [
+    "off",
+    "all",
+    "4+",
+    "5+",
+    "6+",
+    "7+",
+    "8+",
+    "9+",
+    "10+",
+    "11+",
+    "12+",
+    "13+"
+   ],
+   "inLgMenu": false
+  }
+ },
+ "network": {
+  "allowMobileDeviceAccess": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "bleAdvertisingOnOff": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "deviceName": {
+   "inLgMenu": false
+  },
+  "ipv6Enable": {
+   "choices": [
+    "true",
+    "false"
+   ],
+   "inLgMenu": false
+  },
+  "miracastTxPlaying": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "sscNetworkKey": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "wolwowlOnOff": {
+   "choices": [
+    "true",
+    "false"
+   ],
+   "inLgMenu": false
+  }
+ },
+ "option": {
+  "IPControlSecureKey": {
+   "inLgMenu": false
+  },
+  "a11yQuickList": {
+   "inLgMenu": false
+  },
+  "additionalAudioSelection": {
+   "choices": [
+    "none",
+    "audioDescription",
+    "cleanAudio",
+    "spokenSubtitles"
+   ],
+   "inLgMenu": false
+  },
+  "addressInfo": {
+   "inLgMenu": false
+  },
+  "adjustments": {
+   "inLgMenu": false
+  },
+  "animationGuide": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "aodThemeHistory": {
+   "inLgMenu": false
+  },
+  "appInstallDevice": {
+   "inLgMenu": true
+  },
+  "appUpdateMode": {
+   "choices": [
+    "manual",
+    "auto"
+   ],
+   "inLgMenu": false
+  },
+  "artisticDisplayTimer": {
+   "choices": [
+    "off",
+    "10",
+    "30",
+    "60",
+    "120"
+   ],
+   "inLgMenu": false
+  },
+  "audioGuidance": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "audioGuidancePitch": {
+   "choices": [
+    "veryLow",
+    "low",
+    "medium",
+    "high",
+    "veryHigh"
+   ],
+   "inLgMenu": false
+  },
+  "audioGuidanceSpeed": {
+   "choices": [
+    "veryFast",
+    "fast",
+    "medium",
+    "slow",
+    "verySlow"
+   ],
+   "inLgMenu": false
+  },
+  "audioGuidanceVolume": {
+   "choices": [
+    "veryLow",
+    "low",
+    "medium",
+    "high",
+    "veryHigh"
+   ],
+   "inLgMenu": false
+  },
+  "autoComplete": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": true
+  },
+  "autoSmartServiceCountry": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "avatar": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "backupPsm": {
+   "inLgMenu": true
+  },
+  "backupPsmDolby": {
+   "inLgMenu": true
+  },
+  "baloonHelp": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "bannerPosition": {
+   "choices": [
+    "none",
+    "lefttop",
+    "righttop",
+    "leftbottom",
+    "rightbottom"
+   ],
+   "inLgMenu": false
+  },
+  "broadcastInfoNoti": {
+   "inLgMenu": false
+  },
+  "cameraResourcePermission": {
+   "inLgMenu": false
+  },
+  "channelplus": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "channelplusPopup": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "checkChangedScreenSaverTimerByUser": {
+   "choices": [
+    "default",
+    "user"
+   ],
+   "inLgMenu": false
+  },
+  "cicNumber": {
+   "inLgMenu": true
+  },
+  "country": {
+   "inLgMenu": false
+  },
+  "countryGroup": {
+   "inLgMenu": false
+  },
+  "countryRegion": {
+   "inLgMenu": false
+  },
+  "curDemoFile": {
+   "inLgMenu": false
+  },
+  "curvature": {
+   "inLgMenu": false
+  },
+  "dataService": {
+   "choices": [
+    "mheg",
+    "ttx"
+   ],
+   "inLgMenu": false
+  },
+  "dbgLogUpload": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "demoFileList": {
+   "inLgMenu": false
+  },
+  "demoMode": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "eStreamerPosition": {
+   "choices": [
+    "all",
+    "left",
+    "right",
+    "down"
+   ],
+   "inLgMenu": false
+  },
+  "emergencyAlert": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "emergencyInformationAtsc30": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "emergencyInformationLanguageAtsc30": {
+   "choices": [
+    "eng",
+    "spa",
+    "fre"
+   ],
+   "inLgMenu": false
+  },
+  "enableIpControl": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "enableSDDP": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "enableToastPopup": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "epgPipMode": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "estreamerMinimalMode": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "estreamerStatus": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "faultLogUpload": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "favRecommendResetTime": {
+   "inLgMenu": false
+  },
+  "fileapiResourcePermission": {
+   "inLgMenu": false
+  },
+  "firstTvSignalStatus": {
+   "inLgMenu": true
+  },
+  "focusEmphasis": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "focusedItemEnlarged": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "freeviewMode": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "freeviewplay": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "googleAssistantTTS": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "hbbTV": {
+   "choices": [
+    "on",
+    "off",
+    "onByUser",
+    "offByUser"
+   ],
+   "inLgMenu": false
+  },
+  "hbbTvDeviceId": {
+   "choices": [
+    "on",
+    "off",
+    "onByUser",
+    "offByUser"
+   ],
+   "inLgMenu": false
+  },
+  "hbbTvDnt": {
+   "inLgMenu": false
+  },
+  "hddEcoMode": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "helpOnSettings": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "highContrast": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "homeWallPaper": {
+   "choices": [
+    "opt1",
+    "opt2",
+    "opt3"
+   ],
+   "inLgMenu": false
+  },
+  "hybridCast": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "inputDevicesSupportStatus": {
+   "inLgMenu": false
+  },
+  "interactive-service": {
+   "choices": [
+    "on",
+    "off",
+    "onByUser",
+    "offByUser"
+   ],
+   "inLgMenu": false
+  },
+  "interactive-service-hdmi": {
+   "choices": [
+    "on",
+    "off",
+    "onByUser",
+    "offByUser"
+   ],
+   "inLgMenu": false
+  },
+  "interactive-service-id": {
+   "inLgMenu": false
+  },
+  "interactivity": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "irBlaster": {
+   "inLgMenu": false
+  },
+  "ismMethod": {
+   "choices": [
+    "normal",
+    "orbiter",
+    "inversion",
+    "whiteWash",
+    "colorWash"
+   ],
+   "inLgMenu": false
+  },
+  "japanCitySelection": {
+   "inLgMenu": false
+  },
+  "lifeOnScreenEnergySaving": {
+   "choices": [
+    "auto",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "lifeOnScreenNotification": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "lifeOnScreenOnTimer": {
+   "inLgMenu": false
+  },
+  "lifeOnScreenUsingMotionSensor": {
+   "choices": [
+    false,
+    true
+   ],
+   "inLgMenu": false
+  },
+  "lineView": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "liveMenuLaunched": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": true
+  },
+  "livePlus": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "livePromotion": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "localeCountryGroup": {
+   "inLgMenu": false
+  },
+  "logoLight": {
+   "choices": [
+    "off",
+    "low",
+    "medium",
+    "high"
+   ],
+   "inLgMenu": false
+  },
+  "longPressInterval": {
+   "choices": [
+    "basic",
+    "1.5",
+    "2",
+    "2.5",
+    "3",
+    "3.5",
+    "4",
+    "4.5",
+    "5"
+   ],
+   "inLgMenu": false
+  },
+  "magicNum1": {
+   "inLgMenu": false
+  },
+  "magicNum2": {
+   "inLgMenu": false
+  },
+  "magicNum3": {
+   "inLgMenu": false
+  },
+  "magicNum4": {
+   "inLgMenu": false
+  },
+  "magicNum5": {
+   "inLgMenu": false
+  },
+  "magicNum6": {
+   "inLgMenu": false
+  },
+  "magicNum7": {
+   "inLgMenu": false
+  },
+  "magicNum8": {
+   "inLgMenu": false
+  },
+  "magicNum9": {
+   "inLgMenu": false
+  },
+  "magicNumFvp": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "magicNumHelpShow": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "magnificationValue": {
+   "choices": [
+    "0",
+    "110",
+    "120",
+    "130",
+    "140",
+    "150",
+    "160",
+    "170",
+    "180",
+    "190",
+    "200"
+   ],
+   "inLgMenu": false
+  },
+  "medicationInfoAgreement": {
+   "choices": [
+    "agree",
+    "disagree"
+   ],
+   "inLgMenu": false
+  },
+  "menuLanguage": {
+   "inLgMenu": false
+  },
+  "menuTransparency": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "mhegGuide": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "miracastOverlayAdRecovery": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "miracastOverlayStatus": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "modeSelectFlag": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "motionRecognition": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "motionSensorSensitivity": {
+   "choices": [
+    "low",
+    "medium",
+    "high"
+   ],
+   "inLgMenu": false
+  },
+  "motionSensorSensitivityForAOD": {
+   "choices": [
+    "low",
+    "medium",
+    "high"
+   ],
+   "inLgMenu": false
+  },
+  "multiChannelAudio": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "multiViewStatus": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "mySketchSettings": {
+   "inLgMenu": false
+  },
+  "nearbyDevicePermission": {
+   "inLgMenu": false
+  },
+  "ohtv": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "orbit": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "password_ipcontrol": {
+   "inLgMenu": false
+  },
+  "personalizedDemoImgList": {
+   "inLgMenu": false
+  },
+  "personalizedDemoString": {
+   "inLgMenu": false
+  },
+  "personalizedImgList": {
+   "inLgMenu": false
+  },
+  "personalizedString": {
+   "inLgMenu": false
+  },
+  "phlCitySelection": {
+   "inLgMenu": false
+  },
+  "pointerAlignment": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "pointerShape": {
+   "choices": [
+    "a",
+    "b",
+    "c",
+    "d"
+   ],
+   "inLgMenu": false
+  },
+  "pointerSize": {
+   "choices": [
+    "small",
+    "medium",
+    "large"
+   ],
+   "inLgMenu": false
+  },
+  "pointerSpeed": {
+   "choices": [
+    "slow",
+    "normal",
+    "fast"
+   ],
+   "inLgMenu": false
+  },
+  "powerOnLight": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "pqPlus": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "promotionOriginEnd": {
+   "inLgMenu": false
+  },
+  "promotionOriginStart": {
+   "inLgMenu": false
+  },
+  "promotionPeriodEnd": {
+   "inLgMenu": false
+  },
+  "promotionPeriodStart": {
+   "inLgMenu": false
+  },
+  "promotionStreamer": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "pstreamerUser": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "quickStartMode": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "remoteSlowInput": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "repeatInterval": {
+   "choices": [
+    "basic",
+    "0.5",
+    "1",
+    "1.5",
+    "2",
+    "2.5",
+    "3",
+    "3.5",
+    "4",
+    "4.5",
+    "5"
+   ],
+   "inLgMenu": false
+  },
+  "restoreCurve": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "screenMagnification": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "screenOff": {
+   "inLgMenu": false
+  },
+  "screenOffTime": {
+   "choices": [
+    "5",
+    "10",
+    "30",
+    "60",
+    "120"
+   ],
+   "inLgMenu": false
+  },
+  "screenRotation": {
+   "choices": [
+    "off",
+    "90",
+    "180",
+    "270"
+   ],
+   "inLgMenu": false
+  },
+  "screenSaverArtEnabled": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "screenSaverTimer": {
+   "choices": [
+    "3",
+    "10",
+    "20",
+    "30"
+   ],
+   "inLgMenu": false
+  },
+  "searchAppTTS": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "seniorMode": {
+   "choices": [
+    "general",
+    "simple"
+   ],
+   "inLgMenu": false
+  },
+  "serviceCountryForMagicNum": {
+   "choices": [
+    "",
+    "GB",
+    "ETC"
+   ],
+   "inLgMenu": false
+  },
+  "setId": {
+   "inLgMenu": false
+  },
+  "showCursorAlert": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "signLanguageGuidance": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "signLanguageGuidanceAvatarType": {
+   "choices": [
+    "female",
+    "male"
+   ],
+   "inLgMenu": false
+  },
+  "signLanguageGuidancePosition": {
+   "choices": [
+    "rightTop",
+    "rightMiddle",
+    "rightBottom"
+   ],
+   "inLgMenu": false
+  },
+  "signLanguageGuidanceSize": {
+   "choices": [
+    "large",
+    "medium",
+    "small"
+   ],
+   "inLgMenu": false
+  },
+  "signLanguageGuidanceSpeed": {
+   "choices": [
+    "fast",
+    "medium",
+    "slow"
+   ],
+   "inLgMenu": false
+  },
+  "smartServiceCountryCode2": {
+   "inLgMenu": false
+  },
+  "smartServiceCountryCode3": {
+   "inLgMenu": false
+  },
+  "smartSoundDemo": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "soundPlus": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "speakToTv": {
+   "inLgMenu": true
+  },
+  "specialRemote": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "standByLight": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "storeHDR": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "storeLogo": {
+   "inLgMenu": true
+  },
+  "storeMode": {
+   "choices": [
+    "home",
+    "store"
+   ],
+   "inLgMenu": false
+  },
+  "storeMode2": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "storeModeVideo": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "storeUsbAlarm": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "subdivisionCodeOfServiceCountry": {
+   "choices": [
+    "",
+    "GB-SCT"
+   ],
+   "inLgMenu": false
+  },
+  "subtitleLanguageFirst": {
+   "choices": [
+    "alb",
+    "bos",
+    "bul",
+    "scr",
+    "ces",
+    "dan",
+    "dut",
+    "eng",
+    "est",
+    "fin",
+    "fre",
+    "deu"
+   ],
+   "inLgMenu": false
+  },
+  "subtitleLanguageSecond": {
+   "choices": [
+    "alb",
+    "bos",
+    "bul",
+    "scr",
+    "ces",
+    "dan",
+    "dut",
+    "eng",
+    "est",
+    "fin",
+    "fre",
+    "deu"
+   ],
+   "inLgMenu": false
+  },
+  "supplementaryAudio": {
+   "choices": [
+    "off",
+    "audioDescription",
+    "spokenSubtitles",
+    "allType"
+   ],
+   "inLgMenu": false
+  },
+  "syncMode": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "syncModeTvCondition": {
+   "choices": [
+    "master",
+    "slave",
+    "none"
+   ],
+   "inLgMenu": false
+  },
+  "teletextLanguageFirst": {
+   "choices": [
+    "alb",
+    "bos",
+    "bul",
+    "scr",
+    "ces",
+    "dan",
+    "dut",
+    "eng",
+    "est",
+    "fin",
+    "fre",
+    "deu"
+   ],
+   "inLgMenu": false
+  },
+  "teletextLanguageSecond": {
+   "choices": [
+    "alb",
+    "bos",
+    "bul",
+    "scr",
+    "ces",
+    "dan",
+    "dut",
+    "eng",
+    "est",
+    "fin",
+    "fre",
+    "deu"
+   ],
+   "inLgMenu": false
+  },
+  "thirdPartyCookie": {
+   "choices": [
+    "on",
+    "off",
+    "onByUser",
+    "offByUser"
+   ],
+   "inLgMenu": false
+  },
+  "turnOnByVoice": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "usageCare": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "usbBuiltInVideo": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "virtualKeyboardLanguage": {
+   "inLgMenu": true
+  },
+  "virtualSetTop": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "voiceRecognitionLanguage": {
+   "inLgMenu": false
+  },
+  "vsn": {
+   "inLgMenu": true
+  },
+  "wakeUpword": {
+   "inLgMenu": true
+  },
+  "wallPaperHistory": {
+   "inLgMenu": false
+  },
+  "wallPaperSettings": {
+   "inLgMenu": false
+  },
+  "watchedListCollection": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "webOSPromotionVideo": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "yourMomentsVersion": {
+   "inLgMenu": false
+  },
+  "zipcode": {
+   "inLgMenu": false
+  }
+ },
+ "other": {
+  "444BypassHDMI1": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "444BypassHDMI2": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "444BypassHDMI3": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "444BypassHDMI4": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "444BypassHDMINone": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "activeArtisticDisplayScreenSaver": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "amazonHotkeyIsActive": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "aodPictureSyncMode": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "appReturn": {
+   "choices": [
+    "true",
+    "false"
+   ],
+   "inLgMenu": false
+  },
+  "autoSLZoomWithObjectDetection": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "battery25PercentMode": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "batteryInstopProtect": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "blackStabilizer": {
+   "inLgMenu": false
+  },
+  "blueLight": {
+   "choices": [
+    "off",
+    "level1",
+    "level2"
+   ],
+   "inLgMenu": false
+  },
+  "care365": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "colorimetry": {
+   "choices": [
+    "auto",
+    "bt709",
+    "bt601",
+    "bt2020",
+    "p3D65"
+   ],
+   "inLgMenu": false
+  },
+  "colorimetryHDMI1": {
+   "choices": [
+    "auto",
+    "bt709",
+    "bt601",
+    "bt2020",
+    "p3D65"
+   ],
+   "inLgMenu": false
+  },
+  "colorimetryHDMI2": {
+   "choices": [
+    "auto",
+    "bt709",
+    "bt601",
+    "bt2020",
+    "p3D65"
+   ],
+   "inLgMenu": false
+  },
+  "colorimetryHDMI3": {
+   "choices": [
+    "auto",
+    "bt709",
+    "bt601",
+    "bt2020",
+    "p3D65"
+   ],
+   "inLgMenu": false
+  },
+  "colorimetryHDMI4": {
+   "choices": [
+    "auto",
+    "bt709",
+    "bt601",
+    "bt2020",
+    "p3D65"
+   ],
+   "inLgMenu": false
+  },
+  "contentRecommendation": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "cursorAutoRemover": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "darkMode": {
+   "choices": [
+    "off",
+    "level1",
+    "level2"
+   ],
+   "inLgMenu": false
+  },
+  "dolbyVSVDBVer": {
+   "choices": [
+    "v1",
+    "v2"
+   ],
+   "inLgMenu": false
+  },
+  "dolbyVSVDBVerHDMI1": {
+   "choices": [
+    "v1",
+    "v2"
+   ],
+   "inLgMenu": false
+  },
+  "dolbyVSVDBVerHDMI2": {
+   "choices": [
+    "v1",
+    "v2"
+   ],
+   "inLgMenu": false
+  },
+  "dolbyVSVDBVerHDMI3": {
+   "choices": [
+    "v1",
+    "v2"
+   ],
+   "inLgMenu": false
+  },
+  "dolbyVSVDBVerHDMI4": {
+   "choices": [
+    "v1",
+    "v2"
+   ],
+   "inLgMenu": false
+  },
+  "dpPcMode": {
+   "inLgMenu": false
+  },
+  "enable144HzBooster": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "enableALLM": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "enableDolbyVisionPC": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "enableQFT": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "enableQuickGame": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "eotf": {
+   "choices": [
+    "auto",
+    "sdrGamma",
+    "hdrGamma",
+    "st2084",
+    "hlg"
+   ],
+   "inLgMenu": false
+  },
+  "eotfHDMI1": {
+   "choices": [
+    "auto",
+    "sdrGamma",
+    "hdrGamma",
+    "st2084",
+    "hlg"
+   ],
+   "inLgMenu": false
+  },
+  "eotfHDMI2": {
+   "choices": [
+    "auto",
+    "sdrGamma",
+    "hdrGamma",
+    "st2084",
+    "hlg"
+   ],
+   "inLgMenu": false
+  },
+  "eotfHDMI3": {
+   "choices": [
+    "auto",
+    "sdrGamma",
+    "hdrGamma",
+    "st2084",
+    "hlg"
+   ],
+   "inLgMenu": false
+  },
+  "eotfHDMI4": {
+   "choices": [
+    "auto",
+    "sdrGamma",
+    "hdrGamma",
+    "st2084",
+    "hlg"
+   ],
+   "inLgMenu": false
+  },
+  "epgRowCount": {
+   "inLgMenu": false
+  },
+  "fitLogUsbDump": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "flickerPatternCtrl": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "freesync": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "freesyncLCDHDMI1": {
+   "choices": [
+    "off",
+    "high",
+    "wide"
+   ],
+   "inLgMenu": false
+  },
+  "freesyncLCDHDMI2": {
+   "choices": [
+    "off",
+    "high",
+    "wide"
+   ],
+   "inLgMenu": false
+  },
+  "freesyncLCDHDMI3": {
+   "choices": [
+    "off",
+    "high",
+    "wide"
+   ],
+   "inLgMenu": false
+  },
+  "freesyncLCDHDMI4": {
+   "choices": [
+    "off",
+    "high",
+    "wide"
+   ],
+   "inLgMenu": false
+  },
+  "freesyncOLEDHDMI1": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "freesyncOLEDHDMI2": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "freesyncOLEDHDMI3": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "freesyncOLEDHDMI4": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "freesyncSupport": {
+   "inLgMenu": false
+  },
+  "freeviewTnCPopup": {
+   "inLgMenu": false
+  },
+  "gameAdjustContrast": {
+   "inLgMenu": false
+  },
+  "gameBlackLevel": {
+   "inLgMenu": false
+  },
+  "gameColorDepth": {
+   "inLgMenu": false
+  },
+  "gameDashboardStatusList": {
+   "inLgMenu": false
+  },
+  "gameGenre": {
+   "choices": [
+    "Standard",
+    "FPS",
+    "RPG",
+    "RTS",
+    "Sports",
+    "USER"
+   ],
+   "inLgMenu": false
+  },
+  "gameMode": {
+   "inLgMenu": false
+  },
+  "gameOptimization": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "gameOptimizationDP1": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "gameOptimizationDP2": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "gameOptimizationHDMI1": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "gameOptimizationHDMI2": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "gameOptimizationHDMI3": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "gameOptimizationHDMI4": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "gameOptimizationUSBC1": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "gameOptimizationUSBC2": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "gameScreenPosition": {
+   "choices": [
+    "top",
+    "middle",
+    "bottom"
+   ],
+   "inLgMenu": false
+  },
+  "gameScreenRatio": {
+   "choices": [
+    "16:9",
+    "21:9",
+    "32:9"
+   ],
+   "inLgMenu": false
+  },
+  "gameScreenSize": {
+   "choices": [
+    "full",
+    "32",
+    "27"
+   ],
+   "inLgMenu": false
+  },
+  "gameSettingModified": {
+   "inLgMenu": false
+  },
+  "gameSharpness": {
+   "inLgMenu": false
+  },
+  "gameUIColor": {
+   "choices": [
+    "violet",
+    "orange",
+    "green"
+   ],
+   "inLgMenu": false
+  },
+  "hdmiPcMode": {
+   "inLgMenu": false
+  },
+  "homeAppLaunched": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "homeEffectVersion": {
+   "inLgMenu": false
+  },
+  "homeQuickGuideLaunched": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "homeShelfEdit": {
+   "inLgMenu": false
+  },
+  "homelegalPopup": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "hueSyncAutoEnable": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "hueSyncManualEnable": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "illuminanceThreshold": {
+   "inLgMenu": false
+  },
+  "inputOptimization": {
+   "choices": [
+    "auto",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "isFirstCapture": {
+   "choices": [
+    "true",
+    "false"
+   ],
+   "inLgMenu": false
+  },
+  "isFirstShowSbmSpeaker": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "isHdpOpAppPopupDone": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "isSLZoomExecutable": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "isSLZoomOn": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "isSLZoomOperable": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "isfUpdated": {
+   "choices": [
+    "true",
+    "false"
+   ],
+   "inLgMenu": false
+  },
+  "lastSbmSpeakerState": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "lgLogoDisplay": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "lightingAutoBrightness": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "lightingBrightness": {
+   "inLgMenu": false
+  },
+  "lightingColorMode": {
+   "choices": [
+    "whiteColorMode",
+    "othersColorMode"
+   ],
+   "inLgMenu": false
+  },
+  "lightingEnable": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "lightingMode": {
+   "choices": [
+    "videoSyncMode",
+    "soundSyncMode",
+    "dynamic",
+    "peaceful",
+    "staticMode1",
+    "staticMode2",
+    "staticMode3",
+    "staticMode4"
+   ],
+   "inLgMenu": false
+  },
+  "lightingTnativeBrightness": {
+   "inLgMenu": false
+  },
+  "lightingTnativeMode": {
+   "choices": [
+    "off",
+    "glacierBlue",
+    "namibiaSunset",
+    "auroraGreen",
+    "tropicalLounge"
+   ],
+   "inLgMenu": false
+  },
+  "lowLevelAdjustment": {
+   "inLgMenu": false
+  },
+  "lowPowerMode": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "mapping_info": {
+   "inLgMenu": false
+  },
+  "masterLuminanceLevel": {
+   "choices": [
+    "540nit",
+    "1000nit",
+    "4000nit"
+   ],
+   "inLgMenu": false
+  },
+  "masteringColor": {
+   "choices": [
+    "auto",
+    "0",
+    "p3D65",
+    "bt2020D65",
+    "bt709D65"
+   ],
+   "inLgMenu": false
+  },
+  "masteringColorHDMI1": {
+   "choices": [
+    "auto",
+    "0",
+    "p3D65",
+    "bt2020D65",
+    "bt709D65"
+   ],
+   "inLgMenu": false
+  },
+  "masteringColorHDMI2": {
+   "choices": [
+    "auto",
+    "0",
+    "p3D65",
+    "bt2020D65",
+    "bt709D65"
+   ],
+   "inLgMenu": false
+  },
+  "masteringColorHDMI3": {
+   "choices": [
+    "auto",
+    "0",
+    "p3D65",
+    "bt2020D65",
+    "bt709D65"
+   ],
+   "inLgMenu": false
+  },
+  "masteringColorHDMI4": {
+   "choices": [
+    "auto",
+    "0",
+    "p3D65",
+    "bt2020D65",
+    "bt709D65"
+   ],
+   "inLgMenu": false
+  },
+  "masteringPeak": {
+   "choices": [
+    "auto",
+    "0",
+    "400",
+    "540",
+    "700",
+    "1000",
+    "2000",
+    "3000",
+    "4000",
+    "10000"
+   ],
+   "inLgMenu": false
+  },
+  "masteringPeakHDMI1": {
+   "choices": [
+    "auto",
+    "0",
+    "400",
+    "540",
+    "700",
+    "1000",
+    "2000",
+    "3000",
+    "4000",
+    "10000"
+   ],
+   "inLgMenu": false
+  },
+  "masteringPeakHDMI2": {
+   "choices": [
+    "auto",
+    "0",
+    "400",
+    "540",
+    "700",
+    "1000",
+    "2000",
+    "3000",
+    "4000",
+    "10000"
+   ],
+   "inLgMenu": false
+  },
+  "masteringPeakHDMI3": {
+   "choices": [
+    "auto",
+    "0",
+    "400",
+    "540",
+    "700",
+    "1000",
+    "2000",
+    "3000",
+    "4000",
+    "10000"
+   ],
+   "inLgMenu": false
+  },
+  "masteringPeakHDMI4": {
+   "choices": [
+    "auto",
+    "0",
+    "400",
+    "540",
+    "700",
+    "1000",
+    "2000",
+    "3000",
+    "4000",
+    "10000"
+   ],
+   "inLgMenu": false
+  },
+  "maxCLL": {
+   "choices": [
+    "auto",
+    "0",
+    "400",
+    "540",
+    "700",
+    "1000",
+    "2000",
+    "3000",
+    "4000",
+    "10000"
+   ],
+   "inLgMenu": false
+  },
+  "maxCLLHDMI1": {
+   "choices": [
+    "auto",
+    "0",
+    "400",
+    "540",
+    "700",
+    "1000",
+    "2000",
+    "3000",
+    "4000",
+    "10000"
+   ],
+   "inLgMenu": false
+  },
+  "maxCLLHDMI2": {
+   "choices": [
+    "auto",
+    "0",
+    "400",
+    "540",
+    "700",
+    "1000",
+    "2000",
+    "3000",
+    "4000",
+    "10000"
+   ],
+   "inLgMenu": false
+  },
+  "maxCLLHDMI3": {
+   "choices": [
+    "auto",
+    "0",
+    "400",
+    "540",
+    "700",
+    "1000",
+    "2000",
+    "3000",
+    "4000",
+    "10000"
+   ],
+   "inLgMenu": false
+  },
+  "maxCLLHDMI4": {
+   "choices": [
+    "auto",
+    "0",
+    "400",
+    "540",
+    "700",
+    "1000",
+    "2000",
+    "3000",
+    "4000",
+    "10000"
+   ],
+   "inLgMenu": false
+  },
+  "maxFALL": {
+   "choices": [
+    "auto",
+    "0",
+    "400",
+    "540",
+    "700",
+    "1000",
+    "2000",
+    "3000",
+    "4000",
+    "10000"
+   ],
+   "inLgMenu": false
+  },
+  "maxFALLHDMI1": {
+   "choices": [
+    "auto",
+    "0",
+    "400",
+    "540",
+    "700",
+    "1000",
+    "2000",
+    "3000",
+    "4000",
+    "10000"
+   ],
+   "inLgMenu": false
+  },
+  "maxFALLHDMI2": {
+   "choices": [
+    "auto",
+    "0",
+    "400",
+    "540",
+    "700",
+    "1000",
+    "2000",
+    "3000",
+    "4000",
+    "10000"
+   ],
+   "inLgMenu": false
+  },
+  "maxFALLHDMI3": {
+   "choices": [
+    "auto",
+    "0",
+    "400",
+    "540",
+    "700",
+    "1000",
+    "2000",
+    "3000",
+    "4000",
+    "10000"
+   ],
+   "inLgMenu": false
+  },
+  "maxFALLHDMI4": {
+   "choices": [
+    "auto",
+    "0",
+    "400",
+    "540",
+    "700",
+    "1000",
+    "2000",
+    "3000",
+    "4000",
+    "10000"
+   ],
+   "inLgMenu": false
+  },
+  "multiViewLaunchMode": {
+   "choices": [
+    "sxs",
+    "pip",
+    "dual_monitor"
+   ],
+   "inLgMenu": false
+  },
+  "netflixHotkeyIsActive": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "newKey": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "oledCareMode": {
+   "choices": [
+    "off",
+    "comfortCare",
+    "cinemaCare",
+    "kidsCare"
+   ],
+   "inLgMenu": false
+  },
+  "oledCareRecommendation": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "othersColorMode": {
+   "inLgMenu": false
+  },
+  "playbackThreshold": {
+   "inLgMenu": false
+  },
+  "pseudoTouchMode": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "qmsVrr": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "quickSettingsMenuList": {
+   "inLgMenu": false
+  },
+  "quickSettingsRecentMenu": {
+   "inLgMenu": false
+  },
+  "screenRemoteAutoShow": {
+   "choices": [
+    "true",
+    "false"
+   ],
+   "inLgMenu": true
+  },
+  "screenRemoteExpanded": {
+   "choices": [
+    "true",
+    "false"
+   ],
+   "inLgMenu": true
+  },
+  "screenRemotePosition": {
+   "choices": [
+    "right",
+    "left"
+   ],
+   "inLgMenu": true
+  },
+  "simplinkAutoPowerOn": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "simplinkEnable": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "slzoomTargetAreaHeight": {
+   "inLgMenu": false
+  },
+  "slzoomTargetAreaLevel": {
+   "inLgMenu": false
+  },
+  "slzoomTargetAreaWidth": {
+   "inLgMenu": false
+  },
+  "slzoomTargetAreaX": {
+   "inLgMenu": false
+  },
+  "slzoomTargetAreaY": {
+   "inLgMenu": false
+  },
+  "soundSyncModeColor": {
+   "choices": [
+    "auto",
+    "staticMode"
+   ],
+   "inLgMenu": false
+  },
+  "soundSyncModeDisplayMode": {
+   "choices": [
+    "bar",
+    "xbar"
+   ],
+   "inLgMenu": false
+  },
+  "soundSyncModeFrequency": {
+   "choices": [
+    "low",
+    "mid",
+    "high"
+   ],
+   "inLgMenu": false
+  },
+  "soundSyncModeStaticColor": {
+   "inLgMenu": false
+  },
+  "staticModeColor1": {
+   "inLgMenu": false
+  },
+  "staticModeColor2": {
+   "inLgMenu": false
+  },
+  "staticModeColor3": {
+   "inLgMenu": false
+  },
+  "staticModeColor4": {
+   "inLgMenu": false
+  },
+  "supportAirplay": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "supportBnoModel": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": true
+  },
+  "svcMenuFlag": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "touchRemoteLaunchMode": {
+   "choices": [
+    "multiTouch",
+    "edgeSwipe"
+   ],
+   "inLgMenu": false
+  },
+  "ueiEnable": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "uhdDeepColor": {
+   "choices": [
+    "off",
+    "4k"
+   ],
+   "inLgMenu": false
+  },
+  "uhdDeepColor8kHDMI1": {
+   "choices": [
+    "off",
+    "4k",
+    "8k"
+   ],
+   "inLgMenu": false
+  },
+  "uhdDeepColor8kHDMI2": {
+   "choices": [
+    "off",
+    "4k",
+    "8k"
+   ],
+   "inLgMenu": false
+  },
+  "uhdDeepColor8kHDMI3": {
+   "choices": [
+    "off",
+    "4k",
+    "8k"
+   ],
+   "inLgMenu": false
+  },
+  "uhdDeepColor8kHDMI4": {
+   "choices": [
+    "off",
+    "4k",
+    "8k"
+   ],
+   "inLgMenu": false
+  },
+  "uhdDeepColorAutoStatusHDMI1": {
+   "inLgMenu": false
+  },
+  "uhdDeepColorAutoStatusHDMI2": {
+   "inLgMenu": false
+  },
+  "uhdDeepColorAutoStatusHDMI3": {
+   "inLgMenu": false
+  },
+  "uhdDeepColorAutoStatusHDMI4": {
+   "inLgMenu": false
+  },
+  "uhdDeepColorHDMI1": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "uhdDeepColorHDMI2": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "uhdDeepColorHDMI3": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "uhdDeepColorHDMI4": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "usbcPcMode": {
+   "inLgMenu": false
+  },
+  "weatherAllowed": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "whiteColorMode": {
+   "inLgMenu": false
+  },
+  "whiteStabilizer": {
+   "inLgMenu": false
+  }
+ },
+ "picture": {
+  "DtmMastering10k": {
+   "inLgMenu": false
+  },
+  "DtmMastering1k": {
+   "inLgMenu": false
+  },
+  "DtmMastering4k": {
+   "inLgMenu": false
+  },
+  "DtmProfessional": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "RGBWDotPatternMax": {
+   "inLgMenu": false
+  },
+  "RGBWDotPatternMin": {
+   "inLgMenu": false
+  },
+  "RGBWDotPatternOnOff": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "_14_9VPosition": {
+   "inLgMenu": false
+  },
+  "adjustingLuminance": {
+   "inLgMenu": false
+  },
+  "adjustingLuminance10pt": {
+   "inLgMenu": false
+  },
+  "ambientLightCompensation": {
+   "inLgMenu": false
+  },
+  "applyToAllInput": {
+   "choices": [
+    "picture",
+    "done"
+   ],
+   "inLgMenu": false
+  },
+  "aspectRatio": {
+   "choices": [
+    "16x9",
+    "just_scan",
+    "original",
+    "full_wide",
+    "4x3",
+    "14x9",
+    "zoom",
+    "zoom2",
+    "cinema_zoom"
+   ],
+   "inLgMenu": false
+  },
+  "aspectRatioActive": {
+   "choices": [
+    "true",
+    "false"
+   ],
+   "inLgMenu": false
+  },
+  "aspectRatioHdmiCinema": {
+   "choices": [
+    "16x9",
+    "just_scan",
+    "original",
+    "full_wide",
+    "4x3",
+    "14x9",
+    "zoom",
+    "zoom2",
+    "cinema_zoom"
+   ],
+   "inLgMenu": false
+  },
+  "aspectRatioTv": {
+   "choices": [
+    "16x9",
+    "just_scan",
+    "original",
+    "full_wide",
+    "4x3",
+    "14x9",
+    "zoom",
+    "zoom2",
+    "cinema_zoom"
+   ],
+   "inLgMenu": false
+  },
+  "avMode": {
+   "choices": [
+    "off",
+    "cinema",
+    "game"
+   ],
+   "inLgMenu": false
+  },
+  "backlight": {
+   "inLgMenu": false
+  },
+  "blackLevel": {
+   "choices": [
+    "auto",
+    "low",
+    "high"
+   ],
+   "inLgMenu": false
+  },
+  "brightness": {
+   "inLgMenu": false
+  },
+  "brightnessActive": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "captionZoomRatio": {
+   "inLgMenu": false
+  },
+  "captionZoomVPosition": {
+   "inLgMenu": false
+  },
+  "cinemaVPosition": {
+   "inLgMenu": false
+  },
+  "cinemaZoomRatio": {
+   "inLgMenu": false
+  },
+  "clarityActive": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "color": {
+   "inLgMenu": false
+  },
+  "colorActive": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "colorFilter": {
+   "inLgMenu": false
+  },
+  "colorGamut": {
+   "choices": [
+    "auto",
+    "native",
+    "wide",
+    "extended",
+    "dynamic"
+   ],
+   "inLgMenu": false
+  },
+  "colorManagementColorSystem": {
+   "choices": [
+    "red",
+    "green",
+    "blue",
+    "cyan",
+    "magenta",
+    "yellow"
+   ],
+   "inLgMenu": false
+  },
+  "colorManagementHueBlue": {
+   "inLgMenu": false
+  },
+  "colorManagementHueCyan": {
+   "inLgMenu": false
+  },
+  "colorManagementHueGreen": {
+   "inLgMenu": false
+  },
+  "colorManagementHueMagenta": {
+   "inLgMenu": false
+  },
+  "colorManagementHueRed": {
+   "inLgMenu": false
+  },
+  "colorManagementHueYellow": {
+   "inLgMenu": false
+  },
+  "colorManagementLuminanceBlue": {
+   "inLgMenu": false
+  },
+  "colorManagementLuminanceCyan": {
+   "inLgMenu": false
+  },
+  "colorManagementLuminanceGreen": {
+   "inLgMenu": false
+  },
+  "colorManagementLuminanceMagenta": {
+   "inLgMenu": false
+  },
+  "colorManagementLuminanceRed": {
+   "inLgMenu": false
+  },
+  "colorManagementLuminanceYellow": {
+   "inLgMenu": false
+  },
+  "colorManagementSaturationBlue": {
+   "inLgMenu": false
+  },
+  "colorManagementSaturationCyan": {
+   "inLgMenu": false
+  },
+  "colorManagementSaturationGreen": {
+   "inLgMenu": false
+  },
+  "colorManagementSaturationMagenta": {
+   "inLgMenu": false
+  },
+  "colorManagementSaturationRed": {
+   "inLgMenu": false
+  },
+  "colorManagementSaturationYellow": {
+   "inLgMenu": false
+  },
+  "colorTemperature": {
+   "inLgMenu": false
+  },
+  "contrast": {
+   "inLgMenu": false
+  },
+  "demandResponse": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "doNotShowAbcNotification": {
+   "choices": [
+    "true",
+    "false"
+   ],
+   "inLgMenu": false
+  },
+  "doNotShowMecNotification": {
+   "choices": [
+    "true",
+    "false"
+   ],
+   "inLgMenu": false
+  },
+  "dolbyPrecisionDetail": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "dynamicColor": {
+   "choices": [
+    "off",
+    "low",
+    "medium",
+    "high",
+    "user"
+   ],
+   "inLgMenu": false
+  },
+  "dynamicContrast": {
+   "choices": [
+    "off",
+    "low",
+    "medium",
+    "high"
+   ],
+   "inLgMenu": false
+  },
+  "edgeEnhancer": {
+   "inLgMenu": false
+  },
+  "energySaving": {
+   "choices": [
+    "auto",
+    "off",
+    "min",
+    "med",
+    "max"
+   ],
+   "inLgMenu": false
+  },
+  "energySavingAutoMin": {
+   "inLgMenu": false
+  },
+  "energySavingModified": {
+   "choices": [
+    "true",
+    "false"
+   ],
+   "inLgMenu": false
+  },
+  "erpUserConfirm": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "expertPattern": {
+   "inLgMenu": false
+  },
+  "expressionEnhancer": {
+   "choices": [
+    "off",
+    "detail",
+    "highlight"
+   ],
+   "inLgMenu": false
+  },
+  "externalPqlDbType": {
+   "choices": [
+    "none",
+    "svl",
+    "calman"
+   ],
+   "inLgMenu": false
+  },
+  "eyeComfortMode": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "filmMakerMode": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "gamma": {
+   "choices": [
+    "low",
+    "medium",
+    "high1",
+    "high2",
+    "mediumHavingLevel"
+   ],
+   "inLgMenu": false
+  },
+  "gammaLevel": {
+   "inLgMenu": false
+  },
+  "grassColor": {
+   "inLgMenu": false
+  },
+  "hPosition": {
+   "inLgMenu": false
+  },
+  "hSharpness": {
+   "inLgMenu": false
+  },
+  "hSize": {
+   "inLgMenu": false
+  },
+  "hdrDynamicToneMapping": {
+   "choices": [
+    "on",
+    "off",
+    "HGIG"
+   ],
+   "inLgMenu": false
+  },
+  "hgig": {
+   "inLgMenu": false
+  },
+  "inputListForCopyCms": {
+   "inLgMenu": false
+  },
+  "inputListForCopyPsm": {
+   "inLgMenu": false
+  },
+  "inputListForCopyWb": {
+   "inLgMenu": false
+  },
+  "isfMode": {
+   "choices": [
+    "none",
+    "day",
+    "night"
+   ],
+   "inLgMenu": false
+  },
+  "keyListForCopyCms": {
+   "inLgMenu": false
+  },
+  "keyListForCopyPsm": {
+   "inLgMenu": false
+  },
+  "keyListForCopyWb": {
+   "inLgMenu": false
+  },
+  "localDimming": {
+   "choices": [
+    "off",
+    "low",
+    "medium",
+    "high"
+   ],
+   "inLgMenu": false
+  },
+  "logoLuminanceAdjust": {
+   "choices": [
+    "off",
+    "light",
+    "strong"
+   ],
+   "inLgMenu": false
+  },
+  "mediaZoomRatio": {
+   "inLgMenu": false
+  },
+  "mediaZoomVPosition": {
+   "inLgMenu": false
+  },
+  "memcDelayLevel": {
+   "choices": [
+    "none",
+    "mid",
+    "max"
+   ],
+   "inLgMenu": false
+  },
+  "motionEyeCare": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "motionPro": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "motionProOLED": {
+   "choices": [
+    "off",
+    "low",
+    "medium",
+    "high",
+    "auto"
+   ],
+   "inLgMenu": false
+  },
+  "mpegNoiseReduction": {
+   "choices": [
+    "off",
+    "low",
+    "medium",
+    "high",
+    "auto"
+   ],
+   "inLgMenu": false
+  },
+  "nearBlackDetail": {
+   "inLgMenu": false
+  },
+  "noiseReduction": {
+   "choices": [
+    "off",
+    "low",
+    "medium",
+    "high",
+    "auto"
+   ],
+   "inLgMenu": false
+  },
+  "oledPanelSettings": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "pcMode": {
+   "inLgMenu": false
+  },
+  "pcScreenSaver": {
+   "choices": [
+    "off",
+    "20min",
+    "1hr",
+    "2hr",
+    "4hr"
+   ],
+   "inLgMenu": false
+  },
+  "peakBrightness": {
+   "choices": [
+    "off",
+    "low",
+    "medium",
+    "high"
+   ],
+   "inLgMenu": false
+  },
+  "pictureControlLimitation": {
+   "choices": [
+    "true",
+    "false"
+   ],
+   "inLgMenu": false
+  },
+  "pictureMode": {
+   "choices": [
+    "personalized",
+    "hdrPersonalized",
+    "dolbyHdrPersonalized",
+    "vivid",
+    "hdrVivid",
+    "normal",
+    "eco",
+    "cinema",
+    "hdrStandard",
+    "hdrEco",
+    "hdrCinemaBright",
+    "hdrCinema"
+   ],
+   "inLgMenu": false
+  },
+  "pictureModeSettingsActive": {
+   "choices": [
+    "true",
+    "false"
+   ],
+   "inLgMenu": false
+  },
+  "pictureSettingModified": {
+   "inLgMenu": false
+  },
+  "pictureTempKey": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "precisionHdrMasterPro": {
+   "inLgMenu": false
+  },
+  "psmListForExpert": {
+   "inLgMenu": false
+  },
+  "realCinema": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "scheduledPixelCleaning": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "screenShift": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "sharpness": {
+   "inLgMenu": false
+  },
+  "skinColor": {
+   "inLgMenu": false
+  },
+  "skyColor": {
+   "inLgMenu": false
+  },
+  "smoothGradation": {
+   "choices": [
+    "off",
+    "low",
+    "medium",
+    "high"
+   ],
+   "inLgMenu": false
+  },
+  "superResolution": {
+   "choices": [
+    "off",
+    "low",
+    "medium",
+    "high"
+   ],
+   "inLgMenu": false
+  },
+  "tint": {
+   "inLgMenu": false
+  },
+  "truMotionBlur": {
+   "inLgMenu": false
+  },
+  "truMotionJudder": {
+   "inLgMenu": false
+  },
+  "vPosition": {
+   "inLgMenu": false
+  },
+  "vSharpness": {
+   "inLgMenu": false
+  },
+  "vSize": {
+   "inLgMenu": false
+  },
+  "wb10PointsGammaValue": {
+   "inLgMenu": false
+  },
+  "wb22PointsGammaValue": {
+   "inLgMenu": false
+  },
+  "whiteBalanceActive": {
+   "choices": [
+    "true",
+    "false"
+   ],
+   "inLgMenu": false
+  },
+  "whiteBalanceApplyAllInputs": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "whiteBalanceBlue": {
+   "inLgMenu": false
+  },
+  "whiteBalanceBlue10pt": {
+   "inLgMenu": false
+  },
+  "whiteBalanceBlueGain": {
+   "inLgMenu": false
+  },
+  "whiteBalanceBlueOffset": {
+   "inLgMenu": false
+  },
+  "whiteBalanceCodeValue": {
+   "inLgMenu": false
+  },
+  "whiteBalanceCodeValue10pt": {
+   "inLgMenu": false
+  },
+  "whiteBalanceColorTemperature": {
+   "choices": [
+    "cool",
+    "medium",
+    "warm1",
+    "warm2",
+    "warm3"
+   ],
+   "inLgMenu": false
+  },
+  "whiteBalanceGreen": {
+   "inLgMenu": false
+  },
+  "whiteBalanceGreen10pt": {
+   "inLgMenu": false
+  },
+  "whiteBalanceGreenGain": {
+   "inLgMenu": false
+  },
+  "whiteBalanceGreenOffset": {
+   "inLgMenu": false
+  },
+  "whiteBalanceIre": {
+   "choices": [
+    "2.5",
+    "5",
+    "7.5",
+    "10",
+    "15",
+    "20",
+    "25",
+    "30",
+    "35",
+    "40",
+    "45",
+    "50"
+   ],
+   "inLgMenu": false
+  },
+  "whiteBalanceIre10pt": {
+   "choices": [
+    "10",
+    "20",
+    "30",
+    "40",
+    "50",
+    "60",
+    "70",
+    "80",
+    "90",
+    "100"
+   ],
+   "inLgMenu": false
+  },
+  "whiteBalanceLuminance": {
+   "inLgMenu": false
+  },
+  "whiteBalanceMethod": {
+   "choices": [
+    "2",
+    "10",
+    "22",
+    "10code",
+    "22code"
+   ],
+   "inLgMenu": false
+  },
+  "whiteBalancePattern": {
+   "inLgMenu": false
+  },
+  "whiteBalancePoint": {
+   "choices": [
+    "low",
+    "high"
+   ],
+   "inLgMenu": false
+  },
+  "whiteBalanceRed": {
+   "inLgMenu": false
+  },
+  "whiteBalanceRed10pt": {
+   "inLgMenu": false
+  },
+  "whiteBalanceRedGain": {
+   "inLgMenu": false
+  },
+  "whiteBalanceRedOffset": {
+   "inLgMenu": false
+  },
+  "wssZoomVPosition": {
+   "inLgMenu": false
+  },
+  "xvycc": {
+   "inLgMenu": false
+  },
+  "zoomRatio": {
+   "inLgMenu": false
+  },
+  "zoomVPosition": {
+   "inLgMenu": false
+  }
+ },
+ "sound": {
+  "ac4DialogueEnhancer": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "aiSound": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "aigamesound": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "analogOut": {
+   "choices": [
+    "headphone",
+    "external"
+   ],
+   "inLgMenu": false
+  },
+  "applyToAllInputSSM": {
+   "choices": [
+    "sound",
+    "done"
+   ],
+   "inLgMenu": false
+  },
+  "audioBalance": {
+   "inLgMenu": false
+  },
+  "audioDescription": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "audioDescriptionAtsc30": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "audioDescriptionVolume": {
+   "inLgMenu": false
+  },
+  "audioLanguageFirst": {
+   "inLgMenu": false
+  },
+  "audioLanguageSecond": {
+   "inLgMenu": false
+  },
+  "auracast": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "autoVolume": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "avSync": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "avSyncBtSurround": {
+   "inLgMenu": false
+  },
+  "avSyncBypass": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "avSyncBypassInput": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "avSyncSpdif": {
+   "inLgMenu": false
+  },
+  "avSyncSpeaker": {
+   "inLgMenu": false
+  },
+  "avSyncWisa": {
+   "inLgMenu": false
+  },
+  "blegattSoundbar": {
+   "inLgMenu": false
+  },
+  "bluetoothMode": {
+   "choices": [
+    "surroundMode",
+    "speakerMode"
+   ],
+   "inLgMenu": false
+  },
+  "btSpeakerMode": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "clearVoice": {
+   "choices": [
+    "off",
+    "level1",
+    "level2",
+    "level3"
+   ],
+   "inLgMenu": false
+  },
+  "coSoundOutput": {
+   "choices": [
+    "off",
+    "tv_speaker",
+    "external_speaker",
+    "soundbar",
+    "bt_soundbar"
+   ],
+   "inLgMenu": false
+  },
+  "coSoundOutputState": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "deviceCntOfBtGeneral": {
+   "choices": [
+    "singleConnection",
+    "dualConnection"
+   ],
+   "inLgMenu": false
+  },
+  "dialogEnhancementAtsc30": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "dialogEnhancementVolumeAtsc30": {
+   "inLgMenu": false
+  },
+  "digitalAudioPriority": {
+   "choices": [
+    "mpeg",
+    "dolbyDigital",
+    "dobyDigitalPlus",
+    "heAaC",
+    "auto"
+   ],
+   "inLgMenu": false
+  },
+  "eArcSupport": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "equalizerStatus": {
+   "choices": [
+    "on",
+    "off",
+    "bypass"
+   ],
+   "inLgMenu": false
+  },
+  "gameTVEqualizer": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "gameTVEqualizer10band": {
+   "inLgMenu": false
+  },
+  "hdmiArcMode": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "headphoneDetection": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "hearingAid": {
+   "choices": [
+    "off",
+    "bluetooth",
+    "auracast",
+    "external_arc"
+   ],
+   "inLgMenu": false
+  },
+  "inputAudioFormatDP1": {
+   "choices": [
+    "bitstream",
+    "pcm"
+   ],
+   "inLgMenu": false
+  },
+  "inputAudioFormatDP2": {
+   "choices": [
+    "bitstream",
+    "pcm"
+   ],
+   "inLgMenu": false
+  },
+  "inputAudioFormatHDMI1": {
+   "choices": [
+    "bitstream",
+    "pcm"
+   ],
+   "inLgMenu": false
+  },
+  "inputAudioFormatHDMI2": {
+   "choices": [
+    "bitstream",
+    "pcm"
+   ],
+   "inLgMenu": false
+  },
+  "inputAudioFormatHDMI3": {
+   "choices": [
+    "bitstream",
+    "pcm"
+   ],
+   "inLgMenu": false
+  },
+  "inputAudioFormatHDMI4": {
+   "choices": [
+    "bitstream",
+    "pcm"
+   ],
+   "inLgMenu": false
+  },
+  "inputAudioFormatUSBC1": {
+   "choices": [
+    "bitstream",
+    "pcm"
+   ],
+   "inLgMenu": false
+  },
+  "inputAudioFormatUSBC2": {
+   "choices": [
+    "bitstream",
+    "pcm"
+   ],
+   "inLgMenu": false
+  },
+  "lgSoundSync": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "magicSoundModified": {
+   "choices": [
+    "true",
+    "false"
+   ],
+   "inLgMenu": false
+  },
+  "magicSoundTime": {
+   "inLgMenu": false
+  },
+  "magicSpaceSound": {
+   "choices": [
+    "off",
+    "standard",
+    "bass",
+    "treble"
+   ],
+   "inLgMenu": false
+  },
+  "multiAudioOutputWithBt": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "prevSoundOutput": {
+   "choices": [
+    "tv_speaker",
+    "external_optical",
+    "external_arc",
+    "bt_soundbar",
+    "wisa_speaker",
+    "lgSoundSync",
+    "lineout",
+    "tv_external_speaker",
+    "tv_speaker_bluetooth",
+    "wisa_speaker",
+    "mobile_phone",
+    "tv_speaker_external_arc"
+   ],
+   "inLgMenu": false
+  },
+  "slidingSpeaker": {
+   "choices": [
+    "openAlways",
+    "openPowerOn"
+   ],
+   "inLgMenu": false
+  },
+  "slidingSpeakerMelody": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "smartSoundMode": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "sound": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "soundAlive": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "soundEffect": {
+   "inLgMenu": false
+  },
+  "soundEngineStatus": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "soundMode": {
+   "choices": [
+    "aiSoundPlus",
+    "aiSound",
+    "aiSound_soundbar",
+    "standard",
+    "movie",
+    "news",
+    "sports",
+    "music",
+    "game",
+    "game_rts",
+    "game_fps",
+    "dtsVirtualX"
+   ],
+   "inLgMenu": false
+  },
+  "soundModeModified": {
+   "choices": [
+    "true",
+    "false"
+   ],
+   "inLgMenu": false
+  },
+  "soundModeSync": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "soundOptimizer": {
+   "choices": [
+    "normal",
+    "stand",
+    "wall_mount"
+   ],
+   "inLgMenu": false
+  },
+  "soundOutput": {
+   "choices": [
+    "tv_speaker",
+    "tv_speakerbar",
+    "external_optical",
+    "external_arc",
+    "bt_soundbar",
+    "wisa_speaker",
+    "mobile_phone",
+    "lineout",
+    "builtin_soundbar",
+    "headphone",
+    "bt_audio",
+    "tv_external_speaker"
+   ],
+   "inLgMenu": false
+  },
+  "soundOutputDigital": {
+   "choices": [
+    "pcm",
+    "auto",
+    "passThrough"
+   ],
+   "inLgMenu": false
+  },
+  "soundOutputList": {
+   "inLgMenu": false
+  },
+  "soundOutputs": {
+   "choices": [
+    "tv_speaker",
+    "external_speaker",
+    "soundbar",
+    "bt_soundbar",
+    "lineout",
+    "builtin_soundbar",
+    "headphone"
+   ],
+   "inLgMenu": false
+  },
+  "startupSound": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "supportATMOS": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "tvPowerSound": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "tvSetupConfiguration": {
+   "choices": [
+    "stand",
+    "wall_mount"
+   ],
+   "inLgMenu": false
+  },
+  "userEqualizer": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "userEqualizerValues": {
+   "inLgMenu": false
+  },
+  "virtualSurround": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "visualImpaired": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "volumeControl": {
+   "choices": [
+    "low",
+    "medium",
+    "high"
+   ],
+   "inLgMenu": false
+  },
+  "volumeStep": {
+   "inLgMenu": false
+  },
+  "wisaSpeakerChannelType": {
+   "choices": [
+    "2",
+    "2.1"
+   ],
+   "inLgMenu": false
+  },
+  "wooferLevel": {
+   "inLgMenu": false
+  }
+ },
+ "soundbar": {
+  "autopower": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "bass": {
+   "inLgMenu": false
+  },
+  "centerlevel": {
+   "inLgMenu": false
+  },
+  "display": {
+   "choices": [
+    "auto",
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "lastfunction": {
+   "choices": [
+    "com.webos.service.bluetoothfunction",
+    "com.webos.service.wififunction",
+    "com.webos.service.audiousbplayer",
+    "com.webos.service.arcfunction"
+   ],
+   "inLgMenu": false
+  },
+  "midlevel": {
+   "inLgMenu": false
+  },
+  "mybtnApp": {
+   "choices": [
+    "none",
+    "com.webos.service.spotifyfunction",
+    "com.webos.service.radiofunction"
+   ],
+   "inLgMenu": false
+  },
+  "mybtnSleepMinute": {
+   "inLgMenu": false
+  },
+  "mybtnSoundMode": {
+   "choices": [
+    "none",
+    "standard",
+    "bassBlast",
+    "music",
+    "movie",
+    "sports",
+    "game",
+    "aiSoundPlus",
+    "news"
+   ],
+   "inLgMenu": false
+  },
+  "mybtnVolume": {
+   "inLgMenu": false
+  },
+  "night": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "rearlevel": {
+   "inLgMenu": false
+  },
+  "sidelevel": {
+   "inLgMenu": false
+  },
+  "surround": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "toplevel": {
+   "inLgMenu": false
+  },
+  "treble": {
+   "inLgMenu": false
+  },
+  "wooferlevel": {
+   "inLgMenu": false
+  }
+ },
+ "time": {
+  "autoClock": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "autoOff15Min": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "autoOff2HourOnTimer": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "automaticStandBy": {
+   "choices": [
+    "0",
+    "2",
+    "4",
+    "6",
+    "8"
+   ],
+   "inLgMenu": false
+  },
+  "daylightSaving": {
+   "choices": [
+    "on",
+    "off",
+    "auto"
+   ],
+   "inLgMenu": false
+  },
+  "dpmsAutoOff": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": true
+  },
+  "noOperationAutoOff": {
+   "choices": [
+    "off",
+    "3",
+    "6",
+    "12",
+    "24"
+   ],
+   "inLgMenu": false
+  },
+  "noSignalAutoOff": {
+   "choices": [
+    "on",
+    "off"
+   ],
+   "inLgMenu": false
+  },
+  "offTimerEnable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "offTimerFlag": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "offTimerHour": {
+   "inLgMenu": false
+  },
+  "offTimerMinute": {
+   "inLgMenu": false
+  },
+  "offTimerWeekday": {
+   "inLgMenu": false
+  },
+  "onTimerAppId": {
+   "inLgMenu": false
+  },
+  "onTimerAppId2": {
+   "inLgMenu": false
+  },
+  "onTimerAppId3": {
+   "inLgMenu": false
+  },
+  "onTimerAppId4": {
+   "inLgMenu": false
+  },
+  "onTimerAppId5": {
+   "inLgMenu": false
+  },
+  "onTimerChannel": {
+   "inLgMenu": false
+  },
+  "onTimerChannel2": {
+   "inLgMenu": false
+  },
+  "onTimerChannel3": {
+   "inLgMenu": false
+  },
+  "onTimerChannel4": {
+   "inLgMenu": false
+  },
+  "onTimerChannel5": {
+   "inLgMenu": false
+  },
+  "onTimerEnable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "onTimerEnable2": {
+   "choices": [
+    "off",
+    "on",
+    "none"
+   ],
+   "inLgMenu": false
+  },
+  "onTimerEnable3": {
+   "choices": [
+    "off",
+    "on",
+    "none"
+   ],
+   "inLgMenu": false
+  },
+  "onTimerEnable4": {
+   "choices": [
+    "off",
+    "on",
+    "none"
+   ],
+   "inLgMenu": false
+  },
+  "onTimerEnable5": {
+   "choices": [
+    "off",
+    "on",
+    "none"
+   ],
+   "inLgMenu": false
+  },
+  "onTimerHour": {
+   "inLgMenu": false
+  },
+  "onTimerHour2": {
+   "inLgMenu": false
+  },
+  "onTimerHour3": {
+   "inLgMenu": false
+  },
+  "onTimerHour4": {
+   "inLgMenu": false
+  },
+  "onTimerHour5": {
+   "inLgMenu": false
+  },
+  "onTimerMinute": {
+   "inLgMenu": false
+  },
+  "onTimerMinute2": {
+   "inLgMenu": false
+  },
+  "onTimerMinute3": {
+   "inLgMenu": false
+  },
+  "onTimerMinute4": {
+   "inLgMenu": false
+  },
+  "onTimerMinute5": {
+   "inLgMenu": false
+  },
+  "onTimerSource": {
+   "choices": [
+    "dtv",
+    "atv",
+    "av1",
+    "av2",
+    "pictest",
+    "comp1",
+    "comp2",
+    "comp3",
+    "rgb",
+    "hdmi1",
+    "hdmi2",
+    "hdmi3"
+   ],
+   "inLgMenu": false
+  },
+  "onTimerSource2": {
+   "choices": [
+    "dtv",
+    "atv",
+    "av1",
+    "av2",
+    "pictest",
+    "comp1",
+    "comp2",
+    "comp3",
+    "rgb",
+    "hdmi1",
+    "hdmi2",
+    "hdmi3"
+   ],
+   "inLgMenu": false
+  },
+  "onTimerSource3": {
+   "choices": [
+    "dtv",
+    "atv",
+    "av1",
+    "av2",
+    "pictest",
+    "comp1",
+    "comp2",
+    "comp3",
+    "rgb",
+    "hdmi1",
+    "hdmi2",
+    "hdmi3"
+   ],
+   "inLgMenu": false
+  },
+  "onTimerSource4": {
+   "choices": [
+    "dtv",
+    "atv",
+    "av1",
+    "av2",
+    "pictest",
+    "comp1",
+    "comp2",
+    "comp3",
+    "rgb",
+    "hdmi1",
+    "hdmi2",
+    "hdmi3"
+   ],
+   "inLgMenu": false
+  },
+  "onTimerSource5": {
+   "choices": [
+    "dtv",
+    "atv",
+    "av1",
+    "av2",
+    "pictest",
+    "comp1",
+    "comp2",
+    "comp3",
+    "rgb",
+    "hdmi1",
+    "hdmi2",
+    "hdmi3"
+   ],
+   "inLgMenu": false
+  },
+  "onTimerVolume": {
+   "inLgMenu": false
+  },
+  "onTimerVolume2": {
+   "inLgMenu": false
+  },
+  "onTimerVolume3": {
+   "inLgMenu": false
+  },
+  "onTimerVolume4": {
+   "inLgMenu": false
+  },
+  "onTimerVolume5": {
+   "inLgMenu": false
+  },
+  "onTimerWeekday": {
+   "inLgMenu": false
+  },
+  "onTimerWeekday2": {
+   "inLgMenu": false
+  },
+  "onTimerWeekday3": {
+   "inLgMenu": false
+  },
+  "onTimerWeekday4": {
+   "inLgMenu": false
+  },
+  "onTimerWeekday5": {
+   "inLgMenu": false
+  },
+  "remindAppId": {
+   "inLgMenu": false
+  },
+  "remindChannel": {
+   "inLgMenu": false
+  },
+  "remindEnable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "remindVolume": {
+   "inLgMenu": false
+  },
+  "sleepTimer": {
+   "choices": [
+    "off",
+    "10",
+    "20",
+    "30",
+    "60",
+    "90",
+    "120",
+    "180",
+    "240"
+   ],
+   "inLgMenu": false
+  },
+  "starttime": {
+   "choices": [
+    "0",
+    "5"
+   ],
+   "inLgMenu": false
+  },
+  "timeOffset": {
+   "choices": [
+    "GMT-12",
+    "GMT-11",
+    "GMT-10",
+    "GMT-9",
+    "GMT-8",
+    "GMT-7",
+    "GMT-6",
+    "GMT-5",
+    "GMT-4",
+    "GMT-3",
+    "GMT-2",
+    "GMT-1"
+   ],
+   "inLgMenu": false
+  },
+  "timeZone": {
+   "choices": [
+    "Offset"
+   ],
+   "inLgMenu": false
+  },
+  "warmTimerEnable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "warmTimerWeekday1Enable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "warmTimerWeekday2Enable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "warmTimerWeekday3Enable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "warmTimerWeekday4Enable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "warmTimerWeekday5Enable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "warmTimerWeekday6Enable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "warmTimerWeekday7Enable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "warmTimerWeekday8Enable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "warmTimerWeekend1Enable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "warmTimerWeekend2Enable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "warmTimerWeekend3Enable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "warmTimerWeekend4Enable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "warmTimerWeekend5Enable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "warmTimerWeekend6Enable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "warmTimerWeekend7Enable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  },
+  "warmTimerWeekend8Enable": {
+   "choices": [
+    "off",
+    "on"
+   ],
+   "inLgMenu": false
+  }
+ },
+ "twinTv": {
+  "audioMode": {
+   "choices": [
+    "wide",
+    "split",
+    "none",
+    "undefined"
+   ],
+   "inLgMenu": false
+  },
+  "backlightOffset": {
+   "inLgMenu": false
+  },
+  "bezelOffsetBottom": {
+   "inLgMenu": false
+  },
+  "bezelOffsetLeft": {
+   "inLgMenu": false
+  },
+  "bezelOffsetRight": {
+   "inLgMenu": false
+  },
+  "bezelOffsetTop": {
+   "inLgMenu": false
+  },
+  "dimensionCol": {
+   "inLgMenu": false
+  },
+  "dimensionRow": {
+   "inLgMenu": false
+  },
+  "masterInfo": {
+   "inLgMenu": false
+  },
+  "originalPictureMode": {
+   "inLgMenu": false
+  },
+  "originalVividValue": {
+   "inLgMenu": false
+  },
+  "originalWhiteBalance": {
+   "inLgMenu": false
+  },
+  "pictureModeSettingsDone": {
+   "choices": [
+    true,
+    false
+   ],
+   "inLgMenu": false
+  },
+  "positionCol": {
+   "inLgMenu": false
+  },
+  "positionRow": {
+   "inLgMenu": false
+  },
+  "role": {
+   "choices": [
+    "master",
+    "slave",
+    "none",
+    "undefined"
+   ],
+   "inLgMenu": false
+  },
+  "slaveInfo": {
+   "inLgMenu": false
+  },
+  "status": {
+   "inLgMenu": false
+  },
+  "systemMode": {
+   "choices": [
+    "wide",
+    "split",
+    "none",
+    "undefined"
+   ],
+   "inLgMenu": false
+  },
+  "videoMode": {
+   "choices": [
+    "wide",
+    "split",
+    "none",
+    "undefined"
+   ],
+   "inLgMenu": false
+  },
+  "wideZoomToast": {
+   "inLgMenu": false
+  }
+ }
+}

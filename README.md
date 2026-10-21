@@ -491,6 +491,10 @@ nothing and read the answer instead.
 **Descriptions.** `getSystemSettingDesc` returns each key's type, its valid values and its current
 validity. That is what makes the controls adapt to the model instead of being hard-coded.
 
+**The full key list** — all 838 of them, with what each accepts and LG's own name for it — is in
+[docs/tv-settings.md](docs/tv-settings.md), along with how it was extracted. Useful if you want to
+expose a setting this launcher does not.
+
 ---
 
 ## Troubleshooting
