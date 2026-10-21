@@ -2,12 +2,12 @@
 # Make the launcher come up when the TV is switched on.
 #
 # Why this and not the "default app" setting: `sam` honours defaultApps.home, so the HOME KEY
-# already opens OpenLauncher. But `bootd` - the thing that brings a screen up at power-on - has
+# already opens OpenHome. But `bootd` - the thing that brings a screen up at power-on - has
 # "com.webos.app.home" compiled into it and never looks at that setting. Verified with
 # `strings /usr/sbin/bootd`. So the setting alone can never fix power-on.
 #
 # The fix is to make com.webos.app.home BE a stub: a transparent, invisible web app that launches
-# OpenLauncher and closes itself. Anything that asks for the stock home - bootd included - gets it.
+# OpenHome and closes itself. Anything that asks for the stock home - bootd included - gets it.
 #
 # Undo: umount /usr/palm/applications/com.webos.app.home, restore the three settings saved in
 # /var/lib/webosbrew/openlauncher-boot.orig, and delete this file.

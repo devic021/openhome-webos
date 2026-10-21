@@ -2,7 +2,7 @@
 # Settings this TV has to be told again, re-applied at every boot.
 #
 # Why this file exists: the home-app setting was lost across a power cycle (see replace.sh), so
-# nothing is assumed to stick on its own. The wanted values are written by OpenLauncher's own TV
+# nothing is assumed to stick on its own. The wanted values are written by OpenHome's own TV
 # settings pane, one JSON object per line:
 #     {"c":"general","k":"adCookie","v":"off"}
 # Delete this file to let LG's defaults come back at the next boot; delete a line to forget one
