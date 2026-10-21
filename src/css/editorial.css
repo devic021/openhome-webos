@@ -1,0 +1,230 @@
+/*SPDX-License-Identifier: GPL-3.0-or-later*/
+/* Copyright (C) 2026 the OpenHome contributors */
+
+/* The "Editorial" look, chosen in Settings > Clock > Look.
+ *
+ * Every rule is scoped to html.look-editorial, so the whole sheet switches off with one class
+ * and the original appearance is left untouched underneath. It loads after theme.css.
+ *
+ * The chrome dissolves: the dock loses its bar and the icons sit on the photograph behind a
+ * gradient that separates them from it. The clock is large and thin, the date is spaced small
+ * capitals. The TV's inputs stand in a column down the left edge and the settings and info
+ * buttons in a matching one on the right - all three the same size, all resting on the same
+ * baseline as the app icons. The drawer becomes a single layer over a dimmed picture instead
+ * of two opaque panels.
+ */
+
+/* ---------------------------------------------------------------- the home screen */
+
+/* box-sizing is content-box here, so side padding is ADDED to the width and shoves the dock
+   off centre - 77px to the right, when this was first tried. Every rule below that adds
+   padding sets border-box with it. */
+html.look-editorial #appbar{
+	background:transparent !important;
+	box-shadow:none !important;
+	border:0 !important;
+	box-sizing:border-box !important;
+	padding:0 4vw 2.6vh !important;
+}
+html.look-editorial #appbar .appitem{
+	border-radius:1.8vh !important;
+	box-shadow:0 1.2vh 3vh rgba(0,0,0,0.55) !important;
+}
+
+/* A scrim rather than a bar: it lifts the icons off a busy photograph without drawing a box
+   around them. */
+html.look-editorial #maindiv::after{
+	content:"";
+	position:fixed;
+	left:0; right:0; bottom:0;
+	height:30vh;
+	background:linear-gradient(to top, rgba(0,0,0,0.62), rgba(0,0,0,0.28) 42%, transparent);
+	pointer-events:none;
+	z-index:3;
+}
+
+html.look-editorial #statusbar{
+	background:transparent !important;
+	border:0 !important;
+	box-shadow:none !important;
+	text-shadow:0 2px 10px rgba(0,0,0,0.9) !important;
+	opacity:0.72 !important;
+}
+
+/* The rest of this block uses a tight shadow - the date and the temperature are both
+   "0 2px 8px". A wide one here read as if the clock floated on a different layer, and at
+   weight 100 it spread grey haze around strokes only a couple of pixels thick. Same family,
+   a little stronger because the type is ten times the size. */
+html.look-editorial #clocktime{
+	font-weight:100 !important;
+	letter-spacing:-0.045em !important;
+	font-size:19vh !important;
+	line-height:0.86 !important;
+	text-shadow:0 2px 12px rgba(0,0,0,0.7) !important;
+}
+html.look-editorial #clocks{ opacity:0.35 !important; }
+html.look-editorial #clockdate{
+	text-transform:uppercase !important;
+	letter-spacing:0.22em !important;
+	font-size:1.9vh !important;
+	font-weight:600 !important;
+	opacity:0.78 !important;
+}
+html.look-editorial #weathertemp{ font-weight:200 !important; }
+
+/* ---------------------------------------------------------------- the two edge columns
+   The inputs stand down the left, the settings and info buttons down the right, and all of
+   them end level with the bottom of the app icons.
+   Careful which bottom: .appitem's box runs to 1066px because it reserves room for a name
+   that is hidden here, while the icon you actually see ends at 1056. Matching the box left
+   the columns floating 18px high. 1080-1056 = 24px = 2.22vh. */
+html.look-editorial #quickrow{
+	position:fixed !important;
+	left:2.6vw !important; right:auto !important;
+	bottom:2.22vh !important;
+	width:auto !important;
+	flex-direction:column-reverse !important;
+	align-items:center !important;
+	gap:1vh !important;
+	background:transparent !important;
+	border:0 !important;
+	padding:0 !important;
+	z-index:6 !important;
+}
+html.look-editorial .qchip,
+html.look-editorial #infobtn,
+html.look-editorial #homesettings{
+	width:6.2vh !important; height:6.2vh !important; min-width:6.2vh !important;
+	background:rgba(0,0,0,0.38) !important;
+	backdrop-filter:blur(14px) saturate(140%) !important;
+	border:1px solid rgba(255,255,255,0.14) !important;
+	border-radius:1.4vh !important;
+	box-shadow:0 0.8vh 2vh rgba(0,0,0,0.45) !important;
+	opacity:1 !important;
+}
+html.look-editorial .qchip.qlive{
+	border-color:rgba(var(--accent),0.75) !important;
+	box-shadow:0 0 2vh rgba(var(--accent),0.35), 0 0.8vh 2vh rgba(0,0,0,0.45) !important;
+}
+/* The gear on the home screen is #homesettings. #settingsbtn is a different button that lives
+   inside #drawertools and measures 0x0 until the drawer opens, so styling that one does
+   nothing at all. */
+html.look-editorial #infobtn{
+	position:fixed !important;
+	right:2.6vw !important; left:auto !important;
+	bottom:2.22vh !important; top:auto !important;
+	padding:1.1vh !important;
+	z-index:6 !important;
+}
+html.look-editorial #homesettings{
+	position:fixed !important;
+	right:2.6vw !important; left:auto !important;
+	bottom:9.4vh !important; top:auto !important;
+	padding:1.1vh !important;
+	z-index:6 !important;
+}
+/* All three controls are the same box, so the drawing inside them has to be the same size
+   too - the glyphs were at 70% of the chip while these filled their whole content box, and
+   the two columns did not match. */
+html.look-editorial #infobtn svg,
+html.look-editorial #homesettings svg,
+html.look-editorial #homesettings img,
+html.look-editorial .qchip .qglyph{
+	width:64% !important; height:64% !important;
+	opacity:0.88 !important;
+}
+html.look-editorial #infobtn,
+html.look-editorial #homesettings,
+html.look-editorial .qchip{
+	display:flex !important; align-items:center !important; justify-content:center !important;
+	padding:0 !important;
+}
+
+/* ---------------------------------------------------------------- the app drawer
+   Dimming the picture behind the drawer took several wrong turns. The wallpaper layers sit
+   BEFORE the drawer's checkbox in the document, so the "#realappbarbtu:checked ~ ..." pattern
+   main.css uses cannot reach them; a scrim hung off #appluncher is clipped to that element's
+   box, because it clips its content; and one hung off #drawertools lands above the drawer
+   rather than behind it, because #drawertools sits in a stacking context of its own.
+   :has() sidesteps all of it - it matches on an ancestor, so document order stops mattering.
+   Chromium 120 on webOS 10.3 supports it. */
+html.look-editorial body:has(#realappbarbtu:checked) .bgphoto,
+html.look-editorial body:has(#realappbarbtu:checked) #bgvideo{
+	filter:brightness(0.22) saturate(0.85) !important;
+	transition:filter 0.35s ease !important;
+}
+/* with the picture carrying the depth, the two opaque panels are not needed */
+html.look-editorial body:has(#realappbarbtu:checked) #appluncher,
+html.look-editorial body:has(#realappbarbtu:checked) #folderbar{
+	background:transparent !important;
+	box-shadow:none !important;
+	border:0 !important;
+}
+
+/* The category chips are button.chip with a span.chipicon inside - not .hrtile. The "Apps"
+   title repeated what the drawer obviously is, so it goes; the pills are centred over the
+   tiles and made smaller, since the row is a filter rather than the point of the screen. */
+html.look-editorial #folderbar{
+	background:transparent !important;
+	box-sizing:border-box !important;
+	justify-content:center !important;
+}
+html.look-editorial #folderbar::before{ content:"" !important; display:none !important; }
+html.look-editorial #folderbar .chip{
+	background:rgba(255,255,255,0.09) !important;
+	border:1px solid rgba(255,255,255,0.14) !important;
+	backdrop-filter:blur(16px) saturate(140%) !important;
+	box-shadow:0 0.4vh 1.2vh rgba(0,0,0,0.3) !important;
+	font-size:1.9vh !important;
+	padding:0.7vh 1.3vw !important;
+	border-radius:2.4vh !important;
+	gap:0.5vw !important;
+}
+html.look-editorial #folderbar .chip.on{
+	background:rgba(var(--accent),0.92) !important;
+	border-color:transparent !important;
+	color:#fff !important;
+}
+/* the folder glyph only made every pill wider */
+html.look-editorial #folderbar .chipicon{ display:none !important; }
+html.look-editorial #folderbar .chip small,
+html.look-editorial #folderbar .chip .count{ opacity:0.5 !important; }
+
+html.look-editorial #appluncher{
+	background:transparent !important;
+	box-shadow:none !important;
+	border:0 !important;
+	backdrop-filter:none !important;
+	-webkit-backdrop-filter:none !important;
+}
+/* A row track is --menutile * --menurow tall. At the stock 2.03 that is 234px while a tile
+   measures 155, so every row carried ~79px of empty space and the second row fell far below
+   the first. 1.42 leaves a few pixels of slack and no more.
+   With no column gap the grid packed sixteen tracks across and every app landed in one
+   cramped row; 2.2vw leaves twelve to a row with air between them. */
+html.look-editorial #appluncher{
+	--menurow:1.42 !important;
+	row-gap:1.1vh !important;
+	column-gap:2.2vw !important;
+}
+/* "Streaming" reads as "treaming" in the stock look: the label box is 95px, the word needs
+   100, and a centred nowrap line loses two and a half pixels off each end. Letting it spill
+   into the gap between tiles costs nothing, because the gap is far wider than the overflow. */
+html.look-editorial #appluncher .appname{
+	overflow:visible !important;
+	text-overflow:clip !important;
+	margin-top:0.8vh !important;
+	margin-bottom:0.4vh !important;
+}
+/* No shadow on the drawer tiles. A shadow lifts an icon off a busy picture; the drawer dims
+   the picture to a flat dark field, so it separates nothing and only adds grime under every
+   tile. The dock keeps its shadow, because there the icons do sit on the photograph. */
+html.look-editorial #appluncher .appitem img{ filter:none !important; }
+html.look-editorial #appluncher .appitem{ border-radius:1.6vh !important; }
+
+html.look-editorial #drawertools button{
+	background:rgba(255,255,255,0.10) !important;
+	border:1px solid rgba(255,255,255,0.14) !important;
+	border-radius:3vh !important;
+	backdrop-filter:blur(16px) !important;
+}

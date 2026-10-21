@@ -137,15 +137,23 @@ function renderquick(){
 		chip.setAttribute("data-appid",each.id);
 		chip.setAttribute("title",name);
 		chip.setAttribute("aria-label",name);
-		const picture=document.createElement("img");
-		picture.className="qicon";
-		const sources=inputicons(each);
-		let at=0;
-		picture.src=sources[0];
-		picture.addEventListener("error",function(e){
-			if(++at<sources.length){ e.target.src=sources[at]; }
-		});
-		chip.appendChild(picture);
+		// Our own glyph if we have one (js/inputicons.js): the TV's own artwork is per-device
+		// but every file carries its own baked-in grey background, so a row of them never looks
+		// like a set. Fall back to the TV's picture when we have nothing better.
+		const glyph=(typeof inputglyph==="function")?inputglyph(each,quickdevices&&quickdevices[each.id]):null;
+		if(glyph){
+			chip.innerHTML=glyph;
+		} else {
+			const picture=document.createElement("img");
+			picture.className="qicon";
+			const sources=inputicons(each);
+			let at=0;
+			picture.src=sources[0];
+			picture.addEventListener("error",function(e){
+				if(++at<sources.length){ e.target.src=sources[at]; }
+			});
+			chip.appendChild(picture);
+		}
 		chip.addEventListener("click",() => launchapp(each.id));
 		quickrow.appendChild(chip);
 	});

@@ -11,6 +11,8 @@ let tipbox=null;
 
 function tiptarget(node){
 	for(let at=node;at && at!==document;at=at.parentNode){
+		// the two corner buttons name themselves the same way the shortcuts do
+		if(at.id==="infobtn" || at.id==="homesettings"){ return at; }
 		if(at.classList && (at.classList.contains("appitem") || at.classList.contains("qchip"))){
 			// only the dock and the input shortcuts: the drawer already labels its tiles
 			const inbar=typeof appbar!=="undefined" && appbar.contains(at);

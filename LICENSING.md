@@ -85,6 +85,7 @@ GPL-3.0, and why this fork can do the same.
 | `src/access/manrope-latin*.woff2` | **OFL-1.1** | [Manrope](https://github.com/sharanda/manrope) — [OFL-Manrope.txt](src/access/OFL-Manrope.txt) |
 | `src/access/wallpaper/*.jpg`, `*.png` | **CC-BY-SA** | the bundled photographs, from upstream — [LICENSE-CC-BY-SA](LICENSE-CC-BY-SA) |
 | `src/access/wallpaper/loop.mp4` | **CC-BY-SA** | *not committed* — built locally from those photographs by `scripts/make-wallpaper-video.sh`, so it inherits their licence |
+| the PlayStation mark in `src/js/inputicons.js` | **trademark, not licensed here** | Sony's logo, drawn when a console tells the TV over HDMI-CEC that it is a PlayStation. It identifies the connected device, which is the same use LG's own input artwork makes of it, and it is **not** covered by this project's licence. Remove that one entry if you would rather not ship it. |
 | `src/js/lib/QwQwebosTV.js/main.js` | **WTFNMFPL** | [QwQwebosTV.js](https://git.exkc.moe/qvh/QwQwebosTV.js) by exkc, vendored so a plain clone works |
 
 Both fonts are in use: `main.css` loads Plus Jakarta Sans, and `theme.css` loads Manrope on top of

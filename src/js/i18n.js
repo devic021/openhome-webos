@@ -738,6 +738,10 @@ const I18N_SR={
 	"Adapter: ":"Adapter: ",
 	"signal ":"signal ",
 	"Renamed to ":"Preimenovano u ",
+	"Look":"Izgled",
+	"Classic":"Klasičan",
+	"Editorial":"Editorial",
+	"Editorial takes the panels away: the dock has no bar, the clock is large and thin, the inputs stand down the left edge and the drawer becomes one layer over a dimmed picture. Classic is the original appearance.":"Editorial sklanja panele: donja traka nema pozadinu, sat je velik i tanak, ulazi stoje u koloni uz levu ivicu, a meni aplikacija postaje jedan sloj preko zatamnjene slike. Classic je izvorni izgled.",
 };
 
 const I18N_TABLES={sr:I18N_SR};

@@ -36,7 +36,11 @@ const SETTINGS_SCHEMA=[
 		{key:"clockStyle",label:t("Style"),type:"choice",stepper:true,default:"digital",options:[["digital",t("Digital")],["stacked",t("Stacked")],["analog",t("Analogue")],["analogmin",t("Analogue minimal")],["off",t("Off")]]},
 		{key:"clockSeconds",label:t("Seconds"),type:"choice",default:true,options:ON_OFF,show:(p) => p.clockStyle!=="off"},
 		{key:"clockHour12",label:t("Hours"),type:"choice",default:false,options:[[false,t("24-hour")],[true,t("12-hour")]],show:(p) => p.clockStyle==="digital" || p.clockStyle==="stacked"},
-		{key:"clockPos",label:t("Position"),type:"position",default:"top-left"}
+		{key:"clockPos",label:t("Position"),type:"position",default:"top-left"},
+		{type:"heading",label:t("Look")},
+		{key:"look",label:t("Look"),type:"choice",stepper:true,default:"editorial",
+			options:[["editorial",t("Editorial")],["classic",t("Classic")]],
+			hint:t("Editorial takes the panels away: the dock has no bar, the clock is large and thin, the inputs stand down the left edge and the drawer becomes one layer over a dimmed picture. Classic is the original appearance.")}
 	]},
 	{id:"date",title:t("Date"),icon:"calendar",items:[
 		{key:"dateShow",label:t("Date"),type:"choice",default:true,options:ON_OFF,hint:t("Turn off both Date and Weekday to hide it completely")},
@@ -249,6 +253,8 @@ function applysizes(){
 
 // make the launcher match `prefs`
 function applyprefs(){
+	// one class, and the whole editorial.css sheet switches on or off
+	document.documentElement.classList.toggle("look-editorial",prefs.look==="editorial");
 	applysizes();
 	maindiv.classList.toggle("hide-bar-names",!prefs.barNames);
 	maindiv.classList.toggle("hide-menu-names",!prefs.menuNames);

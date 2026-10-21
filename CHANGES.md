@@ -121,6 +121,46 @@ would be wrong for everybody outside one country. Reading the `time` category is
 ordinary app ("Access denied"), so it goes through the root service, and without root the search
 box is still the way in. A location you chose is never overwritten.
 
+### A second look, and the default - `src/css/editorial.css` (new)
+
+**Editorial**, chosen in Settings > Clock > Look, and the default from 1.1.0. Every rule in the
+sheet is scoped to `html.look-editorial`, so the whole thing switches off with one class and the
+original appearance - **Classic** - is still there underneath, untouched.
+
+The chrome dissolves. The dock loses its bar and the icons sit on the photograph behind a
+gradient that separates them from it. The clock is large and thin, the date spaced small
+capitals. The TV's inputs stand in a column down the left edge and the settings and info buttons
+in a matching one on the right - all five the same size, all resting on the same baseline as the
+app icons. The drawer becomes a single layer over a dimmed picture instead of two opaque panels,
+with the "Apps" title gone and the category pills centred over the tiles.
+
+Measured on the set it was built on: 5.0% of one core at idle against 4.2% for Classic.
+
+Three things in it were not obvious:
+
+- Dimming the picture behind the drawer cannot use the pattern the stylesheet uses elsewhere.
+  The wallpaper layers sit **before** the drawer's checkbox in the document, so
+  `#realappbarbtu:checked ~ ...` never reaches them; a scrim hung off `#appluncher` is clipped to
+  its box, because it clips its content; one hung off `#drawertools` lands above the drawer
+  rather than behind it. `:has()` matches on an ancestor, so document order stops mattering.
+- `#appbar` and `#appluncher` are `content-box`, so side padding is **added** to their width.
+  Padding the dock pushed it 77px off centre; padding the grid made it 2081px wide on a 1920
+  screen.
+- The category chips are `button.chip` with a `span.chipicon` inside, not `.hrtile`.
+
+### Our own input glyphs - `src/js/inputicons.js` (new)
+
+The TV's input artwork is per-device, but every file carries its own baked-in background - a grey
+square behind one mark, a different grey behind another - so a row of them never looks like a
+set. These are drawn instead: one weight, one box, no background, inheriting colour from the chip
+they sit in. Specificity is kept where it matters, so a console that announces itself over
+HDMI-CEC as a PlayStation still shows the PlayStation mark. That one is Sony's trademark, used to
+identify a connected device exactly as LG's own artwork does - see [LICENSING.md](LICENSING.md).
+
+Also fixed, and it predates all of this: `.appname` is 95px while "Streaming" needs 100, and a
+centred nowrap line loses two and a half pixels off each end, so it has always read as
+"treaming".
+
 ### Packaging and distribution (new)
 
 `.github/workflows/release.yml` builds the `.ipk` on a version tag, generates the Homebrew Channel
