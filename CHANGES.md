@@ -102,6 +102,18 @@ webOS's boot animation no longer plays.
 - `wallpapers.sh` — mounts the wallpaper disk **by UUID**, since webOS re-enumerates USB devices
   across a reboot and a device-node path fails with `Input/output error`
 
+### A usable first run — `src/js/firstrun.js` (new)
+
+Upstream's default bar is a fixed list of app ids, three of them games almost no television has,
+so a fresh install showed gaps where another person's apps had been. Nothing is assumed now: the
+bar is built from what the set actually reports, and Streaming / Games / Tools folders are made
+only when at least two of their apps are installed.
+
+The other inputs are deliberately left off the bar. A set has four HDMI ports, two DisplayPorts
+and two USB-C ports whether or not anything is plugged in, and listing them all filled the bar
+with empty sockets. They already have their own row above the dock, which shows only the ports
+with something connected.
+
 ### Packaging and distribution (new)
 
 `.github/workflows/release.yml` builds the `.ipk` on a version tag, generates the Homebrew Channel

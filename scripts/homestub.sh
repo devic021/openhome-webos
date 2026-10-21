@@ -18,7 +18,20 @@ ORIG=/var/lib/webosbrew/openlauncher-boot.orig
 
 [ -f "$STUB/index.html" ] || exit 0
 
-if ! grep -q " $HOME_APP " /proc/mounts 2>/dev/null; then
+# A stub may already be mounted from an earlier install - possibly one belonging to a different
+# app id, which would keep launching the old app forever. So the test is not "is something
+# mounted" but "is the RIGHT thing mounted": the stub's own index.html names the app it launches.
+mounted=0
+if grep -q " $HOME_APP " /proc/mounts 2>/dev/null; then
+	if grep -q "io.github.devic021.openhome" "$HOME_APP/index.html" 2>/dev/null; then
+		mounted=1
+	else
+		logger -t openlauncher-home "a stale stub was mounted; replacing it"
+		umount "$HOME_APP" 2>/dev/null || umount -l "$HOME_APP" 2>/dev/null
+	fi
+fi
+
+if [ "$mounted" -eq 0 ]; then
 	mount --rbind "$STUB" "$HOME_APP" || exit 1
 	logger -t openlauncher-home "stub mounted over com.webos.app.home"
 	# sam caches every system app's appinfo.json, so it has to look again - but only if it is

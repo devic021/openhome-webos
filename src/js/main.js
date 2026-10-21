@@ -4,7 +4,9 @@ let applist;
 let editing=false;
 const SETTINGS_KEY='openlauncher.settings';
 // used until the user pins/unpins something for the first time
-const DEFAULT_PINNED=["com.webos.app.livetv","com.webos.app.hdmi1","com.webos.app.hdmi2","com.webos.app.hdmi3","com.webos.app.hdmi4","com.webos.app.mediadiscovery","com.famobi.ctr","com.halfbrick.fruitninja","com.github.k4zmu2a.space-cadet-pinball"];
+// The bar of a never-configured install is worked out from what this TV has (js/firstrun.js);
+// this fixed list is only the fallback for before the app list has arrived.
+const DEFAULT_PINNED=["com.webos.app.livetv","com.webos.app.hdmi1","com.webos.app.hdmi2","com.webos.app.hdmi3"];
 // sysplaced / sysdismissed: see systemapps.js
 let settings={pinned:null,hidden:[],order:[],folders:[],appfolder:{},sysplaced:[],sysdismissed:[],names:{}};    // names: app id -> the name you gave it
 // hover-only reordering: rest on a tile's Move zone to pick the app up, hover other tiles to move it, rest on it to drop
@@ -387,7 +389,12 @@ function savesettings(){
 }
 
 function pinnedids(){
-	return settings.pinned===null?DEFAULT_PINNED:settings.pinned;
+	if(settings.pinned!==null){ return settings.pinned; }
+	if(typeof firstrunbar==="function"){
+		const built=firstrunbar();
+		if(built.length){ return built; }
+	}
+	return DEFAULT_PINNED;
 }
 
 function ispinned(id){
@@ -669,6 +676,7 @@ newapplistraw=await lunacall('luna://com.webos.applicationManager/listApps',{});
 
 if (!( JSON.stringify(applist) === JSON.stringify(newapplist) ) ) {
 	applist=newapplist;
+	if(typeof firstrun==="function"){ firstrun(); }
 	syncsystemfolders();
 tilecache.bar.clear();
 tilecache.drawer.clear();

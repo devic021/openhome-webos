@@ -170,7 +170,7 @@ function aboutsections() {
 	return [
 		[t("Launcher"),[
 			[t("Release"),"v"+APP_RELEASE],
-			[t("Package"),"io.github.devic021.openhome, "+(app && app.version?app.version:"2.0.0")],
+			[t("Package"),"io.github.devic021.openhome, "+(app && app.version?app.version:APP_RELEASE)],
 			[t("Last update"),updated || t("Unknown")],
 			[t("Running as"),aboutpermissions()+", "+(typeof applist!=="undefined" && applist?applist.length:0)+t(" apps found")]
 		]],
