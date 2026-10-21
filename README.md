@@ -84,6 +84,11 @@ automatically. Apps can be pinned to the dock, hidden, renamed and reordered.
 Press OK on the weather block for seven days, today's range, and the hour-by-hour strip.
 Data is [Open-Meteo](https://open-meteo.com) — no key and no account.
 
+**The location sets itself.** On a first run the launcher reads the TV's own time zone, which
+carries a city and a country code — `Europe/Belgrade` gives Belgrade, RS — and looks that up. No
+geolocation service, no IP lookup, and nothing you did not already tell the television. Change it
+in **Settings → Weather → Location**; once you do, it is never touched again.
+
 ### System panel
 
 ![System panel](docs/screenshots/system.jpg)

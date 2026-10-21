@@ -114,6 +114,13 @@ and two USB-C ports whether or not anything is plugged in, and listing them all 
 with empty sockets. They already have their own row above the dock, which shows only the ports
 with something connected.
 
+The weather location sets itself too. Previously a new install had none, so switching Weather on
+appeared to do nothing — it only fetches once a place is set. The launcher now reads the TV's own
+time zone, which carries a city and a country code, and looks that up; a hard-coded default city
+would be wrong for everybody outside one country. Reading the `time` category is refused to an
+ordinary app ("Access denied"), so it goes through the root service, and without root the search
+box is still the way in. A location you chose is never overwritten.
+
 ### Packaging and distribution (new)
 
 `.github/workflows/release.yml` builds the `.ipk` on a version tag, generates the Homebrew Channel

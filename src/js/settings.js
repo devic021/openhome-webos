@@ -48,7 +48,7 @@ const SETTINGS_SCHEMA=[
 		{key:"datePos",label:t("Position"),type:"position",default:"with-clock",withClock:true,show:(p) => p.dateShow || p.dayStyle!=="off"}
 	]},
 	{id:"weather",title:t("Weather"),icon:"partday",items:[
-		{key:"weatherShow",label:t("Weather"),type:"choice",default:false,options:ON_OFF,hint:t("Current weather from Open-Meteo (needs the internet)")},
+		{key:"weatherShow",label:t("Weather"),type:"choice",default:true,options:ON_OFF,hint:t("Current weather from Open-Meteo (needs the internet)")},
 		{key:"weatherPlace",label:t("Location"),type:"custom",wide:true,default:null,show:(p) => p.weatherShow,
 			valid:(v) => v===null || (!!v && typeof v.name==="string" && typeof v.lat==="number" && typeof v.lon==="number"),
 			render:(box) => renderweatherplace(box)},

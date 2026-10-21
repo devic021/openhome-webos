@@ -91,10 +91,55 @@ function firstrunfolders(){
 	return changed;
 }
 
+
+// ---- where the weather starts out
+//
+// A new install had no location, so switching Weather on appeared to do nothing at all - it
+// fetches only once a place is set, and the pane's "Type a city and press Search" is easy to
+// miss. Hard-coding a default city is no answer either: it is wrong for everybody outside one
+// country.
+//
+// The television already knows. Its time zone carries a city and a country code - Europe/Belgrade
+// reports City "Belgrade", CountryCode "RS" - which is accurate to the region and needs no
+// geolocation service, no IP lookup and nothing the owner did not already tell the set.
+async function firstrunplace(){
+	if(prefs.weatherPlace){ return; }                 // never overwrite a chosen location
+	// Reading the "time" category is not allowed to an ordinary app - it answers "Access denied" -
+	// so this goes through the root service. Without root there is no location to start from, and
+	// the pane's own search is the way in.
+	const ask={category:"time",keys:["timeZone"]};
+	let answer=null;
+	try { answer=await lunacall('luna://com.webos.settingsservice/getSystemSettings',ask); } catch(e) {}
+	if((!answer || answer.returnValue===false) && typeof lunacallasroot==="function"){
+		try { answer=await lunacallasroot('luna://com.webos.settingsservice/getSystemSettings',ask); } catch(e) {}
+	}
+	const zone=answer && answer.settings && answer.settings.timeZone;
+	if(!zone || !zone.City){ return; }
+	const city=zone.City;
+	const code=zone.CountryCode || null;
+	try {
+		// several matches, then the one in the TV's own country - "Belgrade" also exists in Montana
+		const url="https://geocoding-api.open-meteo.com/v1/search?name="+encodeURIComponent(city)+
+			"&count=10&language=en&format=json";
+		const response=await fetch(url);
+		if(!response.ok){ return; }
+		const data=await response.json();
+		const list=(data && data.results) || [];
+		const found=list.filter((r) => !code || r.country_code===code)[0] || list[0];
+		if(!found || typeof found.latitude!=="number"){ return; }
+		if(prefs.weatherPlace){ return; }              // the owner may have set one while this ran
+		setpref("weatherPlace",{
+			name:[found.name,found.country].filter(Boolean).join(", "),
+			lat:found.latitude,lon:found.longitude
+		});
+	} catch(e) {}
+}
+
 // Called from main.js once the app list has arrived.
 function firstrun(){
 	if(firstrundone()){ return; }
 	firstrunmark();
+	firstrunplace();                                   // network call, so it is not waited on
 	if(typeof applist==="undefined" || !applist || !applist.length){ return; }
 	if(firstrunfolders()){ savesettings(); }
 }
