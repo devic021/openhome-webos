@@ -688,6 +688,10 @@ render();
 async function inithomescreen() {
 await initpermcheck();
 loadsettings();
+// This is the path a real first launch takes: initpermcheck() fills applist and we come straight
+// here. reload() has the same call, but it only fires when the app list CHANGES later, so a
+// first-run that only hung off reload() never ran at all on a clean install.
+if(typeof firstrun==="function"){ firstrun(); }
 syncsystemfolders();
 loadrecent();
 editbtn.addEventListener("click",toggleedit);

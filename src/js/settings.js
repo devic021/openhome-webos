@@ -36,7 +36,7 @@ const SETTINGS_SCHEMA=[
 		{key:"clockStyle",label:t("Style"),type:"choice",stepper:true,default:"digital",options:[["digital",t("Digital")],["stacked",t("Stacked")],["analog",t("Analogue")],["analogmin",t("Analogue minimal")],["off",t("Off")]]},
 		{key:"clockSeconds",label:t("Seconds"),type:"choice",default:true,options:ON_OFF,show:(p) => p.clockStyle!=="off"},
 		{key:"clockHour12",label:t("Hours"),type:"choice",default:false,options:[[false,t("24-hour")],[true,t("12-hour")]],show:(p) => p.clockStyle==="digital" || p.clockStyle==="stacked"},
-		{key:"clockPos",label:t("Position"),type:"position",default:"center-center"}
+		{key:"clockPos",label:t("Position"),type:"position",default:"top-left"}
 	]},
 	{id:"date",title:t("Date"),icon:"calendar",items:[
 		{key:"dateShow",label:t("Date"),type:"choice",default:true,options:ON_OFF,hint:t("Turn off both Date and Weekday to hide it completely")},
