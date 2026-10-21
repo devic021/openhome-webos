@@ -42,18 +42,41 @@ fi
 
 if [ -n "$UNDO" ]; then
 	echo "Putting the stock home screen back..."
-	# The order matters: unmount first, or sam keeps serving the stub it already loaded.
-	$SSH "
-		umount /usr/palm/applications/com.webos.app.home 2>/dev/null || true
-		rm -f $INITD/homestub.sh $INITD/replace.sh
-		luna-send -n 1 -f luna://com.webos.service.applicationmanager/setDefaultApp \
-			'{\"category\":\"home\",\"appId\":\"com.webos.app.home\"}' < /dev/null >/dev/null 2>&1 || true
-		if [ -f /var/lib/webosbrew/openlauncher-boot.orig ]; then
-			echo '  the three boot settings were saved in /var/lib/webosbrew/openlauncher-boot.orig'
-			echo '  restore them by hand if you changed them since'
+	# The remote half is a quoted heredoc rather than a quoted argument: it contains JSON, which
+	# is all braces and double quotes, and nesting that inside an ssh "..." string is how this
+	# broke the first time. Nothing here is expanded on this side.
+	$SSH 'sh -s' <<'REMOTE'
+ORIG=/var/lib/webosbrew/openlauncher-boot.orig
+INITD=/var/lib/webosbrew/init.d
+
+# unmount first, or sam keeps serving the stub it already loaded
+umount /usr/palm/applications/com.webos.app.home 2>/dev/null || \
+	umount -l /usr/palm/applications/com.webos.app.home 2>/dev/null
+rm -f "$INITD/homestub.sh" "$INITD/replace.sh"
+
+luna-send -n 1 -w 5000 -f luna://com.webos.service.applicationmanager/setDefaultApp \
+	'{"category":"home","appId":"com.webos.app.home"}' < /dev/null >/dev/null 2>&1
+
+# Put the three boot settings back too. homestub.sh saved the whole reply the first time it ran,
+# so the values are right here; leaving them set pointed the TV's "last input" at an app that
+# uninstalling would remove.
+if [ -f "$ORIG" ]; then
+	SETTINGS=$(tr -d ' \n' < "$ORIG" | sed -n 's/.*"settings":\({[^}]*}\).*/\1/p')
+	if [ -n "$SETTINGS" ]; then
+		if luna-send -n 1 -w 5000 -f luna://com.webos.settingsservice/setSystemSettings \
+			"{\"category\":\"general\",\"settings\":$SETTINGS}" < /dev/null >/dev/null 2>&1; then
+			echo "  boot settings restored: $SETTINGS"
+		else
+			echo "  could not restore the boot settings; they are in $ORIG"
 		fi
-		pgrep -x sam >/dev/null 2>&1 && restart sam || true
-	"
+	else
+		echo "  could not read $ORIG; restore the boot settings by hand"
+	fi
+fi
+
+pgrep -x sam >/dev/null 2>&1 && restart sam >/dev/null 2>&1
+exit 0
+REMOTE
 	echo "Done. Press Home on the remote to check."
 	exit 0
 fi

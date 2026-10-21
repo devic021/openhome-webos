@@ -539,8 +539,9 @@ ssh -i ~/.ssh/lgtv root@<tv-ip> '
 '
 ```
 
-Then restore the three values saved in `/var/lib/webosbrew/openlauncher-boot.orig`, and remove the
-app from the TV's own app manager or from the Homebrew Channel's App Manager.
+`install-home.sh --undo` also puts back the three boot settings that `homestub.sh` changed, from
+the copy it saved in `/var/lib/webosbrew/openlauncher-boot.orig` the first time it ran. Then remove
+the app from the TV's own app manager or from the Homebrew Channel's App Manager.
 
 The launcher's own **Settings → About → Uninstall** does all of this for you.
 
