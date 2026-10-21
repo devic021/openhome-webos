@@ -9,7 +9,7 @@
 // concatenation and never appear as a literal in the source, so reading the live page is the only
 // way to be sure what a screen really says.
 //
-//   node shots.js [outdir]        default: repo-draft/docs/screenshots
+//   node shots.js [names...]       only those screens; default is all nineteen
 
 const fs = require("fs");
 const path = require("path");
@@ -18,7 +18,9 @@ const { execFileSync } = require("child_process");
 const TV = process.env.TV || "192.168.1.239";
 const PORT = process.env.PORT || 9998;
 const args = process.argv.slice(2);
-const OUT = path.join(__dirname, "repo-draft/docs/screenshots");
+// the repository was called repo-draft before it was published; this path outlived the
+// rename and quietly wrote a whole set of captures into a folder nobody reads
+const OUT = path.join(__dirname, "docs/screenshots");
 const ONLY = args.length ? new Set(args) : null;
 
 // Everything is closed first, so a screen never inherits the one before it.

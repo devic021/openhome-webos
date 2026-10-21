@@ -7,7 +7,7 @@ with the remote.
 OpenHome is a fork of [OpenLauncher](https://github.com/Shantil-K/OpenLauncher) by Shantil-K, not
 a different project by the same people - see [CHANGES.md](CHANGES.md) for what was added.
 Developed on an **LG 65UR78003LK, webOS 10.3.2 (SDK 10.3, Chromium 120)**. Every screenshot below
-is a real 3840×2160 capture off that TV.
+is a real 3840x2160 capture off that TV, in the Editorial look it ships with.
 
 > **It has its own package id, `io.github.devic021.openhome`**, so it installs *beside*
 > OpenLauncher rather than over it - you can keep both and switch between them. Coming from
@@ -71,6 +71,22 @@ CPU load with panel temperature, RAM, storage and uptime.
 plugged into them** - an empty HDMI port is not listed, and appears by itself the moment you
 connect something. A lit chip means the device is *awake right now*, read over HDMI-CEC, so it is
 correct even while the TV is showing another input.
+
+### Two looks
+
+[![Home screen](docs/screenshots/preview/home.jpg)](docs/screenshots/home.jpg)
+
+**Editorial** is what you get out of the box. There is no bar under the app icons: they sit on the
+wallpaper behind a gradient that keeps them readable. The clock is large and thin, the date spaced
+small capitals. The TV's inputs stand in a column down the left edge and the settings and info
+buttons in a matching one on the right, all of them the same size and resting on the same line as
+the app icons.
+
+**Classic** is the appearance the launcher had before, panels and all. Switch between them in
+**Settings -> Clock -> Look**; nothing else changes.
+
+Editorial costs about 0.8 of a percentage point of one CPU core at idle, 5.0% against 4.2%,
+measured on the set it was built on.
 
 ### All apps
 
