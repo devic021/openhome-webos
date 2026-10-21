@@ -1,5 +1,5 @@
 #!/bin/sh
-# Put OpenLauncher back as the Home app at every boot.
+# Put OpenHome back as the Home app at every boot.
 #
 # webOS 25+ keeps the home app in a Luna setting rather than in a patched file, and this TV lost
 # that setting across a power cycle - the Home button went back to LG's own home. The upstream
