@@ -1,4 +1,4 @@
-reci # OpenHome
+# OpenHome
 
 A replacement home screen for **rooted LG webOS TVs** that also puts **100+ of the TV's own
 settings** — the ones LG buries, and a few it never draws at all — into one place you can reach
