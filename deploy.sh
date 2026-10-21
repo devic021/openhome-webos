@@ -18,7 +18,7 @@ if [ -z "$TV" ]; then
 	exit 2
 fi
 SSHOPTS="-i $KEY -o ConnectTimeout=8 -o StrictHostKeyChecking=no"
-APP=/media/developer/apps/usr/palm/applications/com.homebrew.openlauncher
+APP=/media/developer/apps/usr/palm/applications/io.github.devic021.openhome
 SRC=$(dirname "$0")/src
 STAMP=$(dirname "$0")/.lastdeploy
 
@@ -59,7 +59,7 @@ done
 
 # reload the running page, so the change is on screen without touching the remote
 ssh $SSHOPTS "root@$TV" "luna-send -n 1 -f luna://com.webos.service.applicationManager/launch \
-	'{\"id\":\"com.homebrew.openlauncher\",\"params\":{\"reload\":true}}' < /dev/null >/dev/null 2>&1" || true
+	'{\"id\":\"io.github.devic021.openhome\",\"params\":{\"reload\":true}}' < /dev/null >/dev/null 2>&1" || true
 
 touch "$STAMP"
 echo "sent $(echo $FILES | wc -w | tr -d ' ') file(s) to $TV"

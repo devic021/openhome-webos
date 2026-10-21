@@ -9,9 +9,10 @@ a different project by the same people — see [CHANGES.md](CHANGES.md) for what
 Developed on an **LG 65UR78003LK, webOS 10.3.2 (SDK 10.3, Chromium 120)**. Every screenshot below
 is a real 3840×2160 capture off that TV.
 
-> **It keeps upstream's package id, `com.homebrew.openlauncher`.** That means it installs *over*
-> OpenLauncher rather than beside it, and an existing OpenLauncher's settings carry across.
-> If you want both at once, change `id` in `src/appinfo.json` before packaging.
+> **It has its own package id, `io.github.devic021.openhome`**, so it installs *beside*
+> OpenLauncher rather than over it — you can keep both and switch between them. Coming from
+> OpenLauncher, carry your configuration across with its **Settings → Backup → Export**, then
+> paste it into OpenHome's **Backup → Import**.
 
 ![Home screen](docs/screenshots/home.jpg)
 
@@ -274,44 +275,52 @@ Network tab once it is running.
 
 ### 4. Install the launcher
 
-Get the files first:
+Three ways, easiest first.
+
+#### a. From a release — nothing to build
+
+Download `io.github.devic021.openhome_*.ipk` from
+[Releases](https://github.com/devic021/openhome-webos/releases), put it on a USB stick, and on the
+TV use **Homebrew Channel → App Manager → Install from file**.
+
+No Node, no webOS CLI, no SSH. Every release is built and attached automatically.
+
+#### b. With the webOS CLI — if you want to build it yourself
 
 ```bash
 git clone https://github.com/devic021/openhome-webos.git
 cd openhome-webos
-```
-
-Then three ways onto the TV. Pick one.
-
-**a. With the webOS CLI** — the normal route, needs Developer Mode:
-
-```bash
 npm install -g @webos-tools/cli
 ares-setup-device --add tv --info "host=<tv-ip>" --info "port=9922" --info "username=prisoner"
 ares-package src -o /tmp --no-minify
-ares-install --device tv /tmp/com.homebrew.openlauncher_*.ipk
+ares-install --device tv /tmp/io.github.devic021.openhome_*.ipk
 ```
 
-**b. Over SSH** — no Developer Mode needed, and the fastest way to iterate:
+Needs Developer Mode on the TV.
+
+#### c. Over SSH — for working on it
+
+The launcher is plain HTML, CSS and JavaScript with no build step, so files can be copied straight
+into place. This only works once the app is installed by (a) or (b), because copying files does
+not register an app with the TV.
 
 ```bash
-APP=/media/developer/apps/usr/palm/applications/com.homebrew.openlauncher
-ssh -i ~/.ssh/lgtv root@<tv-ip> "mkdir -p $APP"
-scp -i ~/.ssh/lgtv -O -r src/* root@<tv-ip>:$APP/
+TV=<tv-ip> ./deploy.sh all
 ```
 
-**c. Through the Homebrew Channel** — build the `.ipk` as in (a), copy it to a USB stick, then use
-**Homebrew Channel → App Manager → Install from file**.
+`deploy.sh` checks every JavaScript file with `node --check` before sending anything — a file that
+does not parse leaves a blank home screen, recoverable only over SSH — then reloads the page.
 
-> The launcher is plain HTML, CSS and JavaScript — there is no build step. Method (b) copies files
-> straight into place, which is why `deploy.sh` in this repo uses it.
+> **Coming:** OpenHome has been submitted to the
+> [Homebrew Channel's app repository](https://github.com/webosbrew/apps-repo). Once it is merged,
+> it installs from the Homebrew Channel on the TV itself, with no computer involved at all.
 
 ### 5. Launch it
 
 ```bash
 ssh -i ~/.ssh/lgtv root@<tv-ip> \
   "luna-send -n 1 -f luna://com.webos.service.applicationManager/launch \
-   '{\"id\":\"com.homebrew.openlauncher\"}' < /dev/null"
+   '{\"id\":\"io.github.devic021.openhome\"}' < /dev/null"
 ```
 
 Or just find it in the TV's app list.
@@ -324,16 +333,15 @@ Or just find it in the TV's app list.
 
 ## Make it the home screen
 
-Two scripts are needed, and only together.
-
 ```bash
-scp -i ~/.ssh/lgtv scripts/homestub.sh scripts/replace.sh root@<tv-ip>:/var/lib/webosbrew/init.d/
-ssh -i ~/.ssh/lgtv root@<tv-ip> \
-  'chmod +x /var/lib/webosbrew/init.d/*.sh && sh /var/lib/webosbrew/init.d/homestub.sh'
+./scripts/install-home.sh <tv-ip>          # and --undo puts the stock home back
 ```
 
-Scripts in `/var/lib/webosbrew/init.d/` are run by the Homebrew Channel at every boot, in
-alphabetical order.
+That copies two startup scripts to the TV and runs them, so the Home button works straight away
+and power-on works from the next cold boot. Scripts in `/var/lib/webosbrew/init.d/` are run by the
+Homebrew Channel at every boot, in alphabetical order.
+
+Two scripts are needed, and only together.
 
 ### Why two
 
@@ -368,18 +376,22 @@ time it runs, so they can be put back.
 The launcher can keep a pool of photographs on a USB disk and rotate through them. A 4K photograph
 is about 1.5 MB against 2.7 GB an hour for streamed video, and it works with the internet down.
 
-1. Format a stick (ext4 works best — vfat has no permissions) and find its UUID:
+1. Format a stick and **label it `OPENHOME`** — that is how the script finds it, so nothing has
+   to be edited:
 
    ```bash
-   ssh -i ~/.ssh/lgtv root@<tv-ip> blkid
+   sudo mkfs.ext4 -L OPENHOME /dev/sdX1      # ext4 keeps permissions; exfat: mkfs.exfat -n OPENHOME
    ```
 
-2. Put that UUID into `scripts/wallpapers.sh`, then install it:
+2. Install the mount script:
 
    ```bash
    scp -i ~/.ssh/lgtv scripts/wallpapers.sh root@<tv-ip>:/var/lib/webosbrew/init.d/
    ssh -i ~/.ssh/lgtv root@<tv-ip> 'chmod +x /var/lib/webosbrew/init.d/wallpapers.sh'
    ```
+
+   To pin it to one specific disk instead of any disk with that label, set `UUID` at the top of
+   the script and it wins over the label.
 
 3. In the launcher: **Settings → Wallpaper → Source → Photos**, then **Refresh the pool**. It
    downloads from [Wikimedia Commons](https://commons.wikimedia.org) at 3840 px in the background.
@@ -504,9 +516,16 @@ That is the set, not the launcher — see [Keeping settings across a reboot](#ke
 
 ## Uninstall
 
+Put the stock home back **first** — uninstalling on its own leaves Home pointing at an app that
+is no longer there:
+
 ```bash
-# put the stock home back first - uninstalling on its own leaves Home
-# pointing at an app that is no longer there
+./scripts/install-home.sh <tv-ip> --undo
+```
+
+By hand instead:
+
+```bash
 ssh -i ~/.ssh/lgtv root@<tv-ip> '
   umount /usr/palm/applications/com.webos.app.home
   rm -f /var/lib/webosbrew/init.d/homestub.sh /var/lib/webosbrew/init.d/replace.sh

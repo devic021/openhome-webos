@@ -1,5 +1,5 @@
 {
-  "id": "com.homebrew.openlauncher",
+  "id": "io.github.devic021.openhome",
   "version": "2.0.0",
   "vendor": "OpenHome",
   "spinnerOnLaunch":false,

@@ -8,7 +8,7 @@
 #
 # The Luna bus is not up the moment this runs, so it retries for up to two minutes and stops as
 # soon as the call is accepted.
-APPID="com.homebrew.openlauncher"
+APPID="io.github.devic021.openhome"
 i=0
 while [ $i -lt 60 ]; do
 	# < /dev/null is NOT optional: luna-send prints nothing at all when its stdin is a pipe or a

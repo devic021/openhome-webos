@@ -11,7 +11,7 @@ const APP_RELEASE="1.0.0";            // the GitHub release this build belongs t
 const GITHUB_REPO="devic021/openhome-webos";
 const GITHUB_API="https://api.github.com/repos/"+GITHUB_REPO+"/releases?per_page=1";   // per_page=1 of ALL releases: "latest" skips pre-releases
 const LAST_BACKUP_KEY='openlauncher.lastbackup';
-const ABOUT_APP_ID="com.homebrew.openlauncher";
+const ABOUT_APP_ID="io.github.devic021.openhome";
 
 // what has been looked up; each entry is filled in once (or again by Refresh) and the page is drawn again when it arrives
 let about={tv:undefined,backupfile:undefined,release:{state:"idle"}};
@@ -170,7 +170,7 @@ function aboutsections() {
 	return [
 		[t("Launcher"),[
 			[t("Release"),"v"+APP_RELEASE],
-			[t("Package"),"com.homebrew.openlauncher, "+(app && app.version?app.version:"2.0.0")],
+			[t("Package"),"io.github.devic021.openhome, "+(app && app.version?app.version:"2.0.0")],
 			[t("Last update"),updated || t("Unknown")],
 			[t("Running as"),aboutpermissions()+", "+(typeof applist!=="undefined" && applist?applist.length:0)+t(" apps found")]
 		]],

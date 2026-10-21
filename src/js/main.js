@@ -14,7 +14,7 @@ let carrying=null;
 let droptimer=null;
 	  let noappperm=true;
 	  let turstedapp=false,rooted=false;
-let appid='com.homebrew.openlauncher'
+let appid='io.github.devic021.openhome'
 let appdir='/media/developer/apps/usr/palm/applications/'+appid;
 
  

@@ -12,7 +12,7 @@
 # Undo: umount /usr/palm/applications/com.webos.app.home, restore the three settings saved in
 # /var/lib/webosbrew/openlauncher-boot.orig, and delete this file.
 
-STUB=/media/developer/apps/usr/palm/applications/com.homebrew.openlauncher/access/replace/appstub
+STUB=/media/developer/apps/usr/palm/applications/io.github.devic021.openhome/access/replace/appstub
 HOME_APP=/usr/palm/applications/com.webos.app.home
 ORIG=/var/lib/webosbrew/openlauncher-boot.orig
 
@@ -44,6 +44,6 @@ if [ ! -f "$ORIG" ]; then
 fi
 
 luna-send -n 1 -w 5000 -f luna://com.webos.settingsservice/setSystemSettings \
-	'{"category":"general","settings":{"lastInputApp":"com.homebrew.openlauncher","physicalLastInputApp":"com.homebrew.openlauncher","homeAutoLaunch":"off"}}' \
+	'{"category":"general","settings":{"lastInputApp":"io.github.devic021.openhome","physicalLastInputApp":"io.github.devic021.openhome","homeAutoLaunch":"off"}}' \
 	< /dev/null > /dev/null 2>&1 && logger -t openlauncher-home "boot screen pointed at the launcher"
 exit 0

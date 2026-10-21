@@ -102,6 +102,16 @@ webOS's boot animation no longer plays.
 - `wallpapers.sh` — mounts the wallpaper disk **by UUID**, since webOS re-enumerates USB devices
   across a reboot and a device-node path fails with `Input/output error`
 
+### Packaging and distribution (new)
+
+`.github/workflows/release.yml` builds the `.ipk` on a version tag, generates the Homebrew Channel
+manifest from that exact package, and attaches both to the release. The manifest carries the
+package's SHA-256 and byte size, so one written by hand goes stale the moment the package is
+rebuilt; building both in the same job makes that impossible.
+
+`scripts/install-home.sh` does the home replacement in one command, and undoes it with `--undo`.
+`docs/apps-repo-entry.yml` is the submission for the Homebrew Channel's app repository.
+
 ### Developer tooling — `deploy.sh`, `cdp.js`, `shots.js` (new)
 
 `deploy.sh` syntax-checks every JavaScript file with `node --check` *before* sending it, because a
@@ -122,6 +132,15 @@ file that does not parse leaves a blank home screen recoverable only over SSH. `
   TV and the project, and checks GitHub for a newer release only when asked.
 
 ---
+
+## Changed from upstream's packaging
+
+- **Package id** is `io.github.devic021.openhome`, not upstream's `com.homebrew.openlauncher`.
+  Taking upstream's id in a shared repository would overwrite anyone's OpenLauncher without
+  warning; with its own id OpenHome installs beside it. Carry settings across with
+  **Backup → Export** and **Import**.
+- **Wallpaper disk** is found by the label `OPENHOME` rather than a UUID edited into the script by
+  hand, so no file has to be changed before use. A UUID still wins if one is set.
 
 ## Removed
 

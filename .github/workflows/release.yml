@@ -1,0 +1,75 @@
+# Build the installable package when a version tag is pushed, and attach it to the release
+# together with the manifest the Homebrew Channel reads.
+#
+# Why this is automated rather than done by hand: the manifest carries the package's SHA-256 and
+# its exact byte size. Both describe one specific .ipk, so a manifest written by hand goes stale
+# the moment the package is rebuilt, and the Homebrew Channel then refuses the download. Building
+# both in the same job makes that impossible.
+#
+# The manifest's ipkUrl is only the file name, so the two files must sit side by side in the same
+# release - which is what the upload step does.
+
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  APP_ID: io.github.devic021.openhome
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Check every script parses
+        # A file that does not parse would install happily and leave a blank home screen, which is
+        # recoverable only over SSH. Cheaper to catch here than on someone's television.
+        run: |
+          for f in src/js/*.js src/js/lib/*/*.js; do node --check "$f"; done
+          python3 -c "import json;json.load(open('src/appinfo.json'))"
+
+      - name: Build the package
+        run: |
+          npm install -g @webos-tools/cli
+          mkdir -p dist
+          ares-package src -o dist --no-minify
+          ls -l dist
+
+      - name: Install the manifest generator
+        run: |
+          VER=$(curl -sL https://api.github.com/repos/webosbrew/dev-toolbox-cli/releases/latest \
+            | python3 -c "import json,sys;print(json.load(sys.stdin)['tag_name'])")
+          curl -sLo gen-manifest.deb \
+            "https://github.com/webosbrew/dev-toolbox-cli/releases/download/${VER}/webosbrew-toolbox-gen-manifest_0.10.0-1_amd64.deb"
+          sudo dpkg -i gen-manifest.deb
+
+      - name: Write the manifest
+        run: |
+          IPK=$(ls dist/*.ipk)
+          webosbrew-toolbox-gen-manifest \
+            --pkgfile "$IPK" \
+            --icon "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/main/src/largeIcon.png" \
+            --link "https://github.com/${GITHUB_REPOSITORY}" \
+            --root optional \
+            --output "dist/${APP_ID}.manifest.json"
+          cat "dist/${APP_ID}.manifest.json"
+
+      - name: Attach both to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --title "OpenHome ${TAG#v}" --generate-notes
+          gh release upload "$TAG" dist/*.ipk "dist/${APP_ID}.manifest.json" --clobber
