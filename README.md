@@ -14,7 +14,9 @@ is a real 3840×2160 capture off that TV.
 > OpenLauncher, carry your configuration across with its **Settings → Backup → Export**, then
 > paste it into OpenHome's **Backup → Import**.
 
-![Home screen](docs/screenshots/home.jpg)
+[![Home screen](docs/screenshots/preview/home.jpg)](docs/screenshots/home.jpg)
+
+<sub>Every screenshot is clickable and opens the full 3840×2160 capture.</sub>
 
 ---
 
@@ -57,7 +59,7 @@ descriptions**, and lets you change them.
 
 ## The home screen
 
-![Home screen](docs/screenshots/home-clean.jpg)
+[![Home screen](docs/screenshots/preview/home-clean.jpg)](docs/screenshots/home-clean.jpg)
 
 Clock, date, weather with an hourly strip, and sunrise/sunset. The wallpaper rotates from a pool of
 photographs; an air-quality chip appears only when the air is worth mentioning.
@@ -72,14 +74,14 @@ correct even while the TV is showing another input.
 
 ### All apps
 
-![All apps](docs/screenshots/apps.jpg)
+[![All apps](docs/screenshots/preview/apps.jpg)](docs/screenshots/apps.jpg)
 
 Folders you make yourself, plus the TV's own groups (Inputs, TV, Settings, Sharing, Help) picked up
 automatically. Apps can be pinned to the dock, hidden, renamed and reordered.
 
 ### Weather
 
-![Forecast](docs/screenshots/forecast.jpg)
+[![Forecast](docs/screenshots/preview/forecast.jpg)](docs/screenshots/forecast.jpg)
 
 Press OK on the weather block for seven days, today's range, and the hour-by-hour strip.
 Data is [Open-Meteo](https://open-meteo.com) — no key and no account.
@@ -91,7 +93,7 @@ in **Settings → Weather → Location**; once you do, it is never touched again
 
 ### System panel
 
-![System panel](docs/screenshots/system.jpg)
+[![System panel](docs/screenshots/preview/system.jpg)](docs/screenshots/system.jpg)
 
 Press OK on the status strip. Network link with **latency** and traffic since boot, CPU with panel
 temperature, RAM and swap, storage across internal/system/USB, and the TV's model, firmware and
@@ -113,7 +115,7 @@ and nothing goes stale after a firmware update.
 
 ### Privacy
 
-![Privacy](docs/screenshots/tv-privacy.jpg)
+[![Privacy](docs/screenshots/preview/tv-privacy.jpg)](docs/screenshots/tv-privacy.jpg)
 
 Advertisement tracking, **Live Plus**, Live Promotion, **Home Promotion** ("Sponsored" tiles),
 Limit AD Tracking, Do Not Sell My Personal Information, Smart Tips and Content Recommendation —
@@ -121,7 +123,7 @@ nine switches, most of which the EU menu does not show.
 
 ### Screen & Home
 
-![Screen and Home](docs/screenshots/tv-screen.jpg)
+[![Screen and Home](docs/screenshots/preview/tv-screen.jpg)](docs/screenshots/tv-screen.jpg)
 
 **Screen Saver** — the one LG's menu has no item for. Also the no-signal screen saver, Energy
 Saving (backlight dimming), home animation, the standby light on the front of the set, LG's own
@@ -129,7 +131,7 @@ wallpaper, and the power-on sound volume.
 
 ### Picture
 
-![Picture](docs/screenshots/tv-picture.jpg)
+[![Picture](docs/screenshots/preview/tv-picture.jpg)](docs/screenshots/tv-picture.jpg)
 
 Picture Mode, Backlight, Contrast, Brightness, Colour, Sharpness, Colour Temperature and Gamma.
 
@@ -139,20 +141,20 @@ one TV. The pane tells you which one it is writing.
 
 ### Picture+
 
-![Picture plus](docs/screenshots/tv-picture-plus.jpg)
+[![Picture plus](docs/screenshots/preview/tv-picture-plus.jpg)](docs/screenshots/tv-picture-plus.jpg)
 
 LED Local Dimming, Colour Adjustment, Colour Gamut, Smooth Gradation, Dynamic Tone Mapping and the
 rest of the advanced panel controls.
 
 ### Accessibility
 
-![Accessibility](docs/screenshots/tv-accessibility.jpg)
+[![Accessibility](docs/screenshots/preview/tv-accessibility.jpg)](docs/screenshots/tv-accessibility.jpg)
 
 Audio Guidance with its volume, speed and pitch, high-contrast text, and greyscale.
 
 ### Sound
 
-![Sound](docs/screenshots/tv-sound.jpg)
+[![Sound](docs/screenshots/preview/tv-sound.jpg)](docs/screenshots/tv-sound.jpg)
 
 Automatic Volume Adjustment, **Dolby Atmos**, eARC support, equalizer, AI Acoustic Tuning, the
 digital audio format (MPEG / Dolby Digital / Dolby Digital+ / HE-AAC / Automatic), and installation
@@ -160,7 +162,7 @@ type — stand or wall, which changes how the TV processes sound.
 
 ### HDMI
 
-![HDMI](docs/screenshots/tv-hdmi.jpg)
+[![HDMI](docs/screenshots/preview/tv-hdmi.jpg)](docs/screenshots/tv-hdmi.jpg)
 
 **SIMPLINK (HDMI-CEC)** — this is why the TV jumps to the console by itself when you switch it on.
 **4:4:4 Pass Through per port**, so you can turn full chroma on only for the port the PC is on.
@@ -168,42 +170,42 @@ type — stand or wall, which changes how the TV processes sound.
 
 ### Power Off
 
-![Power](docs/screenshots/tv-power.jpg)
+[![Power](docs/screenshots/preview/tv-power.jpg)](docs/screenshots/tv-power.jpg)
 
 Auto Power Off, no-operation auto off, no-signal auto off, Screen Off (picture off while the sound
 keeps playing) and the screen-saver standby time.
 
 ### Network
 
-![Network](docs/screenshots/tv-network.jpg)
+[![Network](docs/screenshots/preview/tv-network.jpg)](docs/screenshots/tv-network.jpg)
 
 The live link with its address and whether the internet actually works, Wake on LAN, IPv6, and
 Phone Access.
 
 ### Wi-Fi
 
-![Wi-Fi](docs/screenshots/tv-wifi.jpg)
+[![Wi-Fi](docs/screenshots/preview/tv-wifi.jpg)](docs/screenshots/tv-wifi.jpg)
 
 Scans and lists networks with their security type and signal strength, connects with a password,
 and forgets saved networks.
 
 ### Bluetooth
 
-![Bluetooth](docs/screenshots/tv-bluetooth.jpg)
+[![Bluetooth](docs/screenshots/preview/tv-bluetooth.jpg)](docs/screenshots/tv-bluetooth.jpg)
 
 Starts a search, lists what is nearby with its type and address, pairs, connects and forgets.
 Paired devices are listed separately from the ones merely in range.
 
 ### Devices
 
-![Devices](docs/screenshots/tv-devices.jpg)
+[![Devices](docs/screenshots/preview/tv-devices.jpg)](docs/screenshots/tv-devices.jpg)
 
 What is on each HDMI port, whether it speaks CEC, and whether it is **connected, off** or awake.
 A device that announces itself gets its real name — a PlayStation 5 is listed as one.
 
 ### System
 
-![System settings](docs/screenshots/tv-system.jpg)
+[![System settings](docs/screenshots/preview/tv-system.jpg)](docs/screenshots/tv-system.jpg)
 
 Quick Start+, **Home / Store Mode** (leave it on Home — Store turns on the shop demo), Low Power
 Mode, the remote pointer with its speed and size, and Simple Mode.
@@ -212,7 +214,7 @@ Mode, the remote pointer with its speed and size, and Simple Mode.
 
 ## Launcher settings
 
-![Launcher settings](docs/screenshots/settings-clock.jpg)
+[![Launcher settings](docs/screenshots/preview/settings-clock.jpg)](docs/screenshots/settings-clock.jpg)
 
 Nine tabs of the launcher's own options — Clock, Date, Weather, Apps, Wallpaper, Screen, Backup, TV
 and About. Every setting has a hint behind the info icon next to it.
