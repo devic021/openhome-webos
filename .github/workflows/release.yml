@@ -28,6 +28,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        # tags, so a manual run can find the newest one
 
       - uses: actions/setup-node@v4
         with:
@@ -49,16 +51,22 @@ jobs:
 
       - name: Install the manifest generator
         run: |
-          VER=$(curl -sL https://api.github.com/repos/webosbrew/dev-toolbox-cli/releases/latest \
-            | python3 -c "import json,sys;print(json.load(sys.stdin)['tag_name'])")
-          curl -sLo gen-manifest.deb \
-            "https://github.com/webosbrew/dev-toolbox-cli/releases/download/${VER}/webosbrew-toolbox-gen-manifest_0.10.0-1_amd64.deb"
+          # The asset is found by matching its name rather than by composing a URL from a
+          # hard-coded version, which would quietly 404 the day they publish a new one.
+          URL=$(curl -sL https://api.github.com/repos/webosbrew/dev-toolbox-cli/releases/latest \
+            | python3 -c "import json,sys;print([a['browser_download_url'] for a in json.load(sys.stdin)['assets'] if 'gen-manifest' in a['name'] and a['name'].endswith('_amd64.deb')][0])")
+          echo "fetching $URL"
+          curl -sLo gen-manifest.deb "$URL"
           sudo dpkg -i gen-manifest.deb
+          # The package installs /usr/bin/webosbrew-gen-manifest - note the name is NOT the
+          # webosbrew-toolbox-gen-manifest the published guide calls it. Fail here, with a clear
+          # message, if that ever changes again.
+          command -v webosbrew-gen-manifest
 
       - name: Write the manifest
         run: |
           IPK=$(ls dist/*.ipk)
-          webosbrew-toolbox-gen-manifest \
+          webosbrew-gen-manifest \
             --pkgfile "$IPK" \
             --icon "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/main/src/largeIcon.png" \
             --link "https://github.com/${GITHUB_REPOSITORY}" \
@@ -70,6 +78,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          # A tag push gives the tag; a manual run gives a branch, so the newest tag is used
           TAG="${GITHUB_REF_NAME}"
+          case "${GITHUB_REF}" in refs/tags/*) ;; *) TAG=$(git describe --tags --abbrev=0) ;; esac
           gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --title "OpenHome ${TAG#v}" --generate-notes
           gh release upload "$TAG" dist/*.ipk "dist/${APP_ID}.manifest.json" --clobber
