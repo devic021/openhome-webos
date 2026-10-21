@@ -4,7 +4,7 @@
 // wallpaper, the screen, the TV, and the GitHub project. Some facts need the TV (model, firmware) or root (the backup file),
 // or the internet (the latest release, only when you press Check for updates); those say so when they are not available.
 
-const APP_RELEASE="1.0.0";            // the GitHub release this build belongs to; change it with each release
+const APP_RELEASE="1.0.1";            // the GitHub release this build belongs to; change it with each release
 // This fork's own repository. "Check for updates" asks GitHub for ITS newest release and
 // the Project / Report a problem rows link here, so pointing it upstream would offer the
 // wrong releases and send bug reports to the wrong people.
