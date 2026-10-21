@@ -1,6 +1,6 @@
 {
   "id": "io.github.devic021.openhome",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "vendor": "OpenHome",
   "spinnerOnLaunch":false,
   "type": "web",
