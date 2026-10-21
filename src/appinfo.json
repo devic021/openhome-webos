@@ -1,0 +1,25 @@
+{
+  "id": "com.homebrew.openlauncher",
+  "version": "2.0.0",
+  "vendor": "OpenHome",
+  "spinnerOnLaunch":false,
+  "type": "web",
+  "main": "index.html",
+  "requiredPermissions": ["all"],
+  "appCategory": ["home"],
+"resolution": [
+                "3840x2160",
+                "1920x1080",
+                "1280x720",
+		"854×480"
+        ],
+
+        "supportTouchMode": "full",
+	  "disableBackHistoryAPI": true,
+        "supportPortraitMode": true,
+  "title": "OpenHome",
+  "icon": "icon.png",
+  "largeIcon": "largeIcon.png",
+  "noSplashOnLaunch": true,
+  "supportGIP": true
+}

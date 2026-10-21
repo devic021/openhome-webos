@@ -1,0 +1,169 @@
+<!--SPDX-License-Identifier: WTFNMFPL-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>OpenLauncher</title>
+</head>
+
+
+<link rel="stylesheet" href="css/main.css">
+<!-- The visual overhaul; loaded last so it only restyles. Remove this one line for the old look. -->
+<link rel="stylesheet" href="css/theme.css">
+
+<body>
+	<!-- Wallpaper is a video (hardware decoded, unlike CSS background images), driven by startbackground() in background.js: network
+	     videos from aerials.js, then the local loop.mp4 from scripts/make-wallpaper-video.sh, then rotating images.
+
+	     Measured on-device: with all <script> tags in <head> (the old layout), the browser had to fetch+parse+execute all 19 of
+	     them, then finish parsing <body>, before this <video> element even existed - about 1.3s on a cold launch, before the
+	     hardware video decoder/plane had even been asked to start warming up (which itself then took another ~1s, even for this
+	     local, unstreamed file - see the Readme's Wallpaper section). Since #bgvideo is the very first thing in <body>, putting it
+	     ahead of every <script> tag (moved to the end of body below, a normal, safer place for them anyway) and starting it with
+	     this inline script - before any of those 19 files have even been requested - lets that hardware warm-up begin as early as
+	     the page can possibly make it happen, instead of serially after everything else. startbackground() still runs later, once
+	     background.js loads, and decides the real Video source (may leave this playing, or hand off to it) same as before. -->
+	<video id="bgvideo" autoplay muted playsinline></video>
+	<script>bgvideo.src="access/wallpaper/loop.mp4";bgvideo.play().catch(()=>{});</script>
+	<div id="prefetchmaindiv">
+	<!-- Hack : make appluncher always loaded (just hidden) so it can be faster when i open/close it -->
+	<div id="maindiv">
+	<input type="checkbox"  id="realappbarbtu" >
+	<!-- clock and date are full-screen layers placed by settings.js; the date sits in #clockstack (under the clock) or moves to #datelayer -->
+	<div id="clock" class="layer" data-v="center" data-h="center">
+		<div id="clockstack" class="clockstyle-digital">
+			<div id="clocktime"><span id="clockh"></span><span class="sep">:</span><span id="clockm"></span><span class="sep sepsec">:</span><span id="clocktail"><span id="clocks"></span><span id="clockap"></span></span></div>
+			<svg id="clockanalog" viewBox="0 0 200 200">
+				<circle class="face" cx="100" cy="100" r="97"></circle>
+				<g id="clockticks"></g>
+				<g id="clocknums"></g>
+				<line id="clockhh" class="hand" x1="100" y1="100" x2="100" y2="56"></line>
+				<line id="clockhm" class="hand" x1="100" y1="100" x2="100" y2="30"></line>
+				<line id="clockhs" class="hand" x1="100" y1="112" x2="100" y2="22"></line>
+				<circle class="hub" cx="100" cy="100" r="5"></circle>
+			</svg>
+			<p id="clockdate"></p>
+			<div id="weather" style="display:none">
+				<div id="weatherrow"><span id="weathericon"></span><span id="weathertemp"></span></div>
+				<div id="weatherdetail"></div>
+				<div id="forecast" style="display:none"></div>
+			</div>
+		</div>
+	</div>
+	<div id="datelayer" class="layer" data-v="center" data-h="center"></div>
+	<div id="weatherlayer" class="layer" data-v="center" data-h="center" style="display:none"></div>
+	<div id="appluncher"></div>
+	<div id="folderbar"></div>
+	<div id="drawertools">
+		<button id="settingsbtn" title="Settings" aria-label="Settings" data-i18n-title><img src="access/gear.svg" alt=""></button>
+		<button id="editbtn" data-i18n>Edit</button>
+	</div>
+	<!-- info about the wallpaper video: the button shows on the home screen, the card opens from it -->
+	<button id="infobtn" title="About this wallpaper" aria-label="About this wallpaper" data-i18n-title></button>
+	<div id="infocard">
+		<div id="infohead"><span data-i18n>Now playing</span><button id="infoclose" title="Close" aria-label="Close" data-i18n-title></button></div>
+		<div id="infoname"></div>
+		<div id="infosource"></div>
+		<div id="infoseekrow">
+			<input type="range" id="infoseekbar" min="0" max="1000" value="0" step="1">
+			<span id="infotime">0:00 / 0:00</span>
+		</div>
+		<div id="infoactions"><button id="infoloop" aria-pressed="false"></button><button id="infoskip"></button></div>
+	</div>
+	<div id="appmenubackdrop"></div>
+	<div id="appmenu">
+		<div id="appmenutitle"></div>
+		<div id="appmenulist"></div>
+	</div>
+	<div id="folderbackdrop"></div>
+	<div id="folderpicker">
+		<div id="folderhead">
+			<img id="folderappicon" alt="">
+			<div id="folderheadtext"><span id="folderapp" data-i18n>Move to folder</span><small id="foldercurrent"></small></div>
+			<button id="folderclose" title="Close" aria-label="Close" data-i18n-title></button>
+		</div>
+		<div id="folderlist"></div>
+		<div id="foldermake">
+			<span id="foldermakelabel" data-i18n>New folder</span>
+			<div id="foldersuggest"></div>
+		</div>
+		<div id="foldernew"><input type="text" id="foldernewname" class="stext" placeholder="Folder name" data-i18n-placeholder><button id="foldernewbtn" class="sopt" data-i18n>Create</button></div>
+		<div id="foldermessage" class="sstatus"></div>
+	</div>
+	<div id="movetoast"></div>
+	<div id="renamebackdrop"></div>
+	<div id="renamebox">
+		<div id="renamehead">
+			<img id="renameappicon" alt="">
+			<div id="renameheadtext"><span id="renametitle" data-i18n>Rename</span><small id="renameoriginal"></small></div>
+			<button id="renameclose" title="Close" aria-label="Close" data-i18n-title></button>
+		</div>
+		<input type="text" id="renameinput" class="stext" maxlength="40" placeholder="Name" data-i18n-placeholder>
+		<div id="renameactions"><button id="renamesave" class="sopt" data-i18n>Save</button><button id="renamereset" class="sopt" data-i18n>Use the original name</button></div>
+		<div id="renamemessage" class="sstatus"></div>
+	</div>
+	<div id="settingsbackdrop"></div>
+	<div id="settingspanel">
+		<div id="settingshead"><span data-i18n>OpenLauncher settings</span><button id="settingsclose" title="Close" aria-label="Close" data-i18n-title></button></div>
+		<div id="settingsbody">
+			<div id="settingstabs"></div>
+			<div id="settingspane"></div>
+			<div id="settingspreview"></div>
+		</div>
+		<div id="settingshint"><span id="settingshinticon"></span><span id="settingshinttext"></span></div>
+	</div>
+	<div id="carryhint" data-i18n>Move over another app to put it there. Hold on it to drop it.</div>
+	<div id="recentrow"><p id="recentlabel">Nastavi gledanje</p></div>
+	<div id="appbar">
+
+
+		<label for="realappbarbtu">
+			<div class="appitem">
+				<img src="access/appbar.svg" class="appicon" >
+<p class="appname" data-i18n>Apps</p>
+			</div>
+		</label>
+	</div>
+
+	</div>
+	</div>
+
+<script src="js/wallpaper.js"></script>
+<script src="js/aerials.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/lib/QwQwebosTV.js/main.js"></script>
+<script src="js/clock.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/preview.js"></script>
+<script src="js/backup.js"></script>
+<script src="js/folders.js"></script>
+<script src="js/systemapps.js"></script>
+<script src="js/rename.js"></script>
+<script src="js/replacehome.js"></script>
+<script src="js/about.js"></script>
+<script src="js/dpad.js"></script>
+<script src="js/weathericons.js"></script>
+<script src="js/weather.js"></script>
+<script src="js/airquality.js"></script>
+<script src="js/background.js"></script>
+<script src="js/photos.js"></script>
+<script src="js/photowall.js"></script>
+<script src="js/photocache.js"></script>
+<script src="js/info.js"></script>
+<script src="js/quick.js"></script>
+<script src="js/status.js"></script>
+<script src="js/screen.js"></script>
+<script src="js/main.js"></script>
+<!-- wraps background.js's switch points to cross-fade the wallpaper; must load after it -->
+<script src="js/fade.js"></script>
+<script src="js/forecast.js"></script>
+<script src="js/homesettings.js"></script>
+<script src="js/tooltip.js"></script>
+<script src="js/syspanel.js"></script>
+<script src="js/tvsettings.js"></script>
+</body>
+
+</html>

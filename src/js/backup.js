@@ -1,0 +1,177 @@
+//SPDX-License-Identifier: WTFNMFPL
+// Backup: export and import the launcher's settings (the `prefs` from settings.js and the pins/hidden/order/folders in
+// `settings`) as one JSON document. With root the document is also written to / read from BACKUP_FILE; without root the
+// JSON is shown in a text box to copy out, and text pasted into it can be imported.
+
+const BACKUP_FILE='/media/developer/openlauncher-settings.json';
+const BACKUP_VERSION=1;
+
+let backuptext="";
+let backupmessage="";
+
+function makebackup(){
+	return JSON.stringify({app:"OpenLauncher",version:BACKUP_VERSION,prefs:changedprefs(),layout:settings},null,1);
+}
+
+function cleanstrings(list){
+	return Array.isArray(list)?list.filter((x) => typeof x==="string"):null;
+}
+
+// the names you gave apps: only non-empty strings, cut to the length the launcher allows
+function cleannames(names){
+	const clean={};
+	if(names && typeof names==="object"){
+		Object.keys(names).forEach((id) => {
+			const name=typeof names[id]==="string"?names[id].trim().slice(0,APP_NAME_MAX):"";
+			if(name!==""){ clean[id]=name; }
+		});
+	}
+	return clean;
+}
+
+// Check a backup document. Returns {error} or {prefs, layout, count}; anything the current schema doesn't offer is dropped.
+function parsebackup(text){
+	let data;
+	try {
+		data=JSON.parse(text);
+	} catch(e) {
+		return {error:t("That is not valid JSON.")};
+	}
+	if(!data || data.app!=="OpenLauncher"){
+		return {error:t("That is not an OpenLauncher backup.")};
+	}
+	if(!(data.version<=BACKUP_VERSION)){
+		return {error:t("That backup is from a newer version of the launcher.")};
+	}
+	const restored={};
+	let count=0;
+	SETTINGS_SCHEMA.forEach((section) => section.items.forEach((item) => {
+		if(item.key && data.prefs && (item.key in data.prefs) && validpref(item,data.prefs[item.key])){
+			restored[item.key]=data.prefs[item.key];
+			count++;
+		}
+	}));
+	const saved=data.layout || {};
+	const folders=Array.isArray(saved.folders)?saved.folders.filter((f) => f && typeof f.id==="string" && typeof f.name==="string").map((f) => ({id:f.id,name:f.name.slice(0,40)})):[];
+	const folderids=folders.map((f) => f.id);
+	const appfolder={};
+	if(saved.appfolder && typeof saved.appfolder==="object"){
+		Object.keys(saved.appfolder).forEach((appid) => {
+			if(typeof saved.appfolder[appid]==="string" && folderids.indexOf(saved.appfolder[appid])!==-1){ appfolder[appid]=saved.appfolder[appid]; }
+		});
+	}
+	return {
+		prefs:restored,
+		count:count,
+		layout:{
+			pinned:saved.pinned===null?null:cleanstrings(saved.pinned),
+			hidden:cleanstrings(saved.hidden) || [],
+			order:cleanstrings(saved.order) || [],
+			folders:folders,
+			appfolder:appfolder,
+			names:cleannames(saved.names),
+			sysplaced:cleanstrings(saved.sysplaced) || [],
+			sysdismissed:cleanstrings(saved.sysdismissed) || []
+		}
+	};
+}
+
+function applybackup(parsed){
+	prefs=Object.assign({},PREF_DEFAULTS,parsed.prefs);
+	saveprefs();
+	settings.pinned=parsed.layout.pinned;
+	settings.hidden=parsed.layout.hidden;
+	settings.order=parsed.layout.order;
+	settings.folders=parsed.layout.folders;
+	settings.appfolder=parsed.layout.appfolder;
+	settings.names=parsed.layout.names;
+	settings.sysplaced=parsed.layout.sysplaced;
+	settings.sysdismissed=parsed.layout.sysdismissed;
+	savesettings();
+	applyprefs();
+	render();
+}
+
+// single-quote a string for the shell
+function shellquote(text){
+	return "'"+String(text).replace(/'/g,"'\\''")+"'";
+}
+
+async function savebackupfile(text){
+	const result=await execasroot("printf '%s' "+shellquote(text)+" > "+BACKUP_FILE);
+	return !!result && result.returnValue!==false && !result.errorText && !result.exitCode;
+}
+
+async function readbackupfile(){
+	const result=await execasroot("cat "+BACKUP_FILE);
+	if(!result || result.returnValue===false || result.errorText || result.exitCode){ return null; }
+	return result.stdoutString || null;
+}
+
+async function exportbackup(){
+	backuptext=makebackup();
+	try { localStorage.setItem(LAST_BACKUP_KEY,String(Date.now())); } catch(e) {}
+	backupmessage=t("Backup created. Copy the text below and keep it somewhere safe.");
+	if(rooted){
+		let saved=false;
+		try { saved=await savebackupfile(backuptext); } catch(e) {}
+		backupmessage=saved?t("Saved to ")+BACKUP_FILE+t(". The same text is below."):t("Could not write ")+BACKUP_FILE+t(". The backup text is below.");
+	}
+	renderpane();
+}
+
+async function loadbackupfile(){
+	let text=null;
+	try { text=await readbackupfile(); } catch(e) {}
+	if(text===null){
+		backupmessage=t("No backup found in ")+BACKUP_FILE+".";
+	} else {
+		backuptext=text;
+		backupmessage=t("Loaded ")+BACKUP_FILE+t(". Press Import to apply it.");
+	}
+	renderpane();
+}
+
+function importbackup(){
+	const parsed=parsebackup(backuptext);
+	if(parsed.error){
+		backupmessage=parsed.error;
+	} else {
+		applybackup(parsed);
+		backupmessage=t("Imported ")+parsed.count+t(" settings and the app layout.");
+	}
+	confirming=null;
+	renderpane();
+}
+
+// the Backup tab's row (see the "custom" item type in settings.js)
+function renderbackup(box,item){
+	const buttons=el("div","scontrol");
+	buttons.appendChild(optionbutton(t("Export"),false,() => exportbackup(),"download"));
+	if(confirming===item){
+		buttons.appendChild(el("span","sconfirm",t("Replace all current settings?")));
+		const yes=optionbutton(t("Yes, replace"),false,() => importbackup());
+		yes.classList.add("danger");
+		buttons.appendChild(yes);
+		buttons.appendChild(optionbutton(t("Cancel"),false,() => {
+			confirming=null;
+			renderpane();
+		}));
+	} else {
+		buttons.appendChild(optionbutton(t("Import"),false,() => {
+			confirming=item;
+			renderpane();
+		},"upload"));
+	}
+	if(rooted){
+		buttons.appendChild(optionbutton(t("Load file"),false,() => loadbackupfile(),"open"));
+	}
+	box.appendChild(buttons);
+	const area=el("textarea","sarea");
+	area.value=backuptext;
+	area.setAttribute("spellcheck","false");
+	area.setAttribute("placeholder",t("Press Export to see a backup here, or paste one in and press Import."));
+	area.addEventListener("input",() => {backuptext=area.value;});
+	box.appendChild(area);
+	if(backupmessage){ box.appendChild(el("div","sstatus",backupmessage)); }
+}

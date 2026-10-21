@@ -1,0 +1,12 @@
+# Built by scripts/make-wallpaper-video.sh from the photographs beside it. A generated 4K
+# video does not belong in git, and the launcher works without it: with no loop.mp4 the
+# offline wallpaper falls back to the same photographs as stills (background.js, bgfailed).
+src/access/wallpaper/loop.mp4
+
+# capture and verification artefacts: they hold the real network and the
+# addresses of whatever Bluetooth devices happened to be in range
+docs/screenshots/.onscreen-text*.txt
+.lastdeploy
+
+# macOS
+.DS_Store

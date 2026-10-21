@@ -1,0 +1,1122 @@
+/*SPDX-License-Identifier: GPL-3.0-or-later*/
+/* Copyright (C) 2026 the OpenHome contributors */
+/* OpenLauncher - the visual overhaul.
+   Loaded AFTER main.css, so it only overrides visual properties; no layout maths, DOM or
+   JS behaviour is touched. Turn this one <link> off in index.html to get the old look back.
+   Code comments are English (to match the repo); all on-screen text is Serbian. */
+
+:root{
+	/* frosted-glass surfaces and hairline borders used across the UI */
+	--glass:        rgba(16,18,26,0.60);
+	--glass-strong: rgba(14,16,24,0.84);
+	--hair:         rgba(255,255,255,0.14);
+	--tile-radius:  22%;
+	--fade-ms:      650ms;     /* keep in step with FADE in js/fade.js */
+}
+
+/* ---------- wallpaper cross-fade (opacity driven by js/fade.js) ---------- */
+#bgvideo{
+	background-color: #000;                       /* a clean black to fade through between clips */
+	opacity: 1;
+	transition: opacity var(--fade-ms) ease;
+}
+
+/* ---------- bottom scrim: makes the dock, the Recent row and a bottom clock readable over
+             any wallpaper, bright sky included. Drawn behind the bar's own tiles. ---------- */
+#appbar::after{
+	content:"";
+	position:absolute;
+	left:-1vw; right:-1vw; bottom:0;
+	height:46vh;
+	z-index:-2;
+	pointer-events:none;
+	background: linear-gradient(to top,
+		rgba(0,0,0,0.80) 0%,
+		rgba(0,0,0,0.52) 26%,
+		rgba(0,0,0,0.00) 100%);
+}
+
+/* ---------- the bottom bar becomes a frosted dock ---------- */
+#appbar{
+	background: linear-gradient(to top, rgba(18,20,28,0.68), rgba(18,20,28,0.34));
+	border: 1px solid var(--hair);
+	border-bottom: none;
+	border-radius: 2.4vh 2.4vh 0 0;
+	box-shadow: 0 -0.3vh 3vh rgba(0,0,0,0.50), inset 0 1px 0 rgba(255,255,255,0.07);
+	-webkit-backdrop-filter: blur(22px) saturate(1.2);
+	backdrop-filter: blur(22px) saturate(1.2);
+}
+
+/* ---------- app tiles: rounded icons, a soft lift, a clean accent focus ---------- */
+.appicon{
+	border-radius: var(--tile-radius);
+	box-shadow: inset 0 0 0 1px rgba(255,255,255,0.10), 0 1vh 2.2vh rgba(0,0,0,0.45);
+	transition: box-shadow .18s ease, transform .18s ease;
+}
+.appitem{ transition: transform .18s ease; }
+#appbar .appitem, #recentrow .appitem{ transform-origin: center bottom; }
+
+.appname{
+	letter-spacing: 0.01em;
+	opacity: 0.92;
+	text-shadow: 0 1px 4px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.6);
+}
+
+/* drop the old filled-box focus everywhere; we lift + glow the icon instead */
+#appbar .appitem:hover, #recentrow .appitem:hover, #appluncher .appitem:hover,
+.appitem.dfocus{
+	background-color: transparent !important;
+	box-shadow: none;
+	outline: none;
+}
+.appitem:hover, .appitem.dfocus{ transform: scale(1.12); z-index: 6; }
+#appluncher .appitem:hover, #appluncher .appitem.dfocus{ transform: scale(1.08); }   /* gentler inside the scrolling drawer */
+.appitem:hover .appicon, .appitem.dfocus .appicon{
+	box-shadow:
+		inset 0 0 0 0.3vh rgba(var(--accent),0.95),
+		0 0 0 0.5vh rgba(var(--accent),0.35),
+		0 1.6vh 3.4vh rgba(0,0,0,0.60);
+}
+.appitem:hover .appname, .appitem.dfocus .appname{ opacity: 1; }
+
+/* ---------- clock + date: crisper, with a soft vignette so it stays readable top-left ---------- */
+#clockstack{ position: relative; }
+#clockstack::before{
+	content:"";
+	position:absolute;
+	z-index:-1;
+	left:-5vw; right:-5vw; top:-4vh; bottom:-4vh;
+	pointer-events:none;
+	background: radial-gradient(120% 120% at 24% 34%, rgba(0,0,0,0.50), rgba(0,0,0,0) 70%);
+}
+#clocktime{
+	letter-spacing: -0.01em;
+	text-shadow: 0 0.3vh 1.3vh rgba(0,0,0,0.78), 0 2px 6px rgba(0,0,0,0.6);
+}
+#clockdate{
+	font-size: 2.4vh;
+	opacity: 0.96;
+	letter-spacing: 0.02em;
+	text-shadow: 0 2px 8px rgba(0,0,0,0.85);
+}
+/* the Serbian weekday is lowercase by locale ("utorak, ..."); capitalise just the first letter for the label */
+#clockdate::first-letter{ text-transform: uppercase; }
+
+/* weather: accent icon, readable values */
+#weathericon{ color: rgb(var(--accent)); }
+#weathertemp{ text-shadow: 0 2px 8px rgba(0,0,0,0.85); }
+#weatherdetail{ opacity: 0.95; }
+
+/* ---------- Recent row label ---------- */
+#recentlabel{
+	color: rgb(var(--accent));
+	opacity: 1;
+	font-size: 1.8vh;
+}
+
+/* ---------- drawer, folder bar and dialogs: one consistent frosted-glass look ---------- */
+#appluncher{
+	border-radius: 2vh;
+	-webkit-backdrop-filter: blur(26px) saturate(1.15);
+	backdrop-filter: blur(26px) saturate(1.15);
+}
+#folderbar{
+	border-bottom: 1px solid var(--hair);
+	border-radius: 0 0 2vh 2vh;
+	-webkit-backdrop-filter: blur(22px) saturate(1.15);
+	backdrop-filter: blur(22px) saturate(1.15);
+}
+#settingspanel, #folderpicker, #renamebox, #appmenu, #infocard, #movetoast{
+	box-shadow: 0 2vh 6vh rgba(0,0,0,0.6);
+	-webkit-backdrop-filter: blur(30px) saturate(1.2);
+	backdrop-filter: blur(30px) saturate(1.2);
+}
+#settingsbackdrop, #folderbackdrop, #renamebackdrop, #appmenubackdrop{
+	-webkit-backdrop-filter: blur(2px);
+	backdrop-filter: blur(2px);
+}
+
+/* ---------- home-screen buttons: rounder, with the same glass ---------- */
+#editbtn, #settingsbtn, #infobtn{
+	border-radius: 1vh;
+	-webkit-backdrop-filter: blur(14px);
+	backdrop-filter: blur(14px);
+}
+
+/* =====================================================================
+   Round 2: Manrope type, paged dock, rich weather icons, nicer drawer
+   ===================================================================== */
+
+/* ---------- type: Manrope variable (200-800), so weights can actually vary ---------- */
+@font-face{
+	font-family:"Manrope";
+	font-style:normal;
+	font-weight:200 800;
+	font-display:swap;
+	src:url(../access/manrope-latin-ext.woff2) format("woff2");
+	unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face{
+	font-family:"Manrope";
+	font-style:normal;
+	font-weight:200 800;
+	font-display:swap;
+	src:url(../access/manrope-latin.woff2) format("woff2");
+	unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+body,#maindiv,#prefetchmaindiv{ font-family:"Manrope",PlusJakartaSans,sans-serif; font-weight:500; }
+/* the clock is the one place a light cut reads better: big, calm, not shouty */
+#clocktime{ font-weight:300; letter-spacing:-0.02em; }
+#clockdate{ font-weight:500; }
+#weathertemp{ font-weight:600; }
+#weatherdetail{ font-weight:500; }
+.appname{ font-weight:500; }
+#recentlabel{ font-weight:700; }
+#settingshead,.aboutname,#infoname,#appmenutitle,#folderapp,#renametitle{ font-weight:600; }
+.sheading,.chip,.stab,.sopt{ font-weight:600; }
+
+/* ---------- Recent row: a little smaller than the dock, so the dock is the hero ---------- */
+#recentrow{ grid-template-columns:repeat(auto-fill,var(--recenttile,var(--bartile))); }
+
+/* ---------- paged dock: the dots along the dock's lower edge ---------- */
+#barpages{
+	display:none;
+	position:absolute;
+	left:1vw;
+	width:calc(100vw - 2vw);
+	bottom:0.4vh;
+	z-index:6;
+	justify-content:center;
+	align-items:center;
+	gap:0.9vw;
+}
+#maindiv.has-barpages #barpages{ display:flex; }
+#realappbarbtu:checked ~ #barpages{ display:none !important; }
+.barpagedot{
+	width:1vh;
+	height:1vh;
+	border-radius:50%;
+	background-color:rgba(255,255,255,0.32);
+	box-shadow:0 1px 3px rgba(0,0,0,0.6);
+	transition:background-color .2s ease,transform .2s ease;
+}
+.barpagedot.on{ background-color:rgb(var(--accent)); transform:scale(1.4); }
+#maindiv.idle #barpages{ filter:brightness(var(--idledim,0.3)); }
+#maindiv.idle-hidebar #barpages{ opacity:0; }
+
+/* ---------- weather: the illustrated icons want room and their own colours ---------- */
+#weathericon svg{ width:6.2vh; height:6.2vh; }
+#weathericon svg.rich{ fill:none; filter:drop-shadow(0 3px 6px rgba(0,0,0,0.5)); }
+#weatherrow{ gap:0.8vw; }
+
+/* ---------- app drawer: a roomier sheet with an accent glow and a soft entrance ---------- */
+#appluncher{
+	background-image:radial-gradient(120% 70% at 50% 0%, rgba(var(--accent),0.13), rgba(0,0,0,0) 62%);
+	box-shadow:inset 0 1px 0 rgba(255,255,255,0.07), 0 2vh 6vh rgba(0,0,0,0.5);
+	padding-top:1.5vh;
+}
+#realappbarbtu:checked ~ #appluncher{ animation:drawer-in .26s ease both; }
+@keyframes drawer-in{ from{ opacity:0; transform:translateY(2.2vh); } to{ opacity:1; transform:none; } }
+
+/* the strip above the drawer becomes its toolbar, with a title and bigger chips */
+#folderbar{
+	height:9vh;
+	padding:0 2.5vw;
+	gap:1vw;
+	background-image:linear-gradient(to bottom, rgba(255,255,255,0.07), rgba(255,255,255,0));
+}
+#folderbar::before{
+	/* CSS cannot call t(), so the word comes from a custom property that i18n.js sets. The
+	   fallback is the English text, so the title is still right if the script never runs. */
+	content:var(--apps-title,"Apps");
+	flex:0 0 auto;
+	margin-right:1.2vw;
+	font-size:3vh;
+	font-weight:600;
+	letter-spacing:0.01em;
+	color:rgb(255,255,255);
+	text-shadow:0 2px 6px rgba(0,0,0,0.6);
+}
+#maindiv.hasfolders #appluncher{ top:10vh; height:calc(100vh - var(--barh) - 10vh); }
+.chip{ font-size:2.4vh; padding:1vh 1.6vw; }
+.chip.on{ box-shadow:0 0 0 0.35vh rgba(var(--accent),0.3); }
+.chipicon{ width:3vh; height:3vh; }
+
+/* ---------- fixes after seeing it on the panel ---------- */
+/* The dock is tall now, so the corner buttons sat on top of its last tiles.
+   The info button moves to the free top-right corner (the clock is top-left)... */
+#infobtn{ top:3vh; right:2vw; bottom:auto; }
+#infocard{ top:11vh; right:2vw; bottom:auto; }
+/* ...and the drawer's Settings/Edit buttons float just above the dock instead of over it. */
+#drawertools{ bottom:calc(var(--barh) + 1.5vh); }
+
+/* The drawer was a full-height sheet with one row of apps and a lot of void under it.
+   Let it hug its contents and only scroll once it really is taller than the screen. */
+#appluncher{
+	height:auto;
+	max-height:calc(100vh - var(--barh) - 3vh);
+	padding-bottom:2vh;
+}
+#maindiv.hasfolders #appluncher{
+	top:10vh;
+	height:auto;
+	max-height:calc(100vh - var(--barh) - 12vh);
+}
+/* auto-fill ROWS kept inventing empty rows to fill the sheet; implicit rows of the same
+   height let the grid (and so the sheet) end right after the last app. */
+#appluncher{
+	grid-template-rows:none;
+	grid-auto-rows:calc(var(--menutile) * var(--menurow));
+	align-content:start;
+}
+
+/* =====================================================================
+   Round 3: device status strip, smaller tiles, and a much snappier feel
+   ===================================================================== */
+
+/* ---------- speed ----------
+   backdrop-filter over big surfaces is what made this feel sluggish: the TV has to re-blur a
+   4K-sized backdrop every frame. The panels underneath are nearly opaque anyway, so the blur
+   was buying almost nothing - dropping it costs no looks and gives back the frame rate. */
+#appbar, #appluncher, #folderbar,
+#settingspanel, #folderpicker, #renamebox, #appmenu, #infocard, #movetoast,
+#settingsbackdrop, #folderbackdrop, #renamebackdrop, #appmenubackdrop,
+#editbtn, #settingsbtn, #infobtn{
+	-webkit-backdrop-filter:none;
+	backdrop-filter:none;
+}
+/* a touch more body in the dock now that nothing blurs behind it */
+#appbar{ background:linear-gradient(to top, rgba(18,20,28,0.82), rgba(18,20,28,0.52)); }
+
+:root{ --fade-ms:340ms; }                       /* wallpaper cross-fade, in step with js/fade.js */
+.appitem{ transition:transform .11s ease; }
+.appicon{ transition:box-shadow .11s ease, transform .11s ease; }
+#realappbarbtu:checked ~ #appluncher{ animation:drawer-in .15s ease both; }
+@keyframes drawer-in{ from{ opacity:0; transform:translateY(1.2vh); } to{ opacity:1; transform:none; } }
+#settingspanel, #settingsbackdrop{ transition:opacity .13s ease; }
+#movetoast{ transition:opacity .14s ease, transform .14s ease; }
+.chip, .sopt, .stab, #editbtn, #settingsbtn, #infobtn{ transition:background-color .11s ease; }
+
+/* ---------- the info button goes back above the dock, freeing the top-right for the status strip.
+             (#drawertools lives in the same spot, but only while the drawer is open, when this
+             button is hidden - so the two never collide.) ---------- */
+#infobtn{ top:auto; bottom:calc(var(--barh) + 1.5vh); right:2vw; }
+#infocard{ top:auto; bottom:calc(var(--barh) + 9vh); right:2vw; }
+
+/* ---------- device status strip, top right ---------- */
+#statusbar{
+	position:absolute;
+	top:3.2vh;
+	right:2.5vw;
+	z-index:4;
+	display:flex;
+	align-items:center;
+	gap:1.3vw;
+	padding:1.1vh 1.7vw;
+	box-sizing:border-box;
+	border-radius:99px;
+	color:rgb(255,255,255);
+	background-color:rgba(16,18,26,0.45);
+	border:1px solid rgba(255,255,255,0.10);
+	box-shadow:0 1vh 3vh rgba(0,0,0,0.35);
+	text-shadow:0 1px 4px rgba(0,0,0,0.8);
+	pointer-events:none;
+}
+#realappbarbtu:checked ~ #statusbar{ display:none; }
+.stlink{ display:flex; align-items:center; gap:0.7vw; }
+.sticon{ display:block; width:3.6vh; height:3.6vh; flex:0 0 auto; color:rgb(var(--accent)); }
+.sticon svg{ display:block; width:100%; height:100%; }
+.sttext{ display:flex; flex-direction:column; line-height:1.15; }
+.sttext b{ font-size:2vh; font-weight:600; }
+.sttext small{ font-size:1.5vh; opacity:0.75; }
+.stsep{ width:1px; height:3.6vh; background-color:rgba(255,255,255,0.16); }
+.stgauge{ display:flex; flex-direction:column; gap:0.45vh; min-width:7.5vw; }
+.stname{ font-size:1.35vh; letter-spacing:0.09em; text-transform:uppercase; opacity:0.7; }
+.stmeter{ height:0.7vh; border-radius:99px; background-color:rgba(255,255,255,0.18); overflow:hidden; }
+.stmeter i{ display:block; height:100%; border-radius:99px; background-color:rgb(var(--accent)); transition:width .3s ease; }
+.stgauge.hot .stmeter i{ background-color:#FF6B6B; }
+.stvalue{ font-size:1.6vh; font-weight:600; opacity:0.95; }
+/* it dims and hides with the rest of the UI (screen.js) */
+#statusbar{ transition:opacity 3s ease, filter 3s ease; }
+#maindiv.idle #statusbar{ filter:brightness(var(--idledim,0.3)); }
+#maindiv.idle-hidebar #statusbar{ opacity:0; }
+/* The clock vignette still had colour at its edges, which showed as a grey box over a bright
+   wallpaper. Fade it out well inside the box so there is no edge at all. */
+#clockstack::before{
+	left:-8vw; right:-8vw; top:-6vh; bottom:-6vh;
+	background:radial-gradient(58% 58% at 26% 38%, rgba(0,0,0,0.55), rgba(0,0,0,0) 100%);
+}
+/* The dock holds `barPerPage` slots but usually fewer apps, which left a gap on the right.
+   Let the grid make exactly as many columns as there are tiles, so justify-content can centre
+   them inside the full-width dock. (No transform here: pixel shift owns #appbar's transform.) */
+#appbar{
+	grid-template-columns:none;
+	grid-auto-flow:column;
+	grid-auto-columns:var(--bartile);
+}
+/* a lighter vignette: enough to hold the clock over a busy frame, not a smudge over a bright one */
+#clockstack::before{ background:radial-gradient(58% 58% at 26% 38%, rgba(0,0,0,0.42), rgba(0,0,0,0) 100%); }
+
+/* ---------- navigation fix ----------
+   dpad.js picks the next icon geometrically: for Right it wants a tile whose left edge is past
+   the focused tile's right edge. Scaling the .appitem itself made its box ~9px wider on each
+   side, which swallowed the immediate neighbour, so Right skipped every other icon.
+   Scale the icon INSIDE the tile instead: the tile's box stays exactly where dpad expects it.
+   Dropping `paint` containment while focused also lets the accent glow show instead of being
+   clipped at the tile's edge. */
+.appitem:hover, .appitem.dfocus,
+#appluncher .appitem:hover, #appluncher .appitem.dfocus{
+	transform:none;
+	contain:layout style;
+	z-index:6;
+}
+.appitem:hover .appicon, .appitem.dfocus .appicon{ transform:scale(1.12); }
+#appluncher .appitem:hover .appicon, #appluncher .appitem.dfocus .appicon{ transform:scale(1.08); }
+/* in the dock the icon grows upwards, away from its label */
+#appbar .appitem:hover .appicon, #appbar .appitem.dfocus .appicon,
+#recentrow .appitem:hover .appicon, #recentrow .appitem.dfocus .appicon{ transform-origin:center bottom; }
+
+/* ---------- status strip: throughput chip, and tighter gauges now that there are more of them ---------- */
+.stgauge{ min-width:6.2vw; }
+.stvalue{ font-size:1.5vh; white-space:nowrap; }
+.stname{ font-size:1.25vh; }
+#statusbar{ gap:1vw; padding:1vh 1.4vw; }
+.sttext b{ font-size:1.9vh; }
+.sttext small{ font-size:1.4vh; }
+.stflow{ display:flex; flex-direction:column; gap:0.3vh; line-height:1.1; font-variant-numeric:tabular-nums; }
+.stflow span{ display:flex; align-items:center; gap:0.35vw; font-size:1.6vh; white-space:nowrap; }
+.stflow i{ font-style:normal; font-size:1.5vh; opacity:0.85; }
+.stdown i{ color:rgb(var(--accent)); }
+.stup i{ color:#8FE39A; }
+
+/* Narrower tiles cut more names short, so the label gets a slightly smaller face and may use
+   the padding either side of its tile - enough to bring most full names back. */
+#appbar .appname, #recentrow .appname{
+	font-size:calc(var(--barname) * 0.88);
+	width:118%;
+	margin-left:-9%;
+}
+
+/* =====================================================================
+   Round 4: hourly forecast, quick input chips, uptime, seconds
+   ===================================================================== */
+
+/* ---------- the next few hours, under the weather ---------- */
+#forecast{ display:flex; gap:1.1vw; margin-top:1.3vh; }
+.fcell{ display:flex; flex-direction:column; align-items:center; gap:0.25vh; min-width:3.2vw; }
+.fhour{ font-size:1.4vh; opacity:0.72; letter-spacing:0.03em; }
+.ficon{ display:block; width:3.4vh; height:3.4vh; }
+.ficon svg{ display:block; width:100%; height:100%; }
+.ftemp{ font-size:1.85vh; font-weight:600; font-variant-numeric:tabular-nums; }
+
+/* ---------- one-press input shortcuts, just above the dock ---------- */
+#quickrow{
+	display:none;
+	position:absolute;
+	left:2vw;
+	bottom:calc(var(--barh) + 2.2vh);
+	z-index:5;
+	align-items:center;
+	gap:0.8vw;
+}
+#maindiv.has-quick #quickrow{ display:flex; }
+#maindiv.has-recent #quickrow{ bottom:calc(var(--barh) + var(--recenth) + 3.5vh); }
+#realappbarbtu:checked ~ #quickrow{ display:none !important; }
+#quicklabel{
+	margin:0 0.5vw 0 0;
+	font-size:1.5vh;
+	font-weight:700;
+	letter-spacing:0.09em;
+	text-transform:uppercase;
+	color:rgb(var(--accent));
+	text-shadow:0 1px 4px rgba(0,0,0,0.85);
+}
+.qchip{
+	font-family:inherit;
+	font-size:1.9vh;
+	font-weight:600;
+	padding:0.9vh 1.4vw;
+	border-radius:99px;
+	white-space:nowrap;
+	color:rgb(255,255,255);
+	background-color:rgba(16,18,26,0.55);
+	border:1px solid rgba(255,255,255,0.16);
+	text-shadow:0 1px 3px rgba(0,0,0,0.7);
+	transition:background-color .11s ease;
+}
+.qchip:hover{ background-color:rgba(var(--accent),0.45); }
+#maindiv.idle #quickrow{ filter:brightness(var(--idledim,0.3)); }
+#maindiv.idle-hidebar #quickrow{ opacity:0; }
+#quickrow{ transition:opacity 3s ease, filter 3s ease; }
+
+/* ---------- uptime chip ---------- */
+.stmini{ display:flex; flex-direction:column; gap:0.45vh; }
+
+/* ---------- seconds, kept small so the clock stays calm ---------- */
+.clockstyle-digital #clocktime .sepsec,
+.clockstyle-digital #clocktime #clocktail{ font-size:0.42em; opacity:0.7; }
+
+/* ---------- the dock melts into the wallpaper ----------
+   No panel edge any more: the bar itself is transparent and the whole bottom is one gradient
+   that fades to nothing going up, so there is no line where the "box" starts. */
+#appbar{
+	background:none;
+	border:none;
+	border-radius:0;
+	box-shadow:none;
+}
+#appbar::after{
+	height:52vh;
+	background:linear-gradient(to top,
+		rgba(0,0,0,0.90) 0%,
+		rgba(0,0,0,0.78) 12%,
+		rgba(0,0,0,0.52) 30%,
+		rgba(0,0,0,0.22) 55%,
+		rgba(0,0,0,0.00) 100%);
+}
+
+/* ---------- shortcuts, restyled: round icon buttons centred just above the dock ----------
+   No caption and no text, so they read as part of the furniture rather than a list. Focus only
+   changes colours and the ring - never the button's box, which is what dpad.js measures. */
+#quickrow{
+	left:0;
+	width:100vw;
+	bottom:calc(var(--barh) + 1.4vh);
+	justify-content:center;
+	gap:1.1vw;
+}
+#maindiv.has-recent #quickrow{ bottom:calc(var(--barh) + var(--recenth) + 2.6vh); }
+#quicklabel{ display:none; }
+.qchip{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	width:5.4vh;
+	height:5.4vh;
+	padding:0;
+	border-radius:50%;
+	background-color:rgba(255,255,255,0.10);
+	border:1px solid rgba(255,255,255,0.18);
+	box-shadow:0 0.6vh 1.6vh rgba(0,0,0,0.35);
+	transition:background-color .11s ease, border-color .11s ease;
+}
+.qchip .qicon{
+	display:block;
+	width:62%;
+	height:62%;
+	object-fit:contain;
+	border-radius:22%;
+}
+.qchip:hover, .qchip.dfocus{
+	background-color:rgba(var(--accent),0.55);
+	border-color:rgb(var(--accent));
+}
+
+/* ---------- photo wallpapers: two layers that cross-fade (js/photowall.js) ---------- */
+.bgphoto{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100vw;
+	height:100vh;
+	z-index:0;
+	background-color:#000;
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:cover;
+	opacity:0;
+	transition:opacity 1.2s ease;
+	pointer-events:none;
+}
+.bgphoto.on{ opacity:1; }
+
+/* ---------- a stronger foot to the picture, so the dock's icons keep their contrast
+             over a bright photograph ---------- */
+#appbar::after{
+	background:linear-gradient(to top,
+		rgba(0,0,0,0.94) 0%,
+		rgba(0,0,0,0.84) 14%,
+		rgba(0,0,0,0.60) 32%,
+		rgba(0,0,0,0.26) 58%,
+		rgba(0,0,0,0.00) 100%);
+}
+
+/* ---------- one floating name for the icon you are on (js/tooltip.js) ----------
+   The dock no longer prints a caption under every icon, so it reads as artwork. */
+#tipbox{
+	position:fixed;
+	left:0;
+	top:0;
+	z-index:9000;
+	max-width:34vw;
+	padding:0.9vh 1.4vw;
+	border-radius:1vh;
+	font-size:2.2vh;
+	font-weight:600;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	color:rgb(255,255,255);
+	background-color:rgba(12,14,20,0.92);
+	border:1px solid rgba(255,255,255,0.16);
+	box-shadow:0 1vh 3vh rgba(0,0,0,0.55);
+	opacity:0;
+	transform:translateY(0.6vh);
+	transition:opacity .12s ease, transform .12s ease;
+	pointer-events:none;
+}
+#tipbox.on{ opacity:1; transform:translateY(0); }
+#realappbarbtu:checked ~ #tipbox{ display:none; }
+
+/* ---------- no reflow as the numbers change ----------
+   Throughput swings between "8 B/s" and "12.3 MB/s", and the uptime between "9 min" and
+   "1 d 4 h". Without a reserved width the whole strip grew and shrank with every tick, so each
+   of those fields is now sized for its widest reading and the digits are tabular. */
+.stflow{ min-width:6.6vw; }
+.stflow span{ justify-content:flex-start; }
+.stflow span > span{ display:inline-block; min-width:5.2vw; font-variant-numeric:tabular-nums; }
+.stmini{ min-width:5.4vw; }
+.stvalue, .stname{ font-variant-numeric:tabular-nums; }
+
+/* =====================================================================
+   Round 5: styled input tiles, night wallpaper, heat warning,
+            "Nastavi gledanje" cards, forecast panel
+   ===================================================================== */
+
+/* ---------- inputs: the same rounded tile the dock uses, not a thin circle.
+             An input with nothing plugged into it is simply dimmed. ---------- */
+.qchip{
+	width:6.2vh;
+	height:6.2vh;
+	border-radius:26%;
+	background-color:rgba(255,255,255,0.13);
+	border:1px solid rgba(255,255,255,0.18);
+	box-shadow:0 0.8vh 2vh rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
+	transition:background-color .11s ease, border-color .11s ease, opacity .11s ease;
+}
+.qchip .qicon{
+	width:72%;
+	height:72%;
+	border-radius:0;
+	filter:drop-shadow(0 1px 2px rgba(0,0,0,0.55));
+}
+.qchip.qoff{ opacity:0.42; }
+.qchip:hover, .qchip.dfocus{
+	opacity:1;
+	background-color:rgba(var(--accent),0.55);
+	border-color:rgb(var(--accent));
+}
+
+/* ---------- the wallpaper calms down after dark (js/photowall.js) ---------- */
+.bgphoto{ transition:opacity 1.2s ease, filter 2.5s ease; }
+body.nightwall .bgphoto{ filter:brightness(0.55) saturate(0.92); }
+
+/* ---------- a CPU running hot ---------- */
+.stgauge.hot .stvalue{ color:#FF8A8A; }
+
+/* ---------- "Nastavi gledanje": small cards, centred above the inputs ---------- */
+#maindiv.has-recent #recentrow{
+	display:flex;
+	grid-template-columns:none;
+	left:0;
+	width:100vw;
+	bottom:calc(var(--barh) + 9.4vh);
+	justify-content:center;
+	align-items:center;
+	gap:0.9vw;
+}
+#maindiv.has-recent #quickrow{ bottom:calc(var(--barh) + 1.4vh); }
+#recentlabel{
+	grid-column:auto;
+	justify-self:auto;
+	margin:0 0.5vw 0 0;
+	font-size:1.45vh;
+	font-weight:700;
+	letter-spacing:0.09em;
+	text-transform:uppercase;
+	color:rgb(var(--accent));
+}
+#recentrow .appitem{
+	display:flex;
+	flex-direction:row;
+	align-items:center;
+	gap:0.6vw;
+	width:auto;
+	padding:0.6vh 1.2vw 0.6vh 0.6vh;
+	border-radius:99px;
+	background-color:rgba(16,18,26,0.58);
+	border:1px solid rgba(255,255,255,0.16);
+	contain:none;
+}
+#recentrow .appicon{
+	width:4.4vh;
+	height:4.4vh;
+	border-radius:24%;
+	box-shadow:none;
+}
+/* the dock hides its captions, but these cards are nothing without them */
+#maindiv.hide-bar-names #recentrow .appname,
+#recentrow .appname{
+	display:block;
+	width:auto;
+	height:auto;
+	margin:0;
+	font-size:1.8vh;
+	opacity:1;
+}
+#recentrow .appitem:hover, #recentrow .appitem.dfocus{
+	background-color:rgba(var(--accent),0.5);
+	border-color:rgb(var(--accent));
+}
+#recentrow .appitem:hover .appicon, #recentrow .appitem.dfocus .appicon{ transform:none; box-shadow:none; }
+
+/* ---------- the forecast panel the weather widget opens ---------- */
+#weather{ pointer-events:auto; border-radius:1.2vh; }
+#weather.dfocus{ outline:0.45vh solid rgb(var(--accent)); outline-offset:0.6vh; }
+#fcpanel{
+	display:none;
+	position:fixed;
+	left:50%;
+	top:22vh;
+	transform:translateX(-50%);
+	width:62vw;
+	box-sizing:border-box;
+	padding:2.4vh 2vw;
+	z-index:20001;
+	color:rgb(255,255,255);
+	background-color:rgba(14,16,24,0.96);
+	border:1px solid rgba(255,255,255,0.16);
+	border-radius:2vh;
+	box-shadow:0 2vh 6vh rgba(0,0,0,0.6);
+}
+#maindiv.fcopen #fcpanel{ display:block; }
+#fchead{ display:flex; align-items:center; justify-content:space-between; margin-bottom:1.6vh; }
+#fctitle{ font-size:3vh; font-weight:600; }
+#fcclose{
+	width:4.6vh;
+	height:4.6vh;
+	padding:0.8vh;
+	font-family:inherit;
+	color:rgb(255,255,255);
+	background-color:rgba(255,255,255,0.1);
+	border:1px solid rgba(255,255,255,0.4);
+	border-radius:0.9vh;
+}
+#fcclose svg{ display:block; width:100%; height:100%; fill:currentColor; }
+#fcclose:hover{ background-color:rgba(var(--accent),0.5); }
+#fcnow{ display:flex; align-items:center; gap:1.2vw; margin-bottom:2vh; }
+.fcnowicon{ display:block; width:9vh; height:9vh; }
+.fcnowicon svg{ display:block; width:100%; height:100%; }
+.fcnowtemp{ font-size:6vh; font-weight:300; font-variant-numeric:tabular-nums; }
+.fcnowtext{ display:flex; flex-direction:column; font-size:2.4vh; }
+.fcnowtext small{ margin-top:0.4vh; font-size:1.8vh; opacity:0.75; }
+#fchours{ display:flex; justify-content:space-between; gap:0.6vw; padding-top:1.6vh; border-top:1px solid rgba(255,255,255,0.14); }
+#fchours .fcell{ min-width:0; flex:1 1 0; }
+#fchours .ficon{ width:4.2vh; height:4.2vh; }
+#fchours .fhour{ font-size:1.6vh; }
+#fchours .ftemp{ font-size:2.1vh; }
+
+/* ---------- idle dims the picture too ----------
+   screen.js puts .idle on #maindiv, but the wallpaper layers are siblings of it, so :has() is
+   what reaches them (this panel runs Chrome 120). Night and idle multiply rather than replace. */
+#bgvideo, .bgphoto{ transition:opacity 1.2s ease, filter 3s ease; }
+body:has(#maindiv.idle) .bgphoto,
+body:has(#maindiv.idle) #bgvideo{ filter:brightness(var(--idledim,0.3)); }
+body.nightwall:has(#maindiv.idle) .bgphoto{ filter:brightness(calc(var(--idledim,0.3) * 0.55)); }
+
+/* ---------- readability where the stack sits over a bright photograph ---------- */
+#appbar::after{
+	/* A soft foot, not a black bar: the dock has no captions any more, so it needs far less
+	   darkening than it did - just enough to seat the icons. */
+	background:linear-gradient(to top,
+		rgba(0,0,0,0.74) 0%,
+		rgba(0,0,0,0.58) 20%,
+		rgba(0,0,0,0.36) 42%,
+		rgba(0,0,0,0.15) 68%,
+		rgba(0,0,0,0.00) 100%);
+}
+#recentrow .appitem{ background-color:rgba(12,14,20,0.74); }
+#recentlabel{
+	color:rgb(255,255,255);
+	opacity:0.9;
+	text-shadow:0 1px 4px rgba(0,0,0,0.9);
+}
+.qchip{ background-color:rgba(20,22,30,0.62); }
+/* a little more air between the cards and the dock's tooltip */
+#maindiv.has-recent #recentrow{ bottom:calc(var(--barh) + 11vh); }
+
+/* ---------- forecast panel: the week, iOS style ---------- */
+#fcpanel{ top:14vh; max-height:76vh; overflow-y:auto; scrollbar-width:none; }
+#fcpanel::-webkit-scrollbar{ display:none; }
+#fcweek{ margin-top:0.6vh; padding-top:1.4vh; border-top:1px solid rgba(255,255,255,0.14); }
+.fcday{
+	display:flex;
+	align-items:center;
+	gap:1.2vw;
+	padding:0.9vh 0;
+	border-bottom:1px solid rgba(255,255,255,0.07);
+}
+.fcday:last-child{ border-bottom:none; }
+.fcdayname{ flex:0 0 7vw; font-size:2.2vh; font-weight:600; text-transform:capitalize; }
+.fcdayicon{ flex:0 0 auto; display:block; width:4vh; height:4vh; }
+.fcdayicon svg{ display:block; width:100%; height:100%; }
+.fcmin, .fcmax{ flex:0 0 4.5vw; font-size:2.2vh; font-variant-numeric:tabular-nums; }
+.fcmin{ text-align:right; opacity:0.65; }
+.fcmax{ text-align:left; font-weight:600; }
+.fcbar{ position:relative; flex:1 1 auto; height:0.9vh; border-radius:99px; background-color:rgba(255,255,255,0.16); overflow:visible; }
+.fcfill{
+	position:absolute;
+	top:0;
+	height:100%;
+	border-radius:99px;
+	background:linear-gradient(to right, #4FC3F7, #FFD166, #FF8A5B);
+}
+.fcdot{
+	position:absolute;
+	top:50%;
+	width:1.5vh;
+	height:1.5vh;
+	margin-left:-0.75vh;
+	border-radius:50%;
+	background-color:rgb(255,255,255);
+	border:0.25vh solid rgba(0,0,0,0.45);
+	transform:translateY(-50%);
+}
+
+/* ---------- inputs: one grey family, with the live ones marked ----------
+   The TV's own artwork is a mix (white line glyphs, a red Live TV tile), so it is all rendered
+   monochrome for a single look; a green pip says something is actually plugged in. */
+.qchip{ position:relative; }
+.qchip .qicon{
+	filter:grayscale(1) brightness(1.6) contrast(0.95) drop-shadow(0 1px 2px rgba(0,0,0,0.6));
+}
+/* Empty inputs are not drawn at all any more (quick.js filters them out), so the pip is free to
+   mean something sharper than "a cable is in": it lights only while the input is actually putting
+   out a picture. Plugged in but asleep - a console on standby - shows the chip with no pip. */
+.qchip.qlive::after{
+	content:"";
+	position:absolute;
+	top:-0.3vh;
+	right:-0.3vh;
+	width:1.4vh;
+	height:1.4vh;
+	border-radius:50%;
+	background-color:#4ADE80;
+	border:0.25vh solid rgba(0,0,0,0.55);
+}
+
+/* ---------- the launcher's own settings, reachable from the home screen ----------
+   (the gear on the dock is the TV's settings app; this one is OpenLauncher's) */
+#homesettings{
+	position:fixed;
+	bottom:calc(var(--barh) + 1.5vh);
+	right:calc(2vw + 8vh);
+	z-index:10000;
+	width:6vh;
+	height:6vh;
+	padding:0.9vh;
+	box-sizing:border-box;
+	color:rgb(255,255,255);
+	background:none;
+	border:none;
+	border-radius:1vh;
+	transition:background-color .11s ease;
+}
+#homesettings svg{
+	display:block;
+	width:100%;
+	height:100%;
+	fill:currentColor;
+	filter:drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+}
+#homesettings:hover, #homesettings.dfocus{ background-color:rgba(var(--accent),0.5); }
+#realappbarbtu:checked ~ #homesettings{ display:none; }
+#maindiv.idle #homesettings{ filter:brightness(var(--idledim,0.3)); }
+#maindiv.idle-hidebar #homesettings{ opacity:0; }
+#homesettings{ transition:opacity 3s ease, filter 3s ease, background-color .11s ease; }
+
+/* =====================================================================
+   Round 6: sun times, conditional environment chips, manual refresh,
+            lighter corner icons
+   ===================================================================== */
+
+/* ---------- sunrise / sunset, a quiet line under the forecast ---------- */
+#sunline{
+	display:flex;
+	gap:1.6vw;
+	margin-top:1vh;
+	font-size:1.75vh;
+	font-variant-numeric:tabular-nums;
+	opacity:0.72;
+}
+
+/* ---------- environment chips: air, pollen, UV ----------
+   They are only drawn when there is something to report, so their mere presence is the warning. */
+#envchips{ display:flex; flex-wrap:wrap; gap:0.6vw; margin-top:1.1vh; }
+.envchip{
+	display:flex;
+	align-items:center;
+	gap:0.45vw;
+	padding:0.5vh 0.9vw;
+	border-radius:99px;
+	font-size:1.55vh;
+	white-space:nowrap;
+	color:rgb(255,255,255);
+	background-color:rgba(12,14,20,0.6);
+	border:1px solid rgba(255,255,255,0.14);
+	text-shadow:0 1px 3px rgba(0,0,0,0.8);
+}
+.envchip i{ display:block; width:1.1vh; height:1.1vh; border-radius:50%; flex:0 0 auto; }
+.envchip b{ font-weight:600; }
+
+/* ---------- manual refresh in the forecast panel ---------- */
+#fchead{ gap:0.8vw; }
+#fcrefresh{
+	margin-left:auto;
+	width:4.6vh;
+	height:4.6vh;
+	padding:0.9vh;
+	font-family:inherit;
+	color:rgb(255,255,255);
+	background-color:rgba(255,255,255,0.1);
+	border:1px solid rgba(255,255,255,0.4);
+	border-radius:0.9vh;
+}
+#fcrefresh svg{ display:block; width:100%; height:100%; fill:currentColor; }
+#fcrefresh:hover, #fcrefresh.dfocus{ background-color:rgba(var(--accent),0.5); }
+#fcrefresh.spinning svg{ animation:fcspin .8s linear infinite; }
+@keyframes fcspin{ from{ transform:rotate(0deg); } to{ transform:rotate(360deg); } }
+
+/* ---------- the corner icons sit lighter now that they are stroked ---------- */
+#homesettings svg, #infobtn svg{ fill:none; opacity:0.85; }
+#homesettings:hover svg, #homesettings.dfocus svg,
+#infobtn:hover svg, #infobtn.dfocus svg{ opacity:1; }
+
+/* ---------- sunrise / sunset as little glyphs, and readability over bright photos ----------
+   On a pale wallpaper the small forecast type was washing out, so everything in the left column
+   gets a proper shadow and the icons a drop shadow of their own. */
+#sunline{ align-items:center; opacity:0.95; text-shadow:0 1px 4px rgba(0,0,0,0.95), 0 0 2px rgba(0,0,0,0.7); }
+#sunline span{ display:flex; align-items:center; gap:0.35vw; }
+.sunicon{ display:block; width:2.9vh; height:2.9vh; color:rgb(255,255,255); filter:drop-shadow(0 1px 3px rgba(0,0,0,0.85)); }
+
+/* the hourly strip under the weather */
+.fhour{ opacity:0.9; text-shadow:0 1px 4px rgba(0,0,0,0.95), 0 0 2px rgba(0,0,0,0.7); }
+.ftemp{ text-shadow:0 1px 4px rgba(0,0,0,0.95), 0 0 2px rgba(0,0,0,0.7); }
+.ficon svg{ filter:drop-shadow(0 2px 4px rgba(0,0,0,0.8)); }
+
+/* the big current-conditions icon and text */
+#weathericon svg.rich{ filter:drop-shadow(0 3px 7px rgba(0,0,0,0.8)); }
+#weatherdetail{ text-shadow:0 1px 4px rgba(0,0,0,0.95), 0 0 2px rgba(0,0,0,0.7); }
+
+/* inside the panel the background is dark, so no shadows are needed there */
+#fcpanel .fhour, #fcpanel .ftemp{ text-shadow:none; }
+#fcpanel .ficon svg, #fcpanel .fcdayicon svg{ filter:none; }
+
+/* ---------- the system card the status strip opens ----------
+   Same shell as the forecast panel so the two feel like one family: same width, same corner, same
+   head with refresh and close. Inside it is a two-by-two grid of sections plus a row of root
+   pills, because a flat list of eighteen numbers is not "pregledno". */
+#statusbar{ pointer-events:auto; cursor:pointer; }
+#statusbar.dfocus{ outline:0.45vh solid rgb(var(--accent)); outline-offset:0.6vh; }
+#sypanel{
+	display:none;
+	position:fixed;
+	left:50%;
+	top:11vh;
+	transform:translateX(-50%);
+	width:66vw;
+	max-height:80vh;
+	overflow-y:auto;
+	scrollbar-width:none;
+	box-sizing:border-box;
+	padding:2.4vh 2.2vw;
+	z-index:20001;
+	color:rgb(255,255,255);
+	background-color:rgba(14,16,24,0.96);
+	border:1px solid rgba(255,255,255,0.16);
+	border-radius:2vh;
+	box-shadow:0 2vh 6vh rgba(0,0,0,0.6);
+}
+#sypanel::-webkit-scrollbar{ display:none; }
+#maindiv.syopen #sypanel{ display:block; }
+#syhead{ display:flex; align-items:center; gap:0.8vw; margin-bottom:1.8vh; }
+#sytitle{ flex:1 1 auto; font-size:3vh; font-weight:600; }
+#syrefresh, #syclose{
+	flex:0 0 auto;
+	width:4.6vh;
+	height:4.6vh;
+	padding:0.8vh;
+	font-family:inherit;
+	color:rgb(255,255,255);
+	background-color:rgba(255,255,255,0.1);
+	border:1px solid rgba(255,255,255,0.4);
+	border-radius:0.9vh;
+}
+#syrefresh svg, #syclose svg{ display:block; width:100%; height:100%; fill:currentColor; }
+#syrefresh:hover, #syrefresh.dfocus, #syclose:hover, #syclose.dfocus{ background-color:rgba(var(--accent),0.5); }
+#syrefresh.spinning svg{ animation:fcspin .8s linear infinite; }
+
+/* two columns of cards, with the root strip spanning the full width underneath */
+.sygrid{ display:grid; grid-template-columns:1fr 1fr; gap:1.6vh 2vw; }
+.sysec{
+	padding:1.4vh 1.4vw;
+	background-color:rgba(255,255,255,0.045);
+	border:1px solid rgba(255,255,255,0.09);
+	border-radius:1.2vh;
+}
+.sysec h4{
+	margin:0 0 1vh 0;
+	font-size:1.7vh;
+	font-weight:600;
+	letter-spacing:0.12vh;
+	text-transform:uppercase;
+	opacity:0.6;
+}
+#sypanel > .sysec{ margin-top:1.6vh; }
+
+/* a plain label/value line */
+.syrow{
+	display:flex;
+	align-items:baseline;
+	justify-content:space-between;
+	gap:1vw;
+	padding:0.55vh 0;
+}
+.sylabel{ flex:0 0 auto; font-size:2vh; opacity:0.72; }
+.syval{
+	flex:1 1 auto;
+	min-width:0;
+	font-size:2vh;
+	font-weight:600;
+	text-align:right;
+	font-variant-numeric:tabular-nums;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+/* label and number on one line, the bar on the next - so the numbers still line up on the right */
+.sybar{ display:grid; grid-template-columns:auto 1fr; align-items:baseline; gap:0 1vw; padding:0.55vh 0; }
+.sybar .symeter{
+	grid-column:1 / -1;
+	margin-top:0.5vh;
+	height:0.7vh;
+	border-radius:99px;
+	background-color:rgba(255,255,255,0.14);
+	overflow:hidden;
+}
+.sybar .symeter i{
+	display:block;
+	height:100%;
+	border-radius:99px;
+	background-color:rgb(var(--accent));
+	transition:width .35s ease;
+}
+.sybar.warm .symeter i{ background-color:#FB923C; }
+.sybar.hot .symeter i{ background-color:#F87171; }
+
+/* root health, as a row of ticks you can read at a glance from the sofa */
+.sypills{ display:flex; flex-wrap:wrap; gap:0.8vh 1vw; }
+.sypill{
+	display:inline-flex;
+	align-items:center;
+	gap:0.45vw;
+	padding:0.7vh 1.1vw;
+	font-size:1.9vh;
+	font-weight:600;
+	border-radius:99px;
+	background-color:rgba(255,255,255,0.06);
+	border:1px solid rgba(255,255,255,0.12);
+}
+.sypill.good{ color:#4ADE80; }
+.sypill.bad{ color:#F87171; border-color:rgba(248,113,113,0.45); background-color:rgba(248,113,113,0.1); }
+
+/* ---------- an input arriving ----------
+   When something is plugged in (or wakes up) its shortcut appears on the next poll. It fades in
+   instead of popping into existence. The chip itself only animates OPACITY - dpad.js picks the
+   next item by bounding box, so animating the chip's transform would make the remote skip it
+   mid-animation. The movement is on the icon inside, where it costs nothing. */
+@keyframes qfadein{ from{ opacity:0; } to{ opacity:1; } }
+@keyframes qpopin{ from{ transform:translateY(0.7vh) scale(0.78); } to{ transform:none; } }
+.qchip.qnew{ animation:qfadein .45s ease both; }
+.qchip.qnew .qicon{ animation:qpopin .45s cubic-bezier(.2,.8,.3,1) both; }
+
+/* ---------- the change between wallpapers ----------
+   See crossfade() in js/photowall.js for why only the ARRIVING layer animates. The outgoing one
+   keeps full opacity underneath, so the screen never dips through a darker middle the way it did
+   when both layers faded at once.
+
+   Longer than the old 1.2 s, and a symmetric curve: a dissolve wants to spend its time in the
+   middle, not rush through it. */
+.bgphoto{
+	transition:opacity 1.8s cubic-bezier(.45,0,.55,1), filter 3s ease;
+}
+/* used for one frame, to drop a still-fading layer back to zero without animating it there */
+.bgphoto.instant{ transition:none !important; animation:none !important; }
+
+/* the arriving picture settles into place: 3.5% large, easing down over the fade. A bounded
+   animation, not a running one - nothing moves once the picture has landed. */
+@keyframes bgsettle{ from{ transform:scale(1.035); } to{ transform:scale(1); } }
+.bgphoto.arriving{ animation:bgsettle 2.2s cubic-bezier(.17,.84,.44,1) both; }
+
+/* ---------- the gear and the "i" are a pair, so they are built to the same measurements ----------
+   Both buttons were already 6vh, but #infobtn had 0.4vh of padding against the gear's 0.9vh, so
+   its glyph drew 56px across to the gear's 45. Same padding here, same outer radius in info.js. */
+#infobtn{ padding:0.9vh; box-sizing:border-box; }
+#infobtn svg{ display:block; width:100%; height:100%; }
+
+/* ---------- the TV settings pane (js/tvsettings.js) ----------
+   Sub-tabs across the top, then one row per setting: name and explanation on the left, the
+   choices as buttons on the right, with the live value highlighted. */
+.tvstabs{ display:flex; flex-wrap:wrap; gap:0.6vw; margin-bottom:1.6vh; }
+.tvsrow{
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	gap:1.5vw;
+	padding:1.1vh 0;
+	border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.tvsrow:last-child{ border-bottom:none; }
+.tvshead{ display:flex; flex-direction:column; min-width:0; flex:1 1 auto; }
+.tvslabel{ font-size:2.1vh; font-weight:600; }
+.tvshelp{ margin-top:0.3vh; font-size:1.6vh; opacity:0.62; line-height:1.3; }
+.tvsbuttons{ display:flex; flex-wrap:wrap; gap:0.5vw; flex:0 0 auto; justify-content:flex-end; }
+.tvsbuttons .sstatus{ font-size:1.7vh; opacity:0.6; }
+/* the pane lays children out as a wrapping flex row, so the whole block needs to claim a line */
+.tvswrap{ display:block; width:100%; flex:1 1 100%; }
+.tvstabs{ width:100%; }
+.tvsrow{ width:100%; box-sizing:border-box; }
+/* which (picture mode x input) the picture values below belong to */
+.tvscontext{
+	margin:0 0 1.2vh 0;
+	padding:0.7vh 1vw;
+	font-size:1.7vh;
+	border-radius:0.8vh;
+	color:rgb(var(--accent));
+	background-color:rgba(var(--accent),0.12);
+	border:1px solid rgba(var(--accent),0.3);
+}
+.tvsrow .sslider{ min-width:22vw; }
+/* A row with many choices (Režim slike has nine) was squeezing the name column down to one word
+   per line. The name keeps a floor, and the buttons wrap onto further lines instead. */
+.tvsrow{ flex-wrap:wrap; align-items:center; }
+.tvshead{ flex:1 1 30%; min-width:15vw; }
+.tvsbuttons{ flex:1 1 auto; justify-content:flex-end; }
+/* the info glyph sits with the name, same as the launcher's own settings rows */
+.tvslabel{ display:flex; align-items:center; gap:0.5vw; }
+/* the base rule is display:block, which drops the glyph onto its own line under the name */
+.tvslabel .shintmark{ display:inline-block; width:1.9vh; height:1.9vh; flex:0 0 auto; }
+.tvsrow:hover .shintmark, .tvsrow:focus-within .shintmark{ opacity:1; color:rgb(var(--accent)); }
+/* section heading inside a device list ("U blizini", "Upareno") */
+.tvssub{
+	margin:1.6vh 0 0.4vh 0;
+	font-size:1.6vh;
+	font-weight:600;
+	letter-spacing:0.1vh;
+	text-transform:uppercase;
+	opacity:0.55;
+}
+/* the key field sits on its own row under the network it belongs to */
+.tvsrow .stext{ flex:1 1 auto; min-width:24vw; font-size:2vh; padding:1vh 1.2vw; }
+

@@ -1,0 +1,4 @@
+Manrope (variable, weights 200-800) by Mikhail Sharanda.
+Licensed under the SIL Open Font License, Version 1.1.
+Full text: https://openfontlicense.org  -  Project: https://github.com/sharanda/manrope
+Files here are the latin and latin-ext woff2 subsets served by Google Fonts.
