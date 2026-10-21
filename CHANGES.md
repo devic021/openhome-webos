@@ -15,7 +15,7 @@ webOS 10.3.2-33 (SDK 10.3, Chromium 120).
 
 ## Added
 
-### TV settings pane — `src/js/tvsettings.js` (new)
+### TV settings pane - `src/js/tvsettings.js` (new)
 
 The largest addition. Thirteen tabs covering **100+ of the TV's own system settings**, read and
 written through `com.webos.settingsservice` by way of the Homebrew Channel's root service.
@@ -32,14 +32,14 @@ Picture and sound keys are stored per picture mode × input. The pane deliberate
 `dimension` field: the service then resolves the current context itself and reports which one it
 used. Passing a field it does not expect makes it answer "no result from DB".
 
-### System panel — `src/js/syspanel.js` (new)
+### System panel - `src/js/syspanel.js` (new)
 
 Opens from the status strip. Network link with latency and traffic since boot, CPU with panel
 temperature, RAM and swap, storage, TV model/firmware/kernel, and a row of health indicators for
-the root setup — root active, LG updates blocked, Homebrew Channel version, SSH, startup scripts
+the root setup - root active, LG updates blocked, Homebrew Channel version, SSH, startup scripts
 and screen-saver state.
 
-### Translation framework — `src/js/i18n.js` (new)
+### Translation framework - `src/js/i18n.js` (new)
 
 English and Serbian, keyed by English source text so a missing entry falls back to readable
 English. *Automatic* follows the TV's own interface language.
@@ -48,7 +48,7 @@ Also translates `data-i18n`, `data-i18n-title` and `data-i18n-placeholder` marku
 and hands one string to CSS as a custom property because `#folderbar::before` is drawn by
 generated content, which no function can reach.
 
-### Photo wallpapers — `src/js/photowall.js`, `src/js/photocache.js` (new)
+### Photo wallpapers - `src/js/photowall.js`, `src/js/photocache.js` (new)
 
 A rotating pool of 3840 px photographs from Wikimedia Commons, kept on a USB disk. About 36 MB an
 hour against roughly 2.7 GB for the streamed video the upstream uses, and it works with the
@@ -59,7 +59,7 @@ top of* the old one, which stays at full strength until it is hidden. Fading bot
 change pulse darker in the middle, because two half-transparent pictures over black composite to
 about three quarters of a picture.
 
-### Forecast and air quality — `src/js/forecast.js`, `src/js/airquality.js`, `src/js/weathericons.js` (new)
+### Forecast and air quality - `src/js/forecast.js`, `src/js/airquality.js`, `src/js/weathericons.js` (new)
 
 Current conditions, an hourly strip, sunrise and sunset on the home screen; a seven-day panel
 behind OK. An air-quality chip appears only when the air is worth mentioning. Source is Open-Meteo,
@@ -67,7 +67,7 @@ which needs no key.
 
 `src/js/weather.js` already existed upstream and was **modified** rather than written here.
 
-### Input shortcuts — `src/js/quick.js` (new)
+### Input shortcuts - `src/js/quick.js` (new)
 
 A row of the TV's inputs above the dock, showing **only the ones with something plugged in**. An
 empty port is not drawn and appears by itself when a device is connected.
@@ -76,14 +76,14 @@ empty port is not drawn and appears by itself when a device is connected.
 as a fallback for devices that do not speak CEC. `hdmiSignalExist` cannot be used: it is true only
 for the input the TV is actually tuned to, so on the home screen it is false for everything.
 
-### Status strip — `src/js/status.js` (new)
+### Status strip - `src/js/status.js` (new)
 
 Wi-Fi band and signal, network throughput, CPU load and panel temperature, RAM, storage and uptime,
 refreshed once a second.
 
-### Home replacement — `scripts/homestub.sh`, `src/access/replace/appstub/` (new)
+### Home replacement - `scripts/homestub.sh`, `src/access/replace/appstub/` (new)
 
-Upstream's "Default App" method sets a Luna setting, which covers the **Home button** — `sam`
+Upstream's "Default App" method sets a Luna setting, which covers the **Home button** - `sam`
 honours it. It cannot cover **power-on**, because `bootd` has `com.webos.app.home` compiled into it
 and never reads that setting (confirmed with `strings /usr/sbin/bootd`).
 
@@ -93,16 +93,16 @@ It also repoints the TV's "last input" and turns off Home Auto Launch, because t
 effect about a minute into a cold boot and LG's home would otherwise open first. The cost is that
 webOS's boot animation no longer plays.
 
-### Startup scripts — `scripts/` (new)
+### Startup scripts - `scripts/` (new)
 
-- `homestub.sh` — the home replacement above
-- `replace.sh` — re-applies the home-app setting at boot, because on this set it did not survive a
+- `homestub.sh` - the home replacement above
+- `replace.sh` - re-applies the home-app setting at boot, because on this set it did not survive a
   power cycle
-- `tweaks.sh` — re-applies chosen system settings at boot, for the same reason
-- `wallpapers.sh` — mounts the wallpaper disk **by UUID**, since webOS re-enumerates USB devices
+- `tweaks.sh` - re-applies chosen system settings at boot, for the same reason
+- `wallpapers.sh` - mounts the wallpaper disk **by UUID**, since webOS re-enumerates USB devices
   across a reboot and a device-node path fails with `Input/output error`
 
-### A usable first run — `src/js/firstrun.js` (new)
+### A usable first run - `src/js/firstrun.js` (new)
 
 Upstream's default bar is a fixed list of app ids, three of them games almost no television has,
 so a fresh install showed gaps where another person's apps had been. Nothing is assumed now: the
@@ -115,7 +115,7 @@ with empty sockets. They already have their own row above the dock, which shows 
 with something connected.
 
 The weather location sets itself too. Previously a new install had none, so switching Weather on
-appeared to do nothing — it only fetches once a place is set. The launcher now reads the TV's own
+appeared to do nothing - it only fetches once a place is set. The launcher now reads the TV's own
 time zone, which carries a city and a country code, and looks that up; a hard-coded default city
 would be wrong for everybody outside one country. Reading the `time` category is refused to an
 ordinary app ("Access denied"), so it goes through the root service, and without root the search
@@ -171,7 +171,7 @@ rebuilt; building both in the same job makes that impossible.
 `scripts/install-home.sh` does the home replacement in one command, and undoes it with `--undo`.
 `docs/apps-repo-entry.yml` is the submission for the Homebrew Channel's app repository.
 
-### Developer tooling — `deploy.sh`, `cdp.js`, `shots.js` (new)
+### Developer tooling - `deploy.sh`, `cdp.js`, `shots.js` (new)
 
 `deploy.sh` syntax-checks every JavaScript file with `node --check` *before* sending it, because a
 file that does not parse leaves a blank home screen recoverable only over SSH. `cdp.js` and
@@ -181,13 +181,13 @@ file that does not parse leaves a blank home screen recoverable only over SSH. `
 
 ## Changed
 
-- **Visual theme** — `src/css/theme.css` (new, loaded after `main.css` so it only restyles).
+- **Visual theme** - `src/css/theme.css` (new, loaded after `main.css` so it only restyles).
   Removing that one line gives the upstream appearance back.
-- **Folders** — the TV's own app groups (Inputs, TV, Settings, Sharing, Help) are picked up
+- **Folders** - the TV's own app groups (Inputs, TV, Settings, Sharing, Help) are picked up
   automatically alongside folders made by hand.
-- **App bar** — pagination, configurable icon size, and names under the icons.
-- **Remote navigation** (`src/js/dpad.js`) — focus handling reworked for the added panels.
-- **About pane** — reports the launcher, the configuration, the wallpaper source, the screen, the
+- **App bar** - pagination, configurable icon size, and names under the icons.
+- **Remote navigation** (`src/js/dpad.js`) - focus handling reworked for the added panels.
+- **About pane** - reports the launcher, the configuration, the wallpaper source, the screen, the
   TV and the project, and checks GitHub for a newer release only when asked.
 
 ---
@@ -212,6 +212,6 @@ file that does not parse leaves a blank home screen recoverable only over SSH. `
 
 ## Not carried over
 
-`src/js/personal-profile.js` in the development tree seeds a first-run configuration — pinned apps,
+`src/js/personal-profile.js` in the development tree seeds a first-run configuration - pinned apps,
 folder names, a weather location. It is specific to one household and is **not** part of this
 repository.

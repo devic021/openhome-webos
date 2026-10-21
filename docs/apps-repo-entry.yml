@@ -27,7 +27,7 @@ description: |
 
   LG's menu shows **36** of the **838** settings the firmware keeps. OpenHome reads them straight
   out of `com.webos.settingsservice`, with LG's own names and descriptions, and lets you change
-  them — the screen saver that has no on/off switch, Live Plus, HDMI Deep Colour, 4:4:4 pass
+  them - the screen saver that has no on/off switch, Live Plus, HDMI Deep Colour, 4:4:4 pass
   through per port, the "Sponsored" tiles on the home screen.
 
   It also gives you a clock and weather, a system panel with network latency, CPU temperature and

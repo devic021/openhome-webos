@@ -122,7 +122,7 @@ const SETTINGS_SCHEMA=[
 		{type:"action",label:t("Reset launcher"),hint:t("Resets every setting to its default"),button:t("Reset"),icon:"reset",confirm:t("Are you sure?"),confirmButton:t("Yes, reset"),run:() => resetprefs()},
 		{type:"heading",label:t("Replace stock Home"),show:(p) => rooted},
 		{key:"homeReplaceMethod",label:t("webOS version"),type:"choice",stepper:true,default:"sixto24",show:(p) => rooted,
-			options:[["sixto24","6–24"],["twentyfive","25"],["defaultapp","25–26"],["copilot","25–26 (copilot)"]],
+			options:[["sixto24","6-24"],["twentyfive","25"],["defaultapp","25-26"],["copilot","25-26 (copilot)"]],
 			hint:t("Auto-detected from a system file when you open this tab, so it is usually already right - but it only tells 6-24 from 25+, not 25 from 25-26, so check About > Firmware (or the TV's Settings > Support > About This TV) if Apply does nothing. A wrong choice simply does nothing; you do not have to undo it before trying another.")},
 		{type:"action",label:t("Bind Home + auto-start"),button:t("Apply"),icon:"open",show:(p) => rooted,
 			confirm:t("This changes a system file (or sets the default Home app) for the chosen version and restarts the system UI. Continue?"),confirmButton:t("Yes, apply"),

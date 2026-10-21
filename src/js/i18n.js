@@ -795,7 +795,7 @@ function i18nlocale(){
 // Serbian. Two places in the system panel used to force a comma, which read as Serbian even
 // when everything around it was English.
 function i18nnum(value,places){
-	if(!isFinite(value)){ return "—"; }
+	if(!isFinite(value)){ return "-"; }
 	const digits=(places===undefined)?1:places;
 	try {
 		return value.toLocaleString(i18nlocale(),{minimumFractionDigits:0,maximumFractionDigits:digits});

@@ -5,10 +5,10 @@
 // method actually patches; this button automates those same steps and nothing else.
 
 const REPLACE_METHODS={
-	sixto24:{file:"keyfilters-6-24.sh",label:"webOS 6–24",persist:true},
+	sixto24:{file:"keyfilters-6-24.sh",label:"webOS 6-24",persist:true},
 	twentyfive:{file:"keyfilters-25.sh",label:"webOS 25",persist:true},
-	defaultapp:{file:"appdefault-25-26.sh",label:"webOS 25–26 (Default App)",persist:false},
-	copilot:{file:"copilot-25-26.sh",label:"webOS 25–26 (copilot hijack)",persist:true}
+	defaultapp:{file:"appdefault-25-26.sh",label:"webOS 25-26 (Default App)",persist:false},
+	copilot:{file:"copilot-25-26.sh",label:"webOS 25-26 (copilot hijack)",persist:true}
 };
 
 // Auto-picks a webOS version above by reading the actual system file the scripts target, instead of guessing from

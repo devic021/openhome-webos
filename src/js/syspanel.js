@@ -159,7 +159,7 @@ async function sysgather(){
 
 function syrow(label,value,extra){
 	return '<div class="syrow'+(extra?" "+extra:"")+'"><span class="sylabel">'+label+
-		'</span><b class="syval">'+(value===null||value===undefined||value===""?"—":value)+'</b></div>';
+		'</span><b class="syval">'+(value===null||value===undefined||value===""?"-":value)+'</b></div>';
 }
 
 // a labelled bar: the number on the right, the bar underneath, both on one row of the card
@@ -184,7 +184,7 @@ function sysec(title,body){
 
 // 340480 kB -> "332 MB" / "1,4 GB"  (Serbian decimal comma)
 function sysize(kbytes){
-	if(!isFinite(kbytes)){ return "—"; }
+	if(!isFinite(kbytes)){ return "-"; }
 	if(kbytes>=1024*1024){ return i18nnum(kbytes/1024/1024)+" GB"; }
 	if(kbytes>=1024){ return Math.round(kbytes/1024)+" MB"; }
 	return Math.round(kbytes)+" kB";
@@ -192,7 +192,7 @@ function sysize(kbytes){
 
 // raw byte counters from /proc/net/dev
 function sytraffic(bytes){
-	if(!isFinite(bytes)){ return "—"; }
+	if(!isFinite(bytes)){ return "-"; }
 	return sysize(bytes/1024);
 }
 
@@ -229,7 +229,7 @@ function syshtml(){
 		syrow(t("Link"),linkdetail)+
 		syrow(t("IP address"),d.ip)+
 		syrow(t("Latency"),isFinite(d.ping)?i18nnum(d.ping)+" ms":
-			(net.isInternetConnectionAvailable?"—":t("no internet")))+
+			(net.isInternetConnectionAvailable?"-":t("no internet")))+
 		syrow(t("Since boot"),"↓ "+sytraffic(d.rx)+"  ↑ "+sytraffic(d.tx));
 
 	// ---- hardware
@@ -270,7 +270,7 @@ function syshtml(){
 		syrow("webOS",(os.core_os_release||"")+(os.core_os_name?" · "+os.core_os_name:""))+
 		syrow(t("Firmware"),builddate?("build "+os.webos_build_id+" · "+builddate):os.webos_build_id)+
 		syrow(t("Kernel"),os.core_os_kernel_version)+
-		syrow(t("Uptime"),isFinite(statusdata.uptime)?uptimetext(statusdata.uptime):"—");
+		syrow(t("Uptime"),isFinite(statusdata.uptime)?uptimetext(statusdata.uptime):"-");
 
 	html+='<div class="sygrid">'+
 		sysec(t("Network"),netbody)+

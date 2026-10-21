@@ -81,5 +81,17 @@ jobs:
           # A tag push gives the tag; a manual run gives a branch, so the newest tag is used
           TAG="${GITHUB_REF_NAME}"
           case "${GITHUB_REF}" in refs/tags/*) ;; *) TAG=$(git describe --tags --abbrev=0) ;; esac
-          gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --title "OpenHome ${TAG#v}" --generate-notes
+          # --generate-notes builds the body out of merged pull requests. This repository is
+          # pushed to directly, so there are none and the release comes out with nothing but a
+          # compare link. The annotated tag's own message is used instead, when it carries more
+          # than its first line; otherwise fall back to the generated notes.
+          NOTES=$(git tag -l --format='%(contents:body)' "$TAG")
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            :
+          elif [ -n "$(echo "$NOTES" | tr -d '[:space:]')" ]; then
+            echo "$NOTES" > /tmp/notes.md
+            gh release create "$TAG" --title "OpenHome ${TAG#v}" --notes-file /tmp/notes.md
+          else
+            gh release create "$TAG" --title "OpenHome ${TAG#v}" --generate-notes
+          fi
           gh release upload "$TAG" dist/*.ipk "dist/${APP_ID}.manifest.json" --clobber
