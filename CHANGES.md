@@ -101,6 +101,10 @@ webOS's boot animation no longer plays.
 - `tweaks.sh` - re-applies chosen system settings at boot, for the same reason
 - `wallpapers.sh` - mounts the wallpaper disk **by UUID**, since webOS re-enumerates USB devices
   across a reboot and a device-node path fails with `Input/output error`
+- `no-preload.sh` - stops webOS holding other apps resident from switch-on; `allowedApps` in
+  `webos-preload-manager-conf.json` was measured to have no effect, so the service itself is
+  stopped
+- `vmtune.sh` - puts `vm.swappiness` back to the kernel default of 60, which LG raises to 100
 
 ### A usable first run - `src/js/firstrun.js` (new)
 
@@ -189,6 +193,11 @@ file that does not parse leaves a blank home screen recoverable only over SSH. `
 - **Remote navigation** (`src/js/dpad.js`) - focus handling reworked for the added panels.
 - **About pane** - reports the launcher, the configuration, the wallpaper source, the screen, the
   TV and the project, and checks GitHub for a newer release only when asked.
+- **Wallpaper stills change every 120s**, not every 20s. The bundled photographs are camera
+  originals, 3072x2304 to 4640x3472, which decode to 27-61 MB each; `imageswap` decodes the next
+  one while the current is still up. Measured on an LM21 set, the slower cadence did not change
+  the renderer's memory - that is shared compositor and engine pages, not the image cache - but it
+  cuts the decode and USB work sixfold.
 
 ---
 
