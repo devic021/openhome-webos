@@ -429,7 +429,21 @@ The launcher itself paints 1.5 s after its page begins loading. **Quick Start+**
 settings, is the only thing that avoids the cold boot at all: it keeps standby active so
 switching on is a wake rather than a boot, at the cost of standby power.
 
-**The trade-off:** webOS's boot animation no longer plays.
+**What this does not cost, despite appearances.** Turning Home Auto Launch off was assumed to
+take webOS's boot animation with it. Tested on a 65UR78003LK by setting it back to `on` and
+pulling the mains: no logo and no animation appeared, only LG's own home screen, at 39.40 s. A
+cold start with it off had the launcher drawing at 36.90 s and in the foreground at 39.40 s. The
+same wait, the same black screen, a different thing at the end of it.
+
+There is nothing to lose because this model has no boot animation at all: `com.webos.app.bootlogo`
+is not installed, there is no animation media anywhere on the filesystem, and `general.homeAnimation`
+answers "There is no matched result from DB". `bootd` carries the code for one, and `strings` shows
+it reading `homeAutoLaunch` and calling `showAnimation` from `launchHomeFromCold`, but on this set
+that path has nothing to play.
+
+**What it does cost:** with Home Auto Launch on, `bootd` launches `com.webos.app.home` from cold,
+and at that moment the stub is not mounted yet, so that is LG's real home. It then stays: the
+launcher never takes over by itself, measured still on LG's home 18 seconds later.
 
 The three settings it changes are saved to `/var/lib/webosbrew/openlauncher-boot.orig` the first
 time it runs, so they can be put back. `install-home.sh --undo` stops the watcher before it
