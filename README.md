@@ -119,6 +119,17 @@ The bottom row is the one worth watching: **root active · LG updates blocked ·
 SSH running · startup scripts · screen saver off**. Those are exactly the things a firmware boot
 can quietly undo.
 
+**Settings → Screen → Status strip** decides how much of it shows:
+
+| | |
+|---|---|
+| **Full** | the whole strip, the default |
+| **Icon only** | the network glyph alone, which still opens the panel |
+| **Off** | nothing in the corner, and the once-a-second reading behind it stops as well |
+
+With the strip off the panel has a button of its own in the same place, since pressing OK on the
+strip is otherwise the only way in.
+
 ---
 
 ## TV settings
