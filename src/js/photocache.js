@@ -67,7 +67,7 @@ async function wallcandidate(){
 		"&prop=imageinfo&iiprop=url%7Csize&iiurlwidth=3840&format=json&formatversion=2";
 	let answer;
 	try {
-		const r=await wallsh("curl -s -m 25 -A 'OpenLauncher-wallpaper/1.0' "+shellquote(query));
+		const r=await wallsh("curl -s -m 25 -A 'OpenHome-wallpaper/1.0' "+shellquote(query));
 		answer=JSON.parse(String((r && r.stdoutString) || "{}"));
 	} catch(e) { return null; }
 	const pages=(answer.query && answer.query.pages) || [];
@@ -100,7 +100,7 @@ async function poolgrow(){
 		const temp=WALLDIR+"/.part";
 		const result=await wallsh(
 			"mkdir -p "+shellquote(WALLDIR)+" && "+
-			"curl -s -m 150 -A 'OpenLauncher-wallpaper/1.0' -o "+shellquote(temp)+" "+shellquote(candidate.u)+" && "+
+			"curl -s -m 150 -A 'OpenHome-wallpaper/1.0' -o "+shellquote(temp)+" "+shellquote(candidate.u)+" && "+
 			"mv "+shellquote(temp)+" "+shellquote(WALLDIR+"/"+name)+" && wc -c < "+shellquote(WALLDIR+"/"+name));
 		const size=parseInt(String((result && result.stdoutString) || "0").trim(),10);
 		if(!(size>MIN_BYTES)){
