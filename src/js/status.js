@@ -87,12 +87,38 @@ function gb(kbytes){
 	return (value>=10?String(Math.round(value)):i18nnum(value))+" GB";
 }
 
+// t("Status strip"): the whole strip, the network icon alone, or nothing at all
+function statusmode(){
+	const how=prefs.statusShow;
+	return (how==="off" || how==="compact")?how:"full";
+}
+
+// Called when the setting changes, so the strip does not wait for the next poll.
+function applystatus(){
+	renderstatus();
+	if(statusmode()!=="off"){ refreshstatus(true); }
+}
+
 function renderstatus(){
+	const how=statusmode();
+	if(how==="off"){
+		// Taken out of the DOM rather than hidden with CSS. syspanel.js finds the strip by id and
+		// asks window.contextelements whether it is visible, so removing it is all either of them
+		// needs: the click target is gone and the remote stops landing on it, with no new
+		// condition in either file.
+		if(statusbar && statusbar.parentNode){ statusbar.parentNode.removeChild(statusbar); }
+		statusbar=null;
+		return;
+	}
 	if(!statusbar){
 		statusbar=statusel("div");
 		statusbar.id="statusbar";
 		maindiv.appendChild(statusbar);
 	}
+	statusbar.classList.toggle("compact",how==="compact");
+	// the strip's own meaning is obvious when it is spelled out; an icon on its own is not
+	if(how==="compact"){ statusbar.setAttribute("title",t("System panel")); }
+	else { statusbar.removeAttribute("title"); }
 	statusbar.innerHTML="";
 	// ---- network name and signal
 	const net=statusdata.net;
@@ -118,8 +144,9 @@ function renderstatus(){
 		text.appendChild(statusel("small",null,t("Not connected")));
 	}
 	link.appendChild(icon);
-	link.appendChild(text);
+	if(how!=="compact"){ link.appendChild(text); }
 	statusbar.appendChild(link);
+	if(how==="compact"){ return; }
 	// ---- throughput (needs two samples, so it appears a few seconds in)
 	if(statusdata.down!==undefined){
 		statusbar.appendChild(statusel("div","stsep"));
@@ -254,6 +281,12 @@ async function readnetname(){
 }
 
 async function refreshstatus(full){
+	// With the strip off there is nothing to fill in, so the once-a-second root shell behind it
+	// stops too. That is the one mode that costs nothing at all.
+	if(statusmode()==="off"){
+		renderstatus();
+		return;
+	}
 	if(full){ await readnetname(); }
 	await readfast();
 	if(full){ await readslow(); }

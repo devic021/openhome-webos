@@ -115,6 +115,14 @@ const SETTINGS_SCHEMA=[
 		{key:"customSeconds",label:t("Photo duration"),type:"choice",default:60,options:[[20,"20 s"],[30,"30 s"],[60,"1 min"],[120,"2 min"]],show:(p) => p.videoSource==="custom" || p.videoSource==="photos"}
 	]},
 	{id:"screen",title:t("Screen"),icon:"monitor",items:[
+		{key:"statusShow",label:t("Status strip"),type:"choice",default:"full",
+			// not t("Full"): that string is already the full weekday name, where Serbian wants
+			// "Pun", which reads as nonsense against a strip
+			options:[["full",t("Everything")],["compact",t("Icon only")],["off",t("Off")]],
+			hint:t("The panel in the top corner with the network, CPU, memory and storage. Off removes it and stops the once-a-second reading behind it as well.")},
+		{type:"action",label:t("System panel"),button:t("Open"),icon:"info",show:(p) => p.statusShow==="off",
+			hint:t("The strip is how the system panel normally opens, so here is the way in while it is off."),
+			run:() => { closesettings(); opensys(); }},
 		{key:"pixelShift",label:t("Pixel shift"),type:"choice",default:0,options:[[0,t("Off")],[1,t("Small")],[2,t("Large")]],
 			hint:t("Nudges the clock, bar and buttons a few pixels every minute so an OLED screen doesn't keep the same pixels lit")},
 		{key:"idleAfter",label:t("Idle after"),type:"choice",default:0,options:[[0,t("Never")],[1,"1 min"],[2,"2 min"],[5,"5 min"],[10,"10 min"]],
@@ -273,6 +281,7 @@ function applyprefs(){
 	renderrecent();
 	applyscreen();
 	applyweather();
+	if(typeof applystatus==="function"){ applystatus(); }
 }
 
 // ---- panel

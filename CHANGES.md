@@ -148,6 +148,17 @@ are labelled with the day they were downloaded, which their own file names carry
 **Pictures to keep** is raised to make room so the next download cannot delete what was just
 recovered.
 
+### The status strip can be turned down or off - `src/js/status.js`
+
+There was no setting for it: the strip was drawn whenever the home screen was, and the only rule
+that ever hid it was the one covering it while the app drawer is open. **Screen → Status strip**
+now offers the whole strip, the network glyph alone, or nothing.
+
+"Off" removes the element rather than hiding it, which is what makes `syspanel.js` and the remote's
+focus ring drop it without either file learning a new condition, and it stops the once-a-second
+root shell that fills the gauges. Because pressing OK on the strip is otherwise the only way into
+the system panel, a button for it appears in the same settings section while the strip is off.
+
 ### Startup scripts - `scripts/` (new)
 
 - `homestub.sh` - the home replacement above

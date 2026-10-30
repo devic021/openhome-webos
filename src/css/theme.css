@@ -323,6 +323,10 @@ body,#maindiv,#prefetchmaindiv{ font-family:"Manrope",PlusJakartaSans,sans-serif
 	pointer-events:none;
 }
 #realappbarbtu:checked ~ #statusbar{ display:none; }
+/* t("Icon only"): nothing in the strip but the network glyph, so the corner stays quiet and the
+   system panel still has something to open from. Equal padding in px, not one vh and one vw,
+   or the pill comes out an oval: 1.1vh is 11.9px at 1080p and 0.62vw is the same. */
+#statusbar.compact{ padding:1.1vh 0.62vw; gap:0; }
 .stlink{ display:flex; align-items:center; gap:0.7vw; }
 .sticon{ display:block; width:3.6vh; height:3.6vh; flex:0 0 auto; color:rgb(var(--accent)); }
 .sticon svg{ display:block; width:100%; height:100%; }
