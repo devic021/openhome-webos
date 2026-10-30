@@ -421,6 +421,8 @@ is about 1.5 MB against 2.7 GB an hour for streamed video, and it works with the
 
 ### Your own pictures
 
+[![Wallpaper settings](docs/screenshots/preview/settings-wallpaper.jpg)](docs/screenshots/settings-wallpaper.jpg)
+
 Copy them onto the same disk, in the top folder, as `.jpg`, `.png` or `.webp`. They are mounted at
 `/media/developer/wallpapers` on the TV, so with the disk in a computer it is just the root of the
 stick, and without one `scp` to that folder does as well.
