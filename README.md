@@ -385,10 +385,16 @@ close itself. Anything that asks for the stock home, `bootd` included, now gets 
 
 ### The black screen at cold boot, and why sam used to be restarted
 
-webOS brings the launcher up as a window with no renderer behind it: the app is reported as the
-foreground app, `getForegroundAppInfo` names it, and the screen stays black. On this set it
-happens at **every** cold boot, and it does not resolve itself. A set left alone sat black for
-three minutes with one `WebAppMgr` process and no renderer.
+webOS sometimes brings the launcher up as a window with no renderer behind it: the app is
+reported as the foreground app, `getForegroundAppInfo` names it, and the screen stays black. It
+does not resolve itself - a set left alone sat black for three minutes with one `WebAppMgr`
+process and no renderer.
+
+**When it happens matters.** Every observation of it was after a software `reboot`. A real cold
+start, with the mains pulled and restored, came up drawing on its own: a renderer existed by the
+first moment the set answered at all, 36.9 s, and the launcher was the foreground app at 39.4 s,
+with the recovery below never needing to fire. So this is a recovery for a state that does
+happen, not a step every power-on goes through.
 
 The script used to restart `sam` here, which hid the problem by accident: that took every app
 down and the set started the launcher again, and the second instance drew. It cost about ten

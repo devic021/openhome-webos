@@ -90,8 +90,9 @@ and never reads that setting (confirmed with `strings /usr/sbin/bootd`).
 This adds a stub: a transparent app bind-mounted over `/usr/palm/applications/com.webos.app.home`
 that launches the launcher and closes itself, so anything asking for the stock home gets this one.
 
-webOS brings the launcher up at cold boot as a window with no renderer behind it: foreground,
-named by `getForegroundAppInfo`, and the screen black. The script used to restart `sam` here,
+webOS sometimes brings the launcher up as a window with no renderer behind it: foreground, named
+by `getForegroundAppInfo`, and the screen black. Every observation was after a software `reboot`;
+a real cold start with the mains pulled came up drawing on its own. The script used to restart `sam` here,
 which hid that by accident, since it took every app down and the set started the launcher again.
 It now relaunches only this app, which does the same job without taking the rest of the set with
 it, and falls back to restarting `sam` if six relaunches do not help. Picture at 47.0s against

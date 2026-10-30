@@ -61,10 +61,15 @@ if [ "$mounted" -eq 0 ]; then
 fi
 
 # ---- the black screen at cold boot -------------------------------------------
-# webOS brings the launcher up as a window with no renderer behind it: the app is reported as the
-# foreground app, getForegroundAppInfo names it, and the screen stays black. On this set it
-# happens at every cold boot, and it does not resolve itself - a set left alone sat black for
-# three minutes with one WebAppMgr process and no renderer.
+# webOS sometimes brings the launcher up as a window with no renderer behind it: the app is
+# reported as the foreground app, getForegroundAppInfo names it, and the screen stays black. It
+# does not resolve itself - a set left alone sat black for three minutes with one WebAppMgr
+# process and no renderer.
+#
+# Every observation of it was after a software reboot. A real cold start, mains pulled and
+# restored, came up drawing on its own: a renderer existed by the first moment the set answered,
+# 36.9s, and the launcher was the foreground app at 39.4s, so this loop never fired. It is a
+# recovery for a state that does happen, not a step every power-on goes through.
 #
 # This script used to restart sam here, which hid the problem by accident: that took every app
 # down and the set started the launcher again, and the second instance drew. It cost about ten
