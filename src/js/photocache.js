@@ -40,22 +40,34 @@ let pooltimer=null;
 // built from list.json, the manifest this file keeps for its OWN downloads, so anything else on
 // the disk was invisible while the trickle went on fetching more on top of it.
 //
-// So: everything in the folder that looks like a picture and is not named by the manifest is one
-// of yours. Matching the manifest rather than our w<timestamp>.jpg shape is deliberate - a
-// download the manifest has forgotten is a file nobody owns, and treating it as yours is better
-// than leaving it on the disk unused for ever.
+// So: a picture in the folder is yours when it is neither named by the manifest nor shaped like
+// one of our downloads. Both tests are needed, and the second one is not belt and braces. The
+// television this was written on had 606 pictures on the disk against 200 in the manifest: 406
+// downloads, 0.68 GB of them, that the manifest had lost track of. Going by the manifest alone
+// would have promoted every one of those to "your picture" and played them back under that name,
+// including under "Only mine".
 const MINE_EXT=/\.(jpe?g|png|webp)$/i;
+const OURS_SHAPE=/^w\d+\.jpe?g$/i;        // what poolgrow() names what it downloads
 
+// `find`, not `ls`. BusyBox ls replaces every byte it thinks is unprintable with a question
+// mark, so a file actually named "Jesenje \u0161ume.jpg" (verified on disk as C5 A1, UTF-8 for
+// \u0161) is listed as "Jesenje ??ume.jpg", and a url built from that name points at nothing.
+// find prints the bytes as they are. It also returns nothing, rather than failing, when the
+// folder is empty or missing, and -maxdepth 1 keeps it out of lost+found.
 async function minescan(){
 	let names=[];
 	try {
-		const r=await wallsh("ls -1 "+shellquote(WALLDIR)+" 2>/dev/null");
-		names=String((r && r.stdoutString) || "").split("\n").map((line) => line.trim());
+		const r=await wallsh("find "+shellquote(WALLDIR)+" -maxdepth 1 -type f 2>/dev/null");
+		const prefix=WALLDIR+"/";
+		names=String((r && r.stdoutString) || "").split("\n")
+			.filter((line) => line.indexOf(prefix)===0)
+			.map((line) => line.substring(prefix.length));
 	} catch(e) { names=[]; }
 	const ours={};
 	pool.forEach((each) => { ours[each.f]=true; });
 	// a leading dot covers both hidden files and the ._name forks a Mac leaves on a USB stick
-	mine=names.filter((name) => name && name.charAt(0)!=="." && MINE_EXT.test(name) && !ours[name]).sort();
+	mine=names.filter((name) => name && name.charAt(0)!=="." && MINE_EXT.test(name) &&
+		!ours[name] && !OURS_SHAPE.test(name)).sort();
 }
 
 // A rescan, for pictures copied on while the launcher was running.

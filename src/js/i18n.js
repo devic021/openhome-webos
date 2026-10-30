@@ -742,6 +742,18 @@ const I18N_SR={
 	"Classic":"Klasičan",
 	"Editorial":"Editorial",
 	"Editorial takes the panels away: the dock has no bar, the clock is large and thin, the inputs stand down the left edge and the drawer becomes one layer over a dimmed picture. Classic is the original appearance.":"Editorial sklanja panele: donja traka nema pozadinu, sat je velik i tanak, ulazi stoje u koloni uz levu ivicu, a meni aplikacija postaje jedan sloj preko zatamnjene slike. Classic je izvorni izgled.",
+	"Yours":"Moje",
+	"Yours: ":"Moje: ",
+	" in the folder.":" u folderu.",
+	"No pictures of your own in the wallpaper folder yet.":"Jo\u0161 nema tvojih slika u folderu za pozadine.",
+	"Which photos":"Koje slike",
+	"Mine and Commons":"Moje i Commons",
+	"Only mine":"Samo moje",
+	"Only Commons":"Samo Commons",
+	"Copy your own pictures (.jpg .png .webp) into /media/developer/wallpapers on the TV, which is where the USB disk is mounted, and they join the rotation. Only mine uses nothing but your own files and stops the downloads altogether.":"Prekopiraj svoje slike (.jpg .png .webp) u /media/developer/wallpapers na TV-u, gde je montiran USB disk, i ulaze u smenu. Samo moje koristi isklju\u010divo tvoje fajlove i potpuno zaustavlja preuzimanje.",
+	"Pictures of your own":"Moje slike",
+	"Rescan":"Skeniraj ponovo",
+	"Looks in the wallpaper folder again, for pictures copied on since the launcher started.":"Ponovo pregleda folder za pozadine, zbog slika dodatih posle pokretanja launchera.",
 };
 
 const I18N_TABLES={sr:I18N_SR};
