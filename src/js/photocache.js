@@ -11,6 +11,9 @@
 // How fast that trickle runs is the t("Photo refresh") setting: off (0 MB/h, the same pictures
 // for ever), daily (the whole pool turns over once a day, ~7 MB/h) or cycle (a new picture for
 // every picture shown, ~78 MB/h - always new, but no cheaper than streaming).
+//
+// Pictures of your own live in the same folder, and the t("Which photos") setting says whether
+// the rotation uses them, the downloads, or both.
 
 const WALLDIR="/media/developer/wallpapers";
 const POOL_TARGET=200;            // pictures to keep on disk (~1.9 MB each); they live on the USB disk
@@ -27,16 +30,76 @@ const WALL_CATEGORIES=[
 ];
 
 let pool=[];                      // [{f:"w1760...jpg", n:"name"}], oldest first
+let mine=[];                      // file names of pictures the user put there themselves
 let poolbusy=false;
 let pooltimer=null;
 
+// ---- pictures of your own ---------------------------------------------------
+// The folder below is where scripts/wallpapers.sh mounts a USB disk, so the obvious thing to do
+// with it is to copy your own photographs on. Until now that did nothing at all: the playlist was
+// built from list.json, the manifest this file keeps for its OWN downloads, so anything else on
+// the disk was invisible while the trickle went on fetching more on top of it.
+//
+// So: everything in the folder that looks like a picture and is not named by the manifest is one
+// of yours. Matching the manifest rather than our w<timestamp>.jpg shape is deliberate - a
+// download the manifest has forgotten is a file nobody owns, and treating it as yours is better
+// than leaving it on the disk unused for ever.
+const MINE_EXT=/\.(jpe?g|png|webp)$/i;
+
+async function minescan(){
+	let names=[];
+	try {
+		const r=await wallsh("ls -1 "+shellquote(WALLDIR)+" 2>/dev/null");
+		names=String((r && r.stdoutString) || "").split("\n").map((line) => line.trim());
+	} catch(e) { names=[]; }
+	const ours={};
+	pool.forEach((each) => { ours[each.f]=true; });
+	// a leading dot covers both hidden files and the ._name forks a Mac leaves on a USB stick
+	mine=names.filter((name) => name && name.charAt(0)!=="." && MINE_EXT.test(name) && !ours[name]).sort();
+}
+
+// A rescan, for pictures copied on while the launcher was running.
+async function minerescan(){
+	await minescan();
+	if(typeof photocacheready==="function"){ photocacheready(); }
+	if(typeof settingsisopen==="function" && settingsisopen() && typeof renderpane==="function"){ renderpane(); }
+}
+
+// The name may contain anything a filesystem allows, and the entry's url ends up both in an
+// img.src and inside a CSS url("..."), so it is encoded rather than pasted in.
+function mineentries(){
+	return mine.map((name) => ({
+		n:name.replace(MINE_EXT,"").replace(/_+/g," ").slice(0,52),
+		s:t("Yours"),
+		u:"hack"+WALLDIR+"/"+encodeURIComponent(name)
+	}));
+}
+
+// t("Which photos"): yours, the downloads, or both
+function photomix(){
+	const how=prefs.photoMix;
+	return (how==="mine" || how==="commons")?how:"both";
+}
+
+// photowall.js asks, so that "only mine" with an empty folder falls back to the bundled wallpaper
+// instead of quietly streaming from Commons, which is the one thing that choice rules out.
+function poolmineonly(){
+	return photomix()==="mine";
+}
+
 function poolentries(){
-	// what photowall.js plays: a local path through the app's root symlink
-	return pool.map((each) => ({n:each.n,s:"Commons",u:"hack"+WALLDIR+"/"+each.f}));
+	// what photowall.js plays: local paths through the app's root symlink
+	const how=photomix();
+	const yours=(how==="commons")?[]:mineentries();
+	const ours=(how==="mine")?[]:pool.map((each) => ({n:each.n,s:"Commons",u:"hack"+WALLDIR+"/"+each.f}));
+	return yours.concat(ours);
 }
 
 function poolready(){
-	return pool.length>=POOL_MIN;
+	const how=photomix();
+	// one picture of your own is enough to start; the downloads wait until there is some variety
+	if(how!=="commons" && mine.length>0){ return true; }
+	return how!=="mine" && pool.length>=POOL_MIN;
 }
 
 function wallsh(command){
@@ -125,7 +188,13 @@ let poolstatus="";
 
 function poolbusytext(){
 	if(poolrenewleft>0){ return poolstatus; }
-	return pool.length?(t("On the TV: ")+pool.length+t(" of ")+POOL_TARGET+t(" pictures.")+(poolstatus?" "+poolstatus:"")):t("The pool is still empty - filling in the background.");
+	const yours=mine.length?t("Yours: ")+mine.length+t(" in the folder."):"";
+	if(photomix()==="mine"){
+		return yours || t("No pictures of your own in the wallpaper folder yet.");
+	}
+	const ours=pool.length?(t("On the TV: ")+pool.length+t(" of ")+POOL_TARGET+t(" pictures.")):
+		t("The pool is still empty - filling in the background.");
+	return [yours,ours,poolstatus].filter(Boolean).join(" ");
 }
 
 async function poolrenew(){
@@ -153,6 +222,7 @@ async function poolrenew(){
 
 // how long between replacements, from the setting
 function poolinterval(){
+	if(photomix()==="mine"){ return 0; }      // nothing to fetch: the rotation is your own files
 	const how=prefs.photoRefresh || "daily";
 	if(how==="off"){ return 0; }
 	if(pool.length<POOL_TARGET){ return FILL_MS; }                 // still filling up
@@ -186,6 +256,7 @@ async function initphotocache(){
 			}
 		} catch(e) {}
 	}
+	await minescan();
 	if(typeof photocacheready==="function"){ photocacheready(); }
 	poolschedule();
 }

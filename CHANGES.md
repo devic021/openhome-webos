@@ -93,6 +93,18 @@ It also repoints the TV's "last input" and turns off Home Auto Launch, because t
 effect about a minute into a cold boot and LG's home would otherwise open first. The cost is that
 webOS's boot animation no longer plays.
 
+### Pictures of your own as wallpapers - `src/js/photocache.js`
+
+The wallpaper disk is mounted over the folder the launcher reads, so copying photographs onto it
+is the obvious thing to do with it, and it did nothing at all: the playlist was built from
+`list.json`, the manifest the launcher keeps for its own downloads, so anything else on the disk
+was invisible while the trickle went on fetching more on top of it.
+
+Everything in the folder that looks like a picture and is not named by that manifest is now one of
+yours, and **Which photos** chooses between yours, the downloads, and both. "Only mine" stops the
+downloading altogether. Nothing of yours is ever deleted, because pruning still goes by the
+manifest.
+
 ### Startup scripts - `scripts/` (new)
 
 - `homestub.sh` - the home replacement above
