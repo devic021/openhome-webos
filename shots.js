@@ -9,7 +9,7 @@
 // concatenation and never appear as a literal in the source, so reading the live page is the only
 // way to be sure what a screen really says.
 //
-//   node shots.js [names...]       only those screens; default is all nineteen
+//   node shots.js [names...]       only those screens; default is all twenty
 
 const fs = require("fs");
 const path = require("path");
@@ -35,6 +35,7 @@ const SCREENS = [
 	["system", `${SHUT};opensys();`, 2600],
 	["apps", `${SHUT};realappbarbtu.click();`, 1600],
 	["settings-clock", SETTINGS("clock"), 1200],
+	["settings-screen", SETTINGS("screen"), 1400],
 	["tv-privacy", TVTAB("privacy"), 1600],
 	["tv-screen", TVTAB("screen"), 1600],
 	["tv-picture", TVTAB("picture"), 1600],

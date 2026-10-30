@@ -119,6 +119,8 @@ The bottom row is the one worth watching: **root active · LG updates blocked ·
 SSH running · startup scripts · screen saver off**. Those are exactly the things a firmware boot
 can quietly undo.
 
+[![Screen settings](docs/screenshots/preview/settings-screen.jpg)](docs/screenshots/settings-screen.jpg)
+
 **Settings → Screen → Status strip** decides how much of it shows:
 
 | | |
