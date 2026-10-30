@@ -39,34 +39,70 @@ if grep -q " $HOME_APP " /proc/mounts 2>/dev/null; then
 	fi
 fi
 
-# Restarting sam costs about ten seconds of the cold start, because it takes down every running
-# app and the launcher is already on screen by the time this runs. Measured on a 65UR78003LK: the
-# launcher was in the foreground at 37.5s, this restarted sam at 39.6s, and the launcher did not
-# come back until 48.2s.
-#
-# It is not needed for the mount to take effect. Tested with the set parked on HDMI 3, the stub
-# freshly mounted and sam deliberately not told: asking for com.webos.app.home still landed on
-# the launcher, because sam resolves the directory when it launches rather than serving a cached
-# copy of the files.
-#
-# So it is kept only for the case where it is worth something: something other than the launcher
-# is on screen, which means a fresh install or a power-on that did not go the way it should, and
-# there is nothing to interrupt.
 foreground_is_launcher() {
 	luna-send -n 1 -w 4000 -f luna://com.webos.applicationManager/getForegroundAppInfo \
 		'{}' < /dev/null 2>/dev/null | grep -q "$APP_ID"
 }
 
+# The set is drawing when WebAppMgr has a renderer process as well as its main one. The black
+# screen is exactly the case where it does not: one process, and nothing behind the window.
+#
+# Counted by process NAME. `pgrep -f` cannot be used here: BusyBox pgrep matches its own command
+# line, so `pgrep -f "WebAppMgr --type=renderer"` answers yes even when there is no renderer at
+# all, which is how the first attempt at this check silently never fired. Verified on the set:
+# `pgrep -f "zzzz --type=zzzz"` returns a pid of its own.
+is_drawing() {
+	[ "$(pgrep -c WebAppMgr)" -gt 1 ]
+}
+
 if [ "$mounted" -eq 0 ]; then
 	mount --rbind "$STUB" "$HOME_APP" || exit 1
 	logger -t openlauncher-home "stub mounted over com.webos.app.home"
-	if pgrep -x sam > /dev/null 2>&1 && ! foreground_is_launcher; then
-		restart sam
-		logger -t openlauncher-home "sam restarted to pick up the stub"
-	else
-		logger -t openlauncher-home "sam left alone; the launcher is already up"
-	fi
 fi
+
+# ---- the black screen at cold boot -------------------------------------------
+# webOS brings the launcher up as a window with no renderer behind it: the app is reported as the
+# foreground app, getForegroundAppInfo names it, and the screen stays black. On this set it
+# happens at every cold boot, and it does not resolve itself - a set left alone sat black for
+# three minutes with one WebAppMgr process and no renderer.
+#
+# This script used to restart sam here, which hid the problem by accident: that took every app
+# down and the set started the launcher again, and the second instance drew. It cost about ten
+# seconds of every cold start and took every other app with it.
+#
+# Relaunching this one app does the same job. Measured by hand on the black set: one launch call
+# took WebAppMgr from one process to two and the picture came back.
+#
+# In the background, because run-parts runs these scripts one after another and a sleep here
+# would hold up everything that sorts after it.
+(
+	# The first check is immediate. Every second spent deciding is a second of black screen, and
+	# a launcher that is going to draw has its renderer before this script is even run: measured
+	# at 43.2s black against a script that starts at about 38s.
+	tries=0
+	while [ $tries -lt 6 ]; do
+		# never act when something else is on screen: an input is not ours to interrupt
+		foreground_is_launcher || exit 0
+		if is_drawing; then exit 0; fi
+		luna-send -n 1 -w 6000 -f luna://com.webos.applicationManager/launch \
+			"{\"id\":\"$APP_ID\"}" < /dev/null > /dev/null 2>&1
+		logger -t openlauncher-home "launcher had no renderer; relaunched"
+		tries=$((tries + 1))
+		# a relaunch takes about four seconds to show a renderer, so wait before judging it
+		i=0
+		while [ $i -lt 6 ]; do
+			sleep 1
+			is_drawing && exit 0
+			i=$((i + 1))
+		done
+	done
+	# Six tries and still nothing drawn. sam is the bigger hammer, and at this point the ten
+	# seconds it costs are worth more than a black screen.
+	if foreground_is_launcher && ! is_drawing && pgrep -x sam > /dev/null 2>&1; then
+		logger -t openlauncher-home "still black after six relaunches; restarting sam"
+		restart sam
+	fi
+) &
 
 # ---- the cold-boot half -----------------------------------------------------
 # The mount above only helps once this script has run, and at a real power-on that is roughly a

@@ -383,55 +383,45 @@ ever redirect a power-on.
 `/usr/palm/applications/com.webos.app.home`. That app does one thing - launch this launcher and
 close itself. Anything that asks for the stock home, `bootd` included, now gets this one.
 
-### Why sam is usually left alone
+### The black screen at cold boot, and why sam used to be restarted
 
-The script used to restart `sam`, the service that launches apps, so it would notice the folder
-underneath it had changed. That cost about ten seconds of every cold start, because restarting it
-takes down every running app and the launcher is already on screen by then. Measured on a
-65UR78003LK: the launcher was in the foreground at **37.5 s**, the restart happened at **39.6 s**,
-and the launcher did not come back until **48.2 s**.
+webOS brings the launcher up as a window with no renderer behind it: the app is reported as the
+foreground app, `getForegroundAppInfo` names it, and the screen stays black. On this set it
+happens at **every** cold boot, and it does not resolve itself. A set left alone sat black for
+three minutes with one `WebAppMgr` process and no renderer.
 
-It turned out not to be needed. With the set parked on HDMI 3, the stub freshly mounted and `sam`
-deliberately not told, asking for `com.webos.app.home` still landed on the launcher: `sam`
-resolves the directory when it launches rather than serving a cached copy of the files.
+The script used to restart `sam` here, which hid the problem by accident: that took every app
+down and the set started the launcher again, and the second instance drew. It cost about ten
+seconds and took every other app with it.
 
-So the restart is kept only for the case where it costs nothing and might help: when something
-other than the launcher is on screen, which means a fresh install, or a power-on that did not go
-the way it should.
+Relaunching this one app does the same job for less. A background loop checks whether `WebAppMgr`
+has a renderer as well as its main process and, if the launcher is the foreground app and nothing
+is being drawn, launches it again. Measured across reboots: black at 43.2 s, picture at 47.0 s,
+against 48.2 s for the `sam` restart. If six relaunches still leave it black, `sam` is restarted
+after all, because by then the ten seconds are worth less than a black screen.
 
-It also points the TV's "last input" at the launcher and turns **Home Auto Launch off**, because
-the mount only takes effect once the startup scripts have run - roughly a minute into a cold boot -
-and with Home Auto Launch on, webOS opens LG's home before that happens.
+**`pgrep -f` cannot be used for that check.** BusyBox `pgrep` matches its own command line, so
+`pgrep -f "WebAppMgr --type=renderer"` answers yes even when there is no renderer, and the first
+version of this check silently never fired. Verified on the set: `pgrep -f "zzzz --type=zzzz"`
+returns a pid of its own. The count goes by process name instead.
 
-### Why the last input has to be watched
+### Where the rest of the wait goes
 
-The "last input" is not a setting anyone chooses. It is a record webOS keeps in **four** keys,
-`lastInputApp`, `lastInputAppType`, `physicalLastInputApp` and `physicalLastInputType`, and it is
-what the set resumes at power-on.
+Measured on a 65UR78003LK, from power-on:
 
-Two things were measured on a 65UR78003LK running webOS 10.3.2:
+| | |
+|---|---|
+| 2.4 s | `bootd` |
+| 3.4 s | `surface-manager` |
+| 7.6 s | `sam` |
+| **30.3 s** | `WebAppMgr`, the web engine any of this needs |
+| ~38 s | the launcher is the foreground app, screen still black |
+| ~43-47 s | the relaunch above, and the picture |
 
-- selecting HDMI 3 rewrote **all four** keys at once
-- going back to the launcher rewrote **none of them**
-
-So the record does not name the last thing that was on screen, it names the last **input** that was
-ever selected, and it keeps naming it. Writing it once at boot lasted only until the next time any
-input was used, and from then on every power-on went back to that input. The script's own
-correction landed a minute later, with the input already up.
-
-That is worse than an inconvenience if a games console is on the port. The TV re-selecting the
-input sends SIMPLINK (HDMI-CEC) down the cable, which wakes a console out of rest mode.
-
-So `homestub.sh` leaves a watcher behind that writes all four keys back whenever the record has
-drifted. It changes no input and opens nothing: with HDMI 3 on screen the correction was made and
-the input stayed exactly where it was. It is one settings write, and it only happens after an input
-change, because the check is a read and the write is skipped when the record is already right.
-
-The window is the check interval, 30 seconds by default. Switching the set off within that window
-of leaving an input can still bring that input back once.
-
-To keep the stock behaviour instead, where the TV resumes the input last used, set
-`WATCH_EVERY=0` at the top of `homestub.sh`.
+Most of that is the television's own firmware, before anything this project installs has run.
+The launcher itself paints 1.5 s after its page begins loading. **Quick Start+**, in LG's own
+settings, is the only thing that avoids the cold boot at all: it keeps standby active so
+switching on is a wake rather than a boot, at the cost of standby power.
 
 **The trade-off:** webOS's boot animation no longer plays.
 

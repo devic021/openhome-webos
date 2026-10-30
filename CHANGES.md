@@ -90,12 +90,17 @@ and never reads that setting (confirmed with `strings /usr/sbin/bootd`).
 This adds a stub: a transparent app bind-mounted over `/usr/palm/applications/com.webos.app.home`
 that launches the launcher and closes itself, so anything asking for the stock home gets this one.
 
-The script no longer restarts `sam` when the launcher is already on screen. That restart cost
-about ten seconds of every cold start, since it takes down every running app: measured at 37.5s
-for the launcher appearing, 39.6s for the restart and 48.2s for it to come back. It is also
-unnecessary, because `sam` resolves the app directory when it launches rather than serving a
-cached copy of the files, verified with the set parked on another input and `sam` deliberately
-not told.
+webOS brings the launcher up at cold boot as a window with no renderer behind it: foreground,
+named by `getForegroundAppInfo`, and the screen black. The script used to restart `sam` here,
+which hid that by accident, since it took every app down and the set started the launcher again.
+It now relaunches only this app, which does the same job without taking the rest of the set with
+it, and falls back to restarting `sam` if six relaunches do not help. Picture at 47.0s against
+48.2s, so this is not faster to speak of; what it stops doing is throwing every other running app
+away to fix one of them.
+
+The check counts `WebAppMgr` processes by name. `pgrep -f` is unusable: BusyBox pgrep matches its
+own command line, so the first version of the check answered "already drawing" every time and
+never fired.
 It also repoints the TV's "last input" and turns off Home Auto Launch, because the mount only takes
 effect about a minute into a cold boot and LG's home would otherwise open first. The cost is that
 webOS's boot animation no longer plays.
