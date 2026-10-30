@@ -223,7 +223,7 @@ function renderabout(box) {
 	icon.setAttribute("alt","");
 	head.appendChild(icon);
 	const title=el("div","abouttitle");
-	title.appendChild(el("span","aboutname","OpenLauncher"));
+	title.appendChild(el("span","aboutname","OpenHome"));
 	title.appendChild(el("small","aboutsub","v"+APP_RELEASE+t(" - a custom home screen for webOS TVs")));
 	head.appendChild(title);
 	const actions=el("div","aboutactions");

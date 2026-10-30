@@ -43,12 +43,23 @@ function makephotolayers(){
 // bundled list of links until the pool has filled up
 function photosource(){
 	if(typeof poolready==="function" && poolready()){ return poolentries(); }
+	// "Only mine" with an empty folder: an empty list sends startphotos() to the bundled
+	// wallpaper, which is the honest answer. Falling through would stream from Commons, and
+	// that is the one thing that choice rules out.
+	if(typeof poolmineonly==="function" && poolmineonly()){ return []; }
 	return (typeof photos!=="undefined")?photos:[];
 }
 
 // photocache.js calls this once it knows what is on disk, so the switch happens without a wait
 function photocacheready(){
-	if(photomode){ photoqueue=[]; }
+	if(photomode){
+		photoqueue=[];
+		return;
+	}
+	// A scan can also find the first picture while something else is on screen: at startup, where
+	// the pool was still loading when the background chose a source, or after a rescan that found
+	// pictures of your own. Then the rotation has to be started, not just re-queued.
+	if(prefs.videoSource==="photos" && photosource().length){ startphotos(); }
 }
 
 function startphotos(){
@@ -179,6 +190,13 @@ function nextphoto(){
 		}
 		stopphotos();
 		return startsourcewas.apply(this,arguments);
+	};
+	// "photos" alone would not tell applybackgroundsource() that t("Which photos") changed, so the
+	// choice goes into the signature the way the custom list does
+	const sourcesignaturewas=window.sourcesignature;
+	window.sourcesignature=function(kind){
+		if(kind==="photos"){ return kind+"/"+(typeof photomix==="function"?photomix():""); }
+		return sourcesignaturewas.apply(this,arguments);
 	};
 	const wantedsourcewas=window.wantedsource;
 	window.wantedsource=function(){

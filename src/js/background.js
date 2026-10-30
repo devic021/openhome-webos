@@ -29,7 +29,9 @@ function startimagewallpapers() {
 		});
 	};
 	imageswap();
-	imagetimer=setInterval(imageswap,20*1000);
+	// 120s, not 20s: the bundled photographs are camera originals and decode to tens of MB each,
+	// so a faster cadence spends real CPU and USB bandwidth for a background nobody is looking at.
+	imagetimer=setInterval(imageswap,120*1000);
 }
 
 // leave the pictures so a video can play again
@@ -250,6 +252,13 @@ function wantedsource() {
 	return "online";
 }
 
+// Not just WHICH source, but which CONTENT of it: a setting that changes the list has to restart
+// the rotation, and one that does not must leave it alone. js/photowall.js extends this for the
+// photo sources the same way it extends the two functions below.
+function sourcesignature(kind) {
+	return kind==="custom"?kind+JSON.stringify(prefs.customUrls):kind;
+}
+
 function startsource(kind) {
 	if(kind==="offline"){
 		startlocalvideo();
@@ -266,7 +275,7 @@ function startsource(kind) {
 function applybackgroundsource() {
 	if(!bgstarted){ return; }
 	const kind=wantedsource();
-	const signature=kind==="custom"?kind+JSON.stringify(prefs.customUrls):kind;
+	const signature=sourcesignature(kind);
 	if(signature===lastsource){ return; }
 	lastsource=signature;
 	startsource(kind);
@@ -351,7 +360,7 @@ function startbackground() {
 	},30*1000);
 	bgstarted=true;
 	const kind=wantedsource();
-	lastsource=kind==="custom"?kind+JSON.stringify(prefs.customUrls):kind;
+	lastsource=sourcesignature(kind);
 	startsource(kind);
 }
 

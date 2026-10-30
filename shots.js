@@ -36,6 +36,8 @@ const SCREENS = [
 	["apps", `${SHUT};realappbarbtu.click();`, 1600],
 	["settings-clock", SETTINGS("clock"), 1200],
 	["settings-screen", SETTINGS("screen"), 1400],
+	// the wallpaper pane reads the disk, so it needs longer than the others to settle
+	["settings-wallpaper", SETTINGS("wallpaper"), 2600],
 	["tv-privacy", TVTAB("privacy"), 1600],
 	["tv-screen", TVTAB("screen"), 1600],
 	["tv-picture", TVTAB("picture"), 1600],

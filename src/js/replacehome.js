@@ -1,6 +1,6 @@
 //SPDX-License-Identifier: WTFNMFPL
 // Settings > TV > Replace stock Home: runs one of the scripts in access/replace through the root service (Homebrew
-// Channel's exec), so binding the physical Home button (and, for most methods, launching OpenLauncher at startup too)
+// Channel's exec), so binding the physical Home button (and, for most methods, launching OpenHome at startup too)
 // doesn't need SSH. See the main Readme's Replace / Auto-start sections and access/replace/Readme.md for what each
 // method actually patches; this button automates those same steps and nothing else.
 
@@ -83,7 +83,7 @@ async function applyhomereplace() {
 	if(settingstab==="tv"){ renderpane(); }
 }
 
-// Settings > TV > "Restore stock Home". Important: uninstalling OpenLauncher does NOT undo any of this on its own
+// Settings > TV > "Restore stock Home". Important: uninstalling OpenHome does NOT undo any of this on its own
 // (the init.d script and the Luna DB's default app live outside the app's own storage, so they survive an
 // uninstall) - press this first, or Home is left pointed at an app that's no longer there.
 async function restorehome() {
@@ -100,7 +100,7 @@ async function restorehome() {
 	if(settingstab==="tv"){ renderpane(); }
 }
 
-// Settings > App info > "Uninstall OpenLauncher". Rooted: restore-fix and self-removal are sent as ONE shell
+// Settings > App info > "Uninstall OpenHome". Rooted: restore-fix and self-removal are sent as ONE shell
 // command to the root service (org.webosbrew.hbchannel.service/exec), which runs on the TV independently of this
 // app's own process - so it keeps going even if "restart sam" (at the end) or the uninstall itself tears this
 // page down partway through. It also sidesteps canuninstall()'s normal "the launcher can't uninstall itself"
@@ -138,7 +138,7 @@ async function selfuninstall() {
 			toasty(t("Could not uninstall")+((result && result.errorText)?": "+result.errorText:"."));
 		} else {
 			uninstallstate={busy:false,ok:true};
-			toasty(t("Uninstalling OpenLauncher..."));
+			toasty(t("Uninstalling OpenHome..."));
 		}
 	}
 	if(settingstab==="about"){ renderpane(); }

@@ -89,9 +89,64 @@ and never reads that setting (confirmed with `strings /usr/sbin/bootd`).
 
 This adds a stub: a transparent app bind-mounted over `/usr/palm/applications/com.webos.app.home`
 that launches the launcher and closes itself, so anything asking for the stock home gets this one.
+
+webOS sometimes brings the launcher up as a window with no renderer behind it: foreground, named
+by `getForegroundAppInfo`, and the screen black. Every observation was after a software `reboot`;
+a real cold start with the mains pulled came up drawing on its own. The script used to restart `sam` here,
+which hid that by accident, since it took every app down and the set started the launcher again.
+It now relaunches only this app, which does the same job without taking the rest of the set with
+it, and falls back to restarting `sam` if six relaunches do not help. Picture at 47.0s against
+48.2s, so this is not faster to speak of; what it stops doing is throwing every other running app
+away to fix one of them.
+
+The check counts `WebAppMgr` processes by name. `pgrep -f` is unusable: BusyBox pgrep matches its
+own command line, so the first version of the check answered "already drawing" every time and
+never fired.
 It also repoints the TV's "last input" and turns off Home Auto Launch, because the mount only takes
-effect about a minute into a cold boot and LG's home would otherwise open first. The cost is that
-webOS's boot animation no longer plays.
+effect once the startup scripts have run, measured at 38 to 40 seconds into a cold boot and LG's home would otherwise open first. The cost is that
+webOS's boot animation no longer plays - except that on this model there is none to lose.
+Tested by setting homeAutoLaunch back to `on` and pulling the mains: no logo and no animation
+appeared, only LG's own home, in the foreground at 39.40s against the launcher drawing at 36.90s
+with it off. `com.webos.app.bootlogo` is not installed, there is no animation media on the
+filesystem, and `general.homeAnimation` answers "There is no matched result from DB". What
+turning it on does cost is real: `bootd` launches `com.webos.app.home` before the stub is
+mounted, so LG's home comes up and then stays.
+
+The "last input" is a record of four keys that webOS rewrites on every input change, not a
+setting. Measured on a 65UR78003LK: selecting HDMI 3 rewrote all four, and going back to the
+launcher rewrote none, so the record names the last input ever selected rather than the last thing
+on screen. Writing two of the four once at boot therefore fixed nothing past the first input
+change, and on a port with a games console the TV re-selecting the input wakes it out of rest mode
+over SIMPLINK. The script now leaves a watcher behind that writes all four back when the record
+has drifted, one settings write per input change, and `WATCH_EVERY=0` turns that off.
+
+### The launcher calls itself OpenHome - `src/index.html`, `src/js/about.js`, `src/js/backup.js`, `src/js/replacehome.js`
+
+The fork was renamed, but four things people can see were not: the settings panel was headed
+"OpenLauncher settings", the About panel gave the same name, the uninstall toast said
+"Uninstalling OpenLauncher", and a failed restore answered "That is not an OpenLauncher backup".
+The wallpaper fetcher also introduced itself to Wikimedia as `OpenLauncher-wallpaper/1.0`.
+
+Backups keep working both ways. New files are written with `app: "OpenHome"`, and a file carrying
+the old name is still accepted when reading, because only the name changed and not the format.
+
+### Pictures of your own as wallpapers - `src/js/photocache.js`
+
+The wallpaper disk is mounted over the folder the launcher reads, so copying photographs onto it
+is the obvious thing to do with it, and it did nothing at all: the playlist was built from
+`list.json`, the manifest the launcher keeps for its own downloads, so anything else on the disk
+was invisible while the trickle went on fetching more on top of it.
+
+Everything in the folder that looks like a picture, is not named by that manifest and is not
+shaped like one of our downloads is now one of yours, and **Which photos** chooses between yours,
+the downloads, and both. "Only mine" stops the downloading altogether. Nothing of yours is ever
+deleted, because pruning still goes by the manifest.
+
+Downloads the manifest had lost track of are taken back into it rather than ignored or deleted:
+606 pictures against 200 in the manifest on the set this was written on, 0.68 GB of them. They
+are labelled with the day they were downloaded, which their own file names carry, and
+**Pictures to keep** is raised to make room so the next download cannot delete what was just
+recovered.
 
 ### The status strip can be turned down or off - `src/js/status.js`
 
@@ -112,6 +167,10 @@ the system panel, a button for it appears in the same settings section while the
 - `tweaks.sh` - re-applies chosen system settings at boot, for the same reason
 - `wallpapers.sh` - mounts the wallpaper disk **by UUID**, since webOS re-enumerates USB devices
   across a reboot and a device-node path fails with `Input/output error`
+- `no-preload.sh` - stops webOS holding other apps resident from switch-on; `allowedApps` in
+  `webos-preload-manager-conf.json` was measured to have no effect, so the service itself is
+  stopped
+- `vmtune.sh` - puts `vm.swappiness` back to the kernel default of 60, which LG raises to 100
 
 ### A usable first run - `src/js/firstrun.js` (new)
 
@@ -200,6 +259,11 @@ file that does not parse leaves a blank home screen recoverable only over SSH. `
 - **Remote navigation** (`src/js/dpad.js`) - focus handling reworked for the added panels.
 - **About pane** - reports the launcher, the configuration, the wallpaper source, the screen, the
   TV and the project, and checks GitHub for a newer release only when asked.
+- **Wallpaper stills change every 120s**, not every 20s. The bundled photographs are camera
+  originals, 3072x2304 to 4640x3472, which decode to 27-61 MB each; `imageswap` decodes the next
+  one while the current is still up. Measured on an LM21 set, the slower cadence did not change
+  the renderer's memory - that is shared compositor and engine pages, not the image cache - but it
+  cuts the decode and USB work sixfold.
 
 ---
 
