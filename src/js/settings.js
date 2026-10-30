@@ -330,12 +330,15 @@ function slider(item){
 	input.setAttribute("data-dpadstep",String(item.step));
 	input.setAttribute("aria-label",item.label);
 	input.value=String(prefs[item.key]);
-	const value=el("span","ssliderval",prefs[item.key]+item.unit);
+	// item.unit is optional, and `700 + undefined` is NaN, not "700". A slider without a unit
+	// printed its value as NaN until a setting without one was added.
+	const unit=item.unit||"";
+	const value=el("span","ssliderval",prefs[item.key]+unit);
 	const fill=() => input.setAttribute("style","--fill:"+((Number(input.value)-item.min)/(item.max-item.min)*100)+"%");
 	fill();
 	input.addEventListener("input",() => {
 		const now=Number(input.value);
-		value.textContent=now+item.unit;
+		value.textContent=now+unit;
 		fill();
 		setprefquiet(item.key,now);
 	});
