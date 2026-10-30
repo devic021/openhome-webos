@@ -7,10 +7,14 @@ const BACKUP_FILE='/media/developer/openlauncher-settings.json';
 const BACKUP_VERSION=1;
 
 let backuptext="";
+// What a backup says it came from. New files carry the first; the second is what the fork was
+// called before it was renamed, and is still accepted when reading.
+const BACKUP_APP="OpenHome";
+const BACKUP_APPS=[BACKUP_APP,"OpenLauncher"];
 let backupmessage="";
 
 function makebackup(){
-	return JSON.stringify({app:"OpenLauncher",version:BACKUP_VERSION,prefs:changedprefs(),layout:settings},null,1);
+	return JSON.stringify({app:BACKUP_APP,version:BACKUP_VERSION,prefs:changedprefs(),layout:settings},null,1);
 }
 
 function cleanstrings(list){
@@ -37,8 +41,10 @@ function parsebackup(text){
 	} catch(e) {
 		return {error:t("That is not valid JSON.")};
 	}
-	if(!data || data.app!=="OpenLauncher"){
-		return {error:t("That is not an OpenLauncher backup.")};
+	// A backup written before the fork was renamed carries the old name. Reading one has to keep
+	// working: the file format did not change, only what the launcher calls itself.
+	if(!data || BACKUP_APPS.indexOf(data.app)===-1){
+		return {error:t("That is not an OpenHome backup.")};
 	}
 	if(!(data.version<=BACKUP_VERSION)){
 		return {error:t("That backup is from a newer version of the launcher.")};

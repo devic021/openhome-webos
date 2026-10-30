@@ -29,7 +29,9 @@ function startimagewallpapers() {
 		});
 	};
 	imageswap();
-	imagetimer=setInterval(imageswap,20*1000);
+	// 120s, not 20s: the bundled photographs are camera originals and decode to tens of MB each,
+	// so a faster cadence spends real CPU and USB bandwidth for a background nobody is looking at.
+	imagetimer=setInterval(imageswap,120*1000);
 }
 
 // leave the pictures so a video can play again
