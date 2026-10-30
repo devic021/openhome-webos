@@ -441,6 +441,21 @@ disk.
 A 4K photograph should be at least 3840 px wide. The screen is painted at devicePixelRatio 2, so a
 1920 px picture is upscaled twice over and looks soft.
 
+### Downloads the launcher had lost track of
+
+The pool keeps a manifest of what it has fetched, and only what the manifest names was ever shown
+or tidied up. Anything that fell out of it stayed on the disk, unusable and unnoticed: the set
+this was written on held **606 pictures against 200 in the manifest**, 0.68 GB of 4K photographs
+that nothing referred to any more.
+
+They are taken back rather than deleted. At startup every file in the folder shaped like one of
+our downloads but missing from the manifest is added back to it, labelled with the day it was
+downloaded, which its own file name carries. **Settings → Wallpaper → Pictures to keep** is raised
+to make room for them, because otherwise the next download would delete the ones just recovered.
+
+From then on they are pruned and refreshed like any other, so the folder holds a steady number
+instead of gaining a generation every time the manifest is reset.
+
 **Mounted by UUID on purpose.** webOS re-enumerates USB disks across a reboot, so a stick that was
 `/dev/sda3` one day is `/dev/sdb3` the next. Anything that names the device fails with
 `Input/output error`, which looks exactly like a corrupt disk and is not.

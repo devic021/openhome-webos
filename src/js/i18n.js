@@ -754,6 +754,10 @@ const I18N_SR={
 	"Pictures of your own":"Moje slike",
 	"Rescan":"Skeniraj ponovo",
 	"Looks in the wallpaper folder again, for pictures copied on since the launcher started.":"Ponovo pregleda folder za pozadine, zbog slika dodatih posle pokretanja launchera.",
+	"Wikimedia Commons":"Wikimedia Commons",
+	"Commons, saved ":"Commons, sa\u010duvano ",
+	"Pictures to keep":"Koliko slika \u010duvati",
+	"How many downloaded photographs to keep on the disk, at about 1.9 MB each. Finding more than this already there raises it rather than deleting them.":"Koliko preuzetih fotografija \u010duvati na disku, po oko 1,9 MB. Ako se zatekne vi\u0161e od toga, granica se podi\u017ee umesto da se bri\u0161u.",
 };
 
 const I18N_TABLES={sr:I18N_SR};

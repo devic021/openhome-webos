@@ -17,6 +17,7 @@
 
 const WALLDIR="/media/developer/wallpapers";
 const POOL_TARGET=200;            // pictures to keep on disk (~1.9 MB each); they live on the USB disk
+const POOL_MAX=2000;              // the most t("Pictures to keep") will go to, about 3.4 GB
 const POOL_MIN=8;                 // enough to start showing from disk instead of the network
 const FILL_MS=20*1000;            // while first filling up, fetch this often
 const PHOTOS_PER_DAY=60;          // "daily" replaces this many a day whatever the pool size,
@@ -54,15 +55,17 @@ const OURS_SHAPE=/^w\d+\.jpe?g$/i;        // what poolgrow() names what it downl
 // \u0161) is listed as "Jesenje ??ume.jpg", and a url built from that name points at nothing.
 // find prints the bytes as they are. It also returns nothing, rather than failing, when the
 // folder is empty or missing, and -maxdepth 1 keeps it out of lost+found.
-async function minescan(){
-	let names=[];
+async function disklist(){
 	try {
 		const r=await wallsh("find "+shellquote(WALLDIR)+" -maxdepth 1 -type f 2>/dev/null");
 		const prefix=WALLDIR+"/";
-		names=String((r && r.stdoutString) || "").split("\n")
+		return String((r && r.stdoutString) || "").split("\n")
 			.filter((line) => line.indexOf(prefix)===0)
 			.map((line) => line.substring(prefix.length));
-	} catch(e) { names=[]; }
+	} catch(e) { return []; }
+}
+
+function minescan(names){
 	const ours={};
 	pool.forEach((each) => { ours[each.f]=true; });
 	// a leading dot covers both hidden files and the ._name forks a Mac leaves on a USB stick
@@ -70,9 +73,53 @@ async function minescan(){
 		!ours[name] && !OURS_SHAPE.test(name)).sort();
 }
 
+// ---- downloads the manifest has lost track of --------------------------------
+// The set this was written on held 606 pictures against 200 in the manifest: 406 downloads,
+// 0.68 GB, that nothing referred to any more. They are ours, they are on the disk and they are
+// perfectly good 4K photographs, so they are taken back into the manifest rather than ignored,
+// which left them unusable, or deleted, which would throw them away. Once adopted they are
+// shown, counted and refreshed like any other, and the folder stops gaining a generation at a
+// time.
+//
+// The manifest has no title for them, only the file, whose name carries the moment it was
+// downloaded. That date is a truer label than a made-up name.
+// poolgrow() names what it downloads w<Date.now()>.jpg, so the file carries its own age.
+function filestamp(file){
+	const stamp=Number(String(file).replace(/^w(\d+)\.jpe?g$/i,"$1"));
+	return (isFinite(stamp) && stamp>1e12)?stamp:0;
+}
+
+function adoptedname(file){
+	const stamp=filestamp(file);
+	if(!stamp){ return t("Wikimedia Commons"); }
+	try {
+		return t("Commons, saved ")+new Date(stamp).toLocaleDateString(i18nlocale());
+	} catch(e) { return t("Wikimedia Commons"); }
+}
+
+async function pooladopt(names){
+	const named={};
+	pool.forEach((each) => { named[each.f]=true; });
+	const strays=names.filter((name) => OURS_SHAPE.test(name) && !named[name]).sort();
+	if(!strays.length){ return 0; }
+	strays.forEach((file) => { pool.push({f:file,n:adoptedname(file)}); });
+	// The pool is oldest first, because pruning takes from the front. Appending would put files
+	// downloaded months ago behind ones fetched yesterday and have the newest deleted first, so
+	// the order is restored from the timestamp every one of these names carries.
+	pool.sort((a,b) => filestamp(a.f)-filestamp(b.f));
+	// Room has to be made for them, or the very next download would delete the ones just taken
+	// back. Rounded up to a hundred so the slider in Settings lands on a value it offers.
+	if(pool.length>pooltarget() && typeof saveprefs==="function"){
+		prefs.poolTarget=Math.min(POOL_MAX,Math.ceil(pool.length/100)*100);
+		saveprefs();
+	}
+	await poolsave();
+	return strays.length;
+}
+
 // A rescan, for pictures copied on while the launcher was running.
 async function minerescan(){
-	await minescan();
+	await poolsync();
 	if(typeof photocacheready==="function"){ photocacheready(); }
 	if(typeof settingsisopen==="function" && settingsisopen() && typeof renderpane==="function"){ renderpane(); }
 }
@@ -105,6 +152,15 @@ function poolentries(){
 	const yours=(how==="commons")?[]:mineentries();
 	const ours=(how==="mine")?[]:pool.map((each) => ({n:each.n,s:"Commons",u:"hack"+WALLDIR+"/"+each.f}));
 	return yours.concat(ours);
+}
+
+// How many to keep. The default is POOL_TARGET, but a folder that already holds more than that
+// raises it: deleting several hundred perfectly good photographs to meet a number nobody chose
+// is not a tidy-up.
+function pooltarget(){
+	const want=Number(prefs.poolTarget);
+	if(!isFinite(want)){ return POOL_TARGET; }
+	return Math.max(POOL_MIN,Math.min(POOL_MAX,Math.round(want)));
 }
 
 function poolready(){
@@ -183,7 +239,7 @@ async function poolgrow(){
 			return;
 		}
 		pool.push({f:name,n:candidate.n});
-		while(pool.length>POOL_TARGET){
+		while(pool.length>pooltarget()){
 			const gone=pool.shift();
 			await wallsh("rm -f "+shellquote(WALLDIR+"/"+gone.f));
 		}
@@ -204,14 +260,14 @@ function poolbusytext(){
 	if(photomix()==="mine"){
 		return yours || t("No pictures of your own in the wallpaper folder yet.");
 	}
-	const ours=pool.length?(t("On the TV: ")+pool.length+t(" of ")+POOL_TARGET+t(" pictures.")):
+	const ours=pool.length?(t("On the TV: ")+pool.length+t(" of ")+pooltarget()+t(" pictures.")):
 		t("The pool is still empty - filling in the background.");
 	return [yours,ours,poolstatus].filter(Boolean).join(" ");
 }
 
 async function poolrenew(){
 	if(poolrenewleft>0){ return; }          // already running
-	poolrenewleft=POOL_TARGET;
+	poolrenewleft=pooltarget();
 	poolstatus=t("Downloading...");
 	const tick=() => { if(typeof settingsisopen==="function" && settingsisopen()){ renderpane(); } };
 	tick();
@@ -222,7 +278,7 @@ async function poolrenew(){
 		const after=pool.length?pool[pool.length-1].f:null;
 		if(after!==before){ done++; }
 		poolrenewleft--;
-		poolstatus=t("Downloaded ")+done+t(" of ")+POOL_TARGET+"...";
+		poolstatus=t("Downloaded ")+done+t(" of ")+pooltarget()+"...";
 		tick();
 		await new Promise((go) => setTimeout(go,400));
 	}
@@ -237,7 +293,7 @@ function poolinterval(){
 	if(photomix()==="mine"){ return 0; }      // nothing to fetch: the rotation is your own files
 	const how=prefs.photoRefresh || "daily";
 	if(how==="off"){ return 0; }
-	if(pool.length<POOL_TARGET){ return FILL_MS; }                 // still filling up
+	if(pool.length<pooltarget()){ return FILL_MS; }                 // still filling up
 	if(how==="cycle"){ return (Number(prefs.customSeconds)||120)*1000; }
 	return Math.round(24*60*60*1000/PHOTOS_PER_DAY);               // daily: a fixed number a day, not the whole pool
 }
@@ -252,23 +308,28 @@ function poolschedule(){
 	},wait);
 }
 
+// One listing of the folder answers all three questions: what the manifest promises that is no
+// longer there, what is there that the manifest has forgotten, and what the user put there.
+async function poolsync(){
+	const names=await disklist();
+	const there={};
+	names.forEach((name) => { there[name]=true; });
+	if(pool.length){
+		const kept=pool.filter((each) => there[each.f]);
+		if(kept.length!==pool.length){
+			pool=kept;
+			await poolsave();
+		}
+	}
+	await pooladopt(names);
+	minescan(names);
+	return names.length;
+}
+
 async function initphotocache(){
 	if(typeof rooted==="undefined" || !rooted || typeof execasroot!=="function"){ return; }
 	await poolload();
-	// drop anything the manifest lists that is not actually on disk any more
-	if(pool.length){
-		try {
-			const r=await wallsh("ls "+shellquote(WALLDIR)+" 2>/dev/null");
-			const there={};
-			String((r && r.stdoutString) || "").split("\n").forEach((line) => { there[line.trim()]=true; });
-			const kept=pool.filter((each) => there[each.f]);
-			if(kept.length!==pool.length){
-				pool=kept;
-				await poolsave();
-			}
-		} catch(e) {}
-	}
-	await minescan();
+	await poolsync();
 	if(typeof photocacheready==="function"){ photocacheready(); }
 	poolschedule();
 }
