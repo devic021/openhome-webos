@@ -464,6 +464,34 @@ Delete a line to forget one setting; delete the file to let LG's defaults come b
 
 ---
 
+## Giving the launcher more room
+
+Two optional scripts, both re-applied at every boot, both removed by deleting the file.
+
+```bash
+scp -i ~/.ssh/lgtv scripts/no-preload.sh scripts/vmtune.sh root@<tv-ip>:/var/lib/webosbrew/init.d/
+ssh -i ~/.ssh/lgtv root@<tv-ip> 'chmod +x /var/lib/webosbrew/init.d/no-preload.sh /var/lib/webosbrew/init.d/vmtune.sh'
+```
+
+`no-preload.sh` stops webOS holding Netflix, YouTube and Amazon in memory from switch-on. On one
+LM21 set that took the running apps down to the launcher and AirPlay, and available memory from
+336 MB to 399 MB. AirPlay is unaffected - it starts through its own service.
+
+`vmtune.sh` puts `vm.swappiness` back to the kernel's default of 60, which LG raises to 100.
+
+**What these do not fix.** Measured on the same set afterwards, available memory was 384 MB and
+the renderer still reported 92 MB. That figure is misleading: `Rss` counts shared pages in full,
+and the breakdown is 43 MB of Chromium shared memory for 4K compositor surfaces, 26.5 MB of
+`libcbe.so` engine code mapped into all three WebAppMgr processes, and 18 MB of actual JS heap.
+`Pss` - the honest number, with shared pages divided - is 60 MB, of which about 31 MB is private.
+There is little left to reclaim on a set like this, and most of what looks reclaimable is shared.
+
+**Load average is not a symptom here.** These sets idle at 30 and above because the SoC's own
+kernel threads - `vdec_task*`, `PQ_Monitor`, `hdcp22_hdmi_rx_*`, `DMS_SetMVOP_*` - sit permanently
+in uninterruptible sleep waiting on hardware. It counts towards load and means nothing.
+
+---
+
 ## Language
 
 **English and Serbian**, switched in **Settings → Clock → Language**. *Automatic* follows the TV's
