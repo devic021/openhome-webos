@@ -93,6 +93,16 @@ It also repoints the TV's "last input" and turns off Home Auto Launch, because t
 effect about a minute into a cold boot and LG's home would otherwise open first. The cost is that
 webOS's boot animation no longer plays.
 
+### The launcher calls itself OpenHome - `src/index.html`, `src/js/about.js`, `src/js/backup.js`, `src/js/replacehome.js`
+
+The fork was renamed, but four things people can see were not: the settings panel was headed
+"OpenLauncher settings", the About panel gave the same name, the uninstall toast said
+"Uninstalling OpenLauncher", and a failed restore answered "That is not an OpenLauncher backup".
+The wallpaper fetcher also introduced itself to Wikimedia as `OpenLauncher-wallpaper/1.0`.
+
+Backups keep working both ways. New files are written with `app: "OpenHome"`, and a file carrying
+the old name is still accepted when reading, because only the name changed and not the format.
+
 ### Startup scripts - `scripts/` (new)
 
 - `homestub.sh` - the home replacement above
