@@ -383,6 +383,22 @@ ever redirect a power-on.
 `/usr/palm/applications/com.webos.app.home`. That app does one thing - launch this launcher and
 close itself. Anything that asks for the stock home, `bootd` included, now gets this one.
 
+### Why sam is usually left alone
+
+The script used to restart `sam`, the service that launches apps, so it would notice the folder
+underneath it had changed. That cost about ten seconds of every cold start, because restarting it
+takes down every running app and the launcher is already on screen by then. Measured on a
+65UR78003LK: the launcher was in the foreground at **37.5 s**, the restart happened at **39.6 s**,
+and the launcher did not come back until **48.2 s**.
+
+It turned out not to be needed. With the set parked on HDMI 3, the stub freshly mounted and `sam`
+deliberately not told, asking for `com.webos.app.home` still landed on the launcher: `sam`
+resolves the directory when it launches rather than serving a cached copy of the files.
+
+So the restart is kept only for the case where it costs nothing and might help: when something
+other than the launcher is on screen, which means a fresh install, or a power-on that did not go
+the way it should.
+
 It also points the TV's "last input" at the launcher and turns **Home Auto Launch off**, because
 the mount only takes effect once the startup scripts have run - roughly a minute into a cold boot -
 and with Home Auto Launch on, webOS opens LG's home before that happens.

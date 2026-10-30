@@ -39,14 +39,32 @@ if grep -q " $HOME_APP " /proc/mounts 2>/dev/null; then
 	fi
 fi
 
+# Restarting sam costs about ten seconds of the cold start, because it takes down every running
+# app and the launcher is already on screen by the time this runs. Measured on a 65UR78003LK: the
+# launcher was in the foreground at 37.5s, this restarted sam at 39.6s, and the launcher did not
+# come back until 48.2s.
+#
+# It is not needed for the mount to take effect. Tested with the set parked on HDMI 3, the stub
+# freshly mounted and sam deliberately not told: asking for com.webos.app.home still landed on
+# the launcher, because sam resolves the directory when it launches rather than serving a cached
+# copy of the files.
+#
+# So it is kept only for the case where it is worth something: something other than the launcher
+# is on screen, which means a fresh install or a power-on that did not go the way it should, and
+# there is nothing to interrupt.
+foreground_is_launcher() {
+	luna-send -n 1 -w 4000 -f luna://com.webos.applicationManager/getForegroundAppInfo \
+		'{}' < /dev/null 2>/dev/null | grep -q "$APP_ID"
+}
+
 if [ "$mounted" -eq 0 ]; then
 	mount --rbind "$STUB" "$HOME_APP" || exit 1
 	logger -t openlauncher-home "stub mounted over com.webos.app.home"
-	# sam caches every system app's appinfo.json, so it has to look again - but only if it is
-	# already running. At boot this runs before sam starts, and restarting it then would fail.
-	if pgrep -x sam > /dev/null 2>&1; then
+	if pgrep -x sam > /dev/null 2>&1 && ! foreground_is_launcher; then
 		restart sam
 		logger -t openlauncher-home "sam restarted to pick up the stub"
+	else
+		logger -t openlauncher-home "sam left alone; the launcher is already up"
 	fi
 fi
 
