@@ -104,7 +104,13 @@ own command line, so the first version of the check answered "already drawing" e
 never fired.
 It also repoints the TV's "last input" and turns off Home Auto Launch, because the mount only takes
 effect about a minute into a cold boot and LG's home would otherwise open first. The cost is that
-webOS's boot animation no longer plays.
+webOS's boot animation no longer plays - except that on this model there is none to lose.
+Tested by setting homeAutoLaunch back to `on` and pulling the mains: no logo and no animation
+appeared, only LG's own home, in the foreground at 39.40s against the launcher drawing at 36.90s
+with it off. `com.webos.app.bootlogo` is not installed, there is no animation media on the
+filesystem, and `general.homeAnimation` answers "There is no matched result from DB". What
+turning it on does cost is real: `bootd` launches `com.webos.app.home` before the stub is
+mounted, so LG's home comes up and then stays.
 
 The "last input" is a record of four keys that webOS rewrites on every input change, not a
 setting. Measured on a 65UR78003LK: selecting HDMI 3 rewrote all four, and going back to the
