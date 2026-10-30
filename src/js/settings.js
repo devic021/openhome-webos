@@ -107,7 +107,9 @@ const SETTINGS_SCHEMA=[
 	]},
 	{id:"screen",title:t("Screen"),icon:"monitor",items:[
 		{key:"statusShow",label:t("Status strip"),type:"choice",default:"full",
-			options:[["full",t("Full")],["compact",t("Icon only")],["off",t("Off")]],
+			// not t("Full"): that string is already the full weekday name, where Serbian wants
+			// "Pun", which reads as nonsense against a strip
+			options:[["full",t("Everything")],["compact",t("Icon only")],["off",t("Off")]],
 			hint:t("The panel in the top corner with the network, CPU, memory and storage. Off removes it and stops the once-a-second reading behind it as well.")},
 		{type:"action",label:t("System panel"),button:t("Open"),icon:"info",show:(p) => p.statusShow==="off",
 			hint:t("The strip is how the system panel normally opens, so here is the way in while it is off."),
