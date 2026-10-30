@@ -89,9 +89,36 @@ and never reads that setting (confirmed with `strings /usr/sbin/bootd`).
 
 This adds a stub: a transparent app bind-mounted over `/usr/palm/applications/com.webos.app.home`
 that launches the launcher and closes itself, so anything asking for the stock home gets this one.
+
+webOS sometimes brings the launcher up as a window with no renderer behind it: foreground, named
+by `getForegroundAppInfo`, and the screen black. Every observation was after a software `reboot`;
+a real cold start with the mains pulled came up drawing on its own. The script used to restart `sam` here,
+which hid that by accident, since it took every app down and the set started the launcher again.
+It now relaunches only this app, which does the same job without taking the rest of the set with
+it, and falls back to restarting `sam` if six relaunches do not help. Picture at 47.0s against
+48.2s, so this is not faster to speak of; what it stops doing is throwing every other running app
+away to fix one of them.
+
+The check counts `WebAppMgr` processes by name. `pgrep -f` is unusable: BusyBox pgrep matches its
+own command line, so the first version of the check answered "already drawing" every time and
+never fired.
 It also repoints the TV's "last input" and turns off Home Auto Launch, because the mount only takes
-effect about a minute into a cold boot and LG's home would otherwise open first. The cost is that
-webOS's boot animation no longer plays.
+effect once the startup scripts have run, measured at 38 to 40 seconds into a cold boot and LG's home would otherwise open first. The cost is that
+webOS's boot animation no longer plays - except that on this model there is none to lose.
+Tested by setting homeAutoLaunch back to `on` and pulling the mains: no logo and no animation
+appeared, only LG's own home, in the foreground at 39.40s against the launcher drawing at 36.90s
+with it off. `com.webos.app.bootlogo` is not installed, there is no animation media on the
+filesystem, and `general.homeAnimation` answers "There is no matched result from DB". What
+turning it on does cost is real: `bootd` launches `com.webos.app.home` before the stub is
+mounted, so LG's home comes up and then stays.
+
+The "last input" is a record of four keys that webOS rewrites on every input change, not a
+setting. Measured on a 65UR78003LK: selecting HDMI 3 rewrote all four, and going back to the
+launcher rewrote none, so the record names the last input ever selected rather than the last thing
+on screen. Writing two of the four once at boot therefore fixed nothing past the first input
+change, and on a port with a games console the TV re-selecting the input wakes it out of rest mode
+over SIMPLINK. The script now leaves a watcher behind that writes all four back when the record
+has drifted, one settings write per input change, and `WATCH_EVERY=0` turns that off.
 
 ### The launcher calls itself OpenHome - `src/index.html`, `src/js/about.js`, `src/js/backup.js`, `src/js/replacehome.js`
 

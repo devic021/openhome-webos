@@ -383,14 +383,71 @@ ever redirect a power-on.
 `/usr/palm/applications/com.webos.app.home`. That app does one thing - launch this launcher and
 close itself. Anything that asks for the stock home, `bootd` included, now gets this one.
 
-It also points the TV's "last input" at the launcher and turns **Home Auto Launch off**, because
-the mount only takes effect once the startup scripts have run - roughly a minute into a cold boot -
-and with Home Auto Launch on, webOS opens LG's home before that happens.
+### The black screen at cold boot, and why sam used to be restarted
 
-**The trade-off:** webOS's boot animation no longer plays.
+webOS sometimes brings the launcher up as a window with no renderer behind it: the app is
+reported as the foreground app, `getForegroundAppInfo` names it, and the screen stays black. It
+does not resolve itself - a set left alone sat black for three minutes with one `WebAppMgr`
+process and no renderer.
+
+**When it happens matters.** Every observation of it was after a software `reboot`. A real cold
+start, with the mains pulled and restored, came up drawing on its own: a renderer existed by the
+first moment the set answered at all, 36.9 s, and the launcher was the foreground app at 39.4 s,
+with the recovery below never needing to fire. So this is a recovery for a state that does
+happen, not a step every power-on goes through.
+
+The script used to restart `sam` here, which hid the problem by accident: that took every app
+down and the set started the launcher again, and the second instance drew. It cost about ten
+seconds and took every other app with it.
+
+Relaunching this one app does the same job for less. A background loop checks whether `WebAppMgr`
+has a renderer as well as its main process and, if the launcher is the foreground app and nothing
+is being drawn, launches it again. Measured across reboots: black at 43.2 s, picture at 47.0 s,
+against 48.2 s for the `sam` restart. If six relaunches still leave it black, `sam` is restarted
+after all, because by then the ten seconds are worth less than a black screen.
+
+**`pgrep -f` cannot be used for that check.** BusyBox `pgrep` matches its own command line, so
+`pgrep -f "WebAppMgr --type=renderer"` answers yes even when there is no renderer, and the first
+version of this check silently never fired. Verified on the set: `pgrep -f "zzzz --type=zzzz"`
+returns a pid of its own. The count goes by process name instead.
+
+### Where the rest of the wait goes
+
+Measured on a 65UR78003LK, from power-on:
+
+| | |
+|---|---|
+| 2.4 s | `bootd` |
+| 3.4 s | `surface-manager` |
+| 7.6 s | `sam` |
+| **30.3 s** | `WebAppMgr`, the web engine any of this needs |
+| ~38 s | the launcher is the foreground app, screen still black |
+| ~43-47 s | the relaunch above, and the picture |
+
+Most of that is the television's own firmware, before anything this project installs has run.
+The launcher itself paints 1.5 s after its page begins loading. **Quick Start+**, in LG's own
+settings, is the only thing that avoids the cold boot at all: it keeps standby active so
+switching on is a wake rather than a boot, at the cost of standby power.
+
+**What this does not cost, despite appearances.** Turning Home Auto Launch off was assumed to
+take webOS's boot animation with it. Tested on a 65UR78003LK by setting it back to `on` and
+pulling the mains: no logo and no animation appeared, only LG's own home screen, at 39.40 s. A
+cold start with it off had the launcher drawing at 36.90 s and in the foreground at 39.40 s. The
+same wait, the same black screen, a different thing at the end of it.
+
+There is nothing to lose because this model has no boot animation at all: `com.webos.app.bootlogo`
+is not installed, there is no animation media anywhere on the filesystem, and `general.homeAnimation`
+answers "There is no matched result from DB". `bootd` carries the code for one, and `strings` shows
+it reading `homeAutoLaunch` and calling `showAnimation` from `launchHomeFromCold`, but on this set
+that path has nothing to play.
+
+**What it does cost:** with Home Auto Launch on, `bootd` launches `com.webos.app.home` from cold,
+and at that moment the stub is not mounted yet, so that is LG's real home. It then stays: the
+launcher never takes over by itself, measured still on LG's home 18 seconds later.
 
 The three settings it changes are saved to `/var/lib/webosbrew/openlauncher-boot.orig` the first
-time it runs, so they can be put back.
+time it runs, so they can be put back. `install-home.sh --undo` stops the watcher before it
+restores them, which is the only order that works.
 
 ---
 
