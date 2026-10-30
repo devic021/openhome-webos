@@ -476,6 +476,45 @@ is about 1.5 MB against 2.7 GB an hour for streamed video, and it works with the
 3. In the launcher: **Settings → Wallpaper → Source → Photos**, then **Refresh the pool**. It
    downloads from [Wikimedia Commons](https://commons.wikimedia.org) at 3840 px in the background.
 
+### Your own pictures
+
+[![Wallpaper settings](docs/screenshots/preview/settings-wallpaper.jpg)](docs/screenshots/settings-wallpaper.jpg)
+
+Copy them onto the same disk, in the top folder, as `.jpg`, `.png` or `.webp`. They are mounted at
+`/media/developer/wallpapers` on the TV, so with the disk in a computer it is just the root of the
+stick, and without one `scp` to that folder does as well.
+
+**Settings → Wallpaper → Which photos** then says what the rotation uses:
+
+| | |
+|---|---|
+| **Mine and Commons** | your pictures and the downloaded pool together, the default |
+| **Only mine** | nothing but your own files, and no downloading at all |
+| **Only Commons** | the downloaded pool, as before |
+
+Pictures copied on while the launcher is running are picked up by **Rescan** in the same place, or
+at the next start. Nothing of yours is ever deleted: the pool only ever removes files it
+downloaded itself, which is why it goes by the manifest it writes rather than by what is on the
+disk.
+
+A 4K photograph should be at least 3840 px wide. The screen is painted at devicePixelRatio 2, so a
+1920 px picture is upscaled twice over and looks soft.
+
+### Downloads the launcher had lost track of
+
+The pool keeps a manifest of what it has fetched, and only what the manifest names was ever shown
+or tidied up. Anything that fell out of it stayed on the disk, unusable and unnoticed: the set
+this was written on held **606 pictures against 200 in the manifest**, 0.68 GB of 4K photographs
+that nothing referred to any more.
+
+They are taken back rather than deleted. At startup every file in the folder shaped like one of
+our downloads but missing from the manifest is added back to it, labelled with the day it was
+downloaded, which its own file name carries. **Settings → Wallpaper → Pictures to keep** is raised
+to make room for them, because otherwise the next download would delete the ones just recovered.
+
+From then on they are pruned and refreshed like any other, so the folder holds a steady number
+instead of gaining a generation every time the manifest is reset.
+
 **Mounted by UUID on purpose.** webOS re-enumerates USB disks across a reboot, so a stick that was
 `/dev/sda3` one day is `/dev/sdb3` the next. Anything that names the device fails with
 `Input/output error`, which looks exactly like a corrupt disk and is not.

@@ -95,12 +95,21 @@ const SETTINGS_SCHEMA=[
 			hint:t("Links to videos (.mp4 .mov .mkv .webm) and photos (.jpg .png .webp). They play in random order."),
 			valid:(v) => Array.isArray(v) && v.length<=CUSTOM_MAX && v.every(validcustomurl),
 			render:(box) => renderwallpaperlist(box)},
-		{type:"action",label:t("Fetch new photos"),button:t("Fetch"),icon:"download",show:(p) => p.videoSource==="photos",
+		{key:"photoMix",label:t("Which photos"),type:"choice",default:"both",show:(p) => p.videoSource==="photos",
+			options:[["both",t("Mine and Commons")],["mine",t("Only mine")],["commons",t("Only Commons")]],
+			hint:t("Copy your own pictures (.jpg .png .webp) into /media/developer/wallpapers on the TV, which is where the USB disk is mounted, and they join the rotation. Only mine uses nothing but your own files and stops the downloads altogether.")},
+		{type:"action",label:t("Pictures of your own"),button:t("Rescan"),icon:"loop",show:(p) => p.videoSource==="photos",
+			hint:t("Looks in the wallpaper folder again, for pictures copied on since the launcher started."),
+			run:() => minerescan()},
+		{type:"action",label:t("Fetch new photos"),button:t("Fetch"),icon:"download",show:(p) => p.videoSource==="photos" && p.photoMix!=="mine",
 			hint:t("Fetches a completely new set of photos from Wikimedia Commons right away and deletes the old ones. Takes a couple of minutes and about 150 MB."),
 			run:() => poolrenew()},
 		{label:t("Photos on the TV"),type:"custom",wide:true,nolabel:true,show:(p) => p.videoSource==="photos",
 			render:(box) => box.appendChild(el("div","sstatus",typeof poolbusytext==="function"?poolbusytext():""))},
-		{key:"photoRefresh",label:t("Photo refresh"),type:"choice",default:"daily",show:(p) => p.videoSource==="photos",
+		{key:"poolTarget",label:t("Pictures to keep"),type:"slider",default:200,min:100,max:2000,step:100,
+			show:(p) => p.videoSource==="photos" && p.photoMix!=="mine",
+			hint:t("How many downloaded photographs to keep on the disk, at about 1.9 MB each. Finding more than this already there raises it rather than deleting them.")},
+		{key:"photoRefresh",label:t("Photo refresh"),type:"choice",default:"daily",show:(p) => p.videoSource==="photos" && p.photoMix!=="mine",
 			options:[["off",t("Off")],["daily",t("Daily")],["cycle",t("Every cycle")]],
 			hint:t("Photos are kept on the TV, so they appear instantly and work with the internet down. Off uses nothing and keeps the same pictures. Daily turns the whole pool over once a day (~7 MB/h). Every cycle brings a new picture for every picture shown (~78 MB/h, the same as streaming).")},
 		{key:"customSeconds",label:t("Photo duration"),type:"choice",default:60,options:[[20,"20 s"],[30,"30 s"],[60,"1 min"],[120,"2 min"]],show:(p) => p.videoSource==="custom" || p.videoSource==="photos"}
@@ -321,12 +330,15 @@ function slider(item){
 	input.setAttribute("data-dpadstep",String(item.step));
 	input.setAttribute("aria-label",item.label);
 	input.value=String(prefs[item.key]);
-	const value=el("span","ssliderval",prefs[item.key]+item.unit);
+	// item.unit is optional, and `700 + undefined` is NaN, not "700". A slider without a unit
+	// printed its value as NaN until a setting without one was added.
+	const unit=item.unit||"";
+	const value=el("span","ssliderval",prefs[item.key]+unit);
 	const fill=() => input.setAttribute("style","--fill:"+((Number(input.value)-item.min)/(item.max-item.min)*100)+"%");
 	fill();
 	input.addEventListener("input",() => {
 		const now=Number(input.value);
-		value.textContent=now+item.unit;
+		value.textContent=now+unit;
 		fill();
 		setprefquiet(item.key,now);
 	});

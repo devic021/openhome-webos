@@ -130,6 +130,24 @@ The wallpaper fetcher also introduced itself to Wikimedia as `OpenLauncher-wallp
 Backups keep working both ways. New files are written with `app: "OpenHome"`, and a file carrying
 the old name is still accepted when reading, because only the name changed and not the format.
 
+### Pictures of your own as wallpapers - `src/js/photocache.js`
+
+The wallpaper disk is mounted over the folder the launcher reads, so copying photographs onto it
+is the obvious thing to do with it, and it did nothing at all: the playlist was built from
+`list.json`, the manifest the launcher keeps for its own downloads, so anything else on the disk
+was invisible while the trickle went on fetching more on top of it.
+
+Everything in the folder that looks like a picture, is not named by that manifest and is not
+shaped like one of our downloads is now one of yours, and **Which photos** chooses between yours,
+the downloads, and both. "Only mine" stops the downloading altogether. Nothing of yours is ever
+deleted, because pruning still goes by the manifest.
+
+Downloads the manifest had lost track of are taken back into it rather than ignored or deleted:
+606 pictures against 200 in the manifest on the set this was written on, 0.68 GB of them. They
+are labelled with the day they were downloaded, which their own file names carry, and
+**Pictures to keep** is raised to make room so the next download cannot delete what was just
+recovered.
+
 ### Startup scripts - `scripts/` (new)
 
 - `homestub.sh` - the home replacement above
