@@ -59,20 +59,26 @@ fi
 # The cost is that webOS's boot animation no longer plays.
 if [ ! -f "$ORIG" ]; then
 	luna-send -n 1 -w 5000 -f luna://com.webos.settingsservice/getSystemSettings \
-		'{"category":"general","keys":["lastInputApp","physicalLastInputApp","homeAutoLaunch"]}' \
+		'{"category":"general","keys":["lastInputApp","lastInputAppType","physicalLastInputApp","physicalLastInputType","homeAutoLaunch"]}' \
 		< /dev/null > "$ORIG" 2>/dev/null
 	logger -t openlauncher-home "original boot settings saved"
 fi
 
+# The record is FOUR keys, not two. Measured on a 65UR78003LK running webOS 10.3.2: selecting
+# HDMI 3 rewrote lastInputApp, physicalLastInputApp, lastInputAppType and physicalLastInputType
+# together, and going back to the launcher rewrote none of them. Writing only the two app keys
+# left the set holding half a record - the apps naming this launcher while the types still named
+# an HDMI port - and the two halves cannot both be right. All four are written together.
 point_at_launcher() {
 	luna-send -n 1 -w 5000 -f luna://com.webos.settingsservice/setSystemSettings \
-		"{\"category\":\"general\",\"settings\":{\"lastInputApp\":\"$APP_ID\",\"physicalLastInputApp\":\"$APP_ID\"}}" \
+		"{\"category\":\"general\",\"settings\":{\"lastInputApp\":\"$APP_ID\",\"physicalLastInputApp\":\"$APP_ID\",\"lastInputAppType\":\"$APP_ID\",\"physicalLastInputType\":\"$APP_ID\"}}" \
 		< /dev/null > /dev/null 2>&1
 }
 
+point_at_launcher && logger -t openlauncher-home "boot screen pointed at the launcher"
 luna-send -n 1 -w 5000 -f luna://com.webos.settingsservice/setSystemSettings \
-	"{\"category\":\"general\",\"settings\":{\"lastInputApp\":\"$APP_ID\",\"physicalLastInputApp\":\"$APP_ID\",\"homeAutoLaunch\":\"off\"}}" \
-	< /dev/null > /dev/null 2>&1 && logger -t openlauncher-home "boot screen pointed at the launcher"
+	'{"category":"general","settings":{"homeAutoLaunch":"off"}}' \
+	< /dev/null > /dev/null 2>&1
 
 # ---- keeping it pointed there ------------------------------------------------
 # lastInputApp is not a setting the user chooses, it is a record webOS rewrites every time the
@@ -96,12 +102,18 @@ start_watcher() {
 			[ -f "$STUB/index.html" ] || exit 0
 			grep -q " $HOME_APP " /proc/mounts 2>/dev/null || exit 0
 			now=$(luna-send -n 1 -w 5000 -f luna://com.webos.settingsservice/getSystemSettings \
-				'{"category":"general","keys":["lastInputApp"]}' < /dev/null 2>/dev/null)
+				'{"category":"general","keys":["lastInputApp","lastInputAppType","physicalLastInputApp","physicalLastInputType"]}' \
+				< /dev/null 2>/dev/null)
+			# Four values have to be right, so the test counts them rather than looking for the
+			# app id once: a half-written record names the launcher in some fields and an input
+			# in the others, and that has to count as drifted.
+			ours=$(echo "$now" | grep -c "$APP_ID")
 			case "$now" in
-				*"$APP_ID"*) ;;
-				*"lastInputApp"*)
-					point_at_launcher &&
-						logger -t openlauncher-home "power-on screen pointed back at the launcher"
+				*"lastInputAppType"*)
+					if [ "$ours" -lt 4 ]; then
+						point_at_launcher &&
+							logger -t openlauncher-home "power-on screen pointed back at the launcher"
+					fi
 					;;
 				*) ;;                              # no answer: the service is busy, try again later
 			esac

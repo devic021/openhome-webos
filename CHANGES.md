@@ -93,11 +93,13 @@ It also repoints the TV's "last input" and turns off Home Auto Launch, because t
 effect about a minute into a cold boot and LG's home would otherwise open first. The cost is that
 webOS's boot animation no longer plays.
 
-`lastInputApp` is a record webOS rewrites on every input change, not a setting, so writing it once
-at boot only lasted until the next time another input was watched: a set switched off on a games
-console came back to that console. The script now leaves a watcher behind that puts the record
-back when it has drifted, one settings write per input change, and `WATCH_EVERY=0` at the top of
-the script turns that off.
+The "last input" is a record of four keys that webOS rewrites on every input change, not a
+setting. Measured on a 65UR78003LK: selecting HDMI 3 rewrote all four, and going back to the
+launcher rewrote none, so the record names the last input ever selected rather than the last thing
+on screen. Writing two of the four once at boot therefore fixed nothing past the first input
+change, and on a port with a games console the TV re-selecting the input wakes it out of rest mode
+over SIMPLINK. The script now leaves a watcher behind that writes all four back when the record
+has drifted, one settings write per input change, and `WATCH_EVERY=0` turns that off.
 
 ### Startup scripts - `scripts/` (new)
 

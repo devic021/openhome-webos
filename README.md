@@ -389,17 +389,32 @@ and with Home Auto Launch on, webOS opens LG's home before that happens.
 
 ### Why the last input has to be watched
 
-`lastInputApp` is not a setting anyone chooses. It is a record webOS rewrites every time the input
-changes, and it is what the set resumes at power-on. Writing it once at boot therefore only lasts
-until the next time anything else is watched: an evening that ended on a games console came back
-to that console, because by then the record named the console. The script's own correction landed
-a minute later, with the input already on screen.
+The "last input" is not a setting anyone chooses. It is a record webOS keeps in **four** keys,
+`lastInputApp`, `lastInputAppType`, `physicalLastInputApp` and `physicalLastInputType`, and it is
+what the set resumes at power-on.
 
-So `homestub.sh` leaves a watcher behind that puts the record back whenever it has drifted. It
-changes no input and opens nothing, it is one settings write, and it only happens after an input
-change, because the check is a read and the write is skipped when the value is already right.
+Two things were measured on a 65UR78003LK running webOS 10.3.2:
 
-To keep the stock behaviour instead, where the TV resumes the input last watched, set
+- selecting HDMI 3 rewrote **all four** keys at once
+- going back to the launcher rewrote **none of them**
+
+So the record does not name the last thing that was on screen, it names the last **input** that was
+ever selected, and it keeps naming it. Writing it once at boot lasted only until the next time any
+input was used, and from then on every power-on went back to that input. The script's own
+correction landed a minute later, with the input already up.
+
+That is worse than an inconvenience if a games console is on the port. The TV re-selecting the
+input sends SIMPLINK (HDMI-CEC) down the cable, which wakes a console out of rest mode.
+
+So `homestub.sh` leaves a watcher behind that writes all four keys back whenever the record has
+drifted. It changes no input and opens nothing: with HDMI 3 on screen the correction was made and
+the input stayed exactly where it was. It is one settings write, and it only happens after an input
+change, because the check is a read and the write is skipped when the record is already right.
+
+The window is the check interval, 30 seconds by default. Switching the set off within that window
+of leaving an input can still bring that input back once.
+
+To keep the stock behaviour instead, where the TV resumes the input last used, set
 `WATCH_EVERY=0` at the top of `homestub.sh`.
 
 **The trade-off:** webOS's boot animation no longer plays.
