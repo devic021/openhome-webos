@@ -10,11 +10,19 @@
 # OpenHome and closes itself. Anything that asks for the stock home - bootd included - gets it.
 #
 # Undo: umount /usr/palm/applications/com.webos.app.home, restore the three settings saved in
-# /var/lib/webosbrew/openlauncher-boot.orig, and delete this file.
+# /var/lib/webosbrew/openlauncher-boot.orig, stop the watcher named by
+# /tmp/openhome-inputwatch.pid, and delete this file. install-home.sh --undo does all of it.
 
-STUB=/media/developer/apps/usr/palm/applications/io.github.devic021.openhome/access/replace/appstub
+APP_ID=io.github.devic021.openhome
+STUB=/media/developer/apps/usr/palm/applications/$APP_ID/access/replace/appstub
 HOME_APP=/usr/palm/applications/com.webos.app.home
 ORIG=/var/lib/webosbrew/openlauncher-boot.orig
+WATCHPID=/tmp/openhome-inputwatch.pid
+
+# How often the watcher below checks that the power-on screen still points at the launcher.
+# Set to 0 to switch the watcher off and have the TV resume the last input used, which is the
+# stock behaviour.
+WATCH_EVERY=30
 
 [ -f "$STUB/index.html" ] || exit 0
 
@@ -23,7 +31,7 @@ ORIG=/var/lib/webosbrew/openlauncher-boot.orig
 # mounted" but "is the RIGHT thing mounted": the stub's own index.html names the app it launches.
 mounted=0
 if grep -q " $HOME_APP " /proc/mounts 2>/dev/null; then
-	if grep -q "io.github.devic021.openhome" "$HOME_APP/index.html" 2>/dev/null; then
+	if grep -q "$APP_ID" "$HOME_APP/index.html" 2>/dev/null; then
 		mounted=1
 	else
 		logger -t openlauncher-home "a stale stub was mounted; replacing it"
@@ -56,7 +64,52 @@ if [ ! -f "$ORIG" ]; then
 	logger -t openlauncher-home "original boot settings saved"
 fi
 
+point_at_launcher() {
+	luna-send -n 1 -w 5000 -f luna://com.webos.settingsservice/setSystemSettings \
+		"{\"category\":\"general\",\"settings\":{\"lastInputApp\":\"$APP_ID\",\"physicalLastInputApp\":\"$APP_ID\"}}" \
+		< /dev/null > /dev/null 2>&1
+}
+
 luna-send -n 1 -w 5000 -f luna://com.webos.settingsservice/setSystemSettings \
-	'{"category":"general","settings":{"lastInputApp":"io.github.devic021.openhome","physicalLastInputApp":"io.github.devic021.openhome","homeAutoLaunch":"off"}}' \
+	"{\"category\":\"general\",\"settings\":{\"lastInputApp\":\"$APP_ID\",\"physicalLastInputApp\":\"$APP_ID\",\"homeAutoLaunch\":\"off\"}}" \
 	< /dev/null > /dev/null 2>&1 && logger -t openlauncher-home "boot screen pointed at the launcher"
+
+# ---- keeping it pointed there ------------------------------------------------
+# lastInputApp is not a setting the user chooses, it is a record webOS rewrites every time the
+# input changes. Writing it once at boot therefore only survives until the first time anything
+# else is watched: switch to a console, turn the set off, and the next power-on restores that
+# input instead of the launcher, because by then the record names the console. The script's own
+# correction lands a minute later, when the input is already up.
+#
+# So the record is put back whenever it has drifted. This changes no input and opens nothing - it
+# is one settings write - and it only happens after an input change, not on a timer, because the
+# check is a read and the write is skipped when the value is already right.
+start_watcher() {
+	[ "$WATCH_EVERY" -gt 0 ] 2>/dev/null || return 0
+	if [ -f "$WATCHPID" ] && kill -0 "$(cat "$WATCHPID" 2>/dev/null)" 2>/dev/null; then
+		return 0                                   # one is already running
+	fi
+	(
+		while sleep "$WATCH_EVERY"; do
+			# the launcher may have been uninstalled under us; pointing the power-on screen at
+			# an app that is no longer there would leave the set with no home at all
+			[ -f "$STUB/index.html" ] || exit 0
+			grep -q " $HOME_APP " /proc/mounts 2>/dev/null || exit 0
+			now=$(luna-send -n 1 -w 5000 -f luna://com.webos.settingsservice/getSystemSettings \
+				'{"category":"general","keys":["lastInputApp"]}' < /dev/null 2>/dev/null)
+			case "$now" in
+				*"$APP_ID"*) ;;
+				*"lastInputApp"*)
+					point_at_launcher &&
+						logger -t openlauncher-home "power-on screen pointed back at the launcher"
+					;;
+				*) ;;                              # no answer: the service is busy, try again later
+			esac
+		done
+	) &
+	echo $! > "$WATCHPID"
+	logger -t openlauncher-home "input watcher started (every ${WATCH_EVERY}s)"
+}
+
+start_watcher
 exit 0

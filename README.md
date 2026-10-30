@@ -387,10 +387,26 @@ It also points the TV's "last input" at the launcher and turns **Home Auto Launc
 the mount only takes effect once the startup scripts have run - roughly a minute into a cold boot -
 and with Home Auto Launch on, webOS opens LG's home before that happens.
 
+### Why the last input has to be watched
+
+`lastInputApp` is not a setting anyone chooses. It is a record webOS rewrites every time the input
+changes, and it is what the set resumes at power-on. Writing it once at boot therefore only lasts
+until the next time anything else is watched: an evening that ended on a games console came back
+to that console, because by then the record named the console. The script's own correction landed
+a minute later, with the input already on screen.
+
+So `homestub.sh` leaves a watcher behind that puts the record back whenever it has drifted. It
+changes no input and opens nothing, it is one settings write, and it only happens after an input
+change, because the check is a read and the write is skipped when the value is already right.
+
+To keep the stock behaviour instead, where the TV resumes the input last watched, set
+`WATCH_EVERY=0` at the top of `homestub.sh`.
+
 **The trade-off:** webOS's boot animation no longer plays.
 
 The three settings it changes are saved to `/var/lib/webosbrew/openlauncher-boot.orig` the first
-time it runs, so they can be put back.
+time it runs, so they can be put back. `install-home.sh --undo` stops the watcher before it
+restores them, which is the only order that works.
 
 ---
 

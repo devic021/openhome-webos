@@ -48,6 +48,15 @@ if [ -n "$UNDO" ]; then
 	$SSH 'sh -s' <<'REMOTE'
 ORIG=/var/lib/webosbrew/openlauncher-boot.orig
 INITD=/var/lib/webosbrew/init.d
+WATCHPID=/tmp/openhome-inputwatch.pid
+
+# Stop the input watcher BEFORE anything else. It exists to put lastInputApp back whenever the
+# TV rewrites it, so leaving it running would undo the restore below within half a minute.
+if [ -f "$WATCHPID" ]; then
+	kill "$(cat "$WATCHPID" 2>/dev/null)" 2>/dev/null
+	rm -f "$WATCHPID"
+	echo "  input watcher stopped"
+fi
 
 # unmount first, or sam keeps serving the stub it already loaded
 umount /usr/palm/applications/com.webos.app.home 2>/dev/null || \
@@ -102,6 +111,10 @@ Done.
 
   Home button   works now
   Power on      works from the next cold boot, once the startup scripts have run
+
+A watcher now keeps the power-on screen pointed at the launcher. Without it the TV resumes
+whatever input was last watched, so an evening that ended on a console came back to that console.
+Set WATCH_EVERY=0 at the top of homestub.sh to switch it off and keep the stock behaviour.
 
 webOS's boot animation no longer plays - that is the cost of the swap, and the readme explains why.
 The three settings that were changed are saved in /var/lib/webosbrew/openlauncher-boot.orig.
