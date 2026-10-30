@@ -110,8 +110,8 @@ fi
 ) &
 
 # ---- the cold-boot half -----------------------------------------------------
-# The mount above only helps once this script has run, and at a real power-on that is roughly a
-# minute in. Until then webOS shows the "last input" and, with Home Auto Launch on, plays its boot
+# The mount above only helps once this script has run, and at a real power-on that is 38 to 40
+# seconds in, measured. Until then webOS shows the "last input" and, with Home Auto Launch on, plays its boot
 # animation and opens LG's own home BEFORE the swap can happen. So:
 #   lastInputApp/physicalLastInputApp -> the launcher, so the pre-script screen is already ours
 #   homeAutoLaunch -> off, so LG's home never gets opened ahead of us
