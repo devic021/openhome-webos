@@ -345,6 +345,11 @@ body,#maindiv,#prefetchmaindiv{ font-family:"Manrope",PlusJakartaSans,sans-serif
 #statusbar.compact{ padding:1.1vh 0.62vw; gap:0; }
 .stlink{ display:flex; align-items:center; gap:0.7vw; }
 .sticon{ display:block; width:3.6vh; height:3.6vh; flex:0 0 auto; color:rgb(var(--accent)); }
+/* Icon only: white, with the clock's shadow, because the glyph is on its own over the wallpaper
+   with no panel behind it and no text beside it to carry the meaning. drop-shadow rather than
+   text-shadow, which does not apply to an SVG stroke; the numbers are the clock's own
+   (0 2px 12px rgba(0,0,0,0.7)). In the full strip the icons stay accent coloured. */
+#statusbar.compact .sticon{ color:rgb(255,255,255); filter:drop-shadow(0 2px 12px rgba(0,0,0,0.7)); }
 .sticon svg{ display:block; width:100%; height:100%; }
 .sttext{ display:flex; flex-direction:column; line-height:1.15; }
 .sttext b{ font-size:2vh; font-weight:600; }

@@ -40,6 +40,18 @@ function signalsvg(bars){
 	'</svg>';
 }
 
+// What the strip is for, in one glyph: a trace of activity. Drawn in the same hand as the two
+// network icons beside it, a 64 unit box with a 6 wide stroke and round ends.
+//
+// "Icon only" used to show whichever network icon applied, which says nothing about what pressing
+// it does. The strip is a button that opens the system panel, and in that mode the icon is the
+// only thing left to say so. The title on the pill already reads "System panel"; now the picture
+// agrees with it.
+function activitysvg(){
+	return '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 34 H22 L28 18 L36 48 L42 34 H58" '+
+		'fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+}
+
 function wiredsvg(){
 	return '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="18" width="48" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="6"/><path d="M20 48v6M44 48v6" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>';
 }
@@ -173,6 +185,12 @@ function fillstatus(into,how){
 	const link=statusel("div","stlink");
 	const icon=statusel("span","sticon");
 	const text=statusel("span","sttext");
+	if(how==="compact"){
+		icon.innerHTML=activitysvg();
+		link.appendChild(icon);
+		into.appendChild(link);
+		return;
+	}
 	if(wired && wired.state==="connected"){
 		icon.innerHTML=wiredsvg();
 		text.appendChild(statusel("b",null,t("Wired network")));
@@ -189,9 +207,8 @@ function fillstatus(into,how){
 		text.appendChild(statusel("small",null,t("Not connected")));
 	}
 	link.appendChild(icon);
-	if(how!=="compact"){ link.appendChild(text); }
+	link.appendChild(text);
 	into.appendChild(link);
-	if(how==="compact"){ return; }
 	// ---- throughput (needs two samples, so it appears a few seconds in)
 	if(statusdata.down!==undefined){
 		into.appendChild(statusel("div","stsep"));
