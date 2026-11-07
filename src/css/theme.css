@@ -295,17 +295,25 @@ body,#maindiv,#prefetchmaindiv{ font-family:"Manrope",PlusJakartaSans,sans-serif
    .appitem (a transform, which the compositor animates for free) still eases. */
 .appicon{ transition:transform .11s ease; }
 /* Holding an arrow in the dock zooms one icon in and another out every few dozen milliseconds.
-   What zooms is the ICON (see "navigation fix" below), so that is what gets a GPU layer for good.
-   Without it Chrome promotes each icon for the length of its transition and drops it after: the
-   icon, focus ring and glow are re-rasterised going in and painted back into the page coming out,
-   on every repeat. With its own layer the zoom is a pure compositor move, and a focus change only
-   repaints that one icon. Only the dock and the Recent row: a dozen or so small layers.
+   The reasoning for giving each icon a permanent GPU layer was that Chrome otherwise promotes it
+   for the length of the transition and drops it after, re-rasterising going in and painting back
+   into the page coming out, on every repeat.
 
-   The dock's tiles also keep the same `contain` whether focused or not. The navigation fix drops
-   `paint` containment on the focused tile so its glow is not clipped; switching containment on
-   and off makes the browser lay that tile out again on every key press. Here it is simply never
-   on, which costs nothing for a dozen tiles. */
-#appbar .appicon, #recentrow .appicon{ will-change:transform; }
+   It measures worse. The Mali G52's own utilisation counter, sampled five times a second on an
+   LG 65UR78003LK while an arrow was held, alternating between the two settings twice:
+
+                            GPU median   GPU mean   CPU of one core
+     will-change:transform     44 %        40 %          30 %
+     no will-change            26 %        27 %          20 %
+
+   The likely reason is that what animates is a SCALE. A composited layer is rasterised at one
+   scale, and Chromium re-rasters it when that scale changes so the icon stays sharp, so a
+   permanent layer turns one repaint into a repeated re-raster at new scales, and twelve of them
+   have to be composited every frame besides. Promotion churn is the cheaper of the two here.
+
+   The dock's tiles do keep the same `contain` whether focused or not, which is the other half of
+   that change and stands: switching containment on and off makes the browser lay the tile out
+   again on every key press. */
 #appbar .appitem, #recentrow .appitem{ contain:layout style; }
 #realappbarbtu:checked ~ #appluncher{ animation:drawer-in .15s ease both; }
 @keyframes drawer-in{ from{ opacity:0; transform:translateY(1.2vh); } to{ opacity:1; transform:none; } }
