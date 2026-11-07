@@ -139,7 +139,7 @@ function foldertilefor(folder) {
 		tilecache.folders.set(folder.id,tile);
 	}
 	const apps=appsofview(folder.id);
-	if(tile.namelabel.innerText!==folder.name){ tile.namelabel.innerText=folder.name; }
+	if(tile.namelabel.textContent!==folder.name){ tile.namelabel.textContent=folder.name; }
 	tile.setAttribute("title",folder.name+" ("+apps.length+")");
 	drawfolderpreview(tile,apps);
 	return tile;
@@ -151,7 +151,7 @@ function emptyfoldernote() {
 	if(!note){
 		note=document.createElement("p");
 		note.setAttribute("class","folderempty");
-		note.innerText=t("This folder is still empty. In Edit mode, use an app's folder button to move it here.");
+		note.textContent=t("This folder is still empty. In Edit mode, use an app's folder button to move it here.");
 		tilecache.folders.set("empty",note);
 	}
 	return note;
@@ -200,9 +200,9 @@ function chipfor(key,id,label,icon,count) {
 		tilecache.folders.set("chip:"+key,chip);
 	}
 	chip.folderid=id;
-	if(chip.labelbox.innerText!==label){ chip.labelbox.innerText=label; }
+	if(chip.labelbox.textContent!==label){ chip.labelbox.textContent=label; }
 	const text=count===null?"":String(count);
-	if(chip.countbox.innerText!==text){ chip.countbox.innerText=text; }
+	if(chip.countbox.textContent!==text){ chip.countbox.textContent=text; }
 	chip.classList.toggle("on",openfolder===id);
 	chip.setAttribute("aria-pressed",openfolder===id?"true":"false");
 	return chip;

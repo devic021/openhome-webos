@@ -242,6 +242,10 @@ function resetprefs(){
 // CSS variables that depend on the prefs and on the screen shape; also run when the window is resized
 function applysizes(){
 	const root=document.documentElement.style;
+	// every remembered measurement was taken at the old sizes
+	if(typeof tipforget==="function"){ tipforget(); }
+	if(typeof marqueeforget==="function"){ marqueeforget(); }
+	if(typeof dateforget==="function"){ dateforget(); }
 	root.setProperty("--accent",prefs.accent);
 	// the bar is exactly `barPerPage` columns wide, so the tile size follows from how many share a page
 	const bartile=Math.round((98/(prefs.barPerPage||10))*100)/100;
