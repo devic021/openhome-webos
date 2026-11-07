@@ -12,7 +12,9 @@
 //   memory             free -m                 storage     df -k /mnt/lg/appstore
 
 const TEMP_WARN=80;               // °C: above this the CPU field turns red
-const STATUS_FAST_MS=1000;        // cpu, throughput and signal move every second
+// Every two seconds, not every second: each poll is a root shell plus a redraw of the strip, and
+// the numbers read just as live at this pace. Throughput divides by the real time between samples.
+const STATUS_FAST_MS=2000;
 const STATUS_SLOW_MS=60*1000;     // the disk barely does
 let statusbar=null;
 let statusdata={};
@@ -99,6 +101,41 @@ function applystatus(){
 	if(statusmode()!=="off"){ refreshstatus(true); }
 }
 
+// Brings `live`'s children in line with `fresh`'s, touching only what differs. The strip used to be
+// emptied and rebuilt on every poll, which re-laid out and repainted it each time even when no
+// number had moved. Same shape (the usual case) -> only changed text and attributes are written;
+// a different number or kind of children -> that level is swapped wholesale.
+function syncchildren(live,fresh){
+	const want=fresh.childNodes;
+	const have=live.childNodes;
+	if(want.length!==have.length){
+		while(live.firstChild){ live.removeChild(live.firstChild); }
+		while(fresh.firstChild){ live.appendChild(fresh.firstChild); }
+		return;
+	}
+	for(let i=want.length-1;i>=0;i--){ syncnode(have[i],want[i]); }
+}
+
+function syncnode(live,fresh){
+	if(live.nodeType!==fresh.nodeType || live.nodeName!==fresh.nodeName){
+		live.parentNode.replaceChild(fresh,live);
+		return;
+	}
+	if(live.nodeType!==1){
+		if(live.nodeValue!==fresh.nodeValue){ live.nodeValue=fresh.nodeValue; }
+		return;
+	}
+	for(let i=live.attributes.length-1;i>=0;i--){
+		const name=live.attributes[i].name;
+		if(!fresh.hasAttribute(name)){ live.removeAttribute(name); }
+	}
+	for(let i=0;i<fresh.attributes.length;i++){
+		const each=fresh.attributes[i];
+		if(live.getAttribute(each.name)!==each.value){ live.setAttribute(each.name,each.value); }
+	}
+	syncchildren(live,fresh);
+}
+
 function renderstatus(){
 	const how=statusmode();
 	if(how==="off"){
@@ -119,7 +156,14 @@ function renderstatus(){
 	// the strip's own meaning is obvious when it is spelled out; an icon on its own is not
 	if(how==="compact"){ statusbar.setAttribute("title",t("System panel")); }
 	else { statusbar.removeAttribute("title"); }
-	statusbar.innerHTML="";
+	const fresh=statusel("div");
+	fillstatus(fresh,how);
+	syncchildren(statusbar,fresh);
+}
+
+// The strip's content for this sample, built into `into` (a detached element). renderstatus()
+// then copies only the differences onto the live strip.
+function fillstatus(into,how){
 	// ---- network name and signal
 	const net=statusdata.net;
 	const wifi=net && net.wifi;
@@ -145,11 +189,11 @@ function renderstatus(){
 	}
 	link.appendChild(icon);
 	if(how!=="compact"){ link.appendChild(text); }
-	statusbar.appendChild(link);
+	into.appendChild(link);
 	if(how==="compact"){ return; }
 	// ---- throughput (needs two samples, so it appears a few seconds in)
 	if(statusdata.down!==undefined){
-		statusbar.appendChild(statusel("div","stsep"));
+		into.appendChild(statusel("div","stsep"));
 		const flow=statusel("div","stflow");
 		const down=statusel("span","stdown");
 		down.appendChild(statusel("i",null,"↓"));
@@ -159,31 +203,31 @@ function renderstatus(){
 		up.appendChild(statusel("span",null,rate(statusdata.up)));
 		flow.appendChild(down);
 		flow.appendChild(up);
-		statusbar.appendChild(flow);
+		into.appendChild(flow);
 	}
 	// ---- gauges (root only)
 	if(statusdata.cpu!==undefined){
-		statusbar.appendChild(statusel("div","stsep"));
+		into.appendChild(statusel("div","stsep"));
 		const caption=statusdata.cpu+"%"+(statusdata.temp!==undefined?" · "+statusdata.temp+"°C":"");
 		const box=gauge("CPU",statusdata.cpu,caption);
 		// a panel that gets this warm is worth noticing
 		if(statusdata.temp!==undefined && statusdata.temp>=TEMP_WARN){ box.classList.add("hot"); }
-		statusbar.appendChild(box);
+		into.appendChild(box);
 	}
 	if(statusdata.rampct!==undefined){
-		statusbar.appendChild(statusel("div","stsep"));
-		statusbar.appendChild(gauge("RAM",statusdata.rampct,statusdata.rampct+"%"));
+		into.appendChild(statusel("div","stsep"));
+		into.appendChild(gauge("RAM",statusdata.rampct,statusdata.rampct+"%"));
 	}
 	if(statusdata.diskpct!==undefined){
-		statusbar.appendChild(statusel("div","stsep"));
-		statusbar.appendChild(gauge(t("Storage"),statusdata.diskpct,gb(statusdata.diskused)+" / "+gb(statusdata.disktotal)));
+		into.appendChild(statusel("div","stsep"));
+		into.appendChild(gauge(t("Storage"),statusdata.diskpct,gb(statusdata.diskused)+" / "+gb(statusdata.disktotal)));
 	}
 	if(statusdata.uptime!==undefined){
-		statusbar.appendChild(statusel("div","stsep"));
+		into.appendChild(statusel("div","stsep"));
 		const box=statusel("div","stmini");
 		box.appendChild(statusel("small","stname",t("Uptime")));
 		box.appendChild(statusel("b","stvalue",uptimetext(statusdata.uptime)));
-		statusbar.appendChild(box);
+		into.appendChild(box);
 	}
 }
 

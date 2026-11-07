@@ -24,17 +24,36 @@ function tiptarget(node){
 }
 
 function tipname(el){
-	if(el.namelabel && el.namelabel.innerText){ return el.namelabel.innerText; }
+	// textContent, not innerText: innerText has to lay the page out to answer, and this runs on
+	// every key press. The names are plain text, so both give the same string.
+	if(el.namelabel && el.namelabel.textContent){ return el.namelabel.textContent; }
 	const label=el.querySelector && el.querySelector(".appname");
-	if(label && label.innerText){ return label.innerText; }
+	if(label && label.textContent){ return label.textContent; }
 	return el.getAttribute("title") || el.getAttribute("aria-label") || "";
 }
 
+let tipfor=null;            // the element the label should be over, placed on the next frame
+let tipframe=0;
+
 function tiphide(){
+	tipfor=null;
 	if(tipbox){ tipbox.classList.remove("on"); }
 }
 
+// Holding an arrow fires a key press every few dozen milliseconds. Placing the label inside each
+// one (set the text, then read the tile's box and the label's size) forced a full layout per
+// repeat. Now each press only notes which tile it is on, and the label is placed once per frame,
+// when the layout is fresh anyway.
 function tipshow(el){
+	tipfor=el;
+	if(tipframe){ return; }
+	tipframe=requestAnimationFrame(() => {
+		tipframe=0;
+		if(tipfor){ tipplace(tipfor); }
+	});
+}
+
+function tipplace(el){
 	const text=tipname(el);
 	if(!text){
 		tiphide();
@@ -45,10 +64,11 @@ function tipshow(el){
 		tipbox.id="tipbox";
 		maindiv.appendChild(tipbox);
 	}
-	tipbox.textContent=text;
+	// every read first, then every write, so the browser lays out once
+	const rect=el.getBoundingClientRect();
+	if(tipbox.textContent!==text){ tipbox.textContent=text; }
 	tipbox.classList.add("on");
 	// centred over the icon, kept inside the screen
-	const rect=el.getBoundingClientRect();
 	const width=tipbox.offsetWidth;
 	const left=Math.max(12,Math.min(window.innerWidth-width-12,rect.left+rect.width/2-width/2));
 	tipbox.style.left=Math.round(left)+"px";

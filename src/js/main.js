@@ -31,12 +31,20 @@ function marqueeupdate(tile){
 	const name=tile.querySelector(".appname");
 	if(!name){ return; }
 	if(tile.marqueehover || tile.marqueefocus){
-		if(name.classList.contains("marquee")){ return; }
-		const hidden=name.scrollWidth-name.clientWidth;
-		if(!(hidden>1)){ return; }
-		name.style.setProperty("--marquee",(-hidden)+"px");
-		name.style.animationDuration=Math.max(MARQUEE_MIN_SECONDS,hidden/MARQUEE_SPEED/MARQUEE_PAUSE)+"s";
-		name.classList.add("marquee");
+		if(name.classList.contains("marquee") || name.marqueepending){ return; }
+		// Measured in the next frame, not here: this runs inside the key press, right after the
+		// focus classes changed, so reading scrollWidth now forces a whole extra layout on every
+		// repeat of a held arrow. By the next frame the layout is fresh and the read is free.
+		name.marqueepending=true;
+		requestAnimationFrame(() => {
+			name.marqueepending=false;
+			if(!(tile.marqueehover || tile.marqueefocus) || name.classList.contains("marquee")){ return; }
+			const hidden=name.scrollWidth-name.clientWidth;
+			if(!(hidden>1)){ return; }
+			name.style.setProperty("--marquee",(-hidden)+"px");
+			name.style.animationDuration=Math.max(MARQUEE_MIN_SECONDS,hidden/MARQUEE_SPEED/MARQUEE_PAUSE)+"s";
+			name.classList.add("marquee");
+		});
 	} else {
 		name.classList.remove("marquee");
 	}
@@ -431,6 +439,8 @@ function toggleedit(){
 
 // closing the app menu ends Edit mode too (as if Done had been pressed)
 function drawerchanged(){
+	// the wallpaper dims under the drawer (#dimdrawer); a body class, not :has(), so nothing re-checks the page
+	document.body.classList.toggle("draweropen",realappbarbtu.checked);
 	if(!realappbarbtu.checked && editing){ toggleedit(); }
 }
 
@@ -504,6 +514,7 @@ function renderbarpages(pages){
 	if(pages<=1){
 		barpagedots.innerHTML="";
 		return;
+	drawerchanged();                          // setting .checked does not fire "change"
 	}
 	if(barpagedots.children.length!==pages){
 		barpagedots.innerHTML="";

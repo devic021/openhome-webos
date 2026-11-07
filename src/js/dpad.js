@@ -338,8 +338,9 @@ function onkey(event) {
 	if(list.length===0){ return; }
 	if(!dpadfocus || list.indexOf(dpadfocus)===-1){
 		// nothing (visible) is focused: this key press only shows the focus ring, on the item the pointer was on if there is one
-		if(entering && hoveredel && list.indexOf(hoveredel)!==-1){
-			setfocus(hoveredel);
+		const hovered=entering?hoverable(hoveredtarget,list):null;
+		if(hovered){
+			setfocus(hovered);
 			return;
 		}
 		settle();
@@ -396,11 +397,15 @@ function onmouse(event) {
 // ---- the item the pointer is on. When the Magic Remote's cursor times out (webOS sends "cursorStateChange" with
 // visibility false) that item keeps the focus, and the arrows carry on from it; a key pressed while the cursor is still on
 // screen starts from it too, instead of from the first app.
-let hoveredel=null;
+//
+// Only the raw target is kept on mouseover; which item it belongs to is worked out when a key or the
+// cursor timeout actually needs it. Resolving it on every mouseover meant contextelements() - a
+// computed style and a layout read for every focusable thing on screen - each time the pointer
+// crossed an element, and the pointer's own :hover changes had just invalidated that layout.
+let hoveredtarget=null;
 
-// the thing in the current list that the pointer is over (or over a part of), or null
-function hoverable(target) {
-	const list=contextelements();
+// the thing in `list` that the pointer is over (or over a part of), or null
+function hoverable(target,list) {
 	for(let node=target;node;node=node.parentNode){
 		if(list.indexOf(node)!==-1){ return node; }
 	}
@@ -408,13 +413,13 @@ function hoverable(target) {
 }
 
 function onmouseover(event) {
-	hoveredel=hoverable(event.target);
+	hoveredtarget=event.target;
 }
 
 function oncursorstate(event) {
 	if(!event.detail || event.detail.visibility!==false || istyping()){ return; }
-	const el=hoveredel;
-	if(!el || contextelements().indexOf(el)===-1){ return; }
+	const el=hoverable(hoveredtarget,contextelements());
+	if(!el){ return; }
 	keyboardmode=true;
 	anchorx=mousex;
 	anchory=mousey;
