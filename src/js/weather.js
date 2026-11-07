@@ -159,8 +159,25 @@ function renderforecast(){
 	}).join("");
 }
 
+// Two callers ask for the weather while the launcher is starting: initweather() on
+// DOMContentLoaded, and applyprefs() a moment later. Neither can tell the other has already
+// started, because the test they both make is "is there any weather yet" and the answer only
+// becomes yes once the network has answered. Measured on the television: two identical requests
+// to Open-Meteo 24 ms apart on every launch, 234 ms and 208 ms.
+let weatherbusy=false;
+
 async function fetchweather(){
 	if(!prefs.weatherShow || !prefs.weatherPlace){ return; }
+	if(weatherbusy){ return; }
+	weatherbusy=true;
+	try {
+		await fetchweathernow();
+	} finally {
+		weatherbusy=false;
+	}
+}
+
+async function fetchweathernow(){
 	const place=prefs.weatherPlace;
 	const key=weatherkey();
 	const url="https://api.open-meteo.com/v1/forecast?latitude="+encodeURIComponent(place.lat)+"&longitude="+encodeURIComponent(place.lon)+
