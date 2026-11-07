@@ -53,6 +53,33 @@ function tipshow(el){
 	});
 }
 
+// How big the label comes out for a given string. It depends on the text and the font, neither of
+// which changes while the remote is moving, so it is measured once per label and remembered.
+//
+// This is what the read-then-write comment below used to get wrong. Writing the text and then
+// asking for offsetWidth in the same breath forces the browser to lay out there and then, every
+// frame, for every tile the focus passes over. With the size known in advance there is one read
+// left, the tile's own box, and it happens before anything is written.
+const tipsizes=new Map();
+const TIPSIZES_MAX=400;        // a set this size is a few thousand bytes and covers any app list
+
+function tipsize(text){
+	let size=tipsizes.get(text);
+	if(size){ return size; }
+	tipbox.textContent=text;
+	tipbox.classList.add("on");
+	size={w:tipbox.offsetWidth,h:tipbox.offsetHeight};
+	if(tipsizes.size>=TIPSIZES_MAX){ tipsizes.clear(); }
+	tipsizes.set(text,size);
+	return size;
+}
+
+// the labels are laid out with the launcher's own font and sizes, so a change to either makes
+// every remembered measurement wrong
+function tipforget(){
+	tipsizes.clear();
+}
+
 function tipplace(el){
 	const text=tipname(el);
 	if(!text){
@@ -64,15 +91,15 @@ function tipplace(el){
 		tipbox.id="tipbox";
 		maindiv.appendChild(tipbox);
 	}
-	// every read first, then every write, so the browser lays out once
+	// the one read, and it comes before every write
 	const rect=el.getBoundingClientRect();
+	const size=tipsize(text);
 	if(tipbox.textContent!==text){ tipbox.textContent=text; }
 	tipbox.classList.add("on");
 	// centred over the icon, kept inside the screen
-	const width=tipbox.offsetWidth;
-	const left=Math.max(12,Math.min(window.innerWidth-width-12,rect.left+rect.width/2-width/2));
+	const left=Math.max(12,Math.min(window.innerWidth-size.w-12,rect.left+rect.width/2-size.w/2));
 	tipbox.style.left=Math.round(left)+"px";
-	tipbox.style.top=Math.round(rect.top-tipbox.offsetHeight-14)+"px";
+	tipbox.style.top=Math.round(rect.top-size.h-14)+"px";
 }
 
 (function(){

@@ -26,6 +26,11 @@ const MARQUEE_SPEED=45;         // px per second
 const MARQUEE_MIN_SECONDS=2.5;  // one way, pauses at both ends included
 const MARQUEE_PAUSE=0.6;        // the part of the time the text actually moves (the rest is the pause at each end)
 
+// Bumped whenever anything that decides how wide a name comes out has changed, which makes every
+// remembered measurement stale. Tiles rebuilt by render() carry no measurement to begin with.
+let marqueegen=0;
+function marqueeforget(){ marqueegen++; }
+
 // a tile scrolls its name if it is hovered or focused and the name doesn't fit
 function marqueeupdate(tile){
 	const name=tile.querySelector(".appname");
@@ -35,11 +40,22 @@ function marqueeupdate(tile){
 		// Measured in the next frame, not here: this runs inside the key press, right after the
 		// focus classes changed, so reading scrollWidth now forces a whole extra layout on every
 		// repeat of a held arrow. By the next frame the layout is fresh and the read is free.
+		//
+		// And measured once per name, not once per focus. The read is only free if the layout is
+		// clean, and while an arrow is held it never is: the focus classes have just changed
+		// again, so the read forces a layout anyway. How much of a name is hidden does not change
+		// as the focus moves over it, so it is remembered. Profiled while holding an arrow, this
+		// callback was the largest single piece of script on the main thread.
 		name.marqueepending=true;
 		requestAnimationFrame(() => {
 			name.marqueepending=false;
 			if(!(tile.marqueehover || tile.marqueefocus) || name.classList.contains("marquee")){ return; }
-			const hidden=name.scrollWidth-name.clientWidth;
+			let hidden=name.marqueehidden;
+			if(hidden===undefined || name.marqueegen!==marqueegen){
+				hidden=name.scrollWidth-name.clientWidth;
+				name.marqueehidden=hidden;
+				name.marqueegen=marqueegen;
+			}
 			if(!(hidden>1)){ return; }
 			name.style.setProperty("--marquee",(-hidden)+"px");
 			name.style.animationDuration=Math.max(MARQUEE_MIN_SECONDS,hidden/MARQUEE_SPEED/MARQUEE_PAUSE)+"s";
@@ -103,7 +119,7 @@ function maketile (eachapp,inbar,recent) {
 			if(next===null && e.target.src.indexOf("fallback.png")!==-1){ return; }
 			e.target.src=next || fallback;
 		});
-		appname.innerText=appdisplayname(eachapp);
+		appname.textContent=appdisplayname(eachapp);
 		appitem.namelabel=appname;
 		appname.setAttribute("class","appname");
 		appitem.setAttribute("class",recent?"appitem recenttile":"appitem");
@@ -215,8 +231,12 @@ function tilefor(app,inbar,cache){
 // bring a kept tile in line with the current settings without recreating anything
 function updatetile(tile,id,inbar,app){
 	if(app && tile.namelabel){
+		// textContent, not innerText. innerText has to lay the page out before it can answer,
+		// because it reports what is rendered, and this runs for every tile on every render.
+		// The names are plain text, so the two give the same string. Profiled: the same read in
+		// the folder chips was the largest piece of script in a category switch.
 		const shown=appdisplayname(app);
-		if(tile.namelabel.innerText!==shown){ tile.namelabel.innerText=shown; }
+		if(tile.namelabel.textContent!==shown){ tile.namelabel.textContent=shown; }
 	}
 	tile.classList.toggle("hiddenapp",ishidden(id));
 	tile.classList.toggle("pinnedapp",!inbar && ispinned(id));
@@ -433,7 +453,7 @@ function toggleedit(){
 	carrying=null;
 	maindiv.classList.remove("carrying");
 	maindiv.classList.toggle("editing",editing);
-	editbtn.innerText=editing?t("Done"):t("Edit");
+	editbtn.textContent=editing?t("Done"):t("Edit");
 	render();
 }
 

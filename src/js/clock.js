@@ -46,7 +46,30 @@ function analogangles(now){
 }
 
 // the text under/beside the clock for a Date: date, day of week, both or nothing
+//
+// Remembered until the day or the settings change. This runs from the clock tick, once a second,
+// and it answers the same string all day: two toLocaleString calls for the month plus one for
+// the weekday, each of which builds a formatter and throws it away. Profiled on the television
+// it was the largest piece of this launcher's own script on an idle home screen.
+let datetextkey="";
+let datetextwas="";
+
 function datetext(now,p){
+	const key=[now.getFullYear(),now.getMonth(),now.getDate(),
+		p.dateShow,p.dateFormat,p.dayStyle,p.dayPos,
+		(typeof i18nlang!=="undefined")?i18nlang:""].join("/");
+	if(key===datetextkey){ return datetextwas; }
+	datetextkey=key;
+	datetextwas=datetextbuild(now,p);
+	return datetextwas;
+}
+
+// the language or the date settings changed under it
+function dateforget(){
+	datetextkey="";
+}
+
+function datetextbuild(now,p){
 	let date="";
 	if(p.dateShow){
 		const format=DATE_FORMATS[p.dateFormat]||DATE_FORMATS["ymd-slash"];
