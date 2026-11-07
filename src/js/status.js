@@ -58,7 +58,8 @@ function gauge(name,percent,caption){
 	box.appendChild(statusel("small","stname",name));
 	const meter=statusel("div","stmeter");
 	const fill=statusel("i");
-	fill.style.width=Math.max(0,Math.min(100,percent))+"%";
+	// slid, not sized: see .stmeter i in theme.css for why width cannot be animated here
+	fill.style.transform="translateX("+(Math.max(0,Math.min(100,percent))-100)+"%)";
 	meter.appendChild(fill);
 	box.appendChild(meter);
 	box.appendChild(statusel("b","stvalue",caption));
