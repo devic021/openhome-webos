@@ -290,7 +290,23 @@ body,#maindiv,#prefetchmaindiv{ font-family:"Manrope",PlusJakartaSans,sans-serif
 
 :root{ --fade-ms:340ms; }                       /* wallpaper cross-fade, in step with js/fade.js */
 .appitem{ transition:transform .11s ease; }
-.appicon{ transition:box-shadow .11s ease, transform .11s ease; }
+/* The focus ring and its glow are box-shadows; animating them repaints the tile on every frame of
+   the move, which the remote makes you feel. They switch in one step now, while the scale on
+   .appitem (a transform, which the compositor animates for free) still eases. */
+.appicon{ transition:transform .11s ease; }
+/* Holding an arrow in the dock zooms one icon in and another out every few dozen milliseconds.
+   What zooms is the ICON (see "navigation fix" below), so that is what gets a GPU layer for good.
+   Without it Chrome promotes each icon for the length of its transition and drops it after: the
+   icon, focus ring and glow are re-rasterised going in and painted back into the page coming out,
+   on every repeat. With its own layer the zoom is a pure compositor move, and a focus change only
+   repaints that one icon. Only the dock and the Recent row: a dozen or so small layers.
+
+   The dock's tiles also keep the same `contain` whether focused or not. The navigation fix drops
+   `paint` containment on the focused tile so its glow is not clipped; switching containment on
+   and off makes the browser lay that tile out again on every key press. Here it is simply never
+   on, which costs nothing for a dozen tiles. */
+#appbar .appicon, #recentrow .appicon{ will-change:transform; }
+#appbar .appitem, #recentrow .appitem{ contain:layout style; }
 #realappbarbtu:checked ~ #appluncher{ animation:drawer-in .15s ease both; }
 @keyframes drawer-in{ from{ opacity:0; transform:translateY(1.2vh); } to{ opacity:1; transform:none; } }
 #settingspanel, #settingsbackdrop{ transition:opacity .13s ease; }
@@ -612,8 +628,8 @@ body,#maindiv,#prefetchmaindiv{ font-family:"Manrope",PlusJakartaSans,sans-serif
 }
 
 /* ---------- the wallpaper calms down after dark (js/photowall.js) ---------- */
-.bgphoto{ transition:opacity 1.2s ease, filter 2.5s ease; }
-body.nightwall .bgphoto{ filter:brightness(0.55) saturate(0.92); }
+/* #dimnight in index.html, see "dimming the wallpaper" below */
+body.photomode.nightwall #dimnight{ opacity:0.45; }
 
 /* ---------- a CPU running hot ---------- */
 .stgauge.hot .stvalue{ color:#FF8A8A; }
@@ -720,13 +736,24 @@ body.nightwall .bgphoto{ filter:brightness(0.55) saturate(0.92); }
 #fchours .fhour{ font-size:1.6vh; }
 #fchours .ftemp{ font-size:2.1vh; }
 
-/* ---------- idle dims the picture too ----------
-   screen.js puts .idle on #maindiv, but the wallpaper layers are siblings of it, so :has() is
-   what reaches them (this panel runs Chrome 120). Night and idle multiply rather than replace. */
-#bgvideo, .bgphoto{ transition:opacity 1.2s ease, filter 3s ease; }
-body:has(#maindiv.idle) .bgphoto,
-body:has(#maindiv.idle) #bgvideo{ filter:brightness(var(--idledim,0.3)); }
-body.nightwall:has(#maindiv.idle) .bgphoto{ filter:brightness(calc(var(--idledim,0.3) * 0.55)); }
+/* ---------- dimming the wallpaper: night, idle and the open drawer ----------
+   Black layers fading in over the picture, never a filter on it. A filter on #bgvideo takes the
+   video off the hardware plane, so the GPU recomposites a 4K frame for every video frame; an
+   opacity change on a plain black layer is the cheapest thing the compositor can animate.
+   Stacked layers multiply, so night and idle still combine the way the filters did.
+   The body classes come from photowall.js (photomode, nightwall), screen.js (idle) and
+   main.js (draweropen): classes on body, not :has(), so no selector re-checks the page. */
+#bgdim{ position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:1; pointer-events:none; }
+#bgdim > div{
+	position:absolute; top:0; left:0; width:100%; height:100%;
+	background-color:#000;
+	opacity:0;
+	transition:opacity 3s ease;
+}
+/* "#bgdim >" so these outrank the shorthand above */
+#bgdim > #dimnight{ transition-duration:2.5s; }
+#bgdim > #dimdrawer{ transition-duration:.35s; }
+body.idle #dimidle{ opacity:var(--idledark,0.7); }
 
 /* ---------- readability where the stack sits over a bright photograph ---------- */
 #appbar::after{
@@ -1053,15 +1080,12 @@ body.nightwall:has(#maindiv.idle) .bgphoto{ filter:brightness(calc(var(--idledim
    Longer than the old 1.2 s, and a symmetric curve: a dissolve wants to spend its time in the
    middle, not rush through it. */
 .bgphoto{
-	transition:opacity 1.8s cubic-bezier(.45,0,.55,1), filter 3s ease;
+	transition:opacity 1.8s cubic-bezier(.45,0,.55,1);
 }
 /* used for one frame, to drop a still-fading layer back to zero without animating it there */
 .bgphoto.instant{ transition:none !important; animation:none !important; }
-
-/* the arriving picture settles into place: 3.5% large, easing down over the fade. A bounded
-   animation, not a running one - nothing moves once the picture has landed. */
-@keyframes bgsettle{ from{ transform:scale(1.035); } to{ transform:scale(1); } }
-.bgphoto.arriving{ animation:bgsettle 2.2s cubic-bezier(.17,.84,.44,1) both; }
+/* The arriving picture used to scale down 3.5% over 2.2 s on top of the fade. On the TV that is a
+   second full-screen layer rescaled every frame during the cross-fade; the plain dissolve is kept. */
 
 /* ---------- the gear and the "i" are a pair, so they are built to the same measurements ----------
    Both buttons were already 6vh, but #infobtn had 0.4vh of padding against the gear's 0.9vh, so

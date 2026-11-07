@@ -72,6 +72,7 @@ function startphotos(){
 	makephotolayers();
 	photomode=true;
 	bgmode="photos";
+	document.body.classList.add("photomode");     // lets #dimnight darken the photographs after dark
 	// park the video decoder: nothing should be streaming while photographs are up
 	bgvideo.pause();
 	bgvideo.removeAttribute("src");
@@ -102,6 +103,7 @@ function photodaylight(){
 function stopphotos(){
 	if(!photomode){ return; }
 	photomode=false;
+	document.body.classList.remove("photomode");
 	clearTimeout(phototimer);
 	phototimer=null;
 	photocurrent=null;
@@ -126,15 +128,14 @@ function stopphotos(){
 // fixed DOM order, so the arriving one is raised with z-index instead of being re-inserted. The
 // old layer is only switched off once the new one is fully opaque, where it cannot be seen.
 //
-// On top of that the arriving picture settles: it comes in 3.5% large and eases down to its true
-// size over the fade. Short and bounded - no continuous animation on a 4K layer, which this TV
-// would feel.
+// It used to settle as well (3.5% large, easing down over the fade); that rescaled a second 4K
+// layer every frame of the cross-fade, so only the dissolve is left.
 function crossfade(entry){
 	const next=photolayers[(photoactive+1)%2];
 	const prev=photolayers[photoactive];
 	// start from a clean hidden layer even if the previous fade is still running (skip pressed twice)
 	next.classList.add("instant");
-	next.classList.remove("on","arriving");
+	next.classList.remove("on");
 	next.style.backgroundImage='url("'+entry.u+'")';
 	// Only the order of these two matters, so they SWAP between 0 and 1. An ever-growing z-index
 	// climbs past the interface (#statusbar is 4, #quickrow 5, #appbar 6) and the wallpaper ends
@@ -143,13 +144,11 @@ function crossfade(entry){
 	prev.style.zIndex="0";
 	void next.offsetWidth;                     // commit all of that before anything animates
 	next.classList.remove("instant");
-	next.classList.add("on","arriving");
-	prev.classList.remove("arriving");
+	next.classList.add("on");
 	photoactive=(photoactive+1)%2;
 	clearTimeout(photoclean);
 	photoclean=setTimeout(() => {
 		prev.classList.remove("on");           // invisible by now: it is behind an opaque picture
-		next.classList.remove("arriving");
 	},PHOTO_FADE_MS+200);
 }
 

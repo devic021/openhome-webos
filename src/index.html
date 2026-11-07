@@ -32,6 +32,10 @@
 	<script>bgvideo.src="access/wallpaper/loop.mp4";bgvideo.play().catch(()=>{});</script>
 	<div id="prefetchmaindiv">
 	<!-- Hack : make appluncher always loaded (just hidden) so it can be faster when i open/close it -->
+	<!-- Darkens the wallpaper (night, idle, open drawer) by fading black layers in over it. Filtering the video itself would pull
+	     it off the TV's hardware video plane and make the GPU recomposite a 4K picture every frame. Must stay after #bgvideo
+	     (photowall.js inserts its layers right after it) and before #prefetchmaindiv, so it draws over the wallpaper only. -->
+	<div id="bgdim"><div id="dimnight"></div><div id="dimidle"></div><div id="dimdrawer"></div></div>
 	<div id="maindiv">
 	<input type="checkbox"  id="realappbarbtu" >
 	<!-- clock and date are full-screen layers placed by settings.js; the date sits in #clockstack (under the clock) or moves to #datelayer -->

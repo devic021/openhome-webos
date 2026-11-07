@@ -95,8 +95,9 @@ html.look-editorial .qchip,
 html.look-editorial #infobtn,
 html.look-editorial #homesettings{
 	width:6.2vh !important; height:6.2vh !important; min-width:6.2vh !important;
-	background:rgba(0,0,0,0.38) !important;
-	backdrop-filter:blur(14px) saturate(140%) !important;
+	/* darker than the old 0.38 to stand in for the blur, which re-blurred the moving wallpaper
+	   behind these buttons on every frame, on the home screen, all the time */
+	background:rgba(10,12,18,0.58) !important;
 	border:1px solid rgba(255,255,255,0.14) !important;
 	border-radius:1.4vh !important;
 	box-shadow:0 0.8vh 2vh rgba(0,0,0,0.45) !important;
@@ -146,16 +147,14 @@ html.look-editorial .qchip{
    main.css uses cannot reach them; a scrim hung off #appluncher is clipped to that element's
    box, because it clips its content; and one hung off #drawertools lands above the drawer
    rather than behind it, because #drawertools sits in a stacking context of its own.
-   :has() sidesteps all of it - it matches on an ancestor, so document order stops mattering.
-   Chromium 120 on webOS 10.3 supports it. */
-html.look-editorial body:has(#realappbarbtu:checked) .bgphoto,
-html.look-editorial body:has(#realappbarbtu:checked) #bgvideo{
-	filter:brightness(0.22) saturate(0.85) !important;
-	transition:filter 0.35s ease !important;
-}
+   A filter on the video worked but was the expensive way: it pulls the video off the hardware
+   plane and the GPU recomposites the 4K picture every frame while the drawer is open. Now
+   main.js puts .draweropen on body and #dimdrawer (index.html, styled in theme.css) fades in
+   over the wallpaper - about the old brightness(0.22). */
+html.look-editorial body.draweropen #dimdrawer{ opacity:0.78; }
 /* with the picture carrying the depth, the two opaque panels are not needed */
-html.look-editorial body:has(#realappbarbtu:checked) #appluncher,
-html.look-editorial body:has(#realappbarbtu:checked) #folderbar{
+html.look-editorial body.draweropen #appluncher,
+html.look-editorial body.draweropen #folderbar{
 	background:transparent !important;
 	box-shadow:none !important;
 	border:0 !important;
@@ -171,9 +170,9 @@ html.look-editorial #folderbar{
 }
 html.look-editorial #folderbar::before{ content:"" !important; display:none !important; }
 html.look-editorial #folderbar .chip{
+	/* a plain tint: over the darkened wallpaper it reads the same as the blur it replaces */
 	background:rgba(255,255,255,0.09) !important;
 	border:1px solid rgba(255,255,255,0.14) !important;
-	backdrop-filter:blur(16px) saturate(140%) !important;
 	box-shadow:0 0.4vh 1.2vh rgba(0,0,0,0.3) !important;
 	font-size:1.9vh !important;
 	padding:0.7vh 1.3vw !important;
@@ -226,5 +225,4 @@ html.look-editorial #drawertools button{
 	background:rgba(255,255,255,0.10) !important;
 	border:1px solid rgba(255,255,255,0.14) !important;
 	border-radius:3vh !important;
-	backdrop-filter:blur(16px) !important;
 }

@@ -20,6 +20,7 @@ function isidle(){
 function updateidle(){
 	const idle=isidle();
 	maindiv.classList.toggle("idle",idle);
+	document.body.classList.toggle("idle",idle);   // the wallpaper is outside #maindiv; this reaches #dimidle
 	maindiv.classList.toggle("idle-hidebar",idle && prefs.idleAction==="hidebar");
 }
 

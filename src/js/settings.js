@@ -253,6 +253,7 @@ function applysizes(){
 	root.setProperty("--idledim",String(prefs.idleDim/100));
 	root.setProperty("--barname",prefs.barNameSize+"vh");
 	root.setProperty("--menuname",prefs.menuNameSize+"vh");
+	root.setProperty("--idledark",String(1-prefs.idleDim/100));   // opacity of #dimidle over the wallpaper
 	// Sizes below are estimates in vh/vw of what a tile needs: a tile is about as tall as it is wide, plus its name
 	// (about 3.35x the name's font size once margins are counted). vw -> vh goes through the aspect ratio.
 	// A TV can report a 0x0 window while starting up, so fall back to 16:9 instead of dividing by zero.

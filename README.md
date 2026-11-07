@@ -127,7 +127,7 @@ can quietly undo.
 |---|---|
 | **Full** | the whole strip, the default |
 | **Icon only** | the network glyph alone, which still opens the panel |
-| **Off** | nothing in the corner, and the once-a-second reading behind it stops as well |
+| **Off** | nothing in the corner, and the reading behind it, every two seconds, stops as well |
 
 With the strip off the panel has a button of its own in the same place, since pressing OK on the
 strip is otherwise the only way in.
