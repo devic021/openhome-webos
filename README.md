@@ -85,8 +85,11 @@ the app icons.
 **Classic** is the appearance the launcher had before, panels and all. Switch between them in
 **Settings -> Clock -> Look**; nothing else changes.
 
-Editorial costs about 0.8 of a percentage point of one CPU core at idle, 5.0% against 4.2%,
-measured on the set it was built on.
+Neither costs more than the other any more. Measured twice each on the set this was built on,
+an idle home screen reads 1.9% and 1.2% of one CPU core in Editorial against 1.5% and 1.1% in
+Classic, which is inside the spread between runs. Editorial used to cost about 0.8 of a
+percentage point more, 5.0% against 4.2%; the work in 1.4.0 and 1.4.2 took the idle cost of both
+down far enough that the difference no longer shows.
 
 ### All apps
 
@@ -125,8 +128,8 @@ can quietly undo.
 
 | | |
 |---|---|
-| **Full** | the whole strip, the default |
-| **Icon only** | the network glyph alone, which still opens the panel |
+| **Everything** | the whole strip, the default |
+| **Icon only** | a single glyph, which still opens the system panel |
 | **Off** | nothing in the corner, and the reading behind it, every two seconds, stops as well |
 
 With the strip off the panel has a button of its own in the same place, since pressing OK on the

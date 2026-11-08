@@ -152,7 +152,9 @@ recovered.
 
 There was no setting for it: the strip was drawn whenever the home screen was, and the only rule
 that ever hid it was the one covering it while the app drawer is open. **Screen → Status strip**
-now offers the whole strip, the network glyph alone, or nothing.
+now offers the whole strip, a single glyph, or nothing. The glyph was whichever network icon
+applied until 1.3.2, which said nothing about what pressing it does; it is a trace of activity
+now, matching the title the pill already carried.
 
 "Off" removes the element rather than hiding it, which is what makes `syspanel.js` and the remote's
 focus ring drop it without either file learning a new condition, and it stops the once-a-second
@@ -204,7 +206,10 @@ in a matching one on the right - all five the same size, all resting on the same
 app icons. The drawer becomes a single layer over a dimmed picture instead of two opaque panels,
 with the "Apps" title gone and the category pills centred over the tiles.
 
-Measured on the set it was built on: 5.0% of one core at idle against 4.2% for Classic.
+Measured on the set it was built on when it was written: 5.0% of one core at idle against 4.2%
+for Classic. That gap has since closed. The profiling pass in 1.4.0 and the compositor layer
+removed in 1.4.2 brought both down to between 1.1% and 1.9%, which is inside the spread between
+runs, so neither look costs more than the other now.
 
 Three things in it were not obvious:
 
