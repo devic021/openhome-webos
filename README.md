@@ -467,6 +467,43 @@ restores them, which is the only order that works.
 
 ---
 
+## After a power cut: the clock, and everything that hangs off it
+
+This television has no battery-backed clock. There is no `/dev/rtc` at all, so a power cut leaves
+it years in the past, and from there everything fails in a circle:
+
+```
+wrong clock -> TLS certificates are not valid yet, so nothing over HTTPS works
+            -> a WireGuard handshake carries a timestamp older than the peer has seen
+               and is rejected as a replay, so any tunnel stays down
+            -> webOS cannot reach its own time server to correct the clock, because
+               that needs a name resolved through the network that is broken
+```
+
+Seen on 14 November 2026 after several power cuts: the set sat at 1 January 2023, ConnMan's DNS
+proxy answered `10.0.0.1` for **every** name including ones that cannot exist, and anything with
+a hostname was dead. No weather, no streaming, no time sync, and nothing able to break the circle
+from inside.
+
+`scripts/clockfix.sh` breaks it from outside. It sets the clock from something that needs neither
+DNS nor TLS, the `Date` header of a plain HTTP reply, asked of the default gateway first and
+public addresses after, all by address. A second or two of error does not matter; being in the
+right year does, and webOS's own time service takes over from there.
+
+It then checks the resolver by asking for a name under `.invalid`, which is reserved and must
+come back NXDOMAIN. An address means ConnMan's proxy has jammed, and it restarts it.
+
+```bash
+scp -i ~/.ssh/lgtv scripts/clockfix.sh root@<tv-ip>:/var/lib/webosbrew/init.d/05-clockfix.sh
+ssh -i ~/.ssh/lgtv root@<tv-ip> 'chmod +x /var/lib/webosbrew/init.d/05-clockfix.sh'
+```
+
+The name begins with `05` so `run-parts` runs it before anything that needs a clock or a name.
+It writes what it did to `/tmp/clockfix.log` and to the system log under `openhome-clockfix`,
+and does nothing at all when the clock and the resolver are already healthy.
+
+---
+
 ## Wallpapers on a USB disk
 
 The launcher can keep a pool of photographs on a USB disk and rotate through them. A 4K photograph
